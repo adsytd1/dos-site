@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог DOS — ИИ-автоматизация для бизнеса в Казахстане</title>
+<meta name="description" content="Статьи и кейсы об ИИ-автоматизации бизнеса: чат-боты, обработка заявок, увеличение продаж. Полезные материалы от DOS.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Блог DOS — ИИ-автоматизация для бизнеса">
+<meta property="og:description" content="Статьи и кейсы об ИИ-автоматизации бизнеса: чат-боты, обработка заявок, увеличение продаж. Полезные материалы от DOS.">
+<meta property="og:image" content="https://dos.kz/og-image.png">
+<meta property="og:url" content="https://dos.kz/blog.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Блог DOS — ИИ-автоматизация для бизнеса">
+<meta name="twitter:description" content="Статьи и кейсы об ИИ-автоматизации: чат-боты, увеличение продаж, обработка заявок.">
+<meta name="keywords" content="ИИ-бот, чат-бот, автоматизация бизнеса, увеличение продаж, обработка заявок, Казахстан, искусственный интеллект, чат-бот WhatsApp Казахстан, ИИ бот Instagram, ROI автоматизации, бот для бизнеса цена, WhatsApp Business API">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e676'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%23000'>DOS</text></svg>">
+<link rel="canonical" href="https://dos.kz/blog.html">
+<link rel="alternate" type="application/rss+xml" title="DOS Blog RSS" href="https://dos.kz/rss.xml">
+<link rel="dns-prefetch" href="https://wa.me">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.clarity.ms">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+[
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Как ИИ-бот увеличивает продажи: 5 реальных примеров",
+    "datePublished":"2026-02-18",
+    "author":{"@type":"Person","name":"Yernar Dosmagambetov"},
+    "publisher":{"@type":"Organization","name":"DOS","url":"https://dos.kz"},
+    "description":"Разбираем конкретные кейсы из казахстанского рынка: как бизнесы увеличили конверсию на 30-80% с помощью ИИ-ассистентов."
+  },
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Чат-бот vs менеджер: кто обрабатывает заявки лучше?",
+    "datePublished":"2026-02-10",
+    "author":{"@type":"Person","name":"Yernar Dosmagambetov"},
+    "publisher":{"@type":"Organization","name":"DOS","url":"https://dos.kz"},
+    "description":"Объективное сравнение по 6 критериям: скорость, точность, стоимость, доступность. Данные из реальных проектов."
+  },
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Почему 78% заявок теряются без автоматизации",
+    "datePublished":"2026-02-03",
+    "author":{"@type":"Person","name":"Yernar Dosmagambetov"},
+    "publisher":{"@type":"Organization","name":"DOS","url":"https://dos.kz"},
+    "description":"Шокирующая статистика о потере лидов: данные Harvard Business Review и реальные цифры казахстанского рынка."
+  },
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Как подготовить бизнес к внедрению ИИ-ассистента",
+    "datePublished":"2026-01-25",
+    "author":{"@type":"Person","name":"Yernar Dosmagambetov"},
+    "publisher":{"@type":"Organization","name":"DOS","url":"https://dos.kz"},
+    "description":"Пошаговый чек-лист: какие данные подготовить, каких ошибок избежать и сколько времени займёт запуск."
+  },
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Чат-бот для WhatsApp в Казахстане: полный гид 2026",
+    "datePublished":"2026-01-15",
+    "author":{"@type":"Person","name":"Yernar Dosmagambetov"},
+    "publisher":{"@type":"Organization","name":"DOS","url":"https://dos.kz"},
+    "description":"Как подключить ИИ-бота к WhatsApp Business, сколько это стоит и какие результаты ожидать."
+  },
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"ИИ-бот для Instagram: как автоматизировать Direct",
+    "datePublished":"2026-01-08",
+    "author":{"@type":"Person","name":"Yernar Dosmagambetov"},
+    "publisher":{"@type":"Organization","name":"DOS","url":"https://dos.kz"},
+    "description":"Почему 70% заявок из Instagram теряются и как ИИ-бот решает проблему за секунды."
+  },
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"ROI ИИ-бота: как посчитать окупаемость за 5 минут",
+    "datePublished":"2025-12-28",
+    "author":{"@type":"Person","name":"Yernar Dosmagambetov"},
+    "publisher":{"@type":"Organization","name":"DOS","url":"https://dos.kz"},
+    "description":"Простая формула расчёта окупаемости чат-бота для бизнеса. Реальные примеры и сравнение с наймом менеджера."
+  },
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"5 ниш в Казахстане, где ИИ-бот даёт максимальный результат",
+    "datePublished":"2025-12-15",
+    "author":{"@type":"Person","name":"Yernar Dosmagambetov"},
+    "publisher":{"@type":"Organization","name":"DOS","url":"https://dos.kz"},
+    "description":"Музыкальные школы, юридические фирмы, стоматологии, фитнес и авто — разбираем каждую нишу с цифрами."
+  }
+]
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#111;--card:#161616;--card-hover:#1c1c1c;--border:#1e1e1e;--border-light:#2a2a2a;--accent:#00e676;--accent-dim:rgba(0,230,118,.08);--accent-mid:rgba(0,230,118,.15);--accent-glow:rgba(0,230,118,.25);--accent2:#69f0ae;--text:#f0f0f0;--text-secondary:#999;--text-muted:#666;--mono:'JetBrains Mono',monospace;--sans:'Outfit',-apple-system,sans-serif;--radius:16px;--radius-sm:10px;--radius-xs:6px;--max-w:1100px;--transition:.3s cubic-bezier(.4,0,.2,1)}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent-mid);color:var(--accent)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 32px}
+
+/* Grid background */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+
+/* Back link */
+.back-link{position:fixed;top:24px;left:32px;z-index:100;display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(22,22,22,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:100px;font-size:14px;font-weight:500;color:var(--text-secondary);transition:all var(--transition)}
+.back-link:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 20px rgba(0,230,118,.1);transform:translateY(-1px)}
+.back-link svg{width:16px;height:16px;transition:transform var(--transition)}
+.back-link:hover svg{transform:translateX(-3px)}
+
+/* Hero */
+.blog-hero{position:relative;min-height:50vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 32px 80px;overflow:hidden;z-index:1}
+.blog-hero::before{content:'';position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,var(--accent-dim) 0%,transparent 65%);pointer-events:none}
+.blog-hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 22px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.15);border-radius:100px;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent);margin-bottom:32px;animation:fadeInDown .8s ease both}
+.blog-hero-badge::before{content:'';width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+.blog-hero h1{font-size:clamp(36px,6vw,64px);font-weight:900;line-height:1.1;letter-spacing:-2px;margin-bottom:20px;animation:fadeInUp .8s ease .15s both}
+.blog-hero h1 .accent{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.blog-hero p{font-size:clamp(16px,2vw,19px);color:var(--text-secondary);max-width:550px;animation:fadeInUp .8s ease .3s both}
+
+/* Blog grid */
+.blog-section{position:relative;padding:40px 0 100px;z-index:1}
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+
+/* Blog card */
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all var(--transition);cursor:pointer;opacity:0;transform:translateY(30px)}
+.blog-card.revealed{opacity:1;transform:translateY(0)}
+.blog-card:hover{border-color:var(--border-light);box-shadow:0 0 30px rgba(0,230,118,.1);transform:translateY(-3px)}
+.blog-card.revealed:hover{transform:translateY(-3px)}
+.blog-card.active{border-color:var(--accent);box-shadow:0 0 40px rgba(0,230,118,.12)}
+.blog-card.active:hover{transform:none}
+
+.blog-card-header{padding:32px 28px 28px;position:relative}
+.blog-card-meta{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.blog-card-date{font-size:13px;color:var(--text-muted)}
+.blog-card-readtime{font-family:var(--mono);font-size:12px;font-weight:500;padding:4px 10px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.12);border-radius:100px;color:var(--accent)}
+.blog-card-number{position:absolute;top:28px;right:28px;font-family:var(--mono);font-size:48px;font-weight:800;color:rgba(255,255,255,.03);line-height:1;pointer-events:none}
+.blog-card h2{font-size:20px;font-weight:700;line-height:1.35;margin-bottom:12px;transition:color var(--transition)}
+.blog-card:hover h2{color:var(--accent)}
+.blog-card-excerpt{font-size:14px;color:var(--text-secondary);line-height:1.7}
+.blog-card-tags{display:flex;flex-wrap:wrap;gap:8px;padding:0 28px 24px}
+.blog-tag{padding:4px 12px;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-family:var(--mono);font-size:11px;color:var(--text-muted);font-weight:500}
+.blog-card-toggle{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-top:1px solid var(--border);font-size:13px;font-weight:600;color:var(--text-muted);transition:all var(--transition)}
+.blog-card:hover .blog-card-toggle{color:var(--accent)}
+.blog-card.active .blog-card-toggle{color:var(--accent);background:var(--accent-dim)}
+.blog-card-toggle svg{width:16px;height:16px;transition:transform var(--transition)}
+.blog-card.active .blog-card-toggle svg{transform:rotate(180deg)}
+
+/* Article body */
+.blog-article{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.4,0,.2,1)}
+.blog-card.active .blog-article{max-height:5000px}
+.blog-article-inner{padding:0 28px 36px;max-width:700px}
+.blog-article-inner::before{content:'';display:block;height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin-bottom:32px}
+
+/* Article typography */
+.blog-article h2{font-size:22px;font-weight:800;margin:32px 0 16px;color:var(--text);line-height:1.3}
+.blog-article h3{font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--text);line-height:1.35}
+.blog-article p{font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:16px}
+.blog-article strong{color:var(--accent);font-weight:600}
+.blog-article ul,.blog-article ol{margin:16px 0;padding-left:24px}
+.blog-article li{font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:8px}
+.blog-article li::marker{color:var(--accent)}
+
+/* Stat block */
+.stat-block{display:flex;gap:16px;flex-wrap:wrap;margin:24px 0}
+.stat-item{flex:1;min-width:140px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;text-align:center}
+.stat-value{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:6px}
+.stat-label{font-size:12px;color:var(--text-muted);line-height:1.4}
+
+/* Highlight box */
+.highlight-box{background:var(--accent-dim);border:1px solid rgba(0,230,118,.15);border-radius:var(--radius-sm);padding:20px 24px;margin:24px 0;border-left:3px solid var(--accent)}
+.highlight-box p{color:var(--text);margin-bottom:0;font-size:14px}
+.highlight-box .label{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:block}
+
+/* Checklist */
+.checklist{list-style:none;padding:0;margin:20px 0}
+.checklist li{position:relative;padding:10px 0 10px 32px;font-size:15px;color:var(--text-secondary);line-height:1.7;border-bottom:1px solid var(--border)}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'';position:absolute;left:0;top:14px;width:18px;height:18px;border:2px solid var(--accent);border-radius:4px;background:var(--accent-dim)}
+.checklist li::after{content:'';position:absolute;left:4px;top:18px;width:10px;height:5px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+
+/* Comparison table inside articles */
+.article-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+.article-table th{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:12px 16px;text-align:left;border-bottom:2px solid var(--border-light);color:var(--text-muted)}
+.article-table th:last-child{color:var(--accent)}
+.article-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+.article-table td:last-child{color:var(--accent);font-weight:600}
+.article-table tr:last-child td{border-bottom:none}
+.val-bad{color:#ff5252 !important}
+.val-good{color:var(--accent) !important}
+
+/* CTA Section */
+.cta-section{text-align:center;position:relative;padding:100px 0;z-index:1}
+.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,var(--accent-dim) 0%,transparent 60%);pointer-events:none}
+.cta-content{position:relative;z-index:1}
+.cta-label{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.cta-title{font-size:clamp(28px,5vw,42px);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
+.cta-desc{font-size:17px;color:var(--text-secondary);max-width:480px;margin:0 auto 36px}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:18px 36px;background:var(--accent);color:#000;font-family:var(--sans);font-weight:700;font-size:16px;border:none;border-radius:100px;cursor:pointer;transition:all var(--transition);box-shadow:0 0 40px var(--accent-dim);letter-spacing:.3px;text-decoration:none}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 60px var(--accent-glow)}
+
+/* Footer */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border-light),transparent)}
+footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;position:relative;z-index:1}
+footer p{font-size:13px;color:var(--text-muted)}
+.footer-links{display:flex;gap:16px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.footer-link{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:100px;font-size:13px;color:var(--text-muted);transition:all var(--transition)}
+.footer-link:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 15px rgba(0,230,118,.1);transform:translateY(-1px)}
+
+/* Animations */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* Responsive */
+@media(max-width:768px){
+  .blog-grid{grid-template-columns:1fr;gap:20px}
+  .blog-hero{padding:120px 24px 60px;min-height:40vh}
+  .container{padding:0 20px}
+  .back-link{top:16px;left:16px;padding:8px 16px;font-size:13px}
+  .blog-card-header{padding:24px 20px 20px}
+  .blog-card-tags{padding:0 20px 20px}
+  .blog-article-inner{padding:0 20px 28px}
+  .blog-card-number{display:none}
+  .stat-block{flex-direction:column}
+  .stat-item{min-width:auto}
+  .blog-card-toggle{padding:12px 20px}
+  .cta-section{padding:80px 0}
+  .article-table{font-size:12px}
+  .article-table th,.article-table td{padding:8px 10px}
+}
+/* Floating WhatsApp */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .3s ease;text-decoration:none}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.6)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+/* Back to top */
+.btt{position:fixed;bottom:96px;right:28px;z-index:999;width:44px;height:44px;background:var(--card);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:all .3s ease}
+.btt.visible{opacity:1;pointer-events:auto}
+.btt:hover{border-color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.btt svg{width:18px;height:18px;stroke:var(--text-muted);stroke-width:2;fill:none}
+.btt:hover svg{stroke:var(--accent)}
+/* Smooth page entry */
+body{animation:pageIn .6s ease both}
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
+/* WA pulse + tooltip */
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wa-float{animation:waPulse 2.5s infinite}
+.wa-float:hover{animation:none}
+.wa-tooltip{position:fixed;bottom:42px;right:92px;z-index:999;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--text);white-space:nowrap;opacity:0;transform:translateX(10px);transition:all .3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.wa-tooltip::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left-color:var(--card)}
+.wa-tooltip.show{opacity:1;transform:translateX(0)}
+/* Mobile sticky CTA */
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom));background:rgba(10,10,10,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border)}
+.mobile-cta a{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;background:#25d366;color:#fff;font-weight:700;font-size:15px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.3)}
+.mobile-cta svg{width:20px;height:20px;fill:#fff}
+/* Reading progress bar */
+.reading-progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:1000;width:0;transition:width .1s linear;box-shadow:none}
+/* Social share */
+.share-bar{display:flex;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all var(--transition);text-decoration:none}
+.share-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.share-btn svg{width:14px;height:14px}
+.share-copied{color:var(--accent) !important;border-color:var(--accent) !important}
+@media(max-width:768px){
+.mobile-cta{display:block}
+.wa-float{bottom:80px;right:16px;width:48px;height:48px}
+.wa-float svg{width:24px;height:24px}
+.wa-tooltip{bottom:94px;right:72px}
+.btt{bottom:140px;right:16px;width:38px;height:38px}
+.back-link{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 16px;background:rgba(10,10,10,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);border-radius:0}
+.reading-progress{top:41px}
+footer{padding-bottom:72px}
+}
+/* Tag filter */
+.tag-filter{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px}
+.tag-filter-btn{padding:6px 16px;background:var(--card);border:1px solid var(--border);border-radius:100px;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all var(--transition)}
+.tag-filter-btn:hover{border-color:var(--accent);color:var(--accent)}
+.tag-filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.blog-card.hidden-by-filter{display:none}
+/* TOC */
+.article-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px}
+.article-toc-title{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.article-toc-list{list-style:none;padding:0;margin:0}
+.article-toc-list li{margin-bottom:6px}
+.article-toc-list a{font-size:13px;color:var(--text-secondary);text-decoration:none;transition:color .2s}
+.article-toc-list a:hover{color:var(--accent)}
+.article-toc-list .toc-h3{padding-left:16px;font-size:12px}
+/* Accessibility */
+.skip-link{position:absolute;top:-100px;left:16px;z-index:9999;padding:12px 24px;background:var(--accent);color:#000;font-weight:700;font-size:14px;border-radius:100px;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:16px}
+*:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+/* Print styles */
+@media print{
+body::before,.wa-float,.floating-wa,.wa-tooltip,.mobile-cta,.btt,.back-link,.reading-progress,.blog-card-toggle,.blog-card-tags,.share-bar,.tag-filter,.blog-hero-badge{display:none!important}
+body{background:#fff;color:#000;animation:none}
+.blog-card{border:1px solid #ccc;page-break-inside:avoid;opacity:1!important;transform:none!important}
+.blog-card.active .blog-article{max-height:none;overflow:visible}
+.blog-article-inner{padding:0 20px 20px}
+.blog-article h2,.blog-article h3,.blog-card h2{color:#000}
+.blog-article p,.blog-article li{color:#333}
+.blog-article strong{color:#000}
+.stat-block{border:1px solid #ccc}
+.stat-value{color:#000}
+.highlight-box{border:1px solid #ccc;background:#f9f9f9}
+a{color:#000;text-decoration:underline}
+footer{border-top:1px solid #ccc}
+}
+@media(max-width:480px){
+  .blog-hero h1{letter-spacing:-1px}
+  .blog-card h2{font-size:18px}
+  .stat-value{font-size:22px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://dos.kz/"},{"@type":"ListItem","position":2,"name":"Блог"}]}</script>
+<!-- Google Analytics 4 (deferred) -->
+<script>window.addEventListener('load',function(){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';s.async=true;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX')}});</script>
+<!-- Microsoft Clarity (deferred) -->
+<script>window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","XXXXXXXXXX")});</script>
+</head>
+<body>
+<a href="#blog-grid" class="skip-link">Перейти к статьям</a>
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- Back link -->
+<a href="index.html" class="back-link">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+  Назад на главную
+</a>
+
+<!-- Hero -->
+<section class="blog-hero">
+  <div class="blog-hero-badge">blog // dos_</div>
+  <h1>Блог <span class="accent">DOS_</span></h1>
+  <p>8 статей об ИИ-автоматизации, кейсы из Казахстана и практические советы для бизнеса</p>
+</section>
+
+<!-- Blog Grid -->
+<section class="blog-section">
+  <div class="container">
+    <div class="tag-filter" id="tagFilter">
+      <button class="tag-filter-btn active" data-tag="all">Все</button>
+      <button class="tag-filter-btn" data-tag="продажи">продажи</button>
+      <button class="tag-filter-btn" data-tag="чат-бот">чат-бот</button>
+      <button class="tag-filter-btn" data-tag="автоматизация">автоматизация</button>
+      <button class="tag-filter-btn" data-tag="WhatsApp">WhatsApp</button>
+      <button class="tag-filter-btn" data-tag="Instagram">Instagram</button>
+      <button class="tag-filter-btn" data-tag="ROI">ROI</button>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+
+      <!-- Article 1 -->
+      <article class="blog-card" id="article-1">
+        <div class="blog-card-header">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">18 февраля 2026</span>
+            <span class="blog-card-readtime">6 мин</span>
+          </div>
+          <span class="blog-card-number">01</span>
+          <h2>Как ИИ-бот увеличивает продажи: 5 реальных примеров</h2>
+          <p class="blog-card-excerpt">Разбираем конкретные кейсы из казахстанского рынка: как бизнесы увеличили конверсию на 30-80% с помощью ИИ-ассистентов.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="blog-tag">ИИ-бот</span>
+          <span class="blog-tag">продажи</span>
+          <span class="blog-tag">автоматизация</span>
+        </div>
+        <div class="blog-card-toggle">
+          <span>Читать статью</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="blog-article">
+          <div class="blog-article-inner">
+
+            <h2>Почему ИИ-боты стали главным инструментом роста продаж</h2>
+
+            <p>В 2025-2026 годах казахстанский бизнес переживает настоящую революцию в подходе к продажам. Компании, которые внедрили <strong>ИИ-ботов</strong>, фиксируют рост конверсии от 30% до 80%. Но как именно это работает? Разберём пять реальных примеров из практики.</p>
+
+            <h3>1. Стоматологическая клиника в Алматы: +47% записей</h3>
+
+            <p>Клиника теряла до 60% входящих заявок из Instagram. Менеджеры просто не успевали отвечать вечером и в выходные. После внедрения ИИ-бота в Direct результаты изменились кардинально: бот отвечал за 8 секунд вместо 2 часов, квалифицировал пациента и записывал на приём. За первый месяц количество записей выросло на 47%.</p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">8 сек</div>
+                <div class="stat-label">среднее время ответа бота</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">+47%</div>
+                <div class="stat-label">рост записей на приём</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">работа без выходных</div>
+              </div>
+            </div>
+
+            <h3>2. Автосалон в Астане: конверсия заявок x2</h3>
+
+            <p>Автосалон получал 200+ заявок в месяц через WhatsApp. Менеджеры обрабатывали их хаотично: кто-то отвечал через 5 минут, кто-то через 5 часов. ИИ-бот взял на себя первичную квалификацию: уточнял бюджет, предпочтения по модели, готовность к покупке. Горячие лиды моментально передавались менеджеру с полной информацией. Результат -- <strong>конверсия из заявки в визит выросла в 2 раза</strong>.</p>
+
+            <h3>3. Онлайн-школа в Караганде: снижение стоимости лида на 35%</h3>
+
+            <p>Школа английского тратила крупные суммы на рекламу, но часть лидов "остывала" -- люди оставляли заявку и ждали звонка часами. ИИ-бот начинал диалог через 10 секунд после заявки: отвечал на вопросы, предлагал бесплатный урок, отправлял расписание. Стоимость привлечения ученика снизилась на 35%, потому что <strong>скорость ответа напрямую влияет на конверсию</strong>.</p>
+
+            <h3>4. Юридическая фирма: обработка 100% обращений</h3>
+
+            <p>Адвокатская контора получала обращения через сайт, Telegram и WhatsApp. До внедрения бота обрабатывались только 40-50% входящих -- остальные терялись. ИИ-ассистент объединил все каналы, мгновенно квалифицировал клиента по типу проблемы и записывал на консультацию. Итог: <strong>100% обращений обработаны, выручка выросла на 60%</strong>. Похожий результат мы получили в проекте <a href="case-personal-lawyer.html" style="color:var(--accent);text-decoration:underline">Personal Lawyer</a>.</p>
+
+            <h3>5. Служба доставки еды: рост повторных заказов на 25%</h3>
+
+            <p>Бот не просто принимал заказы. Он запоминал предпочтения клиента, предлагал любимые блюда, напоминал о заказе в привычное время. Персонализация через ИИ дала рост повторных заказов на 25% и увеличение среднего чека на 18%.</p>
+
+            <div class="highlight-box">
+              <span class="label">Вывод</span>
+              <p>Во всех пяти случаях ключевой фактор -- <strong>скорость первого ответа</strong>. Исследования показывают: если вы отвечаете клиенту в первые 5 минут, вероятность продажи в 21 раз выше, чем при ответе через 30 минут. ИИ-бот отвечает за секунды -- и это решает.</p>
+            </div>
+
+            <h3>ROI: окупаемость ИИ-бота</h3>
+
+            <p>Средняя стоимость внедрения ИИ-бота для малого и среднего бизнеса -- от 150 000 до 500 000 тенге. При увеличении конверсии хотя бы на 20% бот окупается за <strong>2-4 недели</strong>. Для сравнения: содержание дополнительного менеджера обходится от 250 000 тенге в месяц -- и он не работает 24/7. <a href="index.html#pricing" style="color:var(--accent);text-decoration:underline">Смотрите актуальные цены</a></p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">2-4</div>
+                <div class="stat-label">недели до окупаемости</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">x21</div>
+                <div class="stat-label">рост вероятности продажи при быстром ответе</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="blog-card" id="article-2">
+        <div class="blog-card-header">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">10 февраля 2026</span>
+            <span class="blog-card-readtime">7 мин</span>
+          </div>
+          <span class="blog-card-number">02</span>
+          <h2>Чат-бот vs менеджер: кто обрабатывает заявки лучше?</h2>
+          <p class="blog-card-excerpt">Объективное сравнение по 6 критериям: скорость, точность, стоимость, доступность. Данные из реальных проектов.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="blog-tag">чат-бот</span>
+          <span class="blog-tag">менеджер</span>
+          <span class="blog-tag">обработка заявок</span>
+        </div>
+        <div class="blog-card-toggle">
+          <span>Читать статью</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="blog-article">
+          <div class="blog-article-inner">
+
+            <h2>Честное сравнение: ИИ-бот против живого менеджера</h2>
+
+            <p>Когда речь заходит о <strong>чат-ботах</strong>, бизнес делится на два лагеря: одни считают, что бот никогда не заменит живого человека, другие -- что менеджеры неэффективны. Правда, как обычно, посередине. Давайте разберём по пунктам, опираясь на данные из реальных проектов по <strong>обработке заявок</strong>.</p>
+
+            <h3>Критерий 1: Скорость ответа</h3>
+
+            <p>Это самый очевидный и самый критичный параметр. По данным исследования InsideSales, <strong>среднее время ответа менеджера на заявку -- 47 часов</strong>. Да, не минут -- часов. Даже в лучших отделах продаж среднее время -- 1-2 часа.</p>
+
+            <p>ИИ-бот отвечает за 3-10 секунд. Всегда. Без перерывов, отпусков и плохого настроения. В мире, где клиент параллельно пишет 3-5 конкурентам, эти секунды решают всё.</p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">47 ч</div>
+                <div class="stat-label">средний ответ менеджера (по данным InsideSales)</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">5 сек</div>
+                <div class="stat-label">средний ответ ИИ-бота</div>
+              </div>
+            </div>
+
+            <h3>Критерий 2: Точность и качество</h3>
+
+            <p>Здесь неожиданный поворот. Многие думают, что менеджер общается лучше. Но данные говорят иное: менеджеры забывают задавать квалифицирующие вопросы в 30-40% случаев. Они устают, отвлекаются, работают по настроению.</p>
+
+            <p>Современный ИИ-бот на базе GPT-4 / Claude:</p>
+            <ul>
+              <li>Всегда задаёт все нужные вопросы по скрипту</li>
+              <li>Не забывает фиксировать ответы в CRM</li>
+              <li>Адаптирует тон под клиента</li>
+              <li>Не грубит, не спорит, не навязывает</li>
+            </ul>
+
+            <p><strong>Точность квалификации у бота -- 85-92%</strong>, у среднего менеджера -- 60-75%.</p>
+
+            <h3>Критерий 3: Стоимость</h3>
+
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Параметр</th>
+                  <th>Менеджер</th>
+                  <th>ИИ-бот</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ежемесячные затраты</td>
+                  <td class="val-bad">250 000 - 400 000 тг</td>
+                  <td class="val-good">30 000 - 80 000 тг</td>
+                </tr>
+                <tr>
+                  <td>Обучение</td>
+                  <td class="val-bad">2-4 недели</td>
+                  <td class="val-good">1-3 дня</td>
+                </tr>
+                <tr>
+                  <td>Масштабирование</td>
+                  <td class="val-bad">Нанять ещё</td>
+                  <td class="val-good">Без доп. затрат</td>
+                </tr>
+                <tr>
+                  <td>Больничные / отпуска</td>
+                  <td class="val-bad">Да</td>
+                  <td class="val-good">Нет</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Критерий 4: Доступность 24/7</h3>
+
+            <p>Менеджер работает 8-10 часов в день, 5-6 дней в неделю. А заявки приходят в 23:00, в воскресенье, в праздники. По нашей статистике, <strong>34% заявок приходят в нерабочее время</strong>. Без бота -- это потерянные клиенты.</p>
+
+            <h3>Критерий 5: Эмоциональный интеллект</h3>
+
+            <p>Вот здесь менеджер пока выигрывает. Сложные переговоры, работа с возражениями на высоком уровне, эмпатия в сложных ситуациях -- человек справляется лучше. Но важный нюанс: это нужно в 15-20% диалогов, а в остальных 80% бот справляется отлично.</p>
+
+            <h3>Критерий 6: Масштабируемость</h3>
+
+            <p>Менеджер может вести 3-5 диалогов одновременно. ИИ-бот -- <strong>1000+ одновременных диалогов</strong> без потери качества. Для растущего бизнеса это критически важно: не нужно срочно искать и обучать новых сотрудников при увеличении потока заявок.</p>
+
+            <div class="highlight-box">
+              <span class="label">Оптимальная схема</span>
+              <p>Лучший результат даёт <strong>гибридная модель</strong>: ИИ-бот обрабатывает первичные обращения, квалифицирует лиды и отвечает на типовые вопросы. Горячие и сложные клиенты передаются менеджеру с полной историей диалога. Так бот закрывает 80% рутины, а менеджер фокусируется на продажах.</p>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="blog-card" id="article-3">
+        <div class="blog-card-header">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">3 февраля 2026</span>
+            <span class="blog-card-readtime">5 мин</span>
+          </div>
+          <span class="blog-card-number">03</span>
+          <h2>Почему 78% заявок теряются без автоматизации</h2>
+          <p class="blog-card-excerpt">Шокирующая статистика о потере лидов: данные Harvard Business Review и реальные цифры казахстанского рынка.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="blog-tag">потеря заявок</span>
+          <span class="blog-tag">автоматизация</span>
+          <span class="blog-tag">скорость ответа</span>
+        </div>
+        <div class="blog-card-toggle">
+          <span>Читать статью</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="blog-article">
+          <div class="blog-article-inner">
+
+            <h2>78% заявок уходят в никуда: почему это происходит</h2>
+
+            <p>Представьте: вы вложили 500 000 тенге в рекламу. Получили 100 заявок. И 78 из них просто... потерялись. Не обработаны, не отвечены, забыты. Звучит как кошмар? Это реальность большинства бизнесов без <strong>автоматизации</strong>.</p>
+
+            <h3>Что говорят исследования</h3>
+
+            <p>Знаменитое исследование <strong>Harvard Business Review</strong> "The Short Life of Online Sales Leads" выявило пугающую закономерность: компании, которые отвечают на заявку в течение первого часа, в <strong>7 раз</strong> чаще квалифицируют лид, чем те, кто отвечает через час. А если ответ задерживается на 24 часа -- шансы практически нулевые.</p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">x7</div>
+                <div class="stat-label">выше шанс квалификации при ответе за 1 час</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">78%</div>
+                <div class="stat-label">заявок теряются без автоматизации</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">5 мин</div>
+                <div class="stat-label">критическое окно для первого ответа</div>
+              </div>
+            </div>
+
+            <p>Ещё одно исследование от Lead Response Management показало: <strong>скорость ответа</strong> -- фактор номер один. Если вы отвечаете в первые 5 минут, вероятность связаться с клиентом в 100 раз выше, чем при ответе через 30 минут.</p>
+
+            <h3>Почему заявки теряются: 5 причин</h3>
+
+            <p><strong>1. Человеческий фактор.</strong> Менеджер ушёл на обед, забыл, отвлёкся на другого клиента. Заявка осталась без ответа на 3 часа -- клиент уже купил у конкурента.</p>
+
+            <p><strong>2. Нерабочее время.</strong> 34% заявок приходят вечером и в выходные. Если у вас нет ночной смены (а у большинства бизнесов её нет), треть лидов теряется автоматически.</p>
+
+            <p><strong>3. Многоканальность.</strong> Заявки приходят из Instagram, WhatsApp, Telegram, сайта. Менеджеры путаются между каналами, пропускают сообщения, дублируют ответы.</p>
+
+            <p><strong>4. Отсутствие системы.</strong> Нет CRM, нет трекинга, нет напоминаний. Заявка пришла -- и просто утонула в потоке сообщений.</p>
+
+            <p><strong>5. Перегрузка.</strong> Один менеджер физически не может обработать 50+ заявок в день качественно. Качество падает, клиенты уходят.</p>
+
+            <h3>Сколько денег вы теряете</h3>
+
+            <p>Давайте посчитаем. Допустим, средний чек вашего бизнеса -- 50 000 тенге. Вы получаете 100 заявок в месяц. Без автоматизации обрабатывается 22% (те самые оставшиеся от 78%):</p>
+
+            <div class="highlight-box">
+              <span class="label">Расчёт потерь</span>
+              <p>100 заявок x 78% потерянных x 30% конверсия x 50 000 тг = <strong>1 170 000 тенге упущенной выручки каждый месяц</strong>. За год -- более 14 миллионов тенге. И это консервативная оценка.</p>
+            </div>
+
+            <h3>Как автоматизация решает проблему</h3>
+
+            <p>ИИ-ассистент закрывает все пять причин потери заявок одновременно:</p>
+
+            <ul>
+              <li><strong>Мгновенный ответ</strong> -- 3-10 секунд вместо часов</li>
+              <li><strong>Работа 24/7</strong> -- ночью, в выходные, в праздники</li>
+              <li><strong>Единое окно</strong> -- все каналы в одной системе</li>
+              <li><strong>Автоматическая фиксация</strong> -- каждая заявка в CRM</li>
+              <li><strong>Безлимитная обработка</strong> -- 1000 заявок одновременно</li>
+            </ul>
+
+            <p>Компании, внедрившие ИИ-автоматизацию, доводят обработку входящих до <strong>95-100%</strong>. Это не фантастика -- это математика.</p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">22%</div>
+                <div class="stat-label">обработка без автоматизации</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">обработка с ИИ-ботом</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="blog-card" id="article-4">
+        <div class="blog-card-header">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">25 января 2026</span>
+            <span class="blog-card-readtime">6 мин</span>
+          </div>
+          <span class="blog-card-number">04</span>
+          <h2>Как подготовить бизнес к внедрению ИИ-ассистента</h2>
+          <p class="blog-card-excerpt">Пошаговый чек-лист: какие данные подготовить, каких ошибок избежать и сколько времени займёт запуск.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="blog-tag">внедрение ИИ</span>
+          <span class="blog-tag">подготовка бизнеса</span>
+          <span class="blog-tag">чек-лист</span>
+        </div>
+        <div class="blog-card-toggle">
+          <span>Читать статью</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="blog-article">
+          <div class="blog-article-inner">
+
+            <h2>Пошаговое руководство по внедрению ИИ-ассистента</h2>
+
+            <p>Вы решили внедрить ИИ-бота в бизнес. Отличное решение. Но между решением и результатом -- этап <strong>подготовки бизнеса</strong>, от которого зависит 80% успеха. Вот подробный чек-лист, чтобы <strong>внедрение ИИ</strong> прошло гладко.</p>
+
+            <h3>Шаг 1: Определите цели и метрики</h3>
+
+            <p>Прежде чем писать ТЗ, ответьте на вопросы:</p>
+
+            <ul>
+              <li>Какую конкретную проблему должен решить бот?</li>
+              <li>Какие метрики вы будете отслеживать? (конверсия, время ответа, NPS)</li>
+              <li>Какой результат будет считаться успешным через 1 / 3 / 6 месяцев?</li>
+            </ul>
+
+            <p>Примеры хороших целей: "Сократить время первого ответа с 2 часов до 30 секунд", "Увеличить конверсию из заявки в продажу на 25%".</p>
+
+            <h3>Шаг 2: Подготовьте базу знаний</h3>
+
+            <p>ИИ-бот настолько хорош, насколько хороша информация, которой вы его обучите. Вот что нужно подготовить:</p>
+
+            <ul class="checklist">
+              <li>Полный каталог товаров / услуг с ценами и описаниями</li>
+              <li>FAQ -- ответы на 30-50 самых частых вопросов клиентов</li>
+              <li>Скрипты продаж и квалификации, которые работают</li>
+              <li>Информация о компании: адрес, время работы, контакты</li>
+              <li>Примеры успешных диалогов с клиентами (10-20 штук)</li>
+              <li>Список типичных возражений и ответы на них</li>
+              <li>Политика возврата, доставки и гарантий</li>
+            </ul>
+
+            <div class="highlight-box">
+              <span class="label">Совет</span>
+              <p>Не пытайтесь подготовить идеальную базу знаний сразу. Начните с 80% информации, а остальное добавляйте по мере работы бота. <strong>Лучше запустить с хорошей базой, чем ждать идеальную месяцами.</strong></p>
+            </div>
+
+            <h3>Шаг 3: Определите сценарии диалогов</h3>
+
+            <p>Продумайте основные пути клиента:</p>
+
+            <ul>
+              <li><strong>Горячий лид:</strong> хочет купить прямо сейчас -- бот квалифицирует и передаёт менеджеру</li>
+              <li><strong>Тёплый лид:</strong> интересуется, но не готов -- бот прогревает, отправляет материалы</li>
+              <li><strong>Информационный запрос:</strong> спрашивает цену, наличие -- бот отвечает мгновенно</li>
+              <li><strong>Жалоба / проблема:</strong> бот фиксирует и передаёт ответственному</li>
+            </ul>
+
+            <h3>Шаг 4: Подготовьте инфраструктуру</h3>
+
+            <p>Техническая сторона не менее важна:</p>
+
+            <ul>
+              <li>Доступ к бизнес-аккаунтам (WhatsApp Business, Instagram, Telegram)</li>
+              <li>CRM-система для фиксации лидов (или хотя бы Google Sheets)</li>
+              <li>Доступ к аналитике (Google Analytics, Яндекс Метрика)</li>
+              <li>Определить ответственного сотрудника для тестирования</li>
+            </ul>
+
+            <h3>Шаг 5: Избегайте типичных ошибок</h3>
+
+            <p>За время работы с десятками бизнесов мы собрали топ ошибок при <strong>внедрении ИИ</strong>:</p>
+
+            <p><strong>Ошибка 1: "Бот должен заменить всех."</strong> Нет. Бот должен забрать рутину и усилить команду, а не заменить её. Начните с одного процесса -- например, первичной квалификации.</p>
+
+            <p><strong>Ошибка 2: "Запустим и забудем."</strong> Бот требует обучения и оптимизации первые 2-4 недели. Анализируйте диалоги, корректируйте ответы, добавляйте новые сценарии.</p>
+
+            <p><strong>Ошибка 3: "Клиенты не захотят общаться с ботом."</strong> Статистика говорит обратное: 69% потребителей предпочитают чат-бот для быстрых ответов (Salesforce, 2024). Люди хотят быстрый ответ, а не разговор с живым человеком, который отвечает через 3 часа.</p>
+
+            <p><strong>Ошибка 4: Слишком сложный бот с первого дня.</strong> Начинайте с простого: ответы на FAQ + квалификация + запись. Усложняйте постепенно.</p>
+
+            <h3>Таймлайн внедрения</h3>
+
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Этап</th>
+                  <th>Сроки</th>
+                  <th>Что происходит</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Аудит и стратегия</td>
+                  <td>1-2 дня</td>
+                  <td>Анализ процессов, выбор сценариев</td>
+                </tr>
+                <tr>
+                  <td>Разработка и обучение</td>
+                  <td>3-7 дней</td>
+                  <td>Создание бота, загрузка базы знаний</td>
+                </tr>
+                <tr>
+                  <td>Тестирование</td>
+                  <td>2-3 дня</td>
+                  <td>Внутреннее тестирование, корректировки</td>
+                </tr>
+                <tr>
+                  <td>Запуск</td>
+                  <td>1 день</td>
+                  <td>Подключение к каналам, старт работы</td>
+                </tr>
+                <tr>
+                  <td>Оптимизация</td>
+                  <td>2-4 недели</td>
+                  <td>Анализ диалогов, улучшение ответов</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="highlight-box">
+              <span class="label">Итого</span>
+              <p>От первого звонка до работающего бота -- <strong>7-14 дней</strong>. Первые результаты вы увидите уже на второй неделе после запуска. Полная оптимизация занимает около месяца, после чего бот выходит на крейсерскую скорость. <a href="index.html#pricing" style="color:var(--accent);text-decoration:underline">Смотрите пакеты и цены</a></p>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="blog-card" id="article-5">
+        <div class="blog-card-header">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">15 января 2026</span>
+            <span class="blog-card-readtime">7 мин</span>
+          </div>
+          <span class="blog-card-number">05</span>
+          <h2>Чат-бот для WhatsApp в Казахстане: полный гид 2026</h2>
+          <p class="blog-card-excerpt">Как подключить ИИ-бота к WhatsApp Business, сколько это стоит и какие результаты ожидать. Разбираем на примерах из КЗ.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="blog-tag">WhatsApp</span>
+          <span class="blog-tag">чат-бот</span>
+          <span class="blog-tag">Казахстан</span>
+        </div>
+        <div class="blog-card-toggle">
+          <span>Читать статью</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="blog-article">
+          <div class="blog-article-inner">
+
+            <h2>Почему WhatsApp -- канал номер один для бизнеса в Казахстане</h2>
+
+            <p>В Казахстане <strong>WhatsApp</strong> используют более 12 миллионов человек. Это главный мессенджер страны -- клиенты пишут сюда чаще, чем звонят или отправляют email. Но большинство бизнесов до сих пор отвечают в WhatsApp вручную. И теряют деньги каждый день.</p>
+
+            <h3>Что умеет ИИ-бот в WhatsApp</h3>
+
+            <p>Современный <strong>чат-бот для WhatsApp</strong> -- это не примитивное меню с кнопками. Это полноценный ИИ-ассистент, который:</p>
+
+            <ul>
+              <li><strong>Понимает свободный текст</strong> -- клиент пишет как угодно, бот разбирает смысл</li>
+              <li><strong>Отвечает за 5-10 секунд</strong> -- пока конкурент ещё не прочитал сообщение</li>
+              <li><strong>Квалифицирует лиды</strong> -- задаёт нужные вопросы, определяет горячий/тёплый/холодный</li>
+              <li><strong>Записывает на приём или консультацию</strong> -- без участия менеджера</li>
+              <li><strong>Работает с возражениями</strong> -- "дорого", "подумаю", "у конкурента дешевле"</li>
+              <li><strong>Отправляет медиа</strong> -- каталоги, прайсы, фото, видео, локацию</li>
+            </ul>
+
+            <h3>WhatsApp Business API vs обычный WhatsApp</h3>
+
+            <p>Для подключения бота нужен <strong>WhatsApp Business API</strong> -- это официальный интерфейс для бизнеса от Meta. Отличия от обычного WhatsApp:</p>
+
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Параметр</th>
+                  <th>Обычный WA</th>
+                  <th>Business API</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Автоматические ответы</td>
+                  <td class="val-bad">Нет</td>
+                  <td class="val-good">Да, без ограничений</td>
+                </tr>
+                <tr>
+                  <td>Интеграция с CRM</td>
+                  <td class="val-bad">Нет</td>
+                  <td class="val-good">Полная</td>
+                </tr>
+                <tr>
+                  <td>Несколько операторов</td>
+                  <td class="val-bad">Нет</td>
+                  <td class="val-good">Да</td>
+                </tr>
+                <tr>
+                  <td>Аналитика диалогов</td>
+                  <td class="val-bad">Нет</td>
+                  <td class="val-good">Подробная</td>
+                </tr>
+                <tr>
+                  <td>Риск блокировки</td>
+                  <td class="val-bad">Высокий при автоматизации</td>
+                  <td class="val-good">Нет</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Сколько стоит WhatsApp-бот в Казахстане</h3>
+
+            <p>Стоимость складывается из двух частей:</p>
+
+            <p><strong>1. Разработка и настройка бота.</strong> От $500 за базовое решение до $2000+ за продвинутый вариант с интеграциями. Это разовая инвестиция. <a href="index.html#pricing" style="color:var(--accent);text-decoration:underline">Актуальные пакеты и цены</a></p>
+
+            <p><strong>2. Ежемесячная поддержка.</strong> Хостинг ИИ, обработка сообщений, WhatsApp API -- от 15 000 до 50 000 тенге в месяц в зависимости от объёма.</p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">12M+</div>
+                <div class="stat-label">пользователей WhatsApp в Казахстане</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">открываемость сообщений в WA</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">2-4</div>
+                <div class="stat-label">недели до запуска бота</div>
+              </div>
+            </div>
+
+            <h3>Реальный кейс: Amadey Music Studio</h3>
+
+            <p>Музыкальная школа <a href="case-amadey.html" style="color:var(--accent);text-decoration:underline">Amadey Music Studio</a> в Алматы подключила ИИ-бота к WhatsApp. Результат: скорость ответа сократилась до 15 секунд, конверсия на пробные уроки выросла в 2 раза, а количество потерянных заявок снизилось до нуля. Бот работает без выходных и обрабатывает все обращения -- даже те, что приходят в 3 часа ночи.</p>
+
+            <div class="highlight-box">
+              <span class="label">Итого</span>
+              <p>WhatsApp-бот -- это не роскошь, а необходимость для казахстанского бизнеса. Если ваши клиенты пишут в WhatsApp (а они пишут), автоматизация этого канала даст <strong>самый быстрый ROI</strong> из всех возможных инвестиций в маркетинг.</p>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 6 -->
+      <article class="blog-card" id="article-6">
+        <div class="blog-card-header">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">8 января 2026</span>
+            <span class="blog-card-readtime">5 мин</span>
+          </div>
+          <span class="blog-card-number">06</span>
+          <h2>ИИ-бот для Instagram: как автоматизировать Direct</h2>
+          <p class="blog-card-excerpt">Почему 70% заявок из Instagram теряются и как ИИ-бот решает проблему за секунды. Примеры из бьюти, медицины и фитнеса.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="blog-tag">Instagram</span>
+          <span class="blog-tag">Direct</span>
+          <span class="blog-tag">автоматизация</span>
+        </div>
+        <div class="blog-card-toggle">
+          <span>Читать статью</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="blog-article">
+          <div class="blog-article-inner">
+
+            <h2>Instagram Direct -- золотая жила, которую бизнес не обрабатывает</h2>
+
+            <p>В Казахстане Instagram остаётся одной из главных площадок для бизнеса. Салоны красоты, стоматологии, фитнес-клубы, школы -- все получают заявки через <strong>Instagram Direct</strong>. Но вот проблема: большинство теряют до 70% этих заявок из-за медленных ответов.</p>
+
+            <h3>Почему Direct -- это боль</h3>
+
+            <p>Типичная ситуация: клиент видит рекламу в сторис, пишет "Сколько стоит?". Менеджер занят, отвечает через 4 часа. Клиент уже записался к конкуренту. Деньги на рекламу потрачены впустую.</p>
+
+            <p>Причины потерь в <strong>Instagram Direct</strong>:</p>
+
+            <ul>
+              <li><strong>Поток сообщений.</strong> В популярных аккаунтах -- 50-200 сообщений в день. Физически невозможно ответить всем быстро</li>
+              <li><strong>Однотипные вопросы.</strong> 80% спрашивают одно и то же: цена, адрес, расписание, есть ли запись</li>
+              <li><strong>Нерабочее время.</strong> Пик активности в Instagram -- вечер и выходные, когда менеджеры не работают</li>
+              <li><strong>Путаница.</strong> Сообщения теряются в потоке, нет системы приоритизации</li>
+            </ul>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">70%</div>
+                <div class="stat-label">заявок теряются при ручной обработке DM</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">80%</div>
+                <div class="stat-label">вопросов -- типовые</div>
+              </div>
+            </div>
+
+            <h3>Как работает ИИ-бот в Instagram</h3>
+
+            <p>ИИ-бот подключается к Instagram через официальный API и берёт на себя всю первичную коммуникацию:</p>
+
+            <p><strong>Шаг 1:</strong> Клиент пишет в Direct или реагирует на сторис. Бот отвечает за 5-10 секунд.</p>
+
+            <p><strong>Шаг 2:</strong> Бот отвечает на вопрос (цена, расписание, адрес), задаёт уточняющие вопросы и предлагает записаться.</p>
+
+            <p><strong>Шаг 3:</strong> Горячий лид -- бот фиксирует данные и передаёт менеджеру. Типовой вопрос -- бот закрывает полностью сам.</p>
+
+            <p><strong>Шаг 4:</strong> Все диалоги фиксируются в CRM или Google Sheets. Ни одна заявка не теряется.</p>
+
+            <h3>Кому подходит Instagram-бот</h3>
+
+            <ul>
+              <li><strong>Бьюти-индустрия</strong> -- салоны, барбершопы, косметологи. Запись на приём, напоминания</li>
+              <li><strong>Медицина</strong> -- стоматологии, клиники. Квалификация, запись, ответы на FAQ</li>
+              <li><strong>Фитнес</strong> -- клубы, студии. Расписание, пробное занятие, абонементы</li>
+              <li><strong>Образование</strong> -- школы, курсы. Запись на пробный урок, расписание, цены</li>
+              <li><strong>E-commerce</strong> -- магазины в Instagram. Цены, наличие, оформление заказа</li>
+            </ul>
+
+            <h3>Результаты из практики</h3>
+
+            <p>Один из наших клиентов -- <a href="case-rams.html" style="color:var(--accent);text-decoration:underline">RAMS Kazakhstan</a> -- получал десятки заявок через Instagram ежедневно. После подключения ИИ-бота время первого ответа сократилось до секунд, а конверсия на пробные занятия выросла на 30%. Менеджеры перестали тратить время на типовые вопросы и сфокусировались на продажах.</p>
+
+            <div class="highlight-box">
+              <span class="label">Вывод</span>
+              <p>Если вы тратите деньги на рекламу в Instagram, но обрабатываете Direct вручную -- вы сливаете бюджет. <strong>ИИ-бот для Instagram</strong> окупается за первые 2-3 недели и превращает каждую реакцию на сторис в потенциального клиента. <a href="index.html#pricing" style="color:var(--accent);text-decoration:underline">Узнайте стоимость внедрения</a></p>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 7 -->
+      <article class="blog-card" id="article-7">
+        <div class="blog-card-header">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">28 декабря 2025</span>
+            <span class="blog-card-readtime">6 мин</span>
+          </div>
+          <span class="blog-card-number">07</span>
+          <h2>ROI ИИ-бота: как посчитать окупаемость за 5 минут</h2>
+          <p class="blog-card-excerpt">Простая формула расчёта окупаемости чат-бота для бизнеса. Калькулятор, реальные примеры и сравнение с наймом менеджера.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="blog-tag">ROI</span>
+          <span class="blog-tag">окупаемость</span>
+          <span class="blog-tag">расчёт</span>
+        </div>
+        <div class="blog-card-toggle">
+          <span>Читать статью</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="blog-article">
+          <div class="blog-article-inner">
+
+            <h2>Формула окупаемости: считаем ROI ИИ-бота</h2>
+
+            <p>Главный вопрос, который задаёт каждый предприниматель перед внедрением: "А оно окупится?" Ответ -- да, и обычно быстрее, чем вы думаете. Давайте посчитаем <strong>ROI ИИ-бота</strong> на конкретных цифрах.</p>
+
+            <h3>Шаг 1: Считаем текущие потери</h3>
+
+            <p>Ответьте на три вопроса:</p>
+
+            <ul>
+              <li>Сколько заявок вы получаете в месяц? (например, 150)</li>
+              <li>Какой процент заявок вы реально обрабатываете? (обычно 30-50%)</li>
+              <li>Какой ваш средний чек? (например, 80 000 тенге)</li>
+            </ul>
+
+            <div class="highlight-box">
+              <span class="label">Формула потерь</span>
+              <p>150 заявок x 50% потерянных x 25% конверсия x 80 000 тг = <strong>1 500 000 тенге</strong> упущенной выручки ежемесячно. Это деньги, которые уходят конкурентам из-за медленных ответов и необработанных заявок.</p>
+            </div>
+
+            <h3>Шаг 2: Считаем стоимость бота</h3>
+
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Расход</th>
+                  <th>Разовый</th>
+                  <th>Ежемесячный</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Разработка и настройка</td>
+                  <td>от 250 000 тг</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>Хостинг + API ИИ</td>
+                  <td>-</td>
+                  <td>20 000 - 50 000 тг</td>
+                </tr>
+                <tr>
+                  <td>WhatsApp Business API</td>
+                  <td>-</td>
+                  <td>5 000 - 15 000 тг</td>
+                </tr>
+                <tr>
+                  <td><strong>Итого за первый месяц</strong></td>
+                  <td colspan="2"><strong>от 275 000 тг</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Шаг 3: Считаем ROI</h3>
+
+            <p>Допустим, бот увеличит обработку заявок с 50% до 95%. Это даст дополнительно 67 обработанных заявок. При конверсии 25% -- это 17 новых клиентов. При среднем чеке 80 000 тг:</p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">+17</div>
+                <div class="stat-label">дополнительных клиентов в месяц</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">1.36M тг</div>
+                <div class="stat-label">дополнительная выручка</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">394%</div>
+                <div class="stat-label">ROI в первый месяц</div>
+              </div>
+            </div>
+
+            <p>Дополнительная выручка: <strong>1 360 000 тенге</strong>. Вложения: 275 000 тенге. ROI первого месяца: <strong>394%</strong>. Со второго месяца расходы падают до 25 000-65 000 тг, а ROI превышает 1000%.</p>
+
+            <h3>Сравнение: бот vs наём менеджера</h3>
+
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Параметр</th>
+                  <th>Менеджер</th>
+                  <th>ИИ-бот</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Стоимость в месяц</td>
+                  <td class="val-bad">300 000 - 450 000 тг</td>
+                  <td class="val-good">25 000 - 65 000 тг</td>
+                </tr>
+                <tr>
+                  <td>Время работы</td>
+                  <td class="val-bad">8-10 часов</td>
+                  <td class="val-good">24 часа</td>
+                </tr>
+                <tr>
+                  <td>Скорость ответа</td>
+                  <td class="val-bad">5-120 минут</td>
+                  <td class="val-good">5-10 секунд</td>
+                </tr>
+                <tr>
+                  <td>Одновременных диалогов</td>
+                  <td class="val-bad">3-5</td>
+                  <td class="val-good">1000+</td>
+                </tr>
+                <tr>
+                  <td>Больничные и отпуск</td>
+                  <td class="val-bad">Да</td>
+                  <td class="val-good">Нет</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Реальные примеры окупаемости</h3>
+
+            <p>В проекте <a href="case-personal-lawyer.html" style="color:var(--accent);text-decoration:underline">Personal Lawyer</a> бот обработал 3 807 лидов с конверсией 49.6%. Стоимость внедрения окупилась уже в первую неделю работы.</p>
+
+            <p>В <a href="case-amadey.html" style="color:var(--accent);text-decoration:underline">Amadey Music Studio</a> конверсия на пробные уроки выросла в 2 раза. Каждый новый ученик -- это 40 000-80 000 тенге в месяц. Бот окупился за 10 дней.</p>
+
+            <div class="highlight-box">
+              <span class="label">Итого</span>
+              <p>ИИ-бот -- одна из самых окупаемых инвестиций для бизнеса в Казахстане. Средний срок окупаемости: <strong>2-4 недели</strong>. После чего бот работает практически бесплатно, генерируя выручку каждый день. <a href="index.html#pricing" style="color:var(--accent);text-decoration:underline">Посмотреть пакеты и цены</a></p>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 8 -->
+      <article class="blog-card" id="article-8">
+        <div class="blog-card-header">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">15 декабря 2025</span>
+            <span class="blog-card-readtime">8 мин</span>
+          </div>
+          <span class="blog-card-number">08</span>
+          <h2>5 ниш в Казахстане, где ИИ-бот даёт максимальный результат</h2>
+          <p class="blog-card-excerpt">Музыкальные школы, юридические фирмы, стоматологии, фитнес и авто -- разбираем каждую нишу с цифрами и примерами.</p>
+        </div>
+        <div class="blog-card-tags">
+          <span class="blog-tag">ниши</span>
+          <span class="blog-tag">Казахстан</span>
+          <span class="blog-tag">кейсы</span>
+        </div>
+        <div class="blog-card-toggle">
+          <span>Читать статью</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="blog-article">
+          <div class="blog-article-inner">
+
+            <h2>Топ-5 ниш для ИИ-автоматизации в Казахстане</h2>
+
+            <p>ИИ-боты работают в любой нише, но есть пять направлений, где результат приходит быстрее всего. Мы собрали данные из собственных проектов и рынка, чтобы показать: где <strong>ИИ-бот в Казахстане</strong> окупается за считанные дни.</p>
+
+            <h3>1. Образование и музыкальные школы</h3>
+
+            <p>Образовательный бизнес -- идеальная ниша для ИИ-ботов. Причина простая: воронка продаж здесь линейная -- заявка → пробный урок → покупка абонемента. Бот идеально автоматизирует первые два шага.</p>
+
+            <p><strong>Что делает бот:</strong> отвечает на вопросы родителей, подбирает расписание, записывает на пробный урок, напоминает о визите. В проекте <a href="case-amadey.html" style="color:var(--accent);text-decoration:underline">Amadey Music Studio</a> это дало рост конверсии в 2 раза.</p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">x2</div>
+                <div class="stat-label">рост конверсии на пробники</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">15 сек</div>
+                <div class="stat-label">среднее время ответа</div>
+              </div>
+            </div>
+
+            <p><strong>Ключевые метрики:</strong> конверсия из заявки в пробный урок, стоимость привлечения ученика, процент продления абонемента.</p>
+
+            <h3>2. Юридические фирмы и адвокаты</h3>
+
+            <p>Юридический бизнес -- один из самых "дорогих" по стоимости лида. Средняя цена клика в рекламе юридических услуг в КЗ -- от 500 тенге. Терять такие заявки -- преступление.</p>
+
+            <p><strong>Что делает бот:</strong> принимает обращение 24/7, определяет тип проблемы (уголовное, гражданское, семейное), квалифицирует по срочности, записывает на консультацию. В проекте <a href="case-personal-lawyer.html" style="color:var(--accent);text-decoration:underline">Personal Lawyer</a> бот обработал 3 807 лидов с конверсией 49.6%.</p>
+
+            <div class="stat-block">
+              <div class="stat-item">
+                <div class="stat-value">3 807</div>
+                <div class="stat-label">обработанных лидов</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">49.6%</div>
+                <div class="stat-label">конверсия в консультацию</div>
+              </div>
+            </div>
+
+            <p><strong>Ключевые метрики:</strong> стоимость лида, конверсия в консультацию, средний чек по категории дел.</p>
+
+            <h3>3. Стоматология и медицина</h3>
+
+            <p>Пациенты стоматологий часто откладывают визит. Чем быстрее ответ на заявку -- тем выше шанс, что человек дойдёт до кресла. Медицинская ниша идеальна для ИИ-автоматизации, потому что:</p>
+
+            <ul>
+              <li>Высокий средний чек (от 30 000 тг за приём)</li>
+              <li>Повторяющиеся вопросы: цены, виды услуг, страховка</li>
+              <li>Критична скорость ответа -- пациент записывается к тому, кто ответит первым</li>
+              <li>Много заявок в нерабочее время</li>
+            </ul>
+
+            <p><strong>Что делает бот:</strong> отвечает на вопросы по услугам, записывает на приём к нужному специалисту, отправляет напоминание, собирает обратную связь после визита.</p>
+
+            <h3>4. Фитнес и спортивные студии</h3>
+
+            <p>Фитнес-индустрия в Казахстане растёт каждый год. Конкуренция высокая, а клиент выбирает тот клуб, который ответит первым и проведёт через запись на пробное занятие.</p>
+
+            <p><strong>Что делает бот:</strong> рассказывает о направлениях, подбирает расписание под клиента, записывает на пробное, обрабатывает возражение "дорого" (предлагает акции). В проекте <a href="case-rams.html" style="color:var(--accent);text-decoration:underline">RAMS Kazakhstan</a> автоматизация WhatsApp и Instagram дала ощутимый рост записей.</p>
+
+            <p><strong>Ключевые метрики:</strong> конверсия в пробное, конверсия из пробного в абонемент, стоимость привлечения клиента.</p>
+
+            <h3>5. Автобизнес и автосервис</h3>
+
+            <p>Автосалоны и автосервисы в Казахстане получают огромный поток заявок: тест-драйв, запись на ТО, узнать цену, trade-in. При этом цикл сделки длинный, а средний чек -- высокий.</p>
+
+            <p><strong>Что делает бот:</strong> отвечает на вопросы по модельному ряду, записывает на тест-драйв, собирает данные для кредитного калькулятора, записывает на сервис. В автосервисе -- принимает заявки на ТО, рассчитывает ориентировочную стоимость, напоминает о плановом обслуживании.</p>
+
+            <div class="highlight-box">
+              <span class="label">Какая ниша подходит для ИИ-бота?</span>
+              <p>Если ваш бизнес соответствует хотя бы трём из пяти критериев -- ИИ-бот даст быстрый результат: 1) поток входящих заявок, 2) типовые вопросы от клиентов, 3) важна скорость ответа, 4) заявки приходят в нерабочее время, 5) высокий средний чек. <a href="index.html#pricing" style="color:var(--accent);text-decoration:underline">Узнать стоимость для вашей ниши</a></p>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<div class="divider"></div>
+<section class="cta-section">
+  <div class="container cta-content">
+    <p class="cta-label">Готовы начать?</p>
+    <h2 class="cta-title">Хотите внедрить ИИ-бота<br>в свой бизнес?</h2>
+    <p class="cta-desc">Запишитесь на бесплатную консультацию. Разберём ваш бизнес и покажем, как автоматизация увеличит продажи.</p>
+    <a href="https://wa.me/77052051992?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A7%D0%B8%D1%82%D0%B0%D0%BB%20%D0%B1%D0%BB%D0%BE%D0%B3%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%98%D0%98-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82%D0%B0" class="btn-primary">
+      Написать в WhatsApp
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Cross-links -->
+<section style="padding:48px 0;position:relative;z-index:1">
+  <div class="container" style="text-align:center">
+    <p style="font-size:16px;color:var(--text-secondary);margin-bottom:20px">Читайте также:</p>
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
+      <a href="case-amadey.html" style="padding:10px 20px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.15);border-radius:100px;font-size:14px;font-weight:600;color:var(--accent);transition:all .3s">Кейс: Amadey Music</a>
+      <a href="case-personal-lawyer.html" style="padding:10px 20px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.15);border-radius:100px;font-size:14px;font-weight:600;color:var(--accent);transition:all .3s">Кейс: Personal Lawyer</a>
+      <a href="faq.html" style="padding:10px 20px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.15);border-radius:100px;font-size:14px;font-weight:600;color:var(--accent);transition:all .3s">FAQ</a>
+      <a href="index.html#pricing" style="padding:10px 20px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.15);border-radius:100px;font-size:14px;font-weight:600;color:var(--accent);transition:all .3s">Стоимость</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p style="font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:8px">DOS_</p>
+    <p>Yernar Dosmagambetov &mdash; AI Automation Engineer</p>
+    <div class="footer-links">
+      <a href="https://wa.me/77052051992" class="footer-link">WhatsApp</a>
+      <a href="https://t.me/yernardoss" class="footer-link">Telegram</a>
+      <a href="https://www.instagram.com/yernar.dos/" class="footer-link">Instagram</a>
+      <a href="https://t.me/+y3P9blPWhoFjNGUy" class="footer-link">Telegram Channel</a>
+      <a href="tel:+77052051992" class="footer-link">+7 705 205 1992</a>
+    </div>
+    <p style="margin-top:16px">&copy; 2026 Yernar Dosmagambetov &middot; Kazakhstan</p>
+  </div>
+</footer>
+
+<script>
+// Accordion toggle
+document.querySelectorAll('.blog-card').forEach(card => {
+  const toggle = card.querySelector('.blog-card-toggle');
+  const header = card.querySelector('.blog-card-header');
+
+  function handleToggle(e) {
+    e.preventDefault();
+    const wasActive = card.classList.contains('active');
+
+    // Close all cards
+    document.querySelectorAll('.blog-card').forEach(c => c.classList.remove('active'));
+
+    // Toggle clicked card
+    if (!wasActive) {
+      card.classList.add('active');
+      // Update URL hash for sharing
+      var articleId=card.getAttribute('id');
+      if(articleId)history.replaceState(null,'','#'+articleId);
+      // Scroll to card
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    } else {
+      history.replaceState(null,'',window.location.pathname);
+    }
+  }
+
+  toggle.addEventListener('click', handleToggle);
+  header.addEventListener('click', handleToggle);
+});
+
+// Scroll reveal
+function revealCards() {
+  const cards = document.querySelectorAll('.blog-card');
+  cards.forEach((card, i) => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      setTimeout(() => {
+        card.classList.add('revealed');
+      }, i * 120);
+    }
+  });
+}
+
+window.addEventListener('scroll', revealCards);
+window.addEventListener('load', revealCards);
+
+// Open article from URL hash
+window.addEventListener('load', () => {
+  const hash = window.location.hash;
+  if (hash) {
+    const num = hash.replace('#article-', '');
+    const card = document.getElementById('article-'+num);
+    if (card) {
+      card.classList.add('active');
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 500);
+    }
+  }
+});
+</script>
+
+<!-- WA Tooltip -->
+<div class="wa-tooltip" id="waTooltip">Написать нам</div>
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/77052051992?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A7%D0%B8%D1%82%D0%B0%D0%BB%20%D0%B1%D0%BB%D0%BE%D0%B3%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%98%D0%98-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82%D0%B0" class="wa-float" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16.01 2.64C8.65 2.64 2.67 8.61 2.67 15.97c0 2.35.62 4.64 1.8 6.66L2.5 29.36l6.95-1.82a13.28 13.28 0 0 0 6.56 1.72c7.36 0 13.34-5.97 13.34-13.33S23.37 2.64 16.01 2.64zm0 24.38a11 11 0 0 1-5.61-1.54l-.4-.24-4.17 1.09 1.11-4.07-.26-.42a10.94 10.94 0 0 1-1.68-5.84C5 10 10.04 4.96 16.01 4.96S27.02 10 27.02 15.97 21.98 27.02 16.01 27.02zm6.03-8.2c-.33-.17-1.96-.97-2.26-1.08-.3-.11-.52-.17-.74.17s-.85 1.08-1.04 1.3c-.19.22-.39.25-.72.08-.33-.17-1.4-.52-2.66-1.64-.98-.88-1.65-1.96-1.84-2.29-.19-.33-.02-.51.15-.67.15-.15.33-.39.5-.58.17-.2.22-.33.33-.55.11-.22.06-.42-.03-.58-.08-.17-.74-1.78-1.01-2.43-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.58.08-.88.42-.3.33-1.16 1.13-1.16 2.77s1.19 3.21 1.35 3.43c.17.22 2.34 3.57 5.67 5.01.79.34 1.41.55 1.89.7.8.25 1.52.22 2.09.13.64-.1 1.96-.8 2.24-1.57.27-.78.27-1.44.19-1.58-.08-.14-.3-.22-.63-.39z"/></svg>
+</a>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-cta">
+  <a href="https://wa.me/77052051992?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A7%D0%B8%D1%82%D0%B0%D0%BB%20%D0%B1%D0%BB%D0%BE%D0%B3%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%98%D0%98-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82%D0%B0" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32"><path d="M16.01 2.64C8.65 2.64 2.67 8.61 2.67 15.97c0 2.35.62 4.64 1.8 6.66L2.5 29.36l6.95-1.82a13.28 13.28 0 0 0 6.56 1.72c7.36 0 13.34-5.97 13.34-13.33S23.37 2.64 16.01 2.64zm0 24.38a11 11 0 0 1-5.61-1.54l-.4-.24-4.17 1.09 1.11-4.07-.26-.42a10.94 10.94 0 0 1-1.68-5.84C5 10 10.04 4.96 16.01 4.96S27.02 10 27.02 15.97 21.98 27.02 16.01 27.02zm6.03-8.2c-.33-.17-1.96-.97-2.26-1.08-.3-.11-.52-.17-.74.17s-.85 1.08-1.04 1.3c-.19.22-.39.25-.72.08-.33-.17-1.4-.52-2.66-1.64-.98-.88-1.65-1.96-1.84-2.29-.19-.33-.02-.51.15-.67.15-.15.33-.39.5-.58.17-.2.22-.33.33-.55.11-.22.06-.42-.03-.58-.08-.17-.74-1.78-1.01-2.43-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.58.08-.88.42-.3.33-1.16 1.13-1.16 2.77s1.19 3.21 1.35 3.43c.17.22 2.34 3.57 5.67 5.01.79.34 1.41.55 1.89.7.8.25 1.52.22 2.09.13.64-.1 1.96-.8 2.24-1.57.27-.78.27-1.44.19-1.58-.08-.14-.3-.22-.63-.39z"/></svg>
+    Написать в WhatsApp
+  </a>
+</div>
+
+<!-- Back to top -->
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">
+  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+// Back to top visibility
+window.addEventListener('scroll',function(){document.getElementById('btt').classList.toggle('visible',window.scrollY>600)});
+
+// WA tooltip: show after 5s, hide after 10s
+setTimeout(function(){var t=document.getElementById('waTooltip');if(t){t.classList.add('show');setTimeout(function(){t.classList.remove('show')},5000)}},5000);
+
+// Reading progress bar
+(function(){
+  var bar=document.getElementById('readingProgress');
+  var activeArticle=null;
+  function updateProgress(){
+    if(!activeArticle){bar.style.width='0';return}
+    var rect=activeArticle.getBoundingClientRect();
+    var total=activeArticle.scrollHeight;
+    var scrolled=Math.max(0,-rect.top);
+    var pct=Math.min(100,Math.max(0,(scrolled/total)*100));
+    bar.style.width=pct+'%';
+    bar.style.boxShadow=pct>0?'0 0 8px var(--accent-glow)':'none';
+  }
+  var observer=new MutationObserver(function(){
+    activeArticle=document.querySelector('.blog-card.active .blog-article');
+    updateProgress();
+  });
+  document.querySelectorAll('.blog-card').forEach(function(card){
+    observer.observe(card,{attributes:true,attributeFilter:['class']});
+  });
+  window.addEventListener('scroll',updateProgress,{passive:true});
+})();
+
+// Social share buttons — inject into each article
+document.querySelectorAll('.blog-article-inner').forEach(function(inner){
+  var card=inner.closest('.blog-card');
+  var h2=card.querySelector('.blog-card-header h2');
+  var title=h2?h2.textContent:'';
+  var url='https://dos.kz/blog.html#'+card.id;
+
+  var bar=document.createElement('div');
+  bar.className='share-bar';
+  bar.innerHTML=
+    '<a class="share-btn" href="https://wa.me/?text='+encodeURIComponent(title+' '+url)+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>WhatsApp</a>'+
+    '<a class="share-btn" href="https://t.me/share/url?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(title)+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>'+
+    '<button class="share-btn share-copy" data-url="'+url+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Копировать</button>';
+  inner.appendChild(bar);
+});
+
+// Copy link handler
+function fallbackCopy(text){var ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta)}
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.share-copy');
+  if(!btn)return;
+  var url=btn.getAttribute('data-url');
+  function onCopied(){
+    btn.classList.add('share-copied');
+    btn.querySelector('svg').nextSibling.textContent='Скопировано!';
+    setTimeout(function(){
+      btn.classList.remove('share-copied');
+      btn.querySelector('svg').nextSibling.textContent='Копировать';
+    },2000);
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(onCopied).catch(function(){fallbackCopy(url);onCopied()});
+  }else{fallbackCopy(url);onCopied()}
+});
+
+// Tag filter
+(function(){
+  var btns=document.querySelectorAll('.tag-filter-btn');
+  var cards=document.querySelectorAll('.blog-card');
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btns.forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      var tag=btn.getAttribute('data-tag');
+      cards.forEach(function(card){
+        if(tag==='all'){card.classList.remove('hidden-by-filter');return}
+        var tags=card.querySelectorAll('.blog-tag');
+        var match=false;
+        tags.forEach(function(t){if(t.textContent.toLowerCase().indexOf(tag.toLowerCase())!==-1)match=true});
+        card.classList.toggle('hidden-by-filter',!match);
+      });
+      revealCards();
+    });
+  });
+})();
+
+// Table of contents — auto-generate on article open
+(function(){
+  var observer=new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      var card=m.target;
+      if(!card.classList.contains('active'))return;
+      var inner=card.querySelector('.blog-article-inner');
+      if(!inner||inner.querySelector('.article-toc'))return;
+      var headings=inner.querySelectorAll('h2,h3');
+      if(headings.length<3)return;
+      var toc=document.createElement('nav');
+      toc.className='article-toc';
+      toc.setAttribute('aria-label','Оглавление');
+      var title=document.createElement('div');
+      title.className='article-toc-title';
+      title.textContent='Содержание';
+      toc.appendChild(title);
+      var list=document.createElement('ul');
+      list.className='article-toc-list';
+      headings.forEach(function(h,i){
+        var id='toc-'+card.id+'-'+i;
+        h.id=id;
+        var li=document.createElement('li');
+        if(h.tagName==='H3')li.className='toc-h3';
+        var a=document.createElement('a');
+        a.href='#'+id;
+        a.textContent=h.textContent;
+        a.addEventListener('click',function(e){
+          e.preventDefault();
+          document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+        });
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      toc.appendChild(list);
+      var firstEl=inner.querySelector('h2,h3,p');
+      if(firstEl)inner.insertBefore(toc,firstEl);
+      else inner.prepend(toc);
+    });
+  });
+  document.querySelectorAll('.blog-card').forEach(function(card){
+    observer.observe(card,{attributes:true,attributeFilter:['class']});
+  });
+})();
+</script>
+
+</body>
+</html>

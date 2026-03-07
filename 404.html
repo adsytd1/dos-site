@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Страница не найдена | DOS</title>
+<meta name="description" content="Страница не найдена. Вернитесь на главную DOS — AI-автоматизация для бизнеса.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e676'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%23000'>DOS</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--card:#161616;--border:#1e1e1e;--accent:#00e676;--accent-dim:rgba(0,230,118,.08);--accent-glow:rgba(0,230,118,.25);--text:#f0f0f0;--text-secondary:#999;--text-muted:#666;--mono:'JetBrains Mono',monospace;--sans:'Outfit',-apple-system,sans-serif;--transition:.3s cubic-bezier(.4,0,.2,1)}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+.content{position:relative;z-index:1;max-width:520px}
+.error-code{font-family:var(--mono);font-size:clamp(80px,20vw,160px);font-weight:900;color:var(--accent);line-height:1;letter-spacing:-4px;margin-bottom:16px;opacity:.15}
+h1{font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:12px;letter-spacing:-1px}
+p{font-size:16px;color:var(--text-secondary);margin-bottom:36px}
+.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--accent);color:#000;font-family:var(--sans);font-weight:700;font-size:15px;border:none;border-radius:100px;cursor:pointer;transition:all var(--transition);box-shadow:0 0 30px var(--accent-dim);text-decoration:none}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px var(--accent-glow)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:var(--text);font-family:var(--sans);font-weight:600;font-size:15px;border:1px solid var(--border);border-radius:100px;cursor:pointer;transition:all var(--transition);text-decoration:none}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.cases{margin-top:60px}
+.cases p{font-size:14px;color:var(--text-muted);margin-bottom:16px}
+.case-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.case-link{padding:8px 16px;background:var(--card);border:1px solid var(--border);border-radius:100px;font-size:13px;color:var(--text-muted);transition:all var(--transition);text-decoration:none}
+.case-link:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 15px rgba(0,230,118,.1);transform:translateY(-1px)}
+</style>
+</head>
+<body>
+
+<div class="content">
+  <div class="error-code">404</div>
+  <h1>Страница не найдена</h1>
+  <p>Такой страницы не существует или она была перемещена. Перейдите на главную или посмотрите кейсы.</p>
+  <div class="links">
+    <a href="index.html" class="btn-primary">На главную</a>
+    <a href="blog.html" class="btn-ghost">Читать блог</a>
+  </div>
+  <div class="cases">
+    <p>Популярные кейсы:</p>
+    <div class="case-links">
+      <a href="case-amadey.html" class="case-link">Amadey Music</a>
+      <a href="case-personal-lawyer.html" class="case-link">Personal Lawyer</a>
+      <a href="case-rams.html" class="case-link">RAMS Kazakhstan</a>
+      <a href="faq.html" class="case-link">FAQ</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

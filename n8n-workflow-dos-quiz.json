@@ -1,0 +1,102 @@
+{
+  "name": "DOS Site Quiz → Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dos-quiz",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "id": "webhook-dos-quiz",
+      "name": "Webhook: Quiz Form",
+      "webhookId": "dos-quiz"
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $input.first().json.body || $input.first().json;\n\nconst name = d.name || 'Не указано';\nconst phone = d.phone || 'Не указано';\nconst niche = d.niche || 'Не указано';\nconst answers = d.answers || {};\nconst ts = new Date().toLocaleString('ru-RU', {timeZone: 'Asia/Almaty'});\n\nconst waLink = 'wa.me/' + phone.replace(/[^0-9]/g, '');\n\nconst lines = [\n  '🔥 <b>НОВАЯ ЗАЯВКА С САЙТА DOS</b> 🔥',\n  '',\n  '👤 <b>Имя:</b> ' + name,\n  '📱 <b>Телефон:</b> ' + phone,\n  '💼 <b>Ниша:</b> ' + niche,\n  '',\n  '📋 <b>Ответы на квиз:</b>',\n];\n\nconst stepNames = [\n  'Что автоматизировать',\n  'Заявок в месяц',\n  'Мессенджеры',\n  'Кто обрабатывает заявки',\n  'Средний чек',\n  'Когда запустить'\n];\n\nfor (let i = 1; i <= 6; i++) {\n  const key = 'step' + i;\n  if (answers[key] && answers[key] !== 'не выбрано') {\n    lines.push('   ' + stepNames[i-1] + ': <b>' + answers[key] + '</b>');\n  }\n}\n\nlines.push('');\nlines.push('📅 ' + ts);\nlines.push('💬 WhatsApp: ' + waLink);\n\nreturn [{ json: { message: lines.join('\\n'), name, phone, niche } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [280, 0],
+      "id": "format-message",
+      "name": "Format Message"
+    },
+    {
+      "parameters": {
+        "chatId": "-5221248756",
+        "text": "={{ $json.message }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [560, 0],
+      "id": "send-telegram",
+      "name": "Send to Telegram",
+      "credentials": {
+        "telegramApi": {
+          "id": "DHlDXH8MZhSCSSLH",
+          "name": "DOSTYQ KOSTANAY"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"success\": true, \"message\": \"Заявка получена\"}"
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [840, 0],
+      "id": "respond-ok",
+      "name": "Respond OK"
+    }
+  ],
+  "connections": {
+    "Webhook: Quiz Form": {
+      "main": [
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Message": {
+      "main": [
+        [
+          {
+            "node": "Send to Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send to Telegram": {
+      "main": [
+        [
+          {
+            "node": "Respond OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

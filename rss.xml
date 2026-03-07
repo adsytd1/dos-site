@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Блог DOS — ИИ-автоматизация для бизнеса</title>
+    <link>https://dos.kz/blog.html</link>
+    <description>Статьи и кейсы об ИИ-автоматизации бизнеса: чат-боты, обработка заявок, увеличение продаж.</description>
+    <language>ru</language>
+    <lastBuildDate>Mon, 03 Mar 2026 00:00:00 +0600</lastBuildDate>
+    <atom:link href="https://dos.kz/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Как ИИ-бот увеличивает продажи: 5 реальных примеров</title>
+      <link>https://dos.kz/blog.html#article-1</link>
+      <guid>https://dos.kz/blog.html#article-1</guid>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 +0600</pubDate>
+      <description>Разбираем конкретные кейсы из казахстанского рынка: как бизнесы увеличили конверсию на 30-80% с помощью ИИ-ассистентов.</description>
+    </item>
+    <item>
+      <title>Чат-бот vs менеджер: кто обрабатывает заявки лучше?</title>
+      <link>https://dos.kz/blog.html#article-2</link>
+      <guid>https://dos.kz/blog.html#article-2</guid>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0600</pubDate>
+      <description>Объективное сравнение по 6 критериям: скорость, точность, стоимость, доступность. Данные из реальных проектов.</description>
+    </item>
+    <item>
+      <title>Почему 78% заявок теряются без автоматизации</title>
+      <link>https://dos.kz/blog.html#article-3</link>
+      <guid>https://dos.kz/blog.html#article-3</guid>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0600</pubDate>
+      <description>Шокирующая статистика о потере лидов: данные Harvard Business Review и реальные цифры казахстанского рынка.</description>
+    </item>
+    <item>
+      <title>Как подготовить бизнес к внедрению ИИ-ассистента</title>
+      <link>https://dos.kz/blog.html#article-4</link>
+      <guid>https://dos.kz/blog.html#article-4</guid>
+      <pubDate>Sat, 25 Jan 2026 00:00:00 +0600</pubDate>
+      <description>Подробный план внедрения ИИ-ассистента: от аудита до запуска. Что нужно подготовить, сколько стоит, какие результаты ждать.</description>
+    </item>
+    <item>
+      <title>Чат-бот для WhatsApp в Казахстане: полный гид 2026</title>
+      <link>https://dos.kz/blog.html#article-5</link>
+      <guid>https://dos.kz/blog.html#article-5</guid>
+      <pubDate>Wed, 15 Jan 2026 00:00:00 +0600</pubDate>
+      <description>Всё о WhatsApp Business API в Казахстане: подключение, стоимость, возможности ИИ-бота, примеры и ROI.</description>
+    </item>
+    <item>
+      <title>ИИ-бот для Instagram: как автоматизировать Direct</title>
+      <link>https://dos.kz/blog.html#article-6</link>
+      <guid>https://dos.kz/blog.html#article-6</guid>
+      <pubDate>Wed, 08 Jan 2026 00:00:00 +0600</pubDate>
+      <description>Автоматизация Instagram Direct с помощью ИИ: ответы на сообщения, обработка заказов, квалификация лидов 24/7.</description>
+    </item>
+    <item>
+      <title>ROI ИИ-бота: как посчитать окупаемость за 5 минут</title>
+      <link>https://dos.kz/blog.html#article-7</link>
+      <guid>https://dos.kz/blog.html#article-7</guid>
+      <pubDate>Sun, 28 Dec 2025 00:00:00 +0600</pubDate>
+      <description>Пошаговая формула расчёта ROI чат-бота. Реальные цифры из казахстанских проектов. Калькулятор окупаемости.</description>
+    </item>
+    <item>
+      <title>5 ниш в Казахстане, где ИИ-бот даёт максимальный результат</title>
+      <link>https://dos.kz/blog.html#article-8</link>
+      <guid>https://dos.kz/blog.html#article-8</guid>
+      <pubDate>Mon, 15 Dec 2025 00:00:00 +0600</pubDate>
+      <description>Музыкальные школы, юридические фирмы, стоматологии, фитнес и авто — разбираем каждую нишу с цифрами.</description>
+    </item>
+  </channel>
+</rss>
