@@ -46,7 +46,8 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
 
   // Network-first for HTML (navigation requests)
-  if (req.mode === 'navigate' || req.headers.get('accept').indexOf('text/html') !== -1) {
+  var accept = req.headers.get('accept');
+  if (req.mode === 'navigate' || (accept && accept.indexOf('text/html') !== -1)) {
     e.respondWith(
       fetch(req)
         .then(function (res) {

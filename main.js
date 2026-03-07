@@ -16,8 +16,10 @@ document.addEventListener('click',function(e){var nav=document.querySelector('.n
 const so=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.querySelectorAll('.hero-stat-num').forEach(n=>{const txt=n.textContent,m=txt.match(/(\d+)/);if(m){const target=parseInt(m[1],10),sfx=txt.replace(m[1],'');let startTime=null;const duration=900;function step(ts){if(!startTime)startTime=ts;const progress=Math.min((ts-startTime)/duration,1);const eased=1-Math.pow(1-progress,3);n.textContent=Math.round(eased*target)+sfx;if(progress<1)requestAnimationFrame(step)}requestAnimationFrame(step)}});so.unobserve(t.target)}})},{threshold:.5});
 const hs=document.querySelector('.hero-stats');if(hs)so.observe(hs);
 // Floating WA + Demo
-const fw=document.getElementById('floatingWa'),dt=document.getElementById('demoToggle');
-onScroll(function(){var s=window.scrollY>300;fw.classList.toggle('visible',s);dt.classList.toggle('visible',s)});
+const fw=document.getElementById('floatingWa'),dt=document.getElementById('demoToggle'),fc=document.getElementById('floatingCall');
+onScroll(function(){var s=window.scrollY>300;if(fw)fw.classList.toggle('visible',s);if(dt)dt.classList.toggle('visible',s);if(fc)fc.classList.toggle('visible',s)});
+// Inline form validation
+(function(){var nm=document.getElementById('qName'),ph=document.getElementById('qPhone'),nc=document.getElementById('nameCheck'),pc=document.getElementById('phoneCheck'),en=document.getElementById('errName'),ep=document.getElementById('errPhone');if(!nm||!ph)return;function v(inp,chk,err,test){var val=inp.value.trim();if(!val){inp.classList.remove('valid','error');if(chk)chk.style.display='none';if(err)err.textContent='';return}if(test(val)){inp.classList.add('valid');inp.classList.remove('error');if(chk)chk.style.display='inline';if(err)err.textContent=''}else{inp.classList.add('error');inp.classList.remove('valid');if(chk)chk.style.display='none';if(err)err.textContent=inp===nm?'Минимум 2 символа':'Введите корректный номер'}}nm.addEventListener('input',function(){v(nm,nc,en,function(s){return s.length>=2})});ph.addEventListener('input',function(){v(ph,pc,ep,function(s){return s.replace(/\D/g,'').length>=10})})})();
 // Carousel (page-based) with autoplay + swipe hint
 (function(){
 const track=document.getElementById('reviewsTrack'),dotsC=document.getElementById('carouselDots');
@@ -40,7 +42,7 @@ if(window.innerWidth<=768){
 const pages=track.querySelectorAll('.review-page');
 let current=0,total=pages.length;
 function bD(){dotsC.innerHTML='';for(let i=0;i<total;i++){const d=document.createElement('div');d.className='carousel-dot'+(i===current?' active':'');d.onclick=()=>{userInteract();goTo(i)};dotsC.appendChild(d)}updatePageIndicator()}
-var pageIndicator=document.createElement('div');pageIndicator.className='carousel-page-indicator';dotsC.parentNode.insertBefore(pageIndicator,dotsC.nextSibling);
+var pageIndicator=document.createElement('div');pageIndicator.className='carousel-page-indicator';if(dotsC&&dotsC.parentNode)dotsC.parentNode.insertBefore(pageIndicator,dotsC.nextSibling);
 function updatePageIndicator(){pageIndicator.textContent=(current+1)+'/'+total}
 function goTo(i){track.querySelectorAll('video').forEach(v=>v.pause());current=Math.max(0,Math.min(i,total-1));track.style.transform='translateX(-'+(current*100)+'%)';document.querySelectorAll('.carousel-dot').forEach((d,idx)=>d.className='carousel-dot'+(idx===current?' active':''));updatePageIndicator()}
 // --- Autoplay ---
@@ -52,8 +54,8 @@ var idleTimer=null;
 function userInteract(){stopAutoplay();clearTimeout(idleTimer);idleTimer=setTimeout(function(){userStopped=false;startAutoplay()},30000)}
 // Pause on hover/touch (desktop + mobile)
 var carousel=track.closest('.reviews-carousel');
-carousel.addEventListener('mouseenter',function(){stopAutoplay()});
-carousel.addEventListener('touchstart',function(){stopAutoplay()},{passive:true});
+if(carousel){carousel.addEventListener('mouseenter',function(){stopAutoplay()});
+carousel.addEventListener('touchstart',function(){stopAutoplay()},{passive:true});}
 // Prev / Next buttons
 document.getElementById('prevBtn').onclick=()=>{userInteract();goTo(current-1)};
 document.getElementById('nextBtn').onclick=()=>{userInteract();goTo(current+1)};
@@ -106,7 +108,7 @@ sR.oninput=calc;cR.oninput=calc;cvR.oninput=calc;tR.oninput=calc;calc();
 // Mini calculator sync
 var miniEl=document.getElementById('miniCalcLoss');
 if(miniEl){
-function miniCalc(){var l=+sR.value,c=+cR.value,cv=+cvR.value,h=+tR.value;var lost=Math.round(l*lossRate(h));var dailyLoss=Math.round(lost*c*cv/100/30);miniEl.textContent='~'+fmt(dailyLoss)+' ₸/день';miniEl.parentElement.querySelector('div:last-of-type').textContent='при '+l+' заявок/мес и среднем чеке '+fmt(c)+' ₸'}
+function miniCalc(){var l=+sR.value,c=+cR.value,cv=+cvR.value,h=+tR.value;var lost=Math.round(l*lossRate(h));var dailyLoss=Math.round(lost*c*cv/100/30);miniEl.textContent='~'+fmt(dailyLoss)+' ₸/день';if(miniEl.parentElement){var lastDiv=miniEl.parentElement.querySelector('div:last-of-type');if(lastDiv)lastDiv.textContent='при '+l+' заявок/мес и среднем чеке '+fmt(c)+' ₸'}}
 sR.addEventListener('input',miniCalc);cR.addEventListener('input',miniCalc);cvR.addEventListener('input',miniCalc);tR.addEventListener('input',miniCalc);miniCalc();
 }
 })();
@@ -132,7 +134,6 @@ fetch('https://adsytd.space/webhook/dos-quiz',{method:'POST',headers:{'Content-T
 gEvent('quiz_submit',{niche:ni,name:nm});
 window.location.href='thank-you.html?name='+encodeURIComponent(nm)+'&niche='+encodeURIComponent(ni||'');
 });
-setTimeout(function(){window.location.href='thank-you.html?name='+encodeURIComponent(nm)+'&niche='+encodeURIComponent(ni||'')},3000);
 return;
 }
 if(dir===1&&qStep<qTotal-1){const cur=document.querySelectorAll('.quiz-step')[qStep];if(!cur.querySelector('.quiz-option.selected')){cur.style.animation='shake .4s';setTimeout(()=>{cur.style.animation=''},400);var hint=cur.querySelector('.quiz-hint');if(!hint){hint=document.createElement('div');hint.className='quiz-hint';hint.style.cssText='color:#ff5252;font-size:13px;font-family:var(--mono);margin-top:12px;animation:fadeInUp .3s ease';hint.textContent='Выберите хотя бы один вариант';cur.querySelector('.quiz-options').after(hint);setTimeout(()=>{if(hint.parentNode)hint.remove()},3000)}return}}
@@ -150,6 +151,7 @@ var stepText=document.getElementById('quizStepText');if(stepText){var remaining=
 // Demo Chat — Real AI via n8n webhook
 (function(){
 const toggle=document.getElementById('demoToggle'),win=document.getElementById('demoWindow'),closeBtn=document.getElementById('demoClose'),msgs=document.getElementById('demoMessages'),input=document.getElementById('demoInput'),typing=document.getElementById('demoTyping');
+if(!toggle||!win||!closeBtn||!msgs||!input||!typing)return;
 const CHAT_URL='https://adsytd.space/webhook/dos-chat';
 const sessionId='site-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
 let sending=false;
@@ -188,16 +190,18 @@ function showExit(){
   if(sessionStorage.getItem('exitShown'))return;
   shown=true;
   sessionStorage.setItem('exitShown','1');
-  document.getElementById('exitPopup').classList.add('show');
+  var ep=document.getElementById('exitPopup');
+  if(ep)ep.classList.add('show');
   if(typeof gEvent==='function')gEvent('exit_popup_shown');
 }
-window.closeExit=function(){document.getElementById('exitPopup').classList.remove('show')};
+window.closeExit=function(){var ep=document.getElementById('exitPopup');if(ep)ep.classList.remove('show')};
 document.addEventListener('mouseout',function(e){
   if(!e.relatedTarget&&e.clientY<5)showExit();
 });
-document.getElementById('exitPopup').addEventListener('click',function(e){
+var exitPopupEl=document.getElementById('exitPopup');
+if(exitPopupEl){exitPopupEl.addEventListener('click',function(e){
   if(e.target===this)closeExit();
-});
+});}
 let scrollDepth=0;
 onScroll(function(){
   var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
@@ -207,7 +211,7 @@ setTimeout(function(){if(scrollDepth>60&&!shown)showExit()},45000);
 })();
 
 // Back to top visibility
-onScroll(function(){document.getElementById('btt').classList.toggle('visible',window.scrollY>600)});
+onScroll(function(){var btt=document.getElementById('btt');if(btt)btt.classList.toggle('visible',window.scrollY>600)});
 // Counter animation for aggregate numbers
 (function(){
   var animated=false;
@@ -367,14 +371,14 @@ observer.observe(box.parentElement);
 document.addEventListener('DOMContentLoaded',function(){
   var ph=document.getElementById('qPhone');
   if(ph&&window.IMask){
-    IMask(ph,{mask:'+{7} (000) 000-00-00'});
+    try{IMask(ph,{mask:'+{7} (000) 000-00-00'})}catch(e){}
   }
 });
 
 // TRUST PROGRESS BAR
 (function(){
 var tp=document.getElementById('trustProgress'),tf=document.getElementById('trustFill'),tt=document.getElementById('trustText');
-if(!tp)return;
+if(!tp||!tf||!tt)return;
 var heroH=document.querySelector('.hero');
 var shown=false;
 var messages=['Изучено ','На этом этапе клиенты уже пишут в WhatsApp','Вы почти дочитали — осталось чуть-чуть'];
@@ -398,7 +402,7 @@ onScroll(function(){
 // HUMAN TIMER
 (function(){
 var ht=document.getElementById('humanTimer'),hl=document.getElementById('humanTimerLabel');
-if(!ht)return;
+if(!ht||!hl)return;
 var startTime=Date.now();
 var labels=['Ещё не прочитал сообщение...','Увидел, но занят...','Может быть обедает...','Или в отпуске...','Клиент уже ушёл к конкуренту'];
 setInterval(function(){
@@ -470,7 +474,7 @@ function sendInlineDemo(){
     msgs.appendChild(em);msgs.scrollTop=msgs.scrollHeight;
   });
 }
-document.getElementById('inlineDemoInput')&&document.getElementById('inlineDemoInput').addEventListener('keydown',function(e){if(e.key==='Enter')sendInlineDemo()});
+var inlineDemoInputEl=document.getElementById('inlineDemoInput');if(inlineDemoInputEl)inlineDemoInputEl.addEventListener('keydown',function(e){if(e.key==='Enter')sendInlineDemo()});
 
 (function(){
   var sideNav=document.getElementById('sideNav');
@@ -530,6 +534,7 @@ el.parentNode.replaceChild(iframe,el);
 
 (function(){
   var lb=document.getElementById('lightbox');
+  if(!lb)return;
   var lbImg=lb.querySelector('img');
   var lbClose=lb.querySelector('.lightbox-close');
   document.querySelectorAll('.review-media img').forEach(function(img){
@@ -561,11 +566,13 @@ el.parentNode.replaceChild(iframe,el);
   var s=document.createElement('script');
   s.src='https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js';
   s.onload=function(){
-    webVitals.onCLS(sendToGA);
-    webVitals.onFID(sendToGA);
-    webVitals.onLCP(sendToGA);
+    try{
+      webVitals.onCLS(sendToGA);
+      webVitals.onFID(sendToGA);
+      webVitals.onLCP(sendToGA);
+    }catch(e){}
   };
   document.head.appendChild(s);
 })();
 
-if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){})}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(err){console.warn('SW registration failed:',err)})}
