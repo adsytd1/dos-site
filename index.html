@@ -50,7 +50,7 @@
 "aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"20","bestRating":"5"}
 }</script>
 <script type="application/ld+json">[
-{"@context":"https://schema.org","@type":"Review","author":{"@type":"Person","name":"Нурасыл"},"reviewBody":"Это укрепило отдел продаж. Конверсия на пробники в муз. школах реально выросла в два раза","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"itemReviewed":{"@type":"ProfessionalService","name":"DOS — AI Automation"}},
+{"@context":"https://schema.org","@type":"Review","author":{"@type":"Person","name":"Нурасыл"},"reviewBody":"Это реально усилило мой отдел продаж, если б я внедрил это раньше, бизнес был бы сейчас совсем на другом уровне","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"itemReviewed":{"@type":"ProfessionalService","name":"DOS — AI Automation"}},
 {"@context":"https://schema.org","@type":"Review","author":{"@type":"Person","name":"Талгат"},"reviewBody":"Доволен результатом работы","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"itemReviewed":{"@type":"ProfessionalService","name":"DOS — AI Automation"}},
 {"@context":"https://schema.org","@type":"Review","author":{"@type":"Person","name":"Асель"},"reviewBody":"Рада сотрудничеству","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"itemReviewed":{"@type":"ProfessionalService","name":"DOS — AI Automation"}}
 ]</script>
@@ -252,7 +252,7 @@
       <div class="service-card">
         <span class="service-icon">&#9881;&#65039;</span>
         <h3>Автоматизация</h3>
-        <p>Связываю CRM, таблицы, платёжки и мессенджеры в единый поток. Автоотчёты для понимания цифр, дожимные воронки, drip-кампании — всё без участия людей.</p>
+        <p>Связываю CRM, таблицы, платёжки и мессенджеры в единый поток. Автоотчёты для понимания цифр, дожимные воронки, follow-up кампании — всё без участия людей.</p>
         <div class="service-tags"><span class="service-tag service-tag--blue">n8n</span><span class="service-tag service-tag--blue">CRM</span><span class="service-tag service-tag--blue">Google Sheets</span><span class="service-tag service-tag--blue">Notion</span></div>
         <a href="#integrations" style="display:inline-block;margin-top:12px;font-size:13px;color:var(--accent);font-family:var(--mono);text-decoration:none">Все интеграции &#8594;</a>
       </div>
@@ -288,13 +288,13 @@
           <tr><th>Параметр</th><th>Менеджер</th><th>ИИ-ассистент</th></tr>
         </thead>
         <tbody>
-          <tr><td>Время ответа клиенту</td><td class="val-bad">5-30 минут (если не забыл)</td><td class="val-good">10-40 секунд. Всегда.</td></tr>
+          <tr><td>Время ответа клиенту</td><td class="val-bad">5-30 минут (если не забыл). В лучшем случае. Часто отвечают через сутки</td><td class="val-good">10-40 секунд. Всегда.</td></tr>
           <tr><td>Работает</td><td class="val-bad">8 часов, пн-пт</td><td class="val-good">24/7/365 без выходных</td></tr>
-          <tr><td>Одновременных диалогов</td><td class="val-bad">2-3 максимум</td><td class="val-good">1 000+ одновременно</td></tr>
-          <tr><td>Забывает написать клиенту</td><td class="val-bad">Часто</td><td class="val-good">Никогда. Есть дожимные воронки</td></tr>
+          <tr><td>Одновременных диалогов</td><td class="val-bad">2-3 максимум и уже зашивается</td><td class="val-good">1 000+ одновременно</td></tr>
+          <tr><td>Забывает написать клиенту</td><td class="val-bad">Часто</td><td class="val-good">Никогда. Есть дожимные воронки и напоминания с возвращением в диалог</td></tr>
           <tr><td>Настроение и хамство</td><td class="val-bad">Зависит от дня</td><td class="val-good">Всегда вежлив и терпелив</td></tr>
           <tr><td>Знание продукта</td><td class="val-bad">Путает цены и условия</td><td class="val-good">100% точная информация</td></tr>
-          <tr><td>Больничные, отпуска</td><td class="val-bad">Да, и вы платите</td><td class="val-good">Нет. Работает всегда</td></tr>
+          <tr><td>Больничные, отпуска, налоги, пенсионки</td><td class="val-bad">Да, и вы платите</td><td class="val-good">Нет. Работает всегда</td></tr>
           <tr><td>Стоимость в месяц</td><td class="val-bad">300 000 - 500 000 &#8376;</td><td class="val-good">Разовая настройка + мин. обслуживание</td></tr>
           <tr><td>Потерянные лиды</td><td class="val-bad">До 40% заявок теряются</td><td class="val-good">0%. Каждый лид обработан</td></tr>
         </tbody>
@@ -446,11 +446,8 @@
         <div style="position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:var(--radius) var(--radius) 0 0;overflow:hidden"><lite-yt data-id="ha47ix5atGU" title="KazGeoTech — HR-бот для геологоразведки" style="position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;background:#000 center/cover no-repeat;background-image:url('https://i.ytimg.com/vi/ha47ix5atGU/hqdefault.jpg')"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.64 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg></div></lite-yt></div>
         <div class="video-card-info"><h3>KazGeoTech HR</h3><p>HR-бот квалифицирует кандидата</p></div>
       </div>
-      <div class="video-card">
-        <div class="video-placeholder"><div class="play-btn"></div></div>
-        <div class="video-card-info"><h3>Personal Lawyer</h3><p>ИИ квалифицирует лид и записывает к юристу</p></div>
-      </div>
     </div>
+    <p style="text-align:center;font-size:13px;color:var(--text-muted);font-family:var(--mono);margin-top:16px">Это всего 2 примера, чтобы понять как работает на самом деле. Остальные кейсы — ниже.</p>
 
     <!-- INLINE DEMO CHAT -->
     <div class="reveal" style="margin-top:48px">
@@ -473,7 +470,6 @@
 
     <div class="reveal" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px">
       <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%BF%D1%80%D0%BE%D0%B1%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B1%D0%BE%D1%82%D0%B0" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);border-radius:100px;font-size:14px;font-weight:600;color:#25d366;transition:all .3s ease">&#128242; Попробовать бота в WhatsApp</a>
-      <a href="https://t.me/yernardoss" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:100px;font-size:14px;font-weight:600;color:#38bdf8;transition:all .3s ease">&#9992;&#65039; Попробовать в Telegram</a>
     </div>
 
   </div>
@@ -572,10 +568,10 @@
           <ul class="project-features">
             <li>ИИ-менеджер Алтынай — продаёт как живой человек</li>
             <li>Интеграция с AlfaCRM + Google Sheets + Kaspi Pay</li>
-            <li>Drip-кампании для дожима клиентов</li>
+            <li>Follow-up кампании для дожима клиентов</li>
             <li>2 города: Астана и Усть-Каменогорск</li>
           </ul>
-          <div class="project-result">&#127925; 1 500+ сделок &middot; ~130 продаж ИИ без менеджера &middot; Конверсия ~10% только на этапе ИИ</div>
+          <div class="project-result">&#127925; 1 500+ сделок &middot; 1000+ продаж ИИ без менеджера &middot; Конверсия ~10% только на этапе ИИ</div>
           <a href="case-amadey.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:10px 20px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.2);border-radius:100px;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);transition:all var(--transition)">Смотреть кейс &#8594;</a>
         </div>
         <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)">
@@ -595,7 +591,7 @@
           <li>Работа с возражениями и дожим</li>
         </ul>
         <div class="project-result project-result--big">
-          <span class="big-num">3 807 лидов &middot; 1 889 квалификаций &middot; 49.6% конверсия</span>
+          <span class="big-num">3 807 лидов &middot; 1 889 квалификаций &middot; +30% к конверсии</span>
           ИИ обработал тысячи обращений — почти половина конвертировались в квалифицированных клиентов
         </div>
         <a href="case-personal-lawyer.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 20px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.2);border-radius:100px;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);transition:all var(--transition)">Смотреть кейс &#8594;</a>
@@ -678,7 +674,7 @@
           <li>Отслеживание статуса выполнения</li>
           <li>Внутренние коммуникации</li>
         </ul>
-        <div class="project-result">&#127970; 500+ задач &middot; 95% выполнение в срок</div>
+        <div class="project-result">&#127970; Telegram-бот для постановки задач, контроля дедлайнов и автоуведомлений между отделами</div>
         <a href="case-fortebank.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:10px 20px;background:var(--accent-dim);border:1px solid rgba(0,230,118,.2);border-radius:100px;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);transition:all var(--transition)">Смотреть кейс &#8594;</a>
       </div>
 
@@ -759,18 +755,18 @@
   <!-- ROI scroll banner -->
   <div class="roi-scroll-wrap">
     <div class="roi-scroll">
-      <span class="roi-item"><b>Amadey</b> — 130 продаж без менеджера</span><span class="roi-sep">&#9679;</span>
-      <span class="roi-item"><b>Personal Lawyer</b> — 49.6% конверсия</span><span class="roi-sep">&#9679;</span>
+      <span class="roi-item"><b>Amadey</b> — 1000+ продаж без менеджера</span><span class="roi-sep">&#9679;</span>
+      <span class="roi-item"><b>Все проекты</b> — +30% к конверсии</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>KazGeoTech</b> — 85% заявок на автопилоте</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>RAMS</b> — 1 000+ обращений, 0 потерянных</span><span class="roi-sep">&#9679;</span>
-      <span class="roi-item"><b>Forte Bank</b> — 500+ задач, 95% в срок</span><span class="roi-sep">&#9679;</span>
+      <span class="roi-item"><b>Forte Bank</b> — автоматизация задач между отделами</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>ADAL LAWYERS</b> — запись + оплата через Kaspi</span><span class="roi-sep">&#9679;</span>
       <!-- duplicate -->
-      <span class="roi-item"><b>Amadey</b> — 130 продаж без менеджера</span><span class="roi-sep">&#9679;</span>
-      <span class="roi-item"><b>Personal Lawyer</b> — 49.6% конверсия</span><span class="roi-sep">&#9679;</span>
+      <span class="roi-item"><b>Amadey</b> — 1000+ продаж без менеджера</span><span class="roi-sep">&#9679;</span>
+      <span class="roi-item"><b>Все проекты</b> — +30% к конверсии</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>KazGeoTech</b> — 85% заявок на автопилоте</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>RAMS</b> — 1 000+ обращений, 0 потерянных</span><span class="roi-sep">&#9679;</span>
-      <span class="roi-item"><b>Forte Bank</b> — 500+ задач, 95% в срок</span><span class="roi-sep">&#9679;</span>
+      <span class="roi-item"><b>Forte Bank</b> — автоматизация задач между отделами</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>ADAL LAWYERS</b> — запись + оплата через Kaspi</span><span class="roi-sep">&#9679;</span>
     </div>
   </div>
@@ -811,8 +807,8 @@
     </div>
     <div class="agg-grid reveal">
       <div class="agg-card"><div class="agg-num">10000+</div><div class="agg-label">Лидов обработано ИИ</div><div class="agg-source">все проекты</div></div>
-      <div class="agg-card"><div class="agg-num">49%</div><div class="agg-label">Средняя конверсия в квалификацию</div><div class="agg-source">Personal Lawyer</div></div>
-      <div class="agg-card"><div class="agg-num">130+</div><div class="agg-label">Продаж без менеджера</div><div class="agg-source">Amadey Music</div></div>
+      <div class="agg-card"><div class="agg-num">+30%</div><div class="agg-label">К конверсии во всех проектах</div><div class="agg-source">все проекты</div></div>
+      <div class="agg-card"><div class="agg-num">1000+</div><div class="agg-label">Продаж без менеджера</div><div class="agg-source">Amadey Music</div></div>
       <div class="agg-card"><div class="agg-num">15</div><div class="agg-label">Секунд — среднее время ответа</div><div class="agg-source">все боты</div></div>
     </div>
   </div>
@@ -830,7 +826,7 @@
     </div>
     <div class="testimonial-pullquote reveal">
       <blockquote>
-        <span class="pullquote-mark">&laquo;</span>Это укрепило отдел продаж. Конверсия на пробники в муз. школах реально выросла в два раза<span class="pullquote-mark">&raquo;</span>
+        <span class="pullquote-mark">&laquo;</span>Это реально усилило мой отдел продаж, если б я внедрил это раньше, бизнес был бы сейчас совсем на другом уровне<span class="pullquote-mark">&raquo;</span>
       </blockquote>
       <div class="pullquote-author">Нурасыл, владелец Amadey Music</div>
     </div>
@@ -839,7 +835,7 @@
 
         <!-- PAGE 1: Нурасыл, Талгат + видео-отзывы -->
         <div class="review-page">
-          <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/nurasyl.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Нурасыл</div><div class="rc-role">Владелец Amadey Music</div><div class="rc-quote">&laquo;Это укрепило отдел продаж. Конверсия на пробники в муз. школах реально выросла в два раза&raquo;</div></div></div>
+          <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/nurasyl.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Нурасыл</div><div class="rc-role">Владелец Amadey Music</div><div class="rc-quote">&laquo;Это реально усилило мой отдел продаж, если б я внедрил это раньше, бизнес был бы сейчас совсем на другом уровне&raquo;</div></div></div>
           <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/talgat.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Талгат</div><div class="rc-role">Владелец FinStep, финансовый консалтинг</div><div class="rc-quote">&laquo;Доволен результатом работы&raquo;</div></div></div>
           <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/56fdc3bc060144a580ff19cea23b3a2e.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Видео-отзыв</div><div class="rc-role">Клиент о сотрудничестве</div><div class="rc-quote">&laquo;Доволен результатом — бот разгрузил команду&raquo;</div></div></div>
           <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/658eb1313696400cb8080d26cdaae6e4.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Видео-отзыв</div><div class="rc-role">Клиент о работе бота</div><div class="rc-quote">&laquo;Бот обрабатывает заявки без моего участия&raquo;</div></div></div>
@@ -848,17 +844,17 @@
         <!-- PAGE 2: Данияр, Personal Lawyer reel + аудио + видео -->
         <div class="review-page">
           <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/dostyq-daniyar.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Данияр</div><div class="rc-role">Основатель Dostyq</div><div class="rc-quote">&laquo;Продажи улучшились — ИИ на связи 24/7, обрабатывает заявки даже ночью&raquo;</div></div></div>
-          <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/personal-lawyer-reel.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Reel-обзор</div><div class="rc-role">Personal Lawyer</div><div class="rc-quote">&laquo;Бот анализирует договоры и ссылается на законодательство РК&raquo;</div></div></div>
+          <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/personal-lawyer-reel.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Reel-обзор</div><div class="rc-role">Позиция компании ДО и ПОСЛЕ внедрения ИИ</div><div class="rc-quote">&laquo;Рилс где показывается позиция компании до и после внедрения ИИ&raquo;</div></div></div>
           <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/7ca7c52ec023425da545650a5a5f32d0.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Видео-отзыв</div><div class="rc-role">Клиент о результатах</div><div class="rc-quote">&laquo;Результат превзошёл ожидания&raquo;</div></div></div>
           <div class="review-card"><div class="review-media"><video controls preload="none" playsinline poster="reviews/video-poster.svg"><source src="reviews/asel-audio.mp4" type="video/mp4"></video></div><div class="review-caption"><div class="rc-name">Асель</div><div class="rc-role">Ипотечные Брокеры</div><div class="rc-quote">&laquo;Рада сотрудничеству&raquo;</div></div></div>
         </div>
 
         <!-- PAGE 3: Скриншоты -->
         <div class="review-page">
-          <div class="review-card"><div class="review-media"><picture><source srcset="reviews/screenshot-new.webp" type="image/webp"><img loading="lazy" src="reviews/screenshot-new.png" alt="Нурасыл рекомендует Amadey в Instagram"></picture></div><div class="review-caption"><div class="rc-name">Нурасыл</div><div class="rc-role">Amadey Music / Instagram</div><div class="rc-quote">&laquo;Справляется не хуже живого менеджера. Работает 24/7&raquo;</div></div></div>
-          <div class="review-card"><div class="review-media"><picture><source srcset="reviews/IMG_9176.webp" type="image/webp"><img loading="lazy" src="reviews/IMG_9176.PNG" alt="Отзыв клиента Personal Lawyer в WhatsApp"></picture></div><div class="review-caption"><div class="rc-name">Клиент</div><div class="rc-role">Personal Lawyer / WhatsApp</div><div class="rc-quote">&laquo;Помогает быстро разобраться в юридических вопросах и экономит время&raquo;</div></div></div>
+          <div class="review-card"><div class="review-media"><picture><source srcset="reviews/screenshot-new.webp" type="image/webp"><img loading="lazy" src="reviews/screenshot-new.png" alt="Нурасыл рекомендует Amadey в Instagram"></picture></div><div class="review-caption"><div class="rc-name">Нурасыл</div><div class="rc-role">Amadey Music / Instagram</div><div class="rc-quote">&laquo;Тут Нурасыл владелец музыкальной школы радуется первым продажам от ИИ&raquo;</div></div></div>
+          <div class="review-card"><div class="review-media"><picture><source srcset="reviews/IMG_9176.webp" type="image/webp"><img loading="lazy" src="reviews/IMG_9176.PNG" alt="Отзыв клиента Personal Lawyer в WhatsApp"></picture></div><div class="review-caption"><div class="rc-name">Клиент</div><div class="rc-role">BINA / WhatsApp</div><div class="rc-quote">&laquo;Помогает быстро разобраться в юридических вопросах и экономит время&raquo;</div></div></div>
           <div class="review-card"><div class="review-media"><picture><source srcset="reviews/IMG_0684.webp" type="image/webp"><img loading="lazy" src="reviews/IMG_0684.PNG" alt="Отзыв Максима о Personal Lawyer в Threads"></picture></div><div class="review-caption"><div class="rc-name">Максим</div><div class="rc-role">Personal Lawyer / Threads</div><div class="rc-quote">&laquo;Это бомба — бот подсказал нюансы, о которых ни юристы не говорили&raquo;</div></div></div>
-          <div class="review-card"><div class="review-media"><picture><source srcset="reviews/IMG_0971.webp" type="image/webp"><img loading="lazy" src="reviews/IMG_0971.PNG" alt="Отзыв клиента о Personal Lawyer в WhatsApp"></picture></div><div class="review-caption"><div class="rc-name">Клиент</div><div class="rc-role">Personal Lawyer / WhatsApp</div><div class="rc-quote">&laquo;Доскональнейший анализ под всеми углами — супер полезная штука&raquo;</div></div></div>
+          <div class="review-card"><div class="review-media"><picture><source srcset="reviews/IMG_0971.webp" type="image/webp"><img loading="lazy" src="reviews/IMG_0971.PNG" alt="Отзыв клиента о Personal Lawyer в WhatsApp"></picture></div><div class="review-caption"><div class="rc-name">Клиент</div><div class="rc-role">Бот который анализирует договора на основе законодательства РК</div><div class="rc-quote">&laquo;Доскональнейший анализ под всеми углами — супер полезная штука&raquo;</div></div></div>
         </div>
 
         <!-- PAGE 4: Скриншоты -->
@@ -866,7 +862,7 @@
           <div class="review-card"><div class="review-media"><picture><source srcset="reviews/3CB2C481-DCF8-4A0A-B3C7-5CC423B81414.webp" type="image/webp"><img loading="lazy" src="reviews/3CB2C481-DCF8-4A0A-B3C7-5CC423B81414.jpg" alt="Отзыв Аиды о Personal Lawyer в WhatsApp"></picture></div><div class="review-caption"><div class="rc-name">Аида</div><div class="rc-role">Юрист / Personal Lawyer</div><div class="rc-quote">&laquo;Ни один отклик не будет потерян и получит обратную связь сразу&raquo;</div></div></div>
           <div class="review-card"><div class="review-media"><picture><source srcset="reviews/F3BBA0E7-E97C-4C0A-9B25-48F1C020BC9F.webp" type="image/webp"><img loading="lazy" src="reviews/F3BBA0E7-E97C-4C0A-9B25-48F1C020BC9F.jpg" alt="Отзыв клиента о продажах с ИИ"></picture></div><div class="review-caption"><div class="rc-name">Клиент</div><div class="rc-role">WhatsApp</div><div class="rc-quote">&laquo;Продажи улучшились. ИИ на связи 24/7 — быстро отвечает и дает обратную связь&raquo;</div></div></div>
           <div class="review-card"><div class="review-media"><picture><source srcset="reviews/d71d86c8-16fc-4c0f-ba95-884cf8d1bb3d.webp" type="image/webp"><img loading="lazy" src="reviews/d71d86c8-16fc-4c0f-ba95-884cf8d1bb3d.jpg" alt="Отзыв Асета о сотрудничестве"></picture></div><div class="review-caption"><div class="rc-name">Асет</div><div class="rc-role">Стартап / WhatsApp</div><div class="rc-quote">&laquo;Запустили проект менее чем за 3 недели. Будем обращаться с новыми проектами&raquo;</div></div></div>
-          <div class="review-card"><div class="review-media"><picture><source srcset="reviews/IMG_0686.webp" type="image/webp"><img loading="lazy" src="reviews/IMG_0686.PNG" alt="Отзыв о Personal Lawyer в Instagram Threads"></picture></div><div class="review-caption"><div class="rc-name">Пользователь</div><div class="rc-role">Personal Lawyer / Threads</div><div class="rc-quote">&laquo;Находка для юристов и для обычных людей&raquo;</div></div></div>
+          <div class="review-card"><div class="review-media"><picture><source srcset="reviews/IMG_0686.webp" type="image/webp"><img loading="lazy" src="reviews/IMG_0686.PNG" alt="Отзыв о Personal Lawyer в Instagram Threads"></picture></div><div class="review-caption"><div class="rc-name">Пользователь</div><div class="rc-role">Threads</div><div class="rc-quote">&laquo;Еще один отзыв&raquo;</div></div></div>
         </div>
 
 
@@ -907,8 +903,8 @@
         </button>
         <div class="objection-detail">
           <p>Давайте считать. Один менеджер обходится бизнесу в 300 000 &ndash; 500 000 &#8376; ежемесячно: зарплата, налоги, больничные, отпуск, обучение, ошибки. За год &mdash; это 3,6 &ndash; 6 млн &#8376;.</p>
-          <p>ИИ-ассистент стоит от $500 разово + ~$30-50/мес на API. За год &mdash; около 350 000 &#8376;. То есть <strong>в 10-17 раз дешевле</strong> одного сотрудника.</p>
-          <p>При этом бот не болеет, не увольняется, не забывает скрипт, не хамит в плохом настроении. Он отвечает за 3 секунды, а не за 3 часа. На практике бот окупается за <strong>2-4 недели</strong> при потоке от 50 заявок в месяц.</p>
+          <p>ИИ-ассистент стоит от $500 разово + ~$20-50/мес на API. За год &mdash; около $240-$600. То есть <strong>в 10-17 раз дешевле</strong> одного сотрудника. А пользы в разы больше.</p>
+          <p>При этом бот не болеет, не увольняется, не забывает скрипт, не хамит в плохом настроении. Он отвечает за 15 секунд, а не за 3 часа. На практике бот окупается за <strong>2-4 недели</strong> смотря какой поток и средний чек.</p>
           <p>А главное — бот не заменяет менеджера полностью. Он берёт на себя первичную квалификацию и рутину. Менеджер подключается только к горячим клиентам. Результат — те же продажи, но с меньшей командой или больше продаж с той же командой.</p>
           <div class="objection-proof">ROI: окупаемость за 2-4 недели. Экономия от 3 млн &#8376;/год на каждого заменённого менеджера.</div>
         </div>
