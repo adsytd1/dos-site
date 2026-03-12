@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Блог DOS — ИИ-автоматизация для бизнеса в Казахстане</title>
 <meta name="description" content="Статьи и кейсы об ИИ-автоматизации бизнеса: чат-боты, обработка заявок, увеличение продаж. Полезные материалы от DOS.">
-<meta name="robots" content="noindex">
+<meta name="author" content="Yernar Dosmagambetov">
+<meta property="og:locale" content="ru_RU">
+<meta name="theme-color" content="#0a0a0a">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Блог DOS — ИИ-автоматизация для бизнеса">
 <meta property="og:description" content="Статьи и кейсы об ИИ-автоматизации бизнеса: чат-боты, обработка заявок, увеличение продаж. Полезные материалы от DOS.">
@@ -14,7 +16,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Блог DOS — ИИ-автоматизация для бизнеса">
 <meta name="twitter:description" content="Статьи и кейсы об ИИ-автоматизации: чат-боты, увеличение продаж, обработка заявок.">
-<meta name="keywords" content="ИИ-бот, чат-бот, автоматизация бизнеса, увеличение продаж, обработка заявок, Казахстан, искусственный интеллект, чат-бот WhatsApp Казахстан, ИИ бот Instagram, ROI автоматизации, бот для бизнеса цена, WhatsApp Business API">
+<meta name="twitter:image" content="https://dos.kz/og-image.png">
+<link rel="alternate" hreflang="ru" href="https://dos.kz/blog.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e676'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%23000'>DOS</text></svg>">
 <link rel="canonical" href="https://dos.kz/blog.html">
 <link rel="dns-prefetch" href="https://wa.me">
@@ -161,8 +164,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .blog-article-inner::before{content:'';display:block;height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin-bottom:32px}
 
 /* Article typography */
-.blog-article h2{font-size:22px;font-weight:800;margin:32px 0 16px;color:var(--text);line-height:1.3}
 .blog-article h3{font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--text);line-height:1.35}
+.blog-article h3:first-of-type{font-size:22px;font-weight:800;margin:32px 0 16px;line-height:1.3}
 .blog-article p{font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:16px}
 .blog-article strong{color:var(--accent);font-weight:600}
 .blog-article ul,.blog-article ol{margin:16px 0;padding-left:24px}
@@ -304,7 +307,7 @@ body{background:#fff;color:#000;animation:none}
 .blog-card{border:1px solid #ccc;page-break-inside:avoid;opacity:1!important;transform:none!important}
 .blog-card.active .blog-article{max-height:none;overflow:visible}
 .blog-article-inner{padding:0 20px 20px}
-.blog-article h2,.blog-article h3,.blog-card h2{color:#000}
+.blog-article h3,.blog-card h2{color:#000}
 .blog-article p,.blog-article li{color:#333}
 .blog-article strong{color:#000}
 .stat-block{border:1px solid #ccc}
@@ -328,7 +331,7 @@ footer{border-top:1px solid #ccc}
 
 <!-- Back link -->
 <a href="index.html" class="back-link">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
   Назад на главную
 </a>
 
@@ -354,7 +357,7 @@ footer{border-top:1px solid #ccc}
     <div class="blog-grid" id="blog-grid">
 
       <!-- Article 1 -->
-      <article class="blog-card" id="article-1">
+      <article class="blog-card" id="article-1" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()">
         <div class="blog-card-header">
           <div class="blog-card-meta">
             <span class="blog-card-date">18 февраля 2026</span>
@@ -371,22 +374,22 @@ footer{border-top:1px solid #ccc}
         </div>
         <div class="blog-card-toggle">
           <span>Читать статью</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="blog-article">
           <div class="blog-article-inner">
 
-            <h2>Почему ИИ-боты стали главным инструментом роста продаж</h2>
+            <h3>Почему ИИ-боты стали главным инструментом роста продаж</h3>
 
             <p>В 2025-2026 годах казахстанский бизнес переживает настоящую революцию в подходе к продажам. Компании, которые внедрили <strong>ИИ-ботов</strong>, фиксируют рост конверсии от 30% до 80%. Но как именно это работает? Разберём пять реальных примеров из практики.</p>
 
             <h3>1. Стоматологическая клиника в Алматы: +47% записей</h3>
 
-            <p>Клиника теряла до 60% входящих заявок из Instagram. Менеджеры просто не успевали отвечать вечером и в выходные. После внедрения ИИ-бота в Direct результаты изменились кардинально: бот отвечал за 8 секунд вместо 2 часов, квалифицировал пациента и записывал на приём. За первый месяц количество записей выросло на 47%.</p>
+            <p>Клиника теряла до 60% входящих заявок из Instagram. Менеджеры просто не успевали отвечать вечером и в выходные. После внедрения ИИ-бота в Direct результаты изменились кардинально: бот отвечал за 15-40 секунд вместо 2 часов, квалифицировал пациента и записывал на приём. За первый месяц количество записей выросло на 47%.</p>
 
             <div class="stat-block">
               <div class="stat-item">
-                <div class="stat-value">8 сек</div>
+                <div class="stat-value">15-40 сек</div>
                 <div class="stat-label">среднее время ответа бота</div>
               </div>
               <div class="stat-item">
@@ -405,7 +408,7 @@ footer{border-top:1px solid #ccc}
 
             <h3>3. Онлайн-школа в Караганде: снижение стоимости лида на 35%</h3>
 
-            <p>Школа английского тратила крупные суммы на рекламу, но часть лидов "остывала" -- люди оставляли заявку и ждали звонка часами. ИИ-бот начинал диалог через 10 секунд после заявки: отвечал на вопросы, предлагал бесплатный урок, отправлял расписание. Стоимость привлечения ученика снизилась на 35%, потому что <strong>скорость ответа напрямую влияет на конверсию</strong>.</p>
+            <p>Школа английского тратила крупные суммы на рекламу, но часть лидов "остывала" -- люди оставляли заявку и ждали звонка часами. ИИ-бот начинал диалог через 15-40 секунд после заявки: отвечал на вопросы, предлагал бесплатный урок, отправлял расписание. Стоимость привлечения ученика снизилась на 35%, потому что <strong>скорость ответа напрямую влияет на конверсию</strong>.</p>
 
             <h3>4. Юридическая фирма: обработка 100% обращений</h3>
 
@@ -440,7 +443,7 @@ footer{border-top:1px solid #ccc}
       </article>
 
       <!-- Article 2 -->
-      <article class="blog-card" id="article-2">
+      <article class="blog-card" id="article-2" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()">
         <div class="blog-card-header">
           <div class="blog-card-meta">
             <span class="blog-card-date">10 февраля 2026</span>
@@ -457,12 +460,12 @@ footer{border-top:1px solid #ccc}
         </div>
         <div class="blog-card-toggle">
           <span>Читать статью</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="blog-article">
           <div class="blog-article-inner">
 
-            <h2>Честное сравнение: ИИ-бот против живого менеджера</h2>
+            <h3>Честное сравнение: ИИ-бот против живого менеджера</h3>
 
             <p>Когда речь заходит о <strong>чат-ботах</strong>, бизнес делится на два лагеря: одни считают, что бот никогда не заменит живого человека, другие -- что менеджеры неэффективны. Правда, как обычно, посередине. Давайте разберём по пунктам, опираясь на данные из реальных проектов по <strong>обработке заявок</strong>.</p>
 
@@ -470,7 +473,7 @@ footer{border-top:1px solid #ccc}
 
             <p>Это самый очевидный и самый критичный параметр. По данным исследования InsideSales, <strong>среднее время ответа менеджера на заявку -- 47 часов</strong>. Да, не минут -- часов. Даже в лучших отделах продаж среднее время -- 1-2 часа.</p>
 
-            <p>ИИ-бот отвечает за 3-10 секунд. Всегда. Без перерывов, отпусков и плохого настроения. В мире, где клиент параллельно пишет 3-5 конкурентам, эти секунды решают всё.</p>
+            <p>ИИ-бот отвечает за 15-40 секунд. Всегда. Без перерывов, отпусков и плохого настроения. В мире, где клиент параллельно пишет 3-5 конкурентам, эти секунды решают всё.</p>
 
             <div class="stat-block">
               <div class="stat-item">
@@ -478,7 +481,7 @@ footer{border-top:1px solid #ccc}
                 <div class="stat-label">средний ответ менеджера (по данным InsideSales)</div>
               </div>
               <div class="stat-item">
-                <div class="stat-value">5 сек</div>
+                <div class="stat-value">15-40 сек</div>
                 <div class="stat-label">средний ответ ИИ-бота</div>
               </div>
             </div>
@@ -553,7 +556,7 @@ footer{border-top:1px solid #ccc}
       </article>
 
       <!-- Article 3 -->
-      <article class="blog-card" id="article-3">
+      <article class="blog-card" id="article-3" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()">
         <div class="blog-card-header">
           <div class="blog-card-meta">
             <span class="blog-card-date">3 февраля 2026</span>
@@ -570,12 +573,12 @@ footer{border-top:1px solid #ccc}
         </div>
         <div class="blog-card-toggle">
           <span>Читать статью</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="blog-article">
           <div class="blog-article-inner">
 
-            <h2>78% заявок уходят в никуда: почему это происходит</h2>
+            <h3>78% заявок уходят в никуда: почему это происходит</h3>
 
             <p>Представьте: вы вложили 500 000 тенге в рекламу. Получили 100 заявок. И 78 из них просто... потерялись. Не обработаны, не отвечены, забыты. Звучит как кошмар? Это реальность большинства бизнесов без <strong>автоматизации</strong>.</p>
 
@@ -626,7 +629,7 @@ footer{border-top:1px solid #ccc}
             <p>ИИ-ассистент закрывает все пять причин потери заявок одновременно:</p>
 
             <ul>
-              <li><strong>Мгновенный ответ</strong> -- 3-10 секунд вместо часов</li>
+              <li><strong>Мгновенный ответ</strong> -- 15-40 секунд вместо часов</li>
               <li><strong>Работа 24/7</strong> -- ночью, в выходные, в праздники</li>
               <li><strong>Единое окно</strong> -- все каналы в одной системе</li>
               <li><strong>Автоматическая фиксация</strong> -- каждая заявка в CRM</li>
@@ -651,7 +654,7 @@ footer{border-top:1px solid #ccc}
       </article>
 
       <!-- Article 4 -->
-      <article class="blog-card" id="article-4">
+      <article class="blog-card" id="article-4" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()">
         <div class="blog-card-header">
           <div class="blog-card-meta">
             <span class="blog-card-date">25 января 2026</span>
@@ -668,12 +671,12 @@ footer{border-top:1px solid #ccc}
         </div>
         <div class="blog-card-toggle">
           <span>Читать статью</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="blog-article">
           <div class="blog-article-inner">
 
-            <h2>Пошаговое руководство по внедрению ИИ-ассистента</h2>
+            <h3>Пошаговое руководство по внедрению ИИ-ассистента</h3>
 
             <p>Вы решили внедрить ИИ-бота в бизнес. Отличное решение. Но между решением и результатом -- этап <strong>подготовки бизнеса</strong>, от которого зависит 80% успеха. Вот подробный чек-лист, чтобы <strong>внедрение ИИ</strong> прошло гладко.</p>
 
@@ -791,7 +794,7 @@ footer{border-top:1px solid #ccc}
       </article>
 
       <!-- Article 5 -->
-      <article class="blog-card" id="article-5">
+      <article class="blog-card" id="article-5" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()">
         <div class="blog-card-header">
           <div class="blog-card-meta">
             <span class="blog-card-date">15 января 2026</span>
@@ -808,12 +811,12 @@ footer{border-top:1px solid #ccc}
         </div>
         <div class="blog-card-toggle">
           <span>Читать статью</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="blog-article">
           <div class="blog-article-inner">
 
-            <h2>Почему WhatsApp -- канал номер один для бизнеса в Казахстане</h2>
+            <h3>Почему WhatsApp -- канал номер один для бизнеса в Казахстане</h3>
 
             <p>В Казахстане <strong>WhatsApp</strong> используют более 12 миллионов человек. Это главный мессенджер страны -- клиенты пишут сюда чаще, чем звонят или отправляют email. Но большинство бизнесов до сих пор отвечают в WhatsApp вручную. И теряют деньги каждый день.</p>
 
@@ -823,7 +826,7 @@ footer{border-top:1px solid #ccc}
 
             <ul>
               <li><strong>Понимает свободный текст</strong> -- клиент пишет как угодно, бот разбирает смысл</li>
-              <li><strong>Отвечает за 5-10 секунд</strong> -- пока конкурент ещё не прочитал сообщение</li>
+              <li><strong>Отвечает за 15-40 секунд</strong> -- пока конкурент ещё не прочитал сообщение</li>
               <li><strong>Квалифицирует лиды</strong> -- задаёт нужные вопросы, определяет горячий/тёплый/холодный</li>
               <li><strong>Записывает на приём или консультацию</strong> -- без участия менеджера</li>
               <li><strong>Работает с возражениями</strong> -- "дорого", "подумаю", "у конкурента дешевле"</li>
@@ -896,7 +899,7 @@ footer{border-top:1px solid #ccc}
 
             <h3>Реальный кейс: Amadey Music Studio</h3>
 
-            <p>Музыкальная школа <a href="case-amadey.html" style="color:var(--accent);text-decoration:underline">Amadey Music Studio</a> в Алматы подключила ИИ-бота к WhatsApp. Результат: скорость ответа сократилась до 15 секунд, конверсия на пробные уроки выросла в 2 раза, а количество потерянных заявок снизилось до нуля. Бот работает без выходных и обрабатывает все обращения -- даже те, что приходят в 3 часа ночи.</p>
+            <p>Музыкальная школа <a href="case-amadey.html" style="color:var(--accent);text-decoration:underline">Amadey Music Studio</a> в Алматы подключила ИИ-бота к WhatsApp. Результат: скорость ответа сократилась до 15-40 секунд, конверсия на пробные уроки выросла в 2 раза, а количество потерянных заявок снизилось до нуля. Бот работает без выходных и обрабатывает все обращения -- даже те, что приходят в 3 часа ночи.</p>
 
             <div class="highlight-box">
               <span class="label">Итого</span>
@@ -908,7 +911,7 @@ footer{border-top:1px solid #ccc}
       </article>
 
       <!-- Article 6 -->
-      <article class="blog-card" id="article-6">
+      <article class="blog-card" id="article-6" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()">
         <div class="blog-card-header">
           <div class="blog-card-meta">
             <span class="blog-card-date">8 января 2026</span>
@@ -925,12 +928,12 @@ footer{border-top:1px solid #ccc}
         </div>
         <div class="blog-card-toggle">
           <span>Читать статью</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="blog-article">
           <div class="blog-article-inner">
 
-            <h2>Instagram Direct -- золотая жила, которую бизнес не обрабатывает</h2>
+            <h3>Instagram Direct -- золотая жила, которую бизнес не обрабатывает</h3>
 
             <p>В Казахстане Instagram остаётся одной из главных площадок для бизнеса. Салоны красоты, стоматологии, фитнес-клубы, школы -- все получают заявки через <strong>Instagram Direct</strong>. Но вот проблема: большинство теряют до 70% этих заявок из-за медленных ответов.</p>
 
@@ -962,7 +965,7 @@ footer{border-top:1px solid #ccc}
 
             <p>ИИ-бот подключается к Instagram через официальный API и берёт на себя всю первичную коммуникацию:</p>
 
-            <p><strong>Шаг 1:</strong> Клиент пишет в Direct или реагирует на сторис. Бот отвечает за 5-10 секунд.</p>
+            <p><strong>Шаг 1:</strong> Клиент пишет в Direct или реагирует на сторис. Бот отвечает за 15-40 секунд.</p>
 
             <p><strong>Шаг 2:</strong> Бот отвечает на вопрос (цена, расписание, адрес), задаёт уточняющие вопросы и предлагает записаться.</p>
 
@@ -994,7 +997,7 @@ footer{border-top:1px solid #ccc}
       </article>
 
       <!-- Article 7 -->
-      <article class="blog-card" id="article-7">
+      <article class="blog-card" id="article-7" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()">
         <div class="blog-card-header">
           <div class="blog-card-meta">
             <span class="blog-card-date">28 декабря 2025</span>
@@ -1011,12 +1014,12 @@ footer{border-top:1px solid #ccc}
         </div>
         <div class="blog-card-toggle">
           <span>Читать статью</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="blog-article">
           <div class="blog-article-inner">
 
-            <h2>Формула окупаемости: считаем ROI ИИ-бота</h2>
+            <h3>Формула окупаемости: считаем ROI ИИ-бота</h3>
 
             <p>Главный вопрос, который задаёт каждый предприниматель перед внедрением: "А оно окупится?" Ответ -- да, и обычно быстрее, чем вы думаете. Давайте посчитаем <strong>ROI ИИ-бота</strong> на конкретных цифрах.</p>
 
@@ -1113,7 +1116,7 @@ footer{border-top:1px solid #ccc}
                 <tr>
                   <td>Скорость ответа</td>
                   <td class="val-bad">5-120 минут</td>
-                  <td class="val-good">5-10 секунд</td>
+                  <td class="val-good">15-40 секунд</td>
                 </tr>
                 <tr>
                   <td>Одновременных диалогов</td>
@@ -1144,7 +1147,7 @@ footer{border-top:1px solid #ccc}
       </article>
 
       <!-- Article 8 -->
-      <article class="blog-card" id="article-8">
+      <article class="blog-card" id="article-8" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()">
         <div class="blog-card-header">
           <div class="blog-card-meta">
             <span class="blog-card-date">15 декабря 2025</span>
@@ -1161,12 +1164,12 @@ footer{border-top:1px solid #ccc}
         </div>
         <div class="blog-card-toggle">
           <span>Читать статью</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="blog-article">
           <div class="blog-article-inner">
 
-            <h2>Топ-5 ниш для ИИ-автоматизации в Казахстане</h2>
+            <h3>Топ-5 ниш для ИИ-автоматизации в Казахстане</h3>
 
             <p>ИИ-боты работают в любой нише, но есть пять направлений, где результат приходит быстрее всего. Мы собрали данные из собственных проектов и рынка, чтобы показать: где <strong>ИИ-бот в Казахстане</strong> окупается за считанные дни.</p>
 
@@ -1182,7 +1185,7 @@ footer{border-top:1px solid #ccc}
                 <div class="stat-label">рост конверсии на пробники</div>
               </div>
               <div class="stat-item">
-                <div class="stat-value">15 сек</div>
+                <div class="stat-value">15-40 сек</div>
                 <div class="stat-label">среднее время ответа</div>
               </div>
             </div>
@@ -1257,7 +1260,7 @@ footer{border-top:1px solid #ccc}
     <p class="cta-desc">Запишитесь на бесплатную консультацию. Разберём ваш бизнес и покажем, как автоматизация увеличит продажи.</p>
     <a href="https://wa.me/77052051992?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A7%D0%B8%D1%82%D0%B0%D0%BB%20%D0%B1%D0%BB%D0%BE%D0%B3%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%98%D0%98-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82%D0%B0" class="btn-primary">
       Написать в WhatsApp
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 </section>
@@ -1372,7 +1375,7 @@ window.addEventListener('load', () => {
 
 <!-- Back to top -->
 <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">
-  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
 <script>
@@ -1469,7 +1472,7 @@ document.addEventListener('click',function(e){
       if(!card.classList.contains('active'))return;
       var inner=card.querySelector('.blog-article-inner');
       if(!inner||inner.querySelector('.article-toc'))return;
-      var headings=inner.querySelectorAll('h2,h3');
+      var headings=inner.querySelectorAll('h3');
       if(headings.length<3)return;
       var toc=document.createElement('nav');
       toc.className='article-toc';
@@ -1484,7 +1487,7 @@ document.addEventListener('click',function(e){
         var id='toc-'+card.id+'-'+i;
         h.id=id;
         var li=document.createElement('li');
-        if(h.tagName==='H3')li.className='toc-h3';
+        /* all article headings are h3 now */
         var a=document.createElement('a');
         a.href='#'+id;
         a.textContent=h.textContent;
@@ -1496,7 +1499,7 @@ document.addEventListener('click',function(e){
         list.appendChild(li);
       });
       toc.appendChild(list);
-      var firstEl=inner.querySelector('h2,h3,p');
+      var firstEl=inner.querySelector('h3,p');
       if(firstEl)inner.insertBefore(toc,firstEl);
       else inner.prepend(toc);
     });

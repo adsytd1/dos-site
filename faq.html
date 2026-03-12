@@ -13,6 +13,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FAQ — DOS AI Automation">
 <meta name="twitter:description" content="Ответы на частые вопросы об ИИ-ассистентах и автоматизации бизнеса в Казахстане.">
+<meta name="twitter:image" content="https://dos.kz/og-image.png">
+<meta name="author" content="Yernar Dosmagambetov">
+<meta property="og:locale" content="ru_RU">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="alternate" hreflang="ru" href="https://dos.kz/faq.html">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,7 +52,7 @@
       "name": "Работает ли бот ночью и в выходные?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Да, 24 часа в сутки, 7 дней в неделю, 365 дней в году. До 35% обращений приходит в нерабочее время. ИИ-бот отвечает за 10-40 секунд в любое время суток, что значительно повышает конверсию."
+        "text": "Да, 24 часа в сутки, 7 дней в неделю, 365 дней в году. До 35% обращений приходит в нерабочее время. ИИ-бот отвечает за 15-40 секунд в любое время суток, что значительно повышает конверсию."
       }
     },
     {
@@ -71,7 +76,7 @@
       "name": "Сколько клиентов бот может обрабатывать одновременно?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Практически неограниченное количество. ИИ-ассистент обрабатывает сотни параллельных разговоров без потери качества. Время ответа остаётся стабильным — 10-40 секунд — даже при пиковых нагрузках."
+        "text": "Практически неограниченное количество. ИИ-ассистент обрабатывает сотни параллельных разговоров без потери качества. Время ответа остаётся стабильным — 15-40 секунд — даже при пиковых нагрузках."
       }
     },
     {
@@ -95,7 +100,7 @@
       "name": "Сколько стоит создание бота?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Стоимость зависит от сложности. Три пакета: Старт — от $200 (один мессенджер, базовый сценарий), Бизнес — от $500 (2 мессенджера, CRM-интеграция, аналитика), Система — от $1 000 (полная экосистема с Kaspi Pay и дашбордами). Первая консультация — бесплатно."
+        "text": "Стоимость зависит от сложности. Три пакета: Быстрый старт — от $200 (один мессенджер, базовый сценарий), Под ключ — от $500 (2 мессенджера, CRM-интеграция, аналитика), Система — от $1 000 (полная экосистема с Kaspi Pay и дашбордами). Первая консультация — бесплатно."
       }
     },
     {
@@ -103,7 +108,7 @@
       "name": "Как долго длится разработка?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Сроки зависят от пакета: Старт — 5-7 рабочих дней, Бизнес — 10-14 рабочих дней, Система — 14-21 рабочий день. Мы работаем по чёткому процессу с договором и ТЗ, включая брифинг, разработку, тестирование и запуск."
+        "text": "Сроки зависят от пакета: Быстрый старт — 5-7 рабочих дней, Под ключ — 10-14 рабочих дней, Система — 14-21 рабочий день. Мы работаем по чёткому процессу с договором и ТЗ, включая брифинг, разработку, тестирование и запуск."
       }
     },
     {
@@ -111,7 +116,7 @@
       "name": "Есть ли тестовый период?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Да. После запуска вы получаете период поддержки: Старт — 14 дней, Бизнес — 30 дней, Система — 60 дней приоритетной поддержки. В этот период мы мониторим диалоги, дорабатываем сценарии и оптимизируем ответы. Также доступна бесплатная консультация перед началом работы."
+        "text": "Да. После запуска вы получаете период поддержки: Быстрый старт — 14 дней, Под ключ — 30 дней, Система — 60 дней приоритетной поддержки. В этот период мы мониторим диалоги, дорабатываем сценарии и оптимизируем ответы. Также доступна бесплатная консультация перед началом работы."
       }
     },
     {
@@ -346,7 +351,7 @@ body{animation:pageIn .6s ease both}
     <!-- SEARCH -->
     <div class="faq-search-wrap">
       <input type="text" class="faq-search" id="faqSearch" placeholder="Поиск по вопросам..." autocomplete="off">
-      <svg class="faq-search-icon" viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <svg class="faq-search-icon" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </div>
   </div>
 </section>
@@ -376,10 +381,10 @@ body{animation:pageIn .6s ease both}
     <div class="faq-list">
 
       <div class="faq-item" data-q="Что такое ИИ-ассистент и как он работает">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">01</span>
           <span class="faq-q-text">Что такое ИИ-ассистент и как он работает?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -391,10 +396,10 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Чем ИИ-бот отличается от обычного чат-бота">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">02</span>
           <span class="faq-q-text">Чем ИИ-бот отличается от обычного чат-бота?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -414,10 +419,10 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="ИИ-бот может говорить на казахском">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">03</span>
           <span class="faq-q-text">ИИ-бот может говорить на казахском?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -429,16 +434,16 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Работает ли бот ночью и в выходные">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">04</span>
           <span class="faq-q-text">Работает ли бот ночью и в выходные?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
             <p><strong>Да, 24 часа в сутки, 7 дней в неделю, 365 дней в году.</strong> Без перерывов, больничных и отпусков.</p>
             <p>Это один из главных плюсов ИИ-ассистента. По нашей статистике, <strong>до 35% обращений приходит в нерабочее время</strong> &mdash; вечером, ночью, в праздники. Обычный менеджер на эти сообщения ответит только утром в понедельник, когда клиент уже ушёл к конкуренту.</p>
-            <p>ИИ-бот отвечает <strong>за 10-40 секунд</strong> в любое время суток. Клиент получает мгновенный ответ &mdash; и конверсия растёт.</p>
+            <p>ИИ-бот отвечает <strong>за 15-40 секунд</strong> в любое время суток. Клиент получает мгновенный ответ &mdash; и конверсия растёт.</p>
           </div>
         </div>
       </div>
@@ -456,10 +461,10 @@ body{animation:pageIn .6s ease both}
     <div class="faq-list">
 
       <div class="faq-item" data-q="Какие мессенджеры поддерживаются">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">05</span>
           <span class="faq-q-text">Какие мессенджеры поддерживаются?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -478,10 +483,10 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Можно ли подключить к моей CRM">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">06</span>
           <span class="faq-q-text">Можно ли подключить к моей CRM?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -500,25 +505,25 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Сколько клиентов бот может обрабатывать одновременно">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">07</span>
           <span class="faq-q-text">Сколько клиентов бот может обрабатывать одновременно?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
             <p><strong>Практически неограниченное количество.</strong> В отличие от живого менеджера, который может вести 3-5 диалогов, ИИ-ассистент обрабатывает <strong>сотни параллельных разговоров</strong> без потери качества.</p>
-            <p>Каждый клиент получает индивидуальное внимание. Бот помнит контекст каждого диалога и не путает клиентов между собой. Время ответа остаётся стабильным &mdash; <strong>10-40 секунд</strong> &mdash; даже при пиковых нагрузках.</p>
-            <p>Для примера: наш бот для <a href="case-amadey.html" style="color:var(--accent);text-decoration:underline">Amadey Music Studio</a> обработал <strong>1 500+ сделок</strong> за время работы, при этом среднее время ответа не превысило 30 секунд.</p>
+            <p>Каждый клиент получает индивидуальное внимание. Бот помнит контекст каждого диалога и не путает клиентов между собой. Время ответа остаётся стабильным &mdash; <strong>15-40 секунд</strong> &mdash; даже при пиковых нагрузках.</p>
+            <p>Для примера: наш бот для <a href="case-amadey.html" style="color:var(--accent);text-decoration:underline">Amadey Music Studio</a> обработал <strong>1 500+ сделок</strong> за время работы, при этом среднее время ответа не превысило 15-40 секунд.</p>
           </div>
         </div>
       </div>
 
       <div class="faq-item" data-q="Как бот передаёт заявки менеджерам">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">08</span>
           <span class="faq-q-text">Как бот передаёт заявки менеджерам?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -535,10 +540,10 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Можно ли интегрировать с Kaspi">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">09</span>
           <span class="faq-q-text">Можно ли интегрировать с Kaspi?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -562,17 +567,17 @@ body{animation:pageIn .6s ease both}
     <div class="faq-list">
 
       <div class="faq-item" data-q="Сколько стоит создание бота">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">10</span>
           <span class="faq-q-text">Сколько стоит создание бота?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
             <p>Стоимость зависит от сложности и количества интеграций. У нас три пакета:</p>
             <ul>
-              <li><strong>Старт &mdash; от $200</strong> &mdash; один мессенджер, базовый сценарий, Google Sheets. Идеально для теста</li>
-              <li><strong>Бизнес &mdash; от $500</strong> &mdash; 2 мессенджера, CRM-интеграция, дожимные воронки, аналитика. Самый популярный</li>
+              <li><strong>Быстрый старт &mdash; от $200</strong> &mdash; один мессенджер, базовый сценарий, Google Sheets. Идеально для теста</li>
+              <li><strong>Под ключ &mdash; от $500</strong> &mdash; 2 мессенджера, CRM-интеграция, дожимные воронки, аналитика. Самый популярный</li>
               <li><strong>Система &mdash; от $1 000</strong> &mdash; полная экосистема: мультиканальность, Kaspi Pay, база данных, дашборды</li>
             </ul>
             <p>Потолка нет &mdash; всё зависит от масштаба задачи. <strong>Первая консультация &mdash; бесплатно.</strong> Расскажите о вашем бизнесе, и я назову точную стоимость. <a href="index.html#pricing" style="color:var(--accent);text-decoration:underline">Смотрите актуальные цены</a></p>
@@ -581,17 +586,17 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Как долго длится разработка">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">11</span>
           <span class="faq-q-text">Как долго длится разработка?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
             <p>Сроки зависят от пакета:</p>
             <ul>
-              <li><strong>Старт:</strong> 5-7 рабочих дней</li>
-              <li><strong>Бизнес:</strong> 10-14 рабочих дней</li>
+              <li><strong>Быстрый старт:</strong> 5-7 рабочих дней</li>
+              <li><strong>Под ключ:</strong> 10-14 рабочих дней</li>
               <li><strong>Система:</strong> 14-21 рабочий день</li>
             </ul>
             <p>В процесс входит: брифинг и анализ бизнеса, подписание договора, разработка и промпт-инжиниринг, тестирование по десяткам сценариев и запуск в продакшн.</p>
@@ -601,17 +606,17 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Есть ли тестовый период">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">12</span>
           <span class="faq-q-text">Есть ли тестовый период?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
             <p><strong>Да.</strong> После запуска вы получаете период поддержки, в течение которого мы вместе тестируем бота на реальных клиентах и корректируем его работу:</p>
             <ul>
-              <li><strong>Старт:</strong> 14 дней поддержки</li>
-              <li><strong>Бизнес:</strong> 30 дней поддержки</li>
+              <li><strong>Быстрый старт:</strong> 14 дней поддержки</li>
+              <li><strong>Под ключ:</strong> 30 дней поддержки</li>
               <li><strong>Система:</strong> 60 дней приоритетной поддержки</li>
             </ul>
             <p>В этот период я лично мониторю все диалоги, дорабатываю сценарии и оптимизирую ответы. Вы видите результат ещё до окончания поддержки.</p>
@@ -621,10 +626,10 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Нужен ли мне программист для управления ботом">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">13</span>
           <span class="faq-q-text">Нужен ли мне программист для управления ботом?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -648,10 +653,10 @@ body{animation:pageIn .6s ease both}
     <div class="faq-list">
 
       <div class="faq-item" data-q="Мои данные в безопасности">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">14</span>
           <span class="faq-q-text">Мои данные в безопасности?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -669,10 +674,10 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Что если бот ответит неправильно">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">15</span>
           <span class="faq-q-text">Что если бот ответит неправильно?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -701,10 +706,10 @@ body{animation:pageIn .6s ease both}
     <div class="faq-list">
 
       <div class="faq-item" data-q="Что входит в поддержку">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">16</span>
           <span class="faq-q-text">Что входит в поддержку?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -722,10 +727,10 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Можно ли менять сценарии после запуска">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">17</span>
           <span class="faq-q-text">Можно ли менять сценарии после запуска?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
@@ -744,10 +749,10 @@ body{animation:pageIn .6s ease both}
       </div>
 
       <div class="faq-item" data-q="Как измерить эффективность бота">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <div class="faq-question" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
           <span class="faq-q-num">18</span>
           <span class="faq-q-text">Как измерить эффективность бота?</span>
-          <span class="faq-q-arrow"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span>
+          <span class="faq-q-arrow"><svg viewBox="0 0 12 12" aria-hidden="true"><polyline points="2,4 6,8 10,4"/></svg></span>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">

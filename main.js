@@ -9,9 +9,9 @@ document.querySelectorAll('a[href*="wa.me"]').forEach(a=>a.addEventListener('cli
 const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.reveal,.reveal-children').forEach(e=>ro.observe(e));
 // Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(l.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelector('.navbar').classList.remove('nav-open')}})});
+document.querySelectorAll('a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();var href=l.getAttribute('href');if(!href||href==='#')return;const t=document.querySelector(href);if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.setAttribute('tabindex','-1');t.focus({preventScroll:true});history.pushState(null,null,href);var nav=document.querySelector('.navbar');if(nav)nav.classList.remove('nav-open')}})});
 // Close mobile menu on outside click
-document.addEventListener('click',function(e){var nav=document.querySelector('.navbar');if(nav.classList.contains('nav-open')&&!e.target.closest('.navbar')){nav.classList.remove('nav-open')}});
+document.addEventListener('click',function(e){var nav=document.querySelector('.navbar');if(!nav)return;if(nav.classList.contains('nav-open')&&!e.target.closest('.navbar')){nav.classList.remove('nav-open')}});
 // Stat counter
 const so=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.querySelectorAll('.hero-stat-num').forEach(n=>{const txt=n.textContent,m=txt.match(/(\d+)/);if(m){const target=parseInt(m[1],10),sfx=txt.replace(m[1],'');let startTime=null;const duration=900;function step(ts){if(!startTime)startTime=ts;const progress=Math.min((ts-startTime)/duration,1);const eased=1-Math.pow(1-progress,3);n.textContent=Math.round(eased*target)+sfx;if(progress<1)requestAnimationFrame(step)}requestAnimationFrame(step)}});so.unobserve(t.target)}})},{threshold:.5});
 const hs=document.querySelector('.hero-stats');if(hs)so.observe(hs);
@@ -26,7 +26,7 @@ const track=document.getElementById('reviewsTrack'),dotsC=document.getElementByI
 if(!track)return;
 // On mobile split 4-card pages into 2-card pages
 var _lastWidth=window.innerWidth;
-window.addEventListener('resize',function(){var nowWidth=window.innerWidth;if((_lastWidth<=768&&nowWidth>768)||(_lastWidth>768&&nowWidth<=768)){location.reload()}_lastWidth=nowWidth});
+window.addEventListener('resize',function(){var nowWidth=window.innerWidth;if((_lastWidth<=768&&nowWidth>768)||(_lastWidth>768&&nowWidth<=768)){goTo(0);bD()}_lastWidth=nowWidth});
 if(window.innerWidth<=768){
   var origPages=track.querySelectorAll('.review-page');
   origPages.forEach(function(pg){
@@ -60,8 +60,9 @@ if(carousel){carousel.addEventListener('mouseenter',function(){stopAutoplay()});
 carousel.addEventListener('touchstart',function(){stopAutoplay()},{passive:true});}
 // Prev / Next buttons
 var prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn');
-if(prevBtn)prevBtn.onclick=()=>{userInteract();goTo(current-1)};
-if(nextBtn)nextBtn.onclick=()=>{userInteract();goTo(current+1)};
+function debounceNav(){prevBtn.disabled=true;nextBtn.disabled=true;setTimeout(function(){prevBtn.disabled=false;nextBtn.disabled=false},500)}
+if(prevBtn)prevBtn.onclick=()=>{userInteract();goTo(current-1);debounceNav()};
+if(nextBtn)nextBtn.onclick=()=>{userInteract();goTo(current+1);debounceNav()};
 // Touch swipe
 let sx=0;
 track.addEventListener('touchstart',e=>{sx=e.touches[0].pageX;track.style.transition='none'},{passive:true});
@@ -71,6 +72,14 @@ let md=false,mx=0;
 track.addEventListener('mousedown',e=>{e.preventDefault();md=true;mx=e.pageX;track.style.transition='none';track.style.userSelect='none';track.style.webkitUserSelect='none'});
 window.addEventListener('mouseup',()=>{if(md){md=false;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';track.style.userSelect='';track.style.webkitUserSelect=''}});
 track.addEventListener('mousemove',e=>{if(!md)return;const dx=e.pageX-mx;if(Math.abs(dx)>60){md=false;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';userInteract();goTo(dx>0?current-1:current+1)}});
+// Keyboard navigation for carousel
+document.addEventListener('keydown',function(e){
+  if(!carousel)return;
+  var rect=carousel.getBoundingClientRect();
+  if(rect.bottom<0||rect.top>window.innerHeight)return;
+  if(e.key==='ArrowLeft'){userInteract();goTo(current-1);debounceNav()}
+  else if(e.key==='ArrowRight'){userInteract();goTo(current+1);debounceNav()}
+});
 // --- Swipe hint (mobile) ---
 var hint=document.getElementById('swipeHint');
 if(hint){setTimeout(function(){hint.remove()},3200)}
@@ -84,7 +93,7 @@ const sR=document.getElementById('calcSales'),cR=document.getElementById('calcCh
 if(!sR)return;
 const sV=document.getElementById('calcSalesVal'),cV=document.getElementById('calcCheckVal'),cvV=document.getElementById('calcConvVal'),tV=document.getElementById('calcTimeVal');
 const oE=document.getElementById('calcOld'),nE=document.getElementById('calcNew'),dE=document.getElementById('calcDiff'),yE=document.getElementById('calcYear'),lE=document.getElementById('calcLost'),svE=document.getElementById('calcSaved');
-function fmt(n){return n.toLocaleString('ru-RU')}
+function fmt(n){if(isNaN(n))return '0';return n.toLocaleString('ru-RU')}
 function lossRate(h){if(h<=0)return 0.05;if(h<=0.5)return 0.2;if(h<=1)return 0.35;if(h<=2)return 0.5;if(h<=4)return 0.65;if(h<=8)return 0.75;return 0.9}
 function calc(){
 const leads=+sR.value,check=+cR.value,conv=+cvR.value,hrs=tR?+tR.value:2;
@@ -110,12 +119,7 @@ if(hl){if(yearlyVal>5000000){hl.style.display=''}else{hl.style.display='none'}}
 }
 var _calcTimer=null;function calcDebounced(){clearTimeout(_calcTimer);_calcTimer=setTimeout(calc,100)}
 sR.oninput=calcDebounced;cR.oninput=calcDebounced;cvR.oninput=calcDebounced;if(tR)tR.oninput=calcDebounced;calc();
-// Mini calculator sync
-var miniEl=document.getElementById('miniCalcLoss');
-if(miniEl){
-function miniCalc(){var l=+sR.value,c=+cR.value,cv=+cvR.value,h=+tR.value;var lost=Math.round(l*lossRate(h));var dailyLoss=Math.round(lost*c*cv/100/30);miniEl.textContent='~'+fmt(dailyLoss)+' ₸/день';if(miniEl.parentElement){var lastDiv=miniEl.parentElement.querySelector('div:last-of-type');if(lastDiv)lastDiv.textContent='при '+l+' заявок/мес и среднем чеке '+fmt(c)+' ₸'}}
-sR.addEventListener('input',miniCalc);cR.addEventListener('input',miniCalc);cvR.addEventListener('input',miniCalc);tR.addEventListener('input',miniCalc);miniCalc();
-}
+// (miniCalcLoss removed — element no longer exists)
 })();
 // Quiz
 let qStep=0;const qTotal=5;
@@ -135,7 +139,7 @@ var submitBtn=document.getElementById('quizNext');
 submitBtn.disabled=true;submitBtn.style.opacity='.6';submitBtn.style.pointerEvents='none';submitBtn.textContent='Отправляем...';
 const answers={};document.querySelectorAll('.quiz-step').forEach((s,i)=>{if(i<qTotal-1){const sel=s.querySelectorAll('.quiz-option.selected');answers['step'+(i+1)]=Array.from(sel).map(o=>o.textContent.trim()).join(', ')||'не выбрано'}});
 const data={name:nm,phone:ph,niche:ni,answers:answers,source:'dos-site-quiz',timestamp:new Date().toISOString()};
-fetch('https://adsytd.space/webhook/dos-quiz',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(){
+fetch('https://adsytd.space/webhook/dos-quiz',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(res){if(!res.ok)throw new Error('Server error');}).then(function(){
 gEvent('quiz_submit',{niche:ni,name:nm});
 window.location.href='thank-you.html?name='+encodeURIComponent(nm)+'&niche='+encodeURIComponent(ni||'');
 }).catch(function(){
@@ -144,7 +148,7 @@ var errP=document.getElementById('errPhone');if(errP){errP.textContent='Ошиб
 });
 return;
 }
-if(dir===1&&qStep<qTotal-1){const cur=document.querySelectorAll('.quiz-step')[qStep];if(!cur.querySelector('.quiz-option.selected')){cur.style.animation='shake .4s';setTimeout(()=>{cur.style.animation=''},400);var hint=cur.querySelector('.quiz-hint');if(!hint){hint=document.createElement('div');hint.className='quiz-hint';hint.style.cssText='color:#ff5252;font-size:13px;font-family:var(--mono);margin-top:12px;animation:fadeInUp .3s ease';hint.textContent='Выберите хотя бы один вариант';cur.querySelector('.quiz-options').after(hint);setTimeout(()=>{if(hint.parentNode)hint.remove()},3000)}return}}
+if(dir===1&&qStep<qTotal-1){const cur=document.querySelectorAll('.quiz-step')[qStep];if(!cur.querySelector('.quiz-option.selected')){cur.style.animation='shake .4s';setTimeout(()=>{cur.style.animation=''},400);var hint=cur.querySelector('.quiz-hint');if(!hint){hint=document.createElement('div');hint.className='quiz-hint';hint.style.cssText='color:#ff5252;font-size:13px;font-family:var(--mono);margin-top:12px;animation:fadeInUp .3s ease';hint.textContent='Выберите хотя бы один вариант';cur.querySelector('.quiz-options').after(hint);setTimeout(function(){if(hint.parentNode)hint.remove()},3000)}return}}
 const next=qStep+dir;
 if(next<0||next>=qTotal)return;
 if(next===qTotal-1&&dir===1){document.getElementById('quizNext').textContent='Отправить заявку \u2192'}
@@ -156,55 +160,21 @@ bars.forEach((b,i)=>b.classList.toggle('active',i<=qStep));
 document.getElementById('quizBack').style.display=qStep>0?'block':'none';
 var stepText=document.getElementById('quizStepText');if(stepText){var remaining=qTotal-(qStep+1);stepText.textContent='Шаг '+(qStep+1)+' из '+qTotal+(remaining>0?' — осталось '+remaining:'');}
 }
-// Demo Chat — Real AI via n8n webhook
-(function(){
-const toggle=document.getElementById('demoToggle'),win=document.getElementById('demoWindow'),closeBtn=document.getElementById('demoClose'),msgs=document.getElementById('demoMessages'),input=document.getElementById('demoInput'),typing=document.getElementById('demoTyping');
-if(!toggle||!win||!closeBtn||!msgs||!input||!typing)return;
-const CHAT_URL='https://adsytd.space/webhook/dos-chat';
-const sessionId='site-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
-let sending=false;
-var dtt=document.getElementById('demoTooltip');
-setTimeout(function(){if(dtt)dtt.style.display='none'},8000);
-toggle.addEventListener('click',()=>{if(dtt)dtt.style.display='none';win.classList.toggle('open');toggle.style.display=win.classList.contains('open')?'none':'flex';if(win.classList.contains('open')){gEvent('demo_chat_open');var ib=document.getElementById('heroBotMsgs');if(ib)ib.closest('.hero-bot').style.opacity='.3'}else{var ib=document.getElementById('heroBotMsgs');if(ib)ib.closest('.hero-bot').style.opacity='1'}});
-closeBtn.addEventListener('click',()=>{win.classList.remove('open');toggle.style.display='flex';var ib=document.getElementById('heroBotMsgs');if(ib)ib.closest('.hero-bot').style.opacity='1'});
-input.addEventListener('keydown',e=>{if(e.key==='Enter')demoSendInput()});
-function addMsg(text,cls){const d=document.createElement('div');d.className='demo-msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
-window.demoSend=async function(text){
-if(sending)return;
-sending=true;
-addMsg(text,'user');
-typing.classList.add('show');
-input.disabled=true;
-try{
-var ac=new AbortController();var tid=setTimeout(function(){ac.abort()},15000);
-const res=await fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:sessionId}),signal:ac.signal});
-clearTimeout(tid);
-const data=await res.json();
-typing.classList.remove('show');
-addMsg(data.output||data.text||data.message||data.reply||'Произошла ошибка. Напишите нам в WhatsApp: +7 705 205 1992','bot');
-}catch(e){
-typing.classList.remove('show');
-addMsg('Не удалось связаться с сервером. Напишите в WhatsApp: +7 705 205 1992','bot');
-}
-input.disabled=false;
-input.focus();
-sending=false;
-};
-window.demoSendInput=function(){const v=input.value.trim();if(!v)return;demoSend(v);input.value=''};
-})();
+// (Floating demo chat removed — HTML elements no longer exist)
 
 (function(){
 let shown=false;
 function showExit(){
   if(shown)return;
-  if(sessionStorage.getItem('exitShown'))return;
+  try{if(sessionStorage.getItem('exitShown'))return}catch(e){}
   shown=true;
-  sessionStorage.setItem('exitShown','1');
+  try{sessionStorage.setItem('exitShown','1')}catch(e){}
   var ep=document.getElementById('exitPopup');
-  if(ep)ep.classList.add('show');
+  if(ep){ep.classList.add('show');var firstBtn=ep.querySelector('button,a,[tabindex]');if(firstBtn)firstBtn.focus()}
   if(typeof gEvent==='function')gEvent('exit_popup_shown');
 }
 window.closeExit=function(){var ep=document.getElementById('exitPopup');if(ep)ep.classList.remove('show')};
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){var ep=document.getElementById('exitPopup');if(ep&&ep.classList.contains('show'))closeExit()}});
 document.addEventListener('mouseout',function(e){
   if(!e.relatedTarget&&e.clientY<0)showExit();
 });
@@ -283,6 +253,7 @@ var el=document.getElementById('painCounter'),count=0;
 if(!el)return;
 var painInterval=null,painStarted=false;
 function tick(){
+if(count>=50)return;
 count++;el.textContent=count;
 el.classList.add('bump');setTimeout(function(){el.classList.remove('bump')},300);
 }
@@ -312,7 +283,7 @@ var script=[
   {type:'user',text:'В WhatsApp работает?',delay:5000},
   {type:'bot',html:'Да! &#128242; Подключаем:<br><br>&#8226; <b>WhatsApp</b><br>&#8226; <b>Telegram</b><br>&#8226; <b>Instagram</b><br>&#8226; CRM и Google Sheets<br><br>Все каналы <b>одновременно</b>.',delay:3500},
   {type:'user',text:'Какие результаты у других?',delay:5000},
-  {type:'bot',html:'&#128200; <b>Amadey Music</b> — 1 500+ сделок, ~130 продаж ИИ без менеджера<br><b>Personal Lawyer</b> — 3 807 лидов, конверсия 49.6%<br><b>KazGeoTech</b> — 500+ заявок, 85% без менеджера',delay:3500},
+  {type:'bot',html:'&#128200; <b>Amadey Music</b> — 1 500+ сделок, 150+ продаж ИИ без менеджера<br><b>Personal Lawyer</b> — 3 807 лидов, конверсия 49.6%<br><b>KazGeoTech</b> — 500+ заявок, 85% без менеджера',delay:3500},
   {type:'bot',html:'Это реальные цифры наших клиентов &#128170;',delay:1800},
   {type:'user',text:'Как начать?',delay:5000},
   {type:'bot',html:'Напишите в <b>WhatsApp</b> — обсудим задачу за 15 минут и подберём решение.<br><br>&#128073; wa.me/77052051992',delay:3500},
@@ -321,6 +292,7 @@ var script=[
 var typing=null;
 var step=0;
 var running=true;
+var heroTimeout=null;
 
 function showTyping(){
   typing=document.createElement('div');
@@ -354,7 +326,7 @@ function playStep(){
   if(!running)return;
   if(step>=script.length){
     step=0;
-    setTimeout(function(){
+    heroTimeout=setTimeout(function(){
       box.innerHTML='';
       playStep();
     },2000);
@@ -364,31 +336,32 @@ function playStep(){
   if(item.type==='bot'){
     showTyping();
     var typingTime=800+Math.min(item.html?item.html.length:40,200)*5+Math.random()*600;
-    setTimeout(function(){
+    heroTimeout=setTimeout(function(){
       addMsg(item);
       step++;
-      setTimeout(playStep,item.delay);
+      heroTimeout=setTimeout(playStep,item.delay);
     },typingTime);
   }else if(item.type==='voice'){
     addMsg(item);
     step++;
-    setTimeout(playStep,item.delay);
+    heroTimeout=setTimeout(playStep,item.delay);
   }else if(item.type==='user'){
     addMsg(item);
     step++;
-    setTimeout(playStep,item.delay);
+    heroTimeout=setTimeout(playStep,item.delay);
   }else{
     addMsg(item);
     step++;
-    setTimeout(playStep,item.delay);
+    heroTimeout=setTimeout(playStep,item.delay);
   }
 }
 // Start after page loads with a small delay
-setTimeout(playStep,1200);
+heroTimeout=setTimeout(playStep,1200);
 
 // Pause when not visible
 var observer=new IntersectionObserver(function(entries){
   running=entries[0].isIntersecting;
+  if(!running)clearTimeout(heroTimeout);
 },{threshold:0.1});
 observer.observe(box.parentElement);
 })();
@@ -406,11 +379,11 @@ var tp=document.getElementById('trustProgress'),tf=document.getElementById('trus
 if(!tp||!tf||!tt)return;
 var heroH=document.querySelector('.hero');
 var shown=false;
-var messages=['Изучено ','На этом этапе клиенты уже пишут в WhatsApp','Вы почти дочитали — осталось чуть-чуть'];
 onScroll(function(){
   var scrollTop=window.pageYOffset||document.documentElement.scrollTop;
-  var docHeight=document.documentElement.scrollHeight-window.innerHeight;
-  var pct=Math.min(Math.round(scrollTop/docHeight*100),100);
+  var denom=document.documentElement.scrollHeight-window.innerHeight;
+  if(denom<=0)return;
+  var pct=Math.min(Math.round(scrollTop/denom*100),100);
   if(scrollTop>600&&pct<95){
     tp.classList.add('visible');shown=true;
   }else{
@@ -467,9 +440,11 @@ function hideMapTip(){var t=document.getElementById('mapTooltip');if(t)t.classLi
 var inlineDemoSid='site-'+Date.now()+'-'+Math.random().toString(36).substring(2,8);
 var inlineDemoUserCount=0;
 function sendInlineDemo(){
+  if(window._inlineSending)return;
   var input=document.getElementById('inlineDemoInput'),msgs=document.getElementById('inlineDemoMsgs');
   if(!input||!msgs)return;
   var text=input.value.trim();if(!text)return;
+  window._inlineSending=true;
   input.value='';
   inlineDemoUserCount++;
   // user msg
@@ -485,7 +460,7 @@ function sendInlineDemo(){
   // AI response
   var controller=new AbortController();var timeoutId=setTimeout(function(){controller.abort()},15000);
   fetch('https://adsytd.space/webhook/dos-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:inlineDemoSid}),signal:controller.signal})
-  .then(function(r){return r.json()})
+  .then(function(r){if(!r.ok)throw new Error('Server error');return r.json()})
   .then(function(d){
     clearTimeout(timeoutId);
     tp.remove();
@@ -493,6 +468,7 @@ function sendInlineDemo(){
     bm.style.cssText='font-size:13px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px 12px 12px 4px;align-self:flex-start;max-width:80%';
     bm.textContent=d.output||d.text||d.message||d.reply||'Напишите в WhatsApp — обсудим подробнее!';
     msgs.appendChild(bm);msgs.scrollTop=msgs.scrollHeight;
+    window._inlineSending=false;
     if(inlineDemoUserCount===3){
       setTimeout(function(){
         var cm=document.createElement('div');
@@ -503,13 +479,14 @@ function sendInlineDemo(){
     }
   }).catch(function(){
     tp.remove();
+    window._inlineSending=false;
     var em=document.createElement('div');
     em.style.cssText='font-size:13px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px 12px 12px 4px;align-self:flex-start;max-width:80%';
     em.textContent='Интересная задача! Я могу помочь автоматизировать общение с клиентами в вашей нише. Напишите мне в WhatsApp — разберём ваш случай за 15 минут.';
     msgs.appendChild(em);msgs.scrollTop=msgs.scrollHeight;
   });
 }
-var inlineDemoInputEl=document.getElementById('inlineDemoInput');if(inlineDemoInputEl)inlineDemoInputEl.addEventListener('keydown',function(e){if(e.key==='Enter')sendInlineDemo()});
+var inlineDemoInputEl=document.getElementById('inlineDemoInput');if(inlineDemoInputEl)inlineDemoInputEl.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();sendInlineDemo()}});
 
 (function(){
   var sideNav=document.getElementById('sideNav');
@@ -572,19 +549,26 @@ el.parentNode.replaceChild(iframe,el);
   if(!lb)return;
   var lbImg=lb.querySelector('img');
   var lbClose=lb.querySelector('.lightbox-close');
+  var origOverflow='';
   document.querySelectorAll('.review-media img').forEach(function(img){
     img.addEventListener('click',function(){
       var src=img.currentSrc||img.src;
       lbImg.src=src;
       lbImg.alt=img.alt;
       lb.classList.add('active');
+      origOverflow=document.body.style.overflow;
       document.body.style.overflow='hidden';
+      lbClose.focus();
     });
   });
-  function close(){lb.classList.remove('active');document.body.style.overflow=''}
+  function close(){lb.classList.remove('active');document.body.style.overflow=origOverflow}
   lbClose.addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('active'))close()});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key==='Escape'){close();return}
+    if(e.key==='Tab'){e.preventDefault();lbClose.focus()}
+  });
 })();
 
 (function(){
