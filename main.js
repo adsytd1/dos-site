@@ -77,8 +77,9 @@ document.addEventListener('keydown',function(e){
   if(!carousel)return;
   var rect=carousel.getBoundingClientRect();
   if(rect.bottom<0||rect.top>window.innerHeight)return;
-  if(e.key==='ArrowLeft'){userInteract();goTo(current-1);debounceNav()}
-  else if(e.key==='ArrowRight'){userInteract();goTo(current+1);debounceNav()}
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='ArrowLeft'){userInteract();goTo(current-1);if(prevBtn&&nextBtn)debounceNav()}
+  else if(e.key==='ArrowRight'){userInteract();goTo(current+1);if(prevBtn&&nextBtn)debounceNav()}
 });
 // --- Swipe hint (mobile) ---
 var hint=document.getElementById('swipeHint');
@@ -111,7 +112,7 @@ oE.innerHTML=fmt(rev)+' &#8376;';nE.innerHTML=fmt(newRev)+' &#8376;';
 dE.innerHTML='+'+fmt(diff)+' &#8376;';
 if(lE)lE.textContent=lost+' заявок/мес';
 if(svE)svE.textContent='+'+saved+' заявок/мес';
-const totalExtra=diff+Math.round(saved*check*newConv/100);
+const totalExtra=diff+(svE?Math.round(saved*check*newConv/100):0);
 var yearlyVal=totalExtra*12;
 yE.innerHTML='+'+fmt(yearlyVal)+' &#8376;/год';
 var hl=document.getElementById('calcHighlight');

@@ -1,17 +1,18 @@
-/*  DOS.KZ — Service Worker v1
+/*  DOS.KZ — Service Worker v2
     Cache-first for static assets, network-first for HTML.          */
 
-var CACHE = 'dos-v1';
+var CACHE = 'dos-v2';
 
 var SHELL = [
   '/',
   '/index.html',
-  '/styles.css',
+  '/styles.min.css',
   '/og-image.png',
   '/avatar.jpg',
   '/avatar.webp',
   '/kz-outline.svg',
-  '/case-styles.css'
+  '/case-styles.css',
+  '/main.js'
 ];
 
 /* ---------- Install: pre-cache the shell ---------- */
