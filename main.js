@@ -224,6 +224,8 @@ setTimeout(function(){if(scrollDepth>60&&!shown)showExit()},45000);
 
 // Back to top visibility
 onScroll(function(){var btt=document.getElementById('btt');if(btt)btt.classList.toggle('visible',window.scrollY>600)});
+// Auto-hide navbar on mobile scroll
+(function(){var nav=document.querySelector('.navbar');if(!nav)return;var lastY=0;onScroll(function(){if(window.innerWidth>768)return;var y=window.scrollY;if(y>300&&y>lastY+5){nav.classList.add('navbar--hidden')}else if(y<lastY-5){nav.classList.remove('navbar--hidden')}lastY=y})})();
 // Counter animation for aggregate numbers
 (function(){
   var animated=false;
