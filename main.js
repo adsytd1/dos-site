@@ -170,8 +170,9 @@ const sessionId='site-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
 let sending=false;
 var dtt=document.getElementById('demoTooltip');
 setTimeout(function(){if(dtt)dtt.style.display='none'},8000);
-toggle.addEventListener('click',function(){if(dtt)dtt.style.display='none';win.classList.toggle('open');toggle.style.display=win.classList.contains('open')?'none':'flex';if(typeof gEvent==='function')gEvent('demo_chat_open')});
-closeBtn.addEventListener('click',function(){win.classList.remove('open');toggle.style.display='flex'});
+function hideFloating(hide){var ids=['floatingWa','floatingCall','btt'];ids.forEach(function(id){var el=document.getElementById(id);if(el)el.style.display=hide?'none':''})}
+toggle.addEventListener('click',function(){if(dtt)dtt.style.display='none';win.classList.toggle('open');var isOpen=win.classList.contains('open');toggle.style.display=isOpen?'none':'flex';hideFloating(isOpen);if(typeof gEvent==='function')gEvent('demo_chat_open')});
+closeBtn.addEventListener('click',function(){win.classList.remove('open');toggle.style.display='flex';hideFloating(false)});
 input.addEventListener('keydown',function(e){if(e.key==='Enter')demoSendInput()});
 function addMsg(text,cls){var d=document.createElement('div');d.className='demo-msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
 window.demoSend=function(text){
