@@ -41,7 +41,7 @@ if(window.innerWidth<=768){
 }
 const pages=track.querySelectorAll('.review-page');
 let current=0,total=pages.length;
-function bD(){dotsC.innerHTML='';for(let i=0;i<total;i++){const d=document.createElement('div');d.className='carousel-dot'+(i===current?' active':'');d.onclick=()=>{userInteract();goTo(i)};dotsC.appendChild(d)}updatePageIndicator()}
+function bD(){if(!dotsC)return;dotsC.innerHTML='';for(let i=0;i<total;i++){const d=document.createElement('div');d.className='carousel-dot'+(i===current?' active':'');d.onclick=()=>{userInteract();goTo(i)};dotsC.appendChild(d)}updatePageIndicator()}
 var pageIndicator=document.createElement('div');pageIndicator.className='carousel-page-indicator';if(dotsC&&dotsC.parentNode)dotsC.parentNode.insertBefore(pageIndicator,dotsC.nextSibling);
 function updatePageIndicator(){pageIndicator.textContent=(current+1)+'/'+total}
 function goTo(i){track.querySelectorAll('video').forEach(v=>v.pause());current=Math.max(0,Math.min(i,total-1));track.style.transform='translateX(-'+(current*100)+'%)';document.querySelectorAll('.carousel-dot').forEach((d,idx)=>d.className='carousel-dot'+(idx===current?' active':''));updatePageIndicator()}
@@ -57,8 +57,9 @@ var carousel=track.closest('.reviews-carousel');
 if(carousel){carousel.addEventListener('mouseenter',function(){stopAutoplay()});
 carousel.addEventListener('touchstart',function(){stopAutoplay()},{passive:true});}
 // Prev / Next buttons
-document.getElementById('prevBtn').onclick=()=>{userInteract();goTo(current-1)};
-document.getElementById('nextBtn').onclick=()=>{userInteract();goTo(current+1)};
+var prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn');
+if(prevBtn)prevBtn.onclick=()=>{userInteract();goTo(current-1)};
+if(nextBtn)nextBtn.onclick=()=>{userInteract();goTo(current+1)};
 // Touch swipe
 let sx=0;
 track.addEventListener('touchstart',e=>{sx=e.touches[0].pageX;track.style.transition='none'},{passive:true});
@@ -84,8 +85,9 @@ const oE=document.getElementById('calcOld'),nE=document.getElementById('calcNew'
 function fmt(n){return n.toLocaleString('ru-RU')}
 function lossRate(h){if(h<=0)return 0.05;if(h<=0.5)return 0.2;if(h<=1)return 0.35;if(h<=2)return 0.5;if(h<=4)return 0.65;if(h<=8)return 0.75;return 0.9}
 function calc(){
-const leads=+sR.value,check=+cR.value,conv=+cvR.value,hrs=+tR.value;
-sV.textContent=leads;cV.textContent=fmt(check);cvV.textContent=conv+'%';tV.textContent=hrs>0?hrs+' ч':'< 5 мин';
+const leads=+sR.value,check=+cR.value,conv=+cvR.value,hrs=tR?+tR.value:2;
+sV.textContent=leads;cV.textContent=fmt(check);cvV.textContent=conv+'%';
+if(tV)tV.textContent=hrs>0?hrs+' ч':'< 5 мин';
 const curSales=Math.round(leads*conv/100);
 const rev=curSales*check;
 const newConv=Math.min(conv*1.3,100);
@@ -96,15 +98,15 @@ const lost=Math.round(leads*lossRate(hrs));
 const saved=Math.round(lost*0.95);
 oE.innerHTML=fmt(rev)+' &#8376;';nE.innerHTML=fmt(newRev)+' &#8376;';
 dE.innerHTML='+'+fmt(diff)+' &#8376;';
-lE.textContent=lost+' заявок/мес';
-svE.textContent='+'+saved+' заявок/мес';
+if(lE)lE.textContent=lost+' заявок/мес';
+if(svE)svE.textContent='+'+saved+' заявок/мес';
 const totalExtra=diff+Math.round(saved*check*newConv/100);
 var yearlyVal=totalExtra*12;
 yE.innerHTML='+'+fmt(yearlyVal)+' &#8376;/год';
 var hl=document.getElementById('calcHighlight');
 if(hl){if(yearlyVal>5000000){hl.style.display=''}else{hl.style.display='none'}}
 }
-sR.oninput=calc;cR.oninput=calc;cvR.oninput=calc;tR.oninput=calc;calc();
+sR.oninput=calc;cR.oninput=calc;cvR.oninput=calc;if(tR)tR.oninput=calc;calc();
 // Mini calculator sync
 var miniEl=document.getElementById('miniCalcLoss');
 if(miniEl){
@@ -168,10 +170,12 @@ addMsg(text,'user');
 typing.classList.add('show');
 input.disabled=true;
 try{
-const res=await fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:sessionId})});
+var ac=new AbortController();var tid=setTimeout(function(){ac.abort()},15000);
+const res=await fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:sessionId}),signal:ac.signal});
+clearTimeout(tid);
 const data=await res.json();
 typing.classList.remove('show');
-addMsg(data.reply||'Произошла ошибка. Напишите нам в WhatsApp: +7 705 205 1992','bot');
+addMsg(data.output||data.text||data.message||data.reply||'Произошла ошибка. Напишите нам в WhatsApp: +7 705 205 1992','bot');
 }catch(e){
 typing.classList.remove('show');
 addMsg('Не удалось связаться с сервером. Напишите в WhatsApp: +7 705 205 1992','bot');
@@ -267,7 +271,7 @@ function tick(){
 count++;el.textContent=count;
 el.classList.add('bump');setTimeout(function(){el.classList.remove('bump')},300);
 }
-setTimeout(function(){tick();setInterval(tick,3000+Math.random()*2000)},2000);
+setTimeout(function(){tick();setInterval(tick,4000)},2000);
 })();
 
 // Hero Bot — scripted dialog
@@ -450,13 +454,15 @@ function sendInlineDemo(){
   tp.innerHTML='<span style="animation:pulse 1.2s infinite">&#9679; &#9679; &#9679;</span>';
   msgs.appendChild(tp);msgs.scrollTop=msgs.scrollHeight;
   // AI response
-  fetch('https://adsytd.space/webhook/dos-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:inlineDemoSid})})
+  var controller=new AbortController();var timeoutId=setTimeout(function(){controller.abort()},15000);
+  fetch('https://adsytd.space/webhook/dos-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:inlineDemoSid}),signal:controller.signal})
   .then(function(r){return r.json()})
   .then(function(d){
+    clearTimeout(timeoutId);
     tp.remove();
     var bm=document.createElement('div');
     bm.style.cssText='font-size:13px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px 12px 12px 4px;align-self:flex-start;max-width:80%';
-    bm.textContent=d.output||d.text||d.message||'Напишите в WhatsApp — обсудим подробнее!';
+    bm.textContent=d.output||d.text||d.message||d.reply||'Напишите в WhatsApp — обсудим подробнее!';
     msgs.appendChild(bm);msgs.scrollTop=msgs.scrollHeight;
     if(inlineDemoUserCount===3){
       setTimeout(function(){
@@ -470,7 +476,7 @@ function sendInlineDemo(){
     tp.remove();
     var em=document.createElement('div');
     em.style.cssText='font-size:13px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px 12px 12px 4px;align-self:flex-start;max-width:80%';
-    em.textContent='Напишите в WhatsApp — обсудим вашу задачу подробнее!';
+    em.textContent='Интересная задача! Я могу помочь автоматизировать общение с клиентами в вашей нише. Напишите мне в WhatsApp — разберём ваш случай за 15 минут.';
     msgs.appendChild(em);msgs.scrollTop=msgs.scrollHeight;
   });
 }
