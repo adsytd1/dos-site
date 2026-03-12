@@ -404,7 +404,7 @@
     </div>
 
     <div class="section-cta reveal" style="margin-top:32px">
-      <a href="#demo" class="btn-ghost">Больше примеров диалогов &#8594;</a>
+      <a href="dialogs.html" class="btn-ghost">Больше примеров диалогов &#8594;</a>
     </div>
 
   </div>
@@ -1178,7 +1178,7 @@
     <p class="pricing-note reveal" style="margin-top:20px">Мелкие решения — от $200. Базовые шаблонные решения — от $500. Полные системы с CRM и аналитикой — индивидуально. Потолка нет. Первая консультация — бесплатно.</p>
     <div class="guarantee-badges reveal">
       <div class="guarantee-badge"><svg viewBox="0 0 20 20" fill="none" width="20" height="20"><path d="M10 2L3 5v5c0 4.4 3 8.5 7 10 4-1.5 7-5.6 7-10V5l-7-3z" stroke="#00e676" stroke-width="1.3"/><path d="M7 10l2 2 4-4" stroke="#00e676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Работаем по договору. NDA по запросу</div>
-      <div class="guarantee-badge"><svg viewBox="0 0 20 20" fill="none" width="20" height="20"><circle cx="10" cy="10" r="7" stroke="#00e676" stroke-width="1.3"/><path d="M10 6v4l3 2" stroke="#00e676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Бесплатная поддержка 30 дней после запуска</div>
+      <div class="guarantee-badge"><svg viewBox="0 0 20 20" fill="none" width="20" height="20"><circle cx="10" cy="10" r="7" stroke="#00e676" stroke-width="1.3"/><path d="M10 6v4l3 2" stroke="#00e676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Бесплатная поддержка 14 дней после запуска</div>
       <div class="guarantee-badge"><svg viewBox="0 0 20 20" fill="none" width="20" height="20"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3-4.9-2.6L5.1 17l.9-5.3-4-3.9 5.5-.8L10 2z" stroke="#00e676" stroke-width="1.3" stroke-linejoin="round"/></svg>20+ проектов, 0 недовольных клиентов</div>
     </div>
 
@@ -1553,8 +1553,37 @@
 <a href="tel:+77052051992" class="floating-phone" aria-label="Позвонить"><span aria-hidden="true">&#128222;</span></a>
 <a href="tel:+77052051992" id="floatingCall" class="floating-call" aria-label="Позвонить"><svg width="24" height="24" viewBox="0 0 24 24" fill="#000" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
 
-
-
+<!-- DEMO CHAT -->
+<button class="demo-toggle" id="demoToggle" aria-label="Попробовать ИИ-бота">
+  &#129302;
+  <span class="demo-badge">demo</span>
+  <span class="demo-tooltip" id="demoTooltip">Попробуйте ИИ-бота</span>
+</button>
+<div class="demo-window" id="demoWindow">
+  <div class="demo-header">
+    <div class="demo-header-left">
+      <div class="demo-avatar">D</div>
+      <div class="demo-header-info">
+        <h4>DOS-бот</h4>
+        <span>&#9679; онлайн</span>
+      </div>
+    </div>
+    <button class="demo-close" id="demoClose" aria-label="Закрыть чат">&times;</button>
+  </div>
+  <div class="demo-messages" id="demoMessages">
+    <div class="demo-msg bot">Привет! Я ИИ-ассистент DOS на базе GPT. Задайте любой вопрос — покажу как работает бот для вашего бизнеса.</div>
+    <div class="demo-typing" id="demoTyping"><span></span><span></span><span></span></div>
+  </div>
+  <div class="demo-quick-btns">
+    <button class="demo-quick" onclick="demoSend('Сколько стоит?')">Сколько стоит?</button>
+    <button class="demo-quick" onclick="demoSend('Как это работает?')">Как это работает?</button>
+    <button class="demo-quick" onclick="demoSend('Хочу консультацию')">Хочу консультацию</button>
+  </div>
+  <div class="demo-input-wrap">
+    <input type="text" class="demo-input" id="demoInput" placeholder="Напишите сообщение..." maxlength="200" aria-label="Сообщение боту">
+    <button class="demo-send" onclick="demoSendInput()" aria-label="Отправить">&#8594;</button>
+  </div>
+</div>
 
 <!-- EXIT-INTENT POPUP -->
 <div class="exit-overlay" id="exitPopup">

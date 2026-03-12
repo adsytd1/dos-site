@@ -160,7 +160,38 @@ bars.forEach((b,i)=>b.classList.toggle('active',i<=qStep));
 document.getElementById('quizBack').style.display=qStep>0?'block':'none';
 var stepText=document.getElementById('quizStepText');if(stepText){var remaining=qTotal-(qStep+1);stepText.textContent='Шаг '+(qStep+1)+' из '+qTotal+(remaining>0?' — осталось '+remaining:'');}
 }
-// (Floating demo chat removed — HTML elements no longer exist)
+// Floating demo chat
+(function(){
+const toggle=document.getElementById('demoToggle'),win=document.getElementById('demoWindow'),closeBtn=document.getElementById('demoClose'),msgs=document.getElementById('demoMessages'),input=document.getElementById('demoInput'),typing=document.getElementById('demoTyping');
+if(!toggle||!win||!closeBtn||!msgs||!input||!typing)return;
+const CHAT_URL='https://adsytd.space/webhook/dos-chat';
+const sessionId='site-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
+let sending=false;
+var dtt=document.getElementById('demoTooltip');
+setTimeout(function(){if(dtt)dtt.style.display='none'},8000);
+toggle.addEventListener('click',function(){if(dtt)dtt.style.display='none';win.classList.toggle('open');toggle.style.display=win.classList.contains('open')?'none':'flex';if(typeof gEvent==='function')gEvent('demo_chat_open')});
+closeBtn.addEventListener('click',function(){win.classList.remove('open');toggle.style.display='flex'});
+input.addEventListener('keydown',function(e){if(e.key==='Enter')demoSendInput()});
+function addMsg(text,cls){var d=document.createElement('div');d.className='demo-msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+window.demoSend=function(text){
+if(sending)return;
+sending=true;
+addMsg(text,'user');
+typing.classList.add('show');
+input.disabled=true;
+var ac=new AbortController();var tid=setTimeout(function(){ac.abort()},15000);
+fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:sessionId}),signal:ac.signal})
+.then(function(res){if(!res.ok)throw new Error('Server error');return res.json()})
+.then(function(data){
+clearTimeout(tid);typing.classList.remove('show');
+addMsg(data.output||data.text||data.message||data.reply||'Напишите в WhatsApp — обсудим подробнее!','bot');
+}).catch(function(){
+clearTimeout(tid);typing.classList.remove('show');
+addMsg('Не удалось связаться с сервером. Напишите в WhatsApp: +7 705 205 1992','bot');
+}).finally(function(){input.disabled=false;input.focus();sending=false});
+};
+window.demoSendInput=function(){var v=input.value.trim();if(!v)return;demoSend(v);input.value=''};
+})()
 
 (function(){
 let shown=false;
@@ -482,7 +513,7 @@ function sendInlineDemo(){
     window._inlineSending=false;
     var em=document.createElement('div');
     em.style.cssText='font-size:13px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px 12px 12px 4px;align-self:flex-start;max-width:80%';
-    em.textContent='Интересная задача! Я могу помочь автоматизировать общение с клиентами в вашей нише. Напишите мне в WhatsApp — разберём ваш случай за 15 минут.';
+    em.innerHTML='Сервер временно недоступен. Напишите в <a href="https://wa.me/77052051992" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">WhatsApp</a> — я отвечу лично за 15 минут.';
     msgs.appendChild(em);msgs.scrollTop=msgs.scrollHeight;
   });
 }

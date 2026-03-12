@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Yernar Dosmagambetov">
+<title>Примеры диалогов ИИ-ассистента vs Менеджера — DOS</title>
+<meta name="description" content="15 реальных сценариев: как ИИ-ассистент обрабатывает заявки быстрее и лучше менеджера. Продажи, HR, поддержка, запись на услуги.">
+<meta property="og:title" content="Примеры диалогов — DOS AI Automation">
+<meta property="og:description" content="15 реальных сценариев: ИИ vs Менеджер. Кто быстрее закрывает сделку?">
+<meta property="og:image" content="https://dos.kz/og-image.png">
+<meta property="og:url" content="https://dos.kz/dialogs.html">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dos.kz/og-image.png">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://dos.kz/dialogs.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e676'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%23000'>DOS</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap&subset=cyrillic,latin" rel="stylesheet">
+<link rel="stylesheet" href="styles.min.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" aria-label="Основная навигация">
+  <a href="index.html" class="navbar-logo" style="text-decoration:none;color:inherit">DOS_</a>
+  <ul class="navbar-links">
+    <li><a href="index.html#services">Услуги</a></li>
+    <li><a href="index.html#projects">Проекты</a></li>
+    <li><a href="index.html#pricing">Пакеты</a></li>
+    <li><a href="index.html#contact-form">Заявка</a></li>
+  </ul>
+  <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" class="navbar-cta" target="_blank" rel="noopener noreferrer">Написать</a>
+  <button class="mobile-toggle" onclick="this.closest('.navbar').classList.toggle('nav-open');this.setAttribute('aria-expanded',this.closest('.navbar').classList.contains('nav-open'))" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="section" style="padding-top:120px">
+  <div class="container">
+
+    <!-- Back link -->
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:32px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Назад на главную
+    </a>
+
+    <div class="section-header section-header--center">
+      <h1 class="section-title" style="font-size:clamp(26px,5vw,44px)">15 примеров диалогов</h1>
+      <p class="section-desc">Слева — как отвечает менеджер. Справа — как отвечает ИИ-ассистент.<br>Реальные сценарии из разных ниш.</p>
+    </div>
+
+    <!-- 1 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Музыкальная школа — заявка в 23:47</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Здравствуйте, хочу записать ребёнка на пробный урок</div>
+            <div class="ba-time">23:47</div>
+            <div class="ba-silence">... тишина до утра ...</div>
+            <div class="ba-msg ba-msg-bot">Добрый день! На какой инструмент?</div>
+            <div class="ba-time">10:15 (на следующий день)</div>
+          </div>
+          <div class="ba-verdict">Ответ через 10 часов. Родитель записал ребёнка в другую школу.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент Алтынай</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Здравствуйте, хочу записать ребёнка на пробный урок</div>
+            <div class="ba-time">23:47</div>
+            <div class="ba-msg ba-msg-bot">Привет! 🎵 Отлично, что хотите попробовать! Какой инструмент интересует — фортепиано, гитара, вокал? И сколько лет ребёнку?</div>
+            <div class="ba-time">23:47 (15-40 секунд)</div>
+          </div>
+          <div class="ba-verdict">Ответ мгновенный. Ребёнок записан на пробный урок в ту же ночь.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Юридическая компания — клиент хочет консультацию</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Мне нужен юрист по разводу</div>
+            <div class="ba-msg ba-msg-bot">Здравствуйте. Консультация стоит 15 000 тенге</div>
+            <div class="ba-msg ba-msg-client">А что входит?</div>
+            <div class="ba-silence">... нет ответа ...</div>
+          </div>
+          <div class="ba-verdict">Клиент не понял ценность. Ушёл.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Мне нужен юрист по разводу</div>
+            <div class="ba-msg ba-msg-bot">Здравствуйте! Расскажите подробнее: есть ли дети? Совместное имущество? Это поможет подобрать нужного специалиста.</div>
+            <div class="ba-msg ba-msg-client">Да, двое детей, квартира в ипотеке</div>
+            <div class="ba-msg ba-msg-bot">Понял. Это семейное право + раздел имущества. У нас есть юрист с 10-летним опытом в таких делах. Записать на консультацию? Первые 15 минут — бесплатно.</div>
+          </div>
+          <div class="ba-verdict">ИИ квалифицировал, выяснил детали и записал на консультацию.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Стоматология — ночная заявка</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">У меня болит зуб, есть запись на завтра?</div>
+            <div class="ba-time">02:30</div>
+            <div class="ba-silence">... администратор спит ...</div>
+            <div class="ba-msg ba-msg-bot">Добрый день, уточню</div>
+            <div class="ba-time">09:45</div>
+          </div>
+          <div class="ba-verdict">Пациент за 7 часов нашёл другую клинику.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-бот Адина</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">У меня болит зуб, есть запись на завтра?</div>
+            <div class="ba-time">02:30</div>
+            <div class="ba-msg ba-msg-bot">Ой, сочувствую! 😔 Да, завтра есть окно в 10:00 и 14:30. Какое время удобнее? Доктор Арман — стаж 12 лет, очень аккуратный.</div>
+            <div class="ba-time">02:30 (20 секунд)</div>
+          </div>
+          <div class="ba-verdict">Пациент записан в 2:30 ночи. Без стресса.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; HR — подбор на вахту</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">HR-менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Здравствуйте, ищу работу бурильщика</div>
+            <div class="ba-msg ba-msg-bot">Пришлите резюме на почту</div>
+            <div class="ba-msg ba-msg-client">А какие условия?</div>
+            <div class="ba-silence">... занят другими задачами ...</div>
+          </div>
+          <div class="ba-verdict">Кандидат ушёл к конкурентам. HR потерял время.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ HR-бот</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Здравствуйте, ищу работу бурильщика</div>
+            <div class="ba-msg ba-msg-bot">Привет! Расскажите: какой у вас разряд и стаж? Есть ли удостоверение? Вахта 30/30, зарплата от 450 000 ₸.</div>
+            <div class="ba-msg ba-msg-client">5 разряд, 8 лет стажа</div>
+            <div class="ba-msg ba-msg-bot">Отлично, вы подходите! Отправлю вашу анкету HR-отделу. Ожидайте звонок в течение 2 часов.</div>
+          </div>
+          <div class="ba-verdict">Кандидат квалифицирован за 2 минуты. HR получил готовую анкету.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Образование — запись на пробное занятие</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Сколько стоит подготовка к ЕНТ?</div>
+            <div class="ba-msg ba-msg-bot">Зависит от предметов</div>
+            <div class="ba-msg ba-msg-client">Математика и физика</div>
+            <div class="ba-silence">... забыл ответить ...</div>
+          </div>
+          <div class="ba-verdict">Родитель записал ребёнка в другой центр.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент Айгерим</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Сколько стоит подготовка к ЕНТ?</div>
+            <div class="ba-msg ba-msg-bot">Привет! Математика + физика — отличный выбор! 📚 Групповые занятия — 25 000 ₸/мес, индивидуальные — 45 000 ₸/мес. Первое занятие бесплатно! Записать?</div>
+            <div class="ba-msg ba-msg-client">А когда можно прийти?</div>
+            <div class="ba-msg ba-msg-bot">Ближайшее пробное — завтра в 16:00 или в субботу в 11:00. Какое время удобнее?</div>
+          </div>
+          <div class="ba-verdict">Цена, расписание и запись — за 40 секунд.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Недвижимость — жалоба жильца в ЖК</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер УК</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">В подъезде не работает лифт уже 2 дня!</div>
+            <div class="ba-silence">... сообщение прочитано, нет ответа ...</div>
+            <div class="ba-msg ba-msg-client">Алло?? Когда починят?!</div>
+            <div class="ba-silence">... передал кому-то, забыл ...</div>
+          </div>
+          <div class="ba-verdict">Жилец злится. Жалоба потерялась.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-бот RAMS</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">В подъезде не работает лифт уже 2 дня!</div>
+            <div class="ba-msg ba-msg-bot">Добрый день! Зафиксировал вашу заявку. Категория: лифт. Передаю в техотдел — вам ответят в течение 2 часов. Номер заявки: #4821.</div>
+          </div>
+          <div class="ba-verdict">Заявка зафиксирована, классифицирована и передана. Жилец спокоен.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Возражение «Дорого»</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Сколько стоит?</div>
+            <div class="ba-msg ba-msg-bot">От 50 000</div>
+            <div class="ba-msg ba-msg-client">Дорого</div>
+            <div class="ba-silence">... менеджер не ответил ...</div>
+          </div>
+          <div class="ba-verdict">Клиент слил. Менеджер не отработал возражение.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Сколько стоит?</div>
+            <div class="ba-msg ba-msg-bot">Цена зависит от задач. Расскажите, что нужно автоматизировать — подберу подходящий вариант. Есть решения от $200.</div>
+            <div class="ba-msg ba-msg-client">Дорого</div>
+            <div class="ba-msg ba-msg-bot">Понимаю. Один менеджер обходится от 300 000 ₸/мес. Бот делает ту же работу 24/7 за разовую настройку. Окупается за 2-3 недели. Записать на бесплатную консультацию?</div>
+          </div>
+          <div class="ba-verdict">Возражение отработано. Клиент записан на консультацию.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Коучинг — продажа консультации через контент</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Прочитал вашу статью, интересно</div>
+            <div class="ba-silence">... никто не подхватил лида ...</div>
+          </div>
+          <div class="ba-verdict">Горячий лид остыл. Менеджер даже не видел сообщение.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Прочитал вашу статью, интересно</div>
+            <div class="ba-msg ba-msg-bot">Рад, что зацепило! 🔥 Какой именно момент откликнулся? Могу подсказать, как применить это в вашем бизнесе. Или записать на стратегическую сессию — первая бесплатно.</div>
+          </div>
+          <div class="ba-verdict">Лид подхвачен мгновенно. Контент превращается в продажу.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Автосервис — запись на ТО</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Нужно ТО, Toyota Camry 2020</div>
+            <div class="ba-msg ba-msg-bot">Когда хотите?</div>
+            <div class="ba-msg ba-msg-client">Завтра утром</div>
+            <div class="ba-msg ba-msg-bot">Сейчас уточню</div>
+            <div class="ba-silence">... забыл перезвонить ...</div>
+          </div>
+          <div class="ba-verdict">Клиент записался в другой сервис.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Нужно ТО, Toyota Camry 2020</div>
+            <div class="ba-msg ba-msg-bot">Привет! Toyota Camry 2020 — ТО включает замену масла, фильтров, диагностику. Стоимость — 35 000 ₸. Свободные слоты: завтра 9:00, 11:00, 15:00. Какое время?</div>
+            <div class="ba-msg ba-msg-client">9:00</div>
+            <div class="ba-msg ba-msg-bot">Отлично! Записал на завтра 9:00. Адрес: ул. Кабанбай батыра 42. Приезжайте за 10 минут. Хорошего дня! 🚗</div>
+          </div>
+          <div class="ba-verdict">Модель, цена, запись — за 30 секунд. Без «уточню».</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; E-commerce — возврат товара</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Хочу вернуть товар, заказ #7823</div>
+            <div class="ba-msg ba-msg-bot">Перешлю в отдел возвратов</div>
+            <div class="ba-silence">... тишина 3 дня ...</div>
+          </div>
+          <div class="ba-verdict">Клиент написал негативный отзыв.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Хочу вернуть товар, заказ #7823</div>
+            <div class="ba-msg ba-msg-bot">Нашёл ваш заказ! Причина возврата: не подошёл размер, брак или передумали? Это поможет оформить быстрее.</div>
+            <div class="ba-msg ba-msg-client">Не подошёл размер</div>
+            <div class="ba-msg ba-msg-bot">Понял. Оформляю возврат. Курьер заберёт завтра с 10 до 14. Деньги вернутся на карту в течение 3 дней. Или хотите обменять на другой размер?</div>
+          </div>
+          <div class="ba-verdict">Возврат оформлен за минуту. Клиент доволен сервисом.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Фитнес-клуб — вопрос об абонементе</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Сколько стоит абонемент?</div>
+            <div class="ba-msg ba-msg-bot">От 25 000 в месяц</div>
+            <div class="ba-msg ba-msg-client">А что входит?</div>
+            <div class="ba-msg ba-msg-bot">Тренажёрный зал</div>
+          </div>
+          <div class="ba-verdict">Сухой ответ. Клиент не увидел ценности.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Сколько стоит абонемент?</div>
+            <div class="ba-msg ba-msg-bot">Привет! 💪 У нас 3 варианта: Базовый (25 000 ₸) — зал + групповые. Стандарт (35 000 ₸) — зал + бассейн + сауна. Премиум (50 000 ₸) — всё + персональный тренер 4 раза. Хотите пробное занятие бесплатно?</div>
+          </div>
+          <div class="ba-verdict">Полная информация + предложение пробного — за 15 секунд.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Дожим — клиент замолчал</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Подумаю</div>
+            <div class="ba-silence">... менеджер не написал больше никогда ...</div>
+          </div>
+          <div class="ba-verdict">Клиент потерян навсегда.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Подумаю</div>
+            <div class="ba-msg ba-msg-bot">Конечно! Если будут вопросы — пишите, всегда на связи 🙌</div>
+            <div class="ba-time" style="color:var(--text-muted)">через 2 часа</div>
+            <div class="ba-msg ba-msg-bot">Кстати, забыл сказать — на этой неделе действует скидка 15% на первый месяц. Если интересно — бронирую за вами.</div>
+          </div>
+          <div class="ba-verdict">Дожимная воронка вернула клиента. Менеджер бы забыл.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Таргетолог — квалификация заявки</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Хочу настроить рекламу</div>
+            <div class="ba-msg ba-msg-bot">Окей, давайте созвонимся</div>
+            <div class="ba-msg ba-msg-client">Когда?</div>
+            <div class="ba-msg ba-msg-bot">Завтра вечером</div>
+            <div class="ba-silence">... не перезвонил ...</div>
+          </div>
+          <div class="ba-verdict">Нет брифа, нет квалификации, созвон не состоялся.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Хочу настроить рекламу</div>
+            <div class="ba-msg ba-msg-bot">Привет! Расскажите: какая у вас ниша? Какой бюджет на рекламу в месяц? И есть ли Instagram-аккаунт бизнеса?</div>
+            <div class="ba-msg ba-msg-client">Мебель, бюджет 200к, инста есть</div>
+            <div class="ba-msg ba-msg-bot">Отлично! Мебель — хорошая ниша для таргета. С бюджетом 200К можно получить 80-120 заявок/мес. Записываю на созвон — когда удобно: завтра в 15:00 или 18:00?</div>
+          </div>
+          <div class="ba-verdict">Бриф собран, клиент квалифицирован, созвон назначен.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Банк — постановка задачи между отделами</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Через почту</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Нужен отчёт по NPS за квартал</div>
+            <div class="ba-silence">... письмо затерялось в почте ...</div>
+            <div class="ba-msg ba-msg-client">Напоминаю про отчёт!</div>
+            <div class="ba-time">через 5 дней</div>
+          </div>
+          <div class="ba-verdict">Задача потерялась. Дедлайн сорван.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">Telegram-бот</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Нужен отчёт по NPS за квартал</div>
+            <div class="ba-msg ba-msg-bot">✅ Задача создана: «Отчёт NPS Q1». Исполнитель: аналитический отдел. Дедлайн: 20.03. Уведомлю, когда будет готово.</div>
+          </div>
+          <div class="ba-verdict">Задача зафиксирована, исполнитель назначен, дедлайн контролируется.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="reveal">
+      <p style="font-family:var(--mono);font-size:13px;color:var(--text-muted);margin-bottom:12px;margin-top:48px">&#128900; Мультиязычность — клиент пишет на казахском</p>
+      <div class="ba-grid">
+        <div class="ba-card bad">
+          <div class="ba-header">Менеджер</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Сәлеметсіз бе, қызмет туралы білгім келеді</div>
+            <div class="ba-msg ba-msg-bot">Здравствуйте, к сожалению я не говорю на казахском. Можете на русском?</div>
+          </div>
+          <div class="ba-verdict">Клиент ушёл. Языковой барьер = потерянная сделка.</div>
+        </div>
+        <div class="ba-card good">
+          <div class="ba-header">ИИ-ассистент</div>
+          <div class="ba-chat">
+            <div class="ba-msg ba-msg-client">Сәлеметсіз бе, қызмет туралы білгім келеді</div>
+            <div class="ba-msg ba-msg-bot">Сәлеметсіз бе! 🇰🇿 Қандай қызмет қызықтырады? Біз сатуды автоматтандыру, чат-боттар және CRM интеграциясы бойынша көмектесеміз.</div>
+          </div>
+          <div class="ba-verdict">ИИ автоматически определил язык и ответил на казахском.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-top:64px;margin-bottom:32px">
+      <p style="font-size:18px;font-weight:700;margin-bottom:8px">Хотите такого же бота для вашего бизнеса?</p>
+      <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px">Напишите — обсудим за 15 минут. Без обязательств.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B%20%D0%B4%D0%B8%D0%B0%D0%BB%D0%BE%D0%B3%D0%BE%D0%B2%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%B6%D0%B5%20%D0%B1%D0%BE%D1%82%D0%B0" class="btn-primary" target="_blank" rel="noopener noreferrer">Обсудить проект в WhatsApp &#8594;</a>
+        <a href="index.html" class="btn-ghost">Вернуться на главную</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p style="font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:8px"><a href="index.html" style="text-decoration:none;color:inherit">DOS_</a></p>
+    <p>Yernar Dosmagambetov &mdash; AI Automation Engineer</p>
+    <div class="footer-links">
+      <a href="https://wa.me/77052051992" class="footer-link">WhatsApp</a>
+      <a href="https://t.me/yernardoss" class="footer-link">Telegram</a>
+      <a href="https://www.instagram.com/yernar.dos/" class="footer-link">Instagram</a>
+    </div>
+    <p style="margin-top:16px">&copy; 2026 &middot; &#127472;&#127487; Kazakhstan</p>
+  </div>
+</footer>
+
+<script>
+// Reveal animation
+const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(e=>ro.observe(e));
+// Close mobile menu
+document.addEventListener('click',function(e){var nav=document.querySelector('.navbar');if(!nav)return;if(nav.classList.contains('nav-open')&&!e.target.closest('.navbar'))nav.classList.remove('nav-open')});
+</script>
+</body>
+</html>
