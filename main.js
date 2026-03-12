@@ -191,7 +191,7 @@ addMsg('Не удалось связаться с сервером. Напиши
 }).finally(function(){input.disabled=false;input.focus();sending=false});
 };
 window.demoSendInput=function(){var v=input.value.trim();if(!v)return;demoSend(v);input.value=''};
-})()
+})();
 
 (function(){
 let shown=false;
