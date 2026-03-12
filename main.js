@@ -184,7 +184,7 @@ fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:J
 .then(function(res){if(!res.ok)throw new Error('Server error');return res.json()})
 .then(function(data){
 clearTimeout(tid);typing.classList.remove('show');
-addMsg(data.output||data.text||data.message||data.reply||'Напишите в WhatsApp — обсудим подробнее!','bot');
+var rt=data.reply||data.output||data.text||data.message||'Напишите в WhatsApp — обсудим подробнее!';addMsg(rt.replace(/\*\*(.*?)\*\*/g,'').replace(/\n/g,' '),'bot');
 }).catch(function(){
 clearTimeout(tid);typing.classList.remove('show');
 addMsg('Не удалось связаться с сервером. Напишите в WhatsApp: +7 705 205 1992','bot');
@@ -497,7 +497,8 @@ function sendInlineDemo(){
     tp.remove();
     var bm=document.createElement('div');
     bm.style.cssText='font-size:13px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px 12px 12px 4px;align-self:flex-start;max-width:80%';
-    bm.textContent=d.output||d.text||d.message||d.reply||'Напишите в WhatsApp — обсудим подробнее!';
+    var replyText=d.reply||d.output||d.text||d.message||'Напишите в WhatsApp — обсудим подробнее!';
+    bm.innerHTML=replyText.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
     msgs.appendChild(bm);msgs.scrollTop=msgs.scrollHeight;
     window._inlineSending=false;
     if(inlineDemoUserCount===3){
