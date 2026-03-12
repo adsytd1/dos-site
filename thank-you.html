@@ -14,8 +14,6 @@
 <link rel="canonical" href="https://dos.kz/thank-you.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e676'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%23000'>DOS</text></svg>">
 <link rel="dns-prefetch" href="https://wa.me">
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.clarity.ms">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -103,10 +101,7 @@ footer p{font-size:13px;color:var(--text-muted)}
 body{animation:pageIn .6s ease both}
 @keyframes pageIn{from{opacity:0}to{opacity:1}}
 </style>
-<!-- Google Analytics 4 (deferred) — replace G-XXXXXXXXXX with real ID -->
-<!-- <script>window.addEventListener('load',function(){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';s.async=true;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX')}});</script> -->
-<!-- Microsoft Clarity (deferred) — replace XXXXXXXXXX with real ID -->
-<!-- <script>window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","XXXXXXXXXX")});</script> -->
+
 </head>
 <body>
 
@@ -123,7 +118,8 @@ body{animation:pageIn .6s ease both}
       </svg>
     </div>
     <h1 class="thank-title">Спасибо, заявка получена!</h1>
-    <p class="thank-subtitle">Ернар свяжется с вами в течение 2 часов</p>
+    <p class="thank-subtitle" id="contactMsg">Ернар свяжется с вами в течение 2 часов</p>
+    <script>(function(){var h=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Almaty'})).getHours();var el=document.getElementById('contactMsg');if(h>=22||h<10){el.textContent='Ернар свяжется с вами утром \u2014 работаю с 10:00'}})()</script>
     <p id="countdown" style="font-family:var(--mono);font-size:14px;color:var(--text-muted);margin-bottom:24px">Перенаправление на главную через <span id="countNum" style="color:var(--accent);font-weight:600">30</span> сек</p>
     <div class="thank-buttons">
       <a href="https://wa.me/77052051992" class="btn-whatsapp" target="_blank" rel="noopener">
@@ -157,7 +153,7 @@ body{animation:pageIn .6s ease both}
       <a href="case-amadey.html" class="case-card">
         <div class="case-card-tag" style="color:#a78bfa">Музыка</div>
         <div class="case-card-name">Amadey Music</div>
-        <div class="case-card-desc">Конверсия с 3% до 48%</div>
+        <div class="case-card-desc">Конверсия ~10%, 150+ продаж</div>
       </a>
       <a href="case-personal-lawyer.html" class="case-card">
         <div class="case-card-tag" style="color:#00e676">Юриспруденция</div>

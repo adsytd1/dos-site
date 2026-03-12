@@ -25,6 +25,8 @@ onScroll(function(){var s=window.scrollY>300;if(fw)fw.classList.toggle('visible'
 const track=document.getElementById('reviewsTrack'),dotsC=document.getElementById('carouselDots');
 if(!track)return;
 // On mobile split 4-card pages into 2-card pages
+var _lastWidth=window.innerWidth;
+window.addEventListener('resize',function(){var nowWidth=window.innerWidth;if((_lastWidth<=768&&nowWidth>768)||(_lastWidth>768&&nowWidth<=768)){location.reload()}_lastWidth=nowWidth});
 if(window.innerWidth<=768){
   var origPages=track.querySelectorAll('.review-page');
   origPages.forEach(function(pg){
@@ -47,7 +49,7 @@ function updatePageIndicator(){pageIndicator.textContent=(current+1)+'/'+total}
 function goTo(i){track.querySelectorAll('video').forEach(v=>v.pause());current=Math.max(0,Math.min(i,total-1));track.style.transform='translateX(-'+(current*100)+'%)';document.querySelectorAll('.carousel-dot').forEach((d,idx)=>d.className='carousel-dot'+(idx===current?' active':''));updatePageIndicator()}
 // --- Autoplay ---
 let autoplayTimer=null,userStopped=false;
-function autoAdv(){if(userStopped)return;goTo(current<total-1?current+1:0);autoplayTimer=setTimeout(autoAdv,10000)}
+function autoAdv(){if(userStopped)return;goTo(current<total-1?current+1:0);clearTimeout(autoplayTimer);autoplayTimer=setTimeout(autoAdv,10000)}
 function startAutoplay(){clearTimeout(autoplayTimer);if(!userStopped)autoplayTimer=setTimeout(autoAdv,10000)}
 function stopAutoplay(){clearTimeout(autoplayTimer);userStopped=true}
 var idleTimer=null;
@@ -66,8 +68,8 @@ track.addEventListener('touchstart',e=>{sx=e.touches[0].pageX;track.style.transi
 track.addEventListener('touchend',e=>{const dx=e.changedTouches[0].pageX-sx;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';if(Math.abs(dx)>50){userInteract();goTo(dx>0?current-1:current+1)}},{passive:true});
 // Mouse drag
 let md=false,mx=0;
-track.addEventListener('mousedown',e=>{md=true;mx=e.pageX;track.style.transition='none'});
-window.addEventListener('mouseup',()=>{if(md){md=false;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)'}});
+track.addEventListener('mousedown',e=>{e.preventDefault();md=true;mx=e.pageX;track.style.transition='none';track.style.userSelect='none';track.style.webkitUserSelect='none'});
+window.addEventListener('mouseup',()=>{if(md){md=false;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';track.style.userSelect='';track.style.webkitUserSelect=''}});
 track.addEventListener('mousemove',e=>{if(!md)return;const dx=e.pageX-mx;if(Math.abs(dx)>60){md=false;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';userInteract();goTo(dx>0?current-1:current+1)}});
 // --- Swipe hint (mobile) ---
 var hint=document.getElementById('swipeHint');
@@ -106,7 +108,8 @@ yE.innerHTML='+'+fmt(yearlyVal)+' &#8376;/год';
 var hl=document.getElementById('calcHighlight');
 if(hl){if(yearlyVal>5000000){hl.style.display=''}else{hl.style.display='none'}}
 }
-sR.oninput=calc;cR.oninput=calc;cvR.oninput=calc;if(tR)tR.oninput=calc;calc();
+var _calcTimer=null;function calcDebounced(){clearTimeout(_calcTimer);_calcTimer=setTimeout(calc,100)}
+sR.oninput=calcDebounced;cR.oninput=calcDebounced;cvR.oninput=calcDebounced;if(tR)tR.oninput=calcDebounced;calc();
 // Mini calculator sync
 var miniEl=document.getElementById('miniCalcLoss');
 if(miniEl){
@@ -126,15 +129,18 @@ errN.classList.remove('show');errP.classList.remove('show');nameI.classList.remo
 var hasErr=false;
 if(!nm){errN.textContent='Введите ваше имя';errN.classList.add('show');nameI.classList.add('error');hasErr=true}
 if(!ph){errP.textContent='Введите номер телефона';errP.classList.add('show');phoneI.classList.add('error');hasErr=true}
-else if(ph.replace(/\D/g,'').length<11){errP.textContent='Номер должен быть +7 (XXX) XXX-XX-XX';errP.classList.add('show');phoneI.classList.add('error');hasErr=true}
+else if(ph.replace(/\D/g,'').length<11||ph.replace(/\D/g,'')[0]!=='7'){errP.textContent='Номер должен быть +7 (XXX) XXX-XX-XX';errP.classList.add('show');phoneI.classList.add('error');hasErr=true}
 if(hasErr)return;
 var submitBtn=document.getElementById('quizNext');
 submitBtn.disabled=true;submitBtn.style.opacity='.6';submitBtn.style.pointerEvents='none';submitBtn.textContent='Отправляем...';
 const answers={};document.querySelectorAll('.quiz-step').forEach((s,i)=>{if(i<qTotal-1){const sel=s.querySelectorAll('.quiz-option.selected');answers['step'+(i+1)]=Array.from(sel).map(o=>o.textContent.trim()).join(', ')||'не выбрано'}});
 const data={name:nm,phone:ph,niche:ni,answers:answers,source:'dos-site-quiz',timestamp:new Date().toISOString()};
-fetch('https://adsytd.space/webhook/dos-quiz',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).finally(function(){
+fetch('https://adsytd.space/webhook/dos-quiz',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(function(){
 gEvent('quiz_submit',{niche:ni,name:nm});
 window.location.href='thank-you.html?name='+encodeURIComponent(nm)+'&niche='+encodeURIComponent(ni||'');
+}).catch(function(){
+submitBtn.disabled=false;submitBtn.style.opacity='';submitBtn.style.pointerEvents='';submitBtn.textContent='Отправить заявку \u2192';
+var errP=document.getElementById('errPhone');if(errP){errP.textContent='Ошибка отправки. Попробуйте ещё раз или напишите в WhatsApp.';errP.classList.add('show')}
 });
 return;
 }
@@ -160,7 +166,7 @@ let sending=false;
 var dtt=document.getElementById('demoTooltip');
 setTimeout(function(){if(dtt)dtt.style.display='none'},8000);
 toggle.addEventListener('click',()=>{if(dtt)dtt.style.display='none';win.classList.toggle('open');toggle.style.display=win.classList.contains('open')?'none':'flex';if(win.classList.contains('open')){gEvent('demo_chat_open');var ib=document.getElementById('heroBotMsgs');if(ib)ib.closest('.hero-bot').style.opacity='.3'}else{var ib=document.getElementById('heroBotMsgs');if(ib)ib.closest('.hero-bot').style.opacity='1'}});
-closeBtn.addEventListener('click',()=>{win.classList.remove('open');toggle.style.display='flex'});
+closeBtn.addEventListener('click',()=>{win.classList.remove('open');toggle.style.display='flex';var ib=document.getElementById('heroBotMsgs');if(ib)ib.closest('.hero-bot').style.opacity='1'});
 input.addEventListener('keydown',e=>{if(e.key==='Enter')demoSendInput()});
 function addMsg(text,cls){const d=document.createElement('div');d.className='demo-msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
 window.demoSend=async function(text){
@@ -200,7 +206,7 @@ function showExit(){
 }
 window.closeExit=function(){var ep=document.getElementById('exitPopup');if(ep)ep.classList.remove('show')};
 document.addEventListener('mouseout',function(e){
-  if(!e.relatedTarget&&e.clientY<5)showExit();
+  if(!e.relatedTarget&&e.clientY<0)showExit();
 });
 var exitPopupEl=document.getElementById('exitPopup');
 if(exitPopupEl){exitPopupEl.addEventListener('click',function(e){
@@ -256,22 +262,37 @@ setTimeout(function(){var t=document.getElementById('waTooltip');if(t){t.classLi
 (function(){
 var words=document.querySelectorAll('.hero-rotate-word'),i=0;
 if(!words.length)return;
-setInterval(function(){
+var heroRotateInterval=null,heroRotateVisible=false;
+function startRotation(){if(heroRotateInterval)return;heroRotateInterval=setInterval(function(){
 words[i].classList.remove('active');words[i].classList.add('exit');
 i=(i+1)%words.length;
 words[i].classList.remove('exit');words[i].classList.add('active');
 setTimeout(function(){words.forEach(function(w){if(!w.classList.contains('active'))w.classList.remove('exit')})},500);
-},2500);
+},2500)}
+function stopRotation(){if(heroRotateInterval){clearInterval(heroRotateInterval);heroRotateInterval=null}}
+var heroSection=words[0].closest('.hero')||words[0].parentElement;
+var heroRotateObs=new IntersectionObserver(function(entries){
+heroRotateVisible=entries[0].isIntersecting;
+if(heroRotateVisible){startRotation()}else{stopRotation()}
+},{threshold:0.1});
+heroRotateObs.observe(heroSection);
 })();
 // Pain counter — ticks up to show lost leads
 (function(){
 var el=document.getElementById('painCounter'),count=0;
 if(!el)return;
+var painInterval=null,painStarted=false;
 function tick(){
 count++;el.textContent=count;
 el.classList.add('bump');setTimeout(function(){el.classList.remove('bump')},300);
 }
-setTimeout(function(){tick();setInterval(tick,4000)},2000);
+function startPain(){if(painInterval)return;if(!painStarted){painStarted=true;tick()}painInterval=setInterval(tick,4000)}
+function stopPain(){if(painInterval){clearInterval(painInterval);painInterval=null}}
+var painSection=el.closest('section')||el.parentElement;
+var painObs=new IntersectionObserver(function(entries){
+if(entries[0].isIntersecting){startPain()}else{stopPain()}
+},{threshold:0.1});
+painObs.observe(painSection);
 })();
 
 // Hero Bot — scripted dialog
@@ -409,7 +430,8 @@ var ht=document.getElementById('humanTimer'),hl=document.getElementById('humanTi
 if(!ht||!hl)return;
 var startTime=Date.now();
 var labels=['Ещё не прочитал сообщение...','Увидел, но занят...','Может быть обедает...','Или в отпуске...','Клиент уже ушёл к конкуренту'];
-setInterval(function(){
+var humanInterval=null;
+function humanTick(){
   var elapsed=Math.floor((Date.now()-startTime)/1000);
   var h=String(Math.floor(elapsed/3600)).padStart(2,'0');
   var m=String(Math.floor(elapsed%3600/60)).padStart(2,'0');
@@ -420,7 +442,14 @@ setInterval(function(){
   else if(elapsed<300)hl.textContent=labels[2];
   else if(elapsed<600)hl.textContent=labels[3];
   else hl.textContent=labels[4];
-},1000);
+}
+function startHuman(){if(humanInterval)return;humanTick();humanInterval=setInterval(humanTick,1000)}
+function stopHuman(){if(humanInterval){clearInterval(humanInterval);humanInterval=null}}
+var humanSection=ht.closest('section')||ht.parentElement;
+var humanObs=new IntersectionObserver(function(entries){
+if(entries[0].isIntersecting){startHuman()}else{stopHuman()}
+},{threshold:0.1});
+humanObs.observe(humanSection);
 })();
 // MAP TOOLTIPS
 function showMapTipDiv(el){
@@ -579,6 +608,16 @@ el.parentNode.replaceChild(iframe,el);
     }catch(e){}
   };
   document.head.appendChild(s);
+})();
+
+// FAQ accordion — rotate indicator span on toggle
+(function(){
+document.querySelectorAll('details').forEach(function(det){
+det.addEventListener('toggle',function(){
+var span=det.querySelector('summary span');
+if(span){span.style.transition='transform .3s ease';span.style.transform=det.open?'rotate(45deg)':'rotate(0deg)'}
+});
+});
 })();
 
 if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(err){console.warn('SW registration failed:',err)})}
