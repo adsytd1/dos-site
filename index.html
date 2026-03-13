@@ -17,8 +17,8 @@
 <meta name="twitter:description" content="Yernar Dosmagambetov — ИИ-ассистенты, автоматизация и чат-боты для бизнеса.">
 <meta name="twitter:image" content="https://dos.kz/og-image.png">
 <meta property="og:locale" content="ru_RU">
-<meta name="theme-color" content="#0B0C10">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2366FCF1'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%230B0C10'>DOS</text></svg>">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e676'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%23000'>DOS</text></svg>">
 <script type="application/ld+json">{
 "@context":"https://schema.org",
 "@type":"ProfessionalService",
@@ -73,20 +73,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://i.ytimg.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap&subset=cyrillic,latin" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.min.css?v=4">
 <noscript><style>.reveal,.hero-rotate-wrap,.hero-cta-group,.hero-cta-row,.hero-stats,.trust-bar,.hero-badge,.hero-split{opacity:1!important;transform:none!important;animation:none!important}.hero-bot{display:none}</style></noscript>
 </head>
 
 <body>
 <a href="#services" class="skip-link">Перейти к содержимому</a>
 
-<!-- NAVBAR — Bert style: MENU left, logo center, icons+lang right -->
+<!-- NAVBAR -->
 <nav class="navbar" aria-label="Основная навигация">
-  <div class="navbar-left">
-    <span class="navbar-menu-label">MENU</span>
-    <button class="mobile-toggle" onclick="this.closest('.navbar').classList.toggle('nav-open');this.setAttribute('aria-expanded',this.closest('.navbar').classList.contains('nav-open'))" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-  <a href="/" class="navbar-logo">DOS</a>
+  <div class="navbar-logo">DOS_</div>
   <ul class="navbar-links">
     <li><a href="#services">Услуги</a></li>
     <li><a href="#projects">Проекты</a></li>
@@ -96,11 +92,8 @@
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact-form">Заявка</a></li>
   </ul>
-  <div class="navbar-right">
-    <a href="#demo" class="navbar-icon" aria-label="Демо">▶</a>
-    <span class="navbar-lang">RU</span>
-    <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" class="navbar-cta" target="_blank" rel="noopener noreferrer">Написать</a>
-  </div>
+  <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" class="navbar-cta" target="_blank" rel="noopener noreferrer">Написать</a>
+  <button class="mobile-toggle" onclick="this.closest('.navbar').classList.toggle('nav-open');this.setAttribute('aria-expanded',this.closest('.navbar').classList.contains('nav-open'))" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- SIDE NAV -->
@@ -143,10 +136,10 @@
     </div>
   </div>
 
-  <!-- CTA Buttons — Bert style: PLAY VIDEO -->
+  <!-- CTA Buttons — separate row -->
   <div class="hero-cta-row">
-    <a href="#demo" class="btn-primary">Смотреть демо</a>
-    <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%98%D0%98-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82%D0%B0" class="btn-ghost" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
+    <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%98%D0%98-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82%D0%B0" class="btn-primary" target="_blank" rel="noopener noreferrer">Обсудить проект в WhatsApp &#8594;</a>
+    <a href="#compare" class="btn-ghost">Почему ИИ, а не менеджер? &#8594;</a>
   </div>
   <div style="display:flex;gap:16px;justify-content:center;font-size:12px;color:var(--text-muted);font-family:var(--mono);margin-top:12px"><span>✓ 20+ клиентов</span><span>✓ работаем по договору</span><span>✓ результат от 3 дней</span></div>
 
