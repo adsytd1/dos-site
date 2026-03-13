@@ -35,11 +35,11 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .hero h1 .accent-text{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 /* HERO ROTATE */
 .hero-rotate-wrap{margin-bottom:48px;animation:fadeInUp .8s ease .3s both}
-.hero-rotate-text{font-size:clamp(18px,3vw,26px);color:var(--text-secondary);font-weight:400;line-height:1.6;max-width:600px;display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:0 8px}
-.hero-rotate{display:inline-flex;position:relative;overflow:hidden;vertical-align:baseline;min-width:220px;height:1.3em;justify-content:center}
-.hero-rotate-word{display:block;position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(100%);opacity:0;transition:all .5s cubic-bezier(.4,0,.2,1);color:var(--accent);font-weight:700;white-space:nowrap}
-.hero-rotate-word.active{opacity:1;transform:translateX(-50%) translateY(0)}
-.hero-rotate-word.exit{opacity:0;transform:translateX(-50%) translateY(-100%)}
+.hero-rotate-text{font-size:clamp(18px,3vw,26px);color:var(--text-secondary);font-weight:400;line-height:1.6;max-width:600px;text-align:center}
+.hero-rotate{display:inline-block;position:relative;overflow:hidden;vertical-align:baseline;min-width:200px;height:1.3em;text-align:left}
+.hero-rotate-word{display:block;position:absolute;top:0;left:0;transform:translateY(100%);opacity:0;transition:all .5s cubic-bezier(.4,0,.2,1);color:var(--accent);font-weight:700;white-space:nowrap}
+.hero-rotate-word.active{opacity:1;transform:translateY(0)}
+.hero-rotate-word.exit{opacity:0;transform:translateY(-100%)}
 .hero-channels{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px}
 .hero-channel{padding:6px 16px;background:var(--card);border:1px solid var(--border);border-radius:100px;font-family:var(--mono);font-size:12px;color:var(--text-muted);font-weight:500;transition:all .3s ease}
 .hero-channel:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 12px rgba(0,230,118,.15)}
