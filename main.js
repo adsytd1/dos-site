@@ -186,7 +186,7 @@ fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:J
 .then(function(res){if(!res.ok)throw new Error('Server error');return res.json()})
 .then(function(data){
 clearTimeout(tid);typing.classList.remove('show');
-var rt=data.reply||data.output||data.text||data.message||'Напишите в WhatsApp — обсудим подробнее!';addMsg(rt.replace(/\*\*(.*?)\*\*/g,'').replace(/\n/g,' '),'bot');
+var rt=data.reply||data.output||data.text||data.message||'Напишите в WhatsApp — обсудим подробнее!';addMsg(rt.replace(/\*\*(.*?)\*\*/g,'$1').replace(/\n/g,' '),'bot');
 }).catch(function(){
 clearTimeout(tid);typing.classList.remove('show');
 addMsg('Не удалось связаться с сервером. Напишите в WhatsApp: +7 705 205 1992','bot');
@@ -196,7 +196,7 @@ window.demoSendInput=function(){var v=input.value.trim();if(!v)return;demoSend(v
 })();
 
 (function(){
-let shown=false;
+var shown=false;
 function showExit(){
   if(shown)return;
   try{if(sessionStorage.getItem('exitShown'))return}catch(e){}
@@ -215,9 +215,9 @@ var exitPopupEl=document.getElementById('exitPopup');
 if(exitPopupEl){exitPopupEl.addEventListener('click',function(e){
   if(e.target===this)closeExit();
 });}
-let scrollDepth=0;
+var scrollDepth=0;
 onScroll(function(){
-  var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+  var denom=document.body.scrollHeight-window.innerHeight;var pct=denom>0?window.scrollY/denom*100:0;
   if(pct>scrollDepth)scrollDepth=pct;
 });
 setTimeout(function(){if(scrollDepth>60&&!shown)showExit()},45000);
@@ -464,7 +464,7 @@ function showMapTipDiv(el){
   var tip=document.getElementById('mapTooltip'),wrap=document.getElementById('kzMap');
   if(!tip||!wrap)return;
   var city=el.getAttribute('data-city'),info=el.getAttribute('data-info');
-  tip.innerHTML='<div style="font-weight:700;margin-bottom:2px">'+city+'</div><div style="color:var(--text-muted)">'+info+'</div>';
+  var safeCity=city.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');var safeInfo=info.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');tip.innerHTML='<div style="font-weight:700;margin-bottom:2px">'+safeCity+'</div><div style="color:var(--text-muted)">'+safeInfo+'</div>';
   var rect=el.getBoundingClientRect(),wRect=wrap.getBoundingClientRect();
   tip.style.left=(rect.left-wRect.left+rect.width/2)+'px';
   tip.style.top=(rect.top-wRect.top-40)+'px';
@@ -502,7 +502,7 @@ function sendInlineDemo(){
     var bm=document.createElement('div');
     bm.style.cssText='font-size:13px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px 12px 12px 4px;align-self:flex-start;max-width:80%';
     var replyText=d.reply||d.output||d.text||d.message||'Напишите в WhatsApp — обсудим подробнее!';
-    bm.innerHTML=replyText.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+    var safeReply=replyText.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');bm.innerHTML=safeReply.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
     msgs.appendChild(bm);msgs.scrollTop=msgs.scrollHeight;
     window._inlineSending=false;
     if(inlineDemoUserCount===3){
@@ -531,13 +531,11 @@ var inlineDemoInputEl=document.getElementById('inlineDemoInput');if(inlineDemoIn
   var sectionIds=[];
   items.forEach(function(item){sectionIds.push(item.getAttribute('data-target'))});
 
-  // Click to scroll
+  // Click/keyboard to scroll
   items.forEach(function(item){
-    item.addEventListener('click',function(){
-      var id=this.getAttribute('data-target');
-      var el=document.getElementById(id);
-      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-    });
+    function nav(){var id=item.getAttribute('data-target');var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+    item.addEventListener('click',nav);
+    item.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();nav()}});
   });
 
   // Show/hide based on scroll position (visible after scrolling past hero)

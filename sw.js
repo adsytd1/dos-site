@@ -1,7 +1,7 @@
 /*  DOS.KZ — Service Worker v2
     Cache-first for static assets, network-first for HTML.          */
 
-var CACHE = 'dos-v3';
+var CACHE = 'dos-v4';
 
 var SHELL = [
   '/',
