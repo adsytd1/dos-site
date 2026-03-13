@@ -1,7 +1,7 @@
-/*  DOS.KZ — Service Worker v2
+/*  yernardos.space — Service Worker v3
     Cache-first for static assets, network-first for HTML.          */
 
-var CACHE = 'dos-v4';
+var CACHE = 'dos-v5';
 
 var SHELL = [
   '/',

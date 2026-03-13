@@ -639,4 +639,37 @@ if(span){span.style.transition='transform .3s ease';span.style.transform=det.ope
 });
 })();
 
+// Refactored inline onclick handlers
+// Mobile toggle
+var mt=document.querySelector('.mobile-toggle');
+if(mt)mt.addEventListener('click',function(){
+  this.closest('.navbar').classList.toggle('nav-open');
+  this.setAttribute('aria-expanded',this.closest('.navbar').classList.contains('nav-open'));
+});
+// Objection accordion headers
+document.querySelectorAll('.objection-header').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    this.parentElement.classList.toggle('open');
+    this.setAttribute('aria-expanded',this.parentElement.classList.contains('open'));
+  });
+});
+// Benefit-more accordion buttons
+document.querySelectorAll('.benefit-more').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    this.closest('.benefit-card').classList.toggle('open');
+    this.setAttribute('aria-expanded',this.closest('.benefit-card').classList.contains('open'));
+  });
+});
+// Quiz option toggle (multi-select)
+document.querySelectorAll('.quiz-option').forEach(function(opt){
+  // Skip options that use qSelect (single-select with .qmark)
+  if(opt.querySelector('.qmark'))return;
+  opt.addEventListener('click',function(){this.classList.toggle('selected')});
+});
+// Quiz option single-select (qSelect)
+document.querySelectorAll('.quiz-option').forEach(function(opt){
+  if(!opt.querySelector('.qmark'))return;
+  opt.addEventListener('click',function(){qSelect(this)});
+});
+
 if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(err){console.warn('SW registration failed:',err)})}
