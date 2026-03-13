@@ -122,9 +122,23 @@ body{animation:pageIn .6s ease both}
         <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
       </svg>
     </div>
-    <h1 class="thank-title">Спасибо, заявка получена!</h1>
+    <h1 class="thank-title" id="thankTitle">Спасибо, заявка получена!</h1>
     <p class="thank-subtitle" id="contactMsg">Ернар свяжется с вами в течение 2 часов</p>
-    <script>(function(){var h=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Almaty'})).getHours();var el=document.getElementById('contactMsg');if(h>=22||h<10){el.textContent='Ернар свяжется с вами утром \u2014 работаю с 10:00'}})()</script>
+    <script>(function(){
+      // XSS-safe: используем textContent, который экранирует HTML автоматически
+      var params=new URLSearchParams(window.location.search);
+      var raw=params.get('name');
+      if(raw){
+        var name=raw.trim().substring(0,50);
+        document.getElementById('thankTitle').textContent='Спасибо, '+name+'! Заявка получена';
+      }
+      // Проверка рабочего времени (Астана, UTC+5)
+      var h=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Almaty'})).getHours();
+      var el=document.getElementById('contactMsg');
+      if(h>=22||h<9){
+        el.textContent='Сейчас нерабочее время \u2014 я отвечу утром в рабочие часы';
+      }
+    })()</script>
     <p id="countdown" style="font-family:var(--mono);font-size:14px;color:var(--text-muted);margin-bottom:24px">Перенаправление на главную через <span id="countNum" style="color:var(--accent);font-weight:600">60</span> сек</p>
     <div class="thank-buttons">
       <a href="https://wa.me/77052051992" class="btn-whatsapp" target="_blank" rel="noopener">

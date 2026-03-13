@@ -897,3 +897,42 @@ input.error{border-color:#ef4444!important}
 .compare-card-mobile .compare-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
 .compare-card-mobile .compare-row:last-child{border-bottom:none}
 @media(max-width:768px){.compare-card-mobile{display:block}.compare-section{display:none}}
+
+/* PRINT STYLESHEET */
+@media print{
+body{background:#fff;color:#000}
+body::before,.floating-wa,.floating-call,.demo-toggle,.demo-window,.exit-overlay,.wa-tooltip,.mobile-cta,.btt,.side-nav,.trust-progress,.navbar,.hero::before,.cta-section::before{display:none!important}
+.hero,.section{padding:40px 0}
+.hero{min-height:auto}
+.hero h1,.section-title{color:#000}
+.accent-text{-webkit-text-fill-color:#000!important;background:none!important}
+.service-card,.project-card,.pricing-card,.benefit-card,.result-card,.synergy-card,.niche-card,.objection-item,.calc-card{background:#fff;border:1px solid #ddd;box-shadow:none}
+.btn-primary,.btn-ghost,.pricing-btn{border:1px solid #333;background:#fff;color:#000;box-shadow:none}
+a{color:#000;text-decoration:underline}
+.compare-table th,.compare-table td{color:#333}
+.val-good{color:#16a34a!important}
+.val-bad{color:#dc2626!important}
+}
+
+/* REVIEW MEDIA CLICKABLE HINT */
+.review-media{position:relative}
+.review-media img{cursor:zoom-in;transition:opacity .2s}
+.review-media::after{content:'🔍 Нажмите для увеличения';position:absolute;bottom:8px;right:8px;padding:4px 10px;background:rgba(0,0,0,.7);border-radius:100px;font-size:10px;color:var(--text-muted);font-family:var(--mono);opacity:0;transition:opacity .3s;pointer-events:none}
+.review-media:hover::after{opacity:1}
+
+/* NICHE GRID MOBILE */
+@media(max-width:768px){.niche-grid{grid-template-columns:repeat(2,1fr)!important}}
+
+/* FLOATING ELEMENTS HIDDEN (for demo chat open) */
+.floating-hidden{opacity:0!important;pointer-events:none!important;transform:scale(.8) translateY(20px)!important}
+
+/* QUIZ MULTI/SINGLE VISUAL DISTINCTION */
+.qcheck::before{content:'';display:inline-block;width:16px;height:16px;border:2px solid var(--border-light);border-radius:4px;margin-right:4px;vertical-align:middle;transition:all .2s}
+.quiz-option.selected .qcheck::before{background:var(--accent);border-color:var(--accent)}
+.qmark::before{content:'';display:inline-block;width:16px;height:16px;border:2px solid var(--border-light);border-radius:50%;margin-right:4px;vertical-align:middle;transition:all .2s}
+.quiz-option.selected .qmark::before{background:var(--accent);border-color:var(--accent)}
+
+/* CONSULT LIST (consultation deliverables) */
+.consult-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.consult-item{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(0,0,0,.2);border-radius:var(--radius-sm)}
+@media(max-width:768px){.consult-list{grid-template-columns:1fr}}

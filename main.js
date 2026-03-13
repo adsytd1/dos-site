@@ -102,7 +102,7 @@ sV.textContent=leads;cV.textContent=fmt(check);cvV.textContent=conv+'%';
 if(tV)tV.textContent=hrs>0?hrs+' ч':'< 5 мин';
 const curSales=Math.round(leads*conv/100);
 const rev=curSales*check;
-const newConv=Math.min(conv*1.3,100);
+var boostSlider=document.getElementById('calcBoost');var boost=boostSlider?+boostSlider.value:30;const newConv=Math.min(conv*(1+boost/100),100);
 const newSales=Math.round(leads*newConv/100);
 const newRev=newSales*check;
 const diff=newRev-rev;
@@ -119,7 +119,8 @@ var hl=document.getElementById('calcHighlight');
 if(hl){if(yearlyVal>5000000){hl.style.display=''}else{hl.style.display='none'}}
 }
 var _calcTimer=null;function calcDebounced(){clearTimeout(_calcTimer);_calcTimer=setTimeout(calc,100)}
-sR.oninput=calcDebounced;cR.oninput=calcDebounced;cvR.oninput=calcDebounced;if(tR)tR.oninput=calcDebounced;calc();
+var bR=document.getElementById('calcBoost'),bV=document.getElementById('calcBoostVal');
+sR.oninput=calcDebounced;cR.oninput=calcDebounced;cvR.oninput=calcDebounced;if(tR)tR.oninput=calcDebounced;if(bR)bR.oninput=function(){if(bV)bV.textContent=bR.value+'%';calcDebounced()};calc();
 // (miniCalcLoss removed — element no longer exists)
 })();
 // Quiz
@@ -152,7 +153,7 @@ return;
 if(dir===1&&qStep<qTotal-1){const cur=document.querySelectorAll('.quiz-step')[qStep];if(!cur.querySelector('.quiz-option.selected')){cur.style.animation='shake .4s';setTimeout(()=>{cur.style.animation=''},400);var hint=cur.querySelector('.quiz-hint');if(!hint){hint=document.createElement('div');hint.className='quiz-hint';hint.style.cssText='color:#ff5252;font-size:13px;font-family:var(--mono);margin-top:12px;animation:fadeInUp .3s ease';hint.textContent='Выберите хотя бы один вариант';cur.querySelector('.quiz-options').after(hint);setTimeout(function(){if(hint.parentNode)hint.remove()},3000)}return}}
 const next=qStep+dir;
 if(next<0||next>=qTotal)return;
-if(next===qTotal-1&&dir===1){document.getElementById('quizNext').textContent='Отправить заявку \u2192'}
+if(next===qTotal-1&&dir===1){document.getElementById('quizNext').textContent='Отправить заявку \u2192';var qNote=document.getElementById('quizContactNote');if(qNote){var h=new Date().getHours();if(h>=22||h<9){qNote.textContent='Сейчас нерабочее время — отвечу утром в рабочие часы'}else{qNote.textContent='Я свяжусь с вами в течение 2 часов'}}}
 else{document.getElementById('quizNext').textContent='Далее \u2192'}
 steps[qStep].classList.remove('active');
 qStep=next;
@@ -220,7 +221,7 @@ onScroll(function(){
   var denom=document.body.scrollHeight-window.innerHeight;var pct=denom>0?window.scrollY/denom*100:0;
   if(pct>scrollDepth)scrollDepth=pct;
 });
-setTimeout(function(){if(scrollDepth>60&&!shown)showExit()},45000);
+// Exit popup only triggered by mouseout (cursor leaving viewport) — no timer fallback
 })();
 
 // Back to top visibility

@@ -8,7 +8,7 @@
 <meta name="author" content="Yernar Dosmagambetov">
 <meta property="og:locale" content="ru_RU">
 <meta name="theme-color" content="#0a0a0a">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Блог DOS — ИИ-автоматизация для бизнеса">
 <meta property="og:description" content="Статьи и кейсы об ИИ-автоматизации бизнеса: чат-боты, обработка заявок, увеличение продаж. Полезные материалы от DOS.">
 <meta property="og:image" content="https://dos.kz/og-image.png">
@@ -321,6 +321,36 @@ footer{border-top:1px solid #ccc}
   .blog-card h2{font-size:18px}
   .stat-value{font-size:22px}
 }
+/* Search input */
+.blog-search{position:relative;max-width:480px;margin:0 auto 24px}
+.blog-search-input{width:100%;padding:14px 20px 14px 48px;background:var(--card);border:1px solid var(--border);border-radius:100px;font-family:var(--sans);font-size:15px;color:var(--text);outline:none;transition:all var(--transition)}
+.blog-search-input::placeholder{color:var(--text-muted)}
+.blog-search-input:focus{border-color:var(--accent);box-shadow:0 0 20px rgba(0,230,118,.1)}
+.blog-search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--text-muted);fill:none;pointer-events:none;transition:stroke var(--transition)}
+.blog-search-input:focus~.blog-search-icon{stroke:var(--accent)}
+.blog-search-clear{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:28px;height:28px;background:var(--surface);border:1px solid var(--border);border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;transition:all var(--transition);padding:0}
+.blog-search-clear:hover{border-color:var(--accent);background:var(--accent-dim)}
+.blog-search-clear svg{width:14px;height:14px;stroke:var(--text-muted);fill:none}
+.blog-search-clear:hover svg{stroke:var(--accent)}
+.blog-search-clear.visible{display:flex}
+.blog-no-results{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:16px;display:none;grid-column:1/-1}
+.blog-no-results.visible{display:block}
+/* Pagination */
+.blog-pagination{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:40px;flex-wrap:wrap}
+.blog-pagination-btn{padding:10px 20px;background:var(--card);border:1px solid var(--border);border-radius:100px;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all var(--transition);display:inline-flex;align-items:center;gap:6px}
+.blog-pagination-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.blog-pagination-btn:disabled{opacity:.3;cursor:not-allowed}
+.blog-pagination-num{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1px solid var(--border);border-radius:50%;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all var(--transition)}
+.blog-pagination-num:hover{border-color:var(--accent);color:var(--accent)}
+.blog-pagination-num.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.blog-pagination-info{font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-left:12px}
+@media(max-width:768px){
+  .blog-search{margin:0 0 20px}
+  .blog-pagination{gap:6px;margin-top:28px}
+  .blog-pagination-btn{padding:8px 14px;font-size:12px}
+  .blog-pagination-num{width:34px;height:34px;font-size:12px}
+  .blog-pagination-info{display:none}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://dos.kz/"},{"@type":"ListItem","position":2,"name":"Блог"}]}</script>
 
@@ -345,6 +375,11 @@ footer{border-top:1px solid #ccc}
 <!-- Blog Grid -->
 <section class="blog-section">
   <div class="container">
+    <div class="blog-search">
+      <input type="text" class="blog-search-input" id="blogSearch" placeholder="Поиск по статьям..." autocomplete="off">
+      <svg class="blog-search-icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <button class="blog-search-clear" id="blogSearchClear" aria-label="Очистить поиск"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+    </div>
     <div class="tag-filter" id="tagFilter">
       <button class="tag-filter-btn active" data-tag="all">Все</button>
       <button class="tag-filter-btn" data-tag="продажи">продажи</button>
@@ -1247,7 +1282,9 @@ footer{border-top:1px solid #ccc}
         </div>
       </article>
 
+      <div class="blog-no-results" id="blogNoResults">Ничего не найдено. Попробуйте другой запрос.</div>
     </div>
+    <div class="blog-pagination" id="blogPagination"></div>
   </div>
 </section>
 
@@ -1507,6 +1544,128 @@ document.addEventListener('click',function(e){
   document.querySelectorAll('.blog-card').forEach(function(card){
     observer.observe(card,{attributes:true,attributeFilter:['class']});
   });
+})();
+
+// Pagination & Search
+(function(){
+  var ARTICLES_PER_PAGE=6;
+  var allCards=Array.prototype.slice.call(document.querySelectorAll('#blog-grid .blog-card'));
+  var paginationEl=document.getElementById('blogPagination');
+  var searchInput=document.getElementById('blogSearch');
+  var searchClear=document.getElementById('blogSearchClear');
+  var noResults=document.getElementById('blogNoResults');
+  var currentPage=1;
+  var filteredCards=allCards.slice();
+
+  function getVisibleCards(){
+    var query=(searchInput.value||'').toLowerCase().trim();
+    return allCards.filter(function(card){
+      if(card.classList.contains('hidden-by-filter'))return false;
+      if(!query)return true;
+      var title=card.querySelector('h2');
+      var excerpt=card.querySelector('.blog-card-excerpt');
+      var text=(title?title.textContent:'')+(excerpt?excerpt.textContent:'');
+      return text.toLowerCase().indexOf(query)!==-1;
+    });
+  }
+
+  function buildPaginationDOM(totalPages){
+    // Очистка
+    while(paginationEl.firstChild)paginationEl.removeChild(paginationEl.firstChild);
+    if(totalPages<=1)return;
+
+    // Кнопка "Назад"
+    var prevBtn=document.createElement('button');
+    prevBtn.className='blog-pagination-btn';
+    prevBtn.setAttribute('data-action','prev');
+    prevBtn.textContent='\u2190 Назад';
+    if(currentPage<=1)prevBtn.disabled=true;
+    paginationEl.appendChild(prevBtn);
+
+    // Номера страниц
+    for(var i=1;i<=totalPages;i++){
+      var numBtn=document.createElement('button');
+      numBtn.className='blog-pagination-num'+(i===currentPage?' active':'');
+      numBtn.setAttribute('data-page',String(i));
+      numBtn.textContent=String(i);
+      paginationEl.appendChild(numBtn);
+    }
+
+    // Кнопка "Далее"
+    var nextBtn=document.createElement('button');
+    nextBtn.className='blog-pagination-btn';
+    nextBtn.setAttribute('data-action','next');
+    nextBtn.textContent='Далее \u2192';
+    if(currentPage>=totalPages)nextBtn.disabled=true;
+    paginationEl.appendChild(nextBtn);
+
+    // Инфо
+    var info=document.createElement('span');
+    info.className='blog-pagination-info';
+    info.textContent=currentPage+' / '+totalPages;
+    paginationEl.appendChild(info);
+  }
+
+  function renderPagination(){
+    filteredCards=getVisibleCards();
+    var totalPages=Math.ceil(filteredCards.length/ARTICLES_PER_PAGE);
+    if(currentPage>totalPages)currentPage=Math.max(1,totalPages);
+
+    allCards.forEach(function(card){card.style.display='none'});
+    var start=(currentPage-1)*ARTICLES_PER_PAGE;
+    var end=start+ARTICLES_PER_PAGE;
+    var pageCards=filteredCards.slice(start,end);
+    pageCards.forEach(function(card){card.style.display=''});
+
+    noResults.classList.toggle('visible',filteredCards.length===0);
+    buildPaginationDOM(totalPages);
+    setTimeout(revealCards,50);
+  }
+
+  paginationEl.addEventListener('click',function(e){
+    var btn=e.target.closest('[data-page]');
+    var actionBtn=e.target.closest('[data-action]');
+    if(btn){
+      currentPage=parseInt(btn.getAttribute('data-page'));
+    }else if(actionBtn){
+      var action=actionBtn.getAttribute('data-action');
+      if(action==='prev'&&currentPage>1)currentPage--;
+      else if(action==='next')currentPage++;
+      else return;
+    }else return;
+    renderPagination();
+    document.getElementById('blog-grid').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  // Поиск
+  var searchTimeout;
+  searchInput.addEventListener('input',function(){
+    clearTimeout(searchTimeout);
+    searchClear.classList.toggle('visible',!!searchInput.value);
+    searchTimeout=setTimeout(function(){
+      currentPage=1;
+      renderPagination();
+    },200);
+  });
+  searchClear.addEventListener('click',function(){
+    searchInput.value='';
+    searchClear.classList.remove('visible');
+    currentPage=1;
+    renderPagination();
+    searchInput.focus();
+  });
+
+  // Синхронизация с tag filter
+  var origTagFilter=document.querySelectorAll('.tag-filter-btn');
+  origTagFilter.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      currentPage=1;
+      setTimeout(renderPagination,10);
+    });
+  });
+
+  // Инициализация
+  renderPagination();
 })();
 </script>
 
