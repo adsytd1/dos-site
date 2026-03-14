@@ -28,17 +28,19 @@ if(!track)return;
 var _lastWidth=window.innerWidth;
 window.addEventListener('resize',function(){var nowWidth=window.innerWidth;if((_lastWidth<=768&&nowWidth>768)||(_lastWidth>768&&nowWidth<=768)){goTo(0);bD()}_lastWidth=nowWidth});
 if(window.innerWidth<=768){
-  var origPages=track.querySelectorAll('.review-page');
+  var origPages=Array.from(track.querySelectorAll('.review-page'));
   origPages.forEach(function(pg){
-    var cards=pg.querySelectorAll('.review-card');
-    if(cards.length<=2)return;
-    // Show all cards in original (they were hidden by CSS nth-child)
+    var cards=Array.from(pg.querySelectorAll('.review-card'));
+    if(cards.length<=1)return;
+    // Show all cards (they were hidden by CSS nth-child)
     cards.forEach(function(c){c.style.display=''});
-    // Create new page for cards 3+
-    var newPage=document.createElement('div');
-    newPage.className='review-page review-page--mobile';
-    for(var i=2;i<cards.length;i++)newPage.appendChild(cards[i]);
-    pg.parentNode.insertBefore(newPage,pg.nextSibling);
+    // Keep first card in original page, move each remaining to its own page
+    for(var i=1;i<cards.length;i++){
+      var newPage=document.createElement('div');
+      newPage.className='review-page review-page--mobile';
+      newPage.appendChild(cards[i]);
+      pg.parentNode.insertBefore(newPage,pg.nextSibling);
+    }
   });
 }
 const pages=track.querySelectorAll('.review-page');
