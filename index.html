@@ -3,12 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="yandex-verification" content="496f5b287da84ff0">
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY5HDB819X"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-PY5HDB819X');</script>
-<!-- Yandex.Metrika -->
-<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=107703278','ym');ym(107703278,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/107703278" style="position:absolute;left:-9999px" alt=""></div></noscript>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="author" content="Yernar Dosmagambetov">
 <link rel="alternate" hreflang="ru" href="https://yernardos.space/">
@@ -18,6 +12,8 @@
 <meta property="og:title" content="YERNAR DOS — ИИ автоматизация">
 <meta property="og:description" content="ИИ-ассистенты и автоматизация для бизнеса в Казахстане. 20+ проектов, 10 000+ лидов обработано.">
 <meta property="og:image" content="https://yernardos.space/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://yernardos.space/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="YERNAR DOS — ИИ автоматизация">
@@ -86,7 +82,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://i.ytimg.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap&subset=cyrillic,latin" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap&subset=cyrillic,latin" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap&subset=cyrillic,latin"></noscript>
 <link rel="stylesheet" href="styles.min.css?v=6">
 <noscript><style>.reveal,.hero-rotate-wrap,.hero-cta-group,.hero-cta-row,.hero-stats,.trust-bar,.hero-badge,.hero-split{opacity:1!important;transform:none!important;animation:none!important}.hero-bot{display:none}</style></noscript>
 </head>
@@ -97,7 +94,7 @@
 <!-- NAVBAR -->
 <nav class="navbar" aria-label="Основная навигация">
   <div class="navbar-logo">DOS_</div>
-  <ul class="navbar-links" id="navbar-links" role="navigation">
+  <ul class="navbar-links" id="navbar-links">
     <li><a href="#services">Услуги</a></li>
     <li><a href="#projects">Проекты</a></li>
     <li><a href="#process">Процесс</a></li>
@@ -112,20 +109,21 @@
 
 <!-- SIDE NAV -->
 <nav class="side-nav" id="sideNav" aria-label="Навигация по секциям">
-  <div class="side-nav-item" role="button" tabindex="0" data-target="services"><span class="side-nav-label">Услуги</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="compare"><span class="side-nav-label">Цифры</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="demo"><span class="side-nav-label">Демо</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="calculator"><span class="side-nav-label">Калькулятор</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="projects"><span class="side-nav-label">Проекты</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="reviews"><span class="side-nav-label">Отзывы</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="pricing"><span class="side-nav-label">Стоимость</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="process"><span class="side-nav-label">Процесс</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="results"><span class="side-nav-label">Результаты</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="about"><span class="side-nav-label">Обо мне</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="integrations"><span class="side-nav-label">Интеграции</span></div>
-  <div class="side-nav-item" role="button" tabindex="0" data-target="contact-form"><span class="side-nav-label">Заявка</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="services"><span class="side-nav-label">Услуги</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="compare"><span class="side-nav-label">Цифры</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="demo"><span class="side-nav-label">Демо</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="calculator"><span class="side-nav-label">Калькулятор</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="projects"><span class="side-nav-label">Проекты</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="reviews"><span class="side-nav-label">Отзывы</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="pricing"><span class="side-nav-label">Стоимость</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="process"><span class="side-nav-label">Процесс</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="results"><span class="side-nav-label">Результаты</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="about"><span class="side-nav-label">Обо мне</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="integrations"><span class="side-nav-label">Интеграции</span></div>
+  <div class="side-nav-item" role="button" tabindex="-1" data-target="contact-form"><span class="side-nav-label">Заявка</span></div>
 </nav>
 
+<main>
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-badge">AI Automation Engineer</div>
@@ -162,7 +160,7 @@
 
     <div class="hero-pain">
       <div class="pain-counter">
-        <span class="pain-counter-num" id="painCounter">0</span>
+        <span class="pain-counter-num" id="painCounter" aria-live="off" aria-label="Счётчик потерянных заявок">0</span>
         <span class="pain-counter-label">заявок потеряно бизнесами в КЗ<br>пока вы на этой странице</span>
       </div>
       <div class="pain-reasons">
@@ -174,7 +172,7 @@
       <div class="pain-live"><span class="pain-dot"></span> Это происходит прямо сейчас</div>
     </div>
   </div>
-  <div class="hero-stats">
+  <div class="hero-stats" role="status" aria-label="Статистика">
     <div class="hero-stat"><div class="hero-stat-num">20+</div><div class="hero-stat-label">проектов</div></div>
     <div class="hero-stat"><div class="hero-stat-num">10+</div><div class="hero-stat-label">отраслей</div></div>
     <div class="hero-stat"><div class="hero-stat-num">10000+</div><div class="hero-stat-label">лидов обработано</div></div>
@@ -451,7 +449,7 @@
         </div>
         <div class="inline-demo-input">
           <input type="text" id="inlineDemoInput" placeholder="Напишите вопрос..." maxlength="200" aria-label="Ваш вопрос ИИ-боту">
-          <button onclick="sendInlineDemo()" aria-label="Отправить сообщение">&#10148;</button>
+          <button id="inlineDemoSendBtn" aria-label="Отправить сообщение">&#10148;</button>
         </div>
       </div>
     </div>
@@ -494,7 +492,7 @@
           </div>
           <input type="hidden" id="calcTime" value="2" aria-hidden="true">
         </div>
-        <div class="calc-results">
+        <div class="calc-results" aria-live="polite">
           <div class="calc-result-row">
             <span class="calc-result-label">Текущая выручка/мес</span>
             <span class="calc-result-val old" id="calcOld">2 500 000 &#8376;</span>
@@ -804,7 +802,7 @@
       </blockquote>
       <div class="pullquote-author">Нурасыл, владелец Amadey Music</div>
     </div>
-    <div class="reviews-carousel reveal" role="region" aria-label="Карусель отзывов" aria-roledescription="carousel">
+    <div class="reviews-carousel reveal" role="region" aria-label="Отзывы клиентов" aria-roledescription="carousel">
       <div class="reviews-track" id="reviewsTrack">
 
         <!-- PAGE 1: Нурасыл, Талгат + видео-отзывы -->
@@ -1308,31 +1306,31 @@
         <div class="kz-map-wrap" id="kzMap" style="position:relative">
           <img src="kz-outline.svg" alt="Карта Казахстана с городами клиентов" style="width:100%;height:auto;display:block" loading="lazy" width="600" height="300">
           <!-- City dots overlay -->
-          <div class="map-city" style="left:62%;top:39%" data-city="Астана" data-info="Amadey, Dostyq, Adal Lawyers, Chingiskhan, Ulan, BigDent" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button" aria-label="Астана - Amadey, Dostyq, Adal Lawyers, Chingiskhan, Ulan, BigDent">
+          <div class="map-city" style="left:62%;top:39%" data-city="Астана" data-info="Amadey, Dostyq, Adal Lawyers, Chingiskhan, Ulan, BigDent" tabindex="0" role="button" aria-label="Астана - Amadey, Dostyq, Adal Lawyers, Chingiskhan, Ulan, BigDent">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Астана</span>
           </div>
-          <div class="map-city" style="left:89%;top:48%" data-city="Усть-Каменогорск" data-info="Amadey" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
+          <div class="map-city" style="left:89%;top:48%" data-city="Усть-Каменогорск" data-info="Amadey" tabindex="0" role="button" aria-label="Усть-Каменогорск - Amadey">
             <span class="map-city-pulse"></span>
             <span class="map-city-label text-xxs">У-Каменогорск</span>
           </div>
-          <div class="map-city" style="left:75%;top:92%" data-city="Алматы" data-info="Personal Lawyer, Rams City" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
+          <div class="map-city" style="left:75%;top:92%" data-city="Алматы" data-info="Personal Lawyer, Rams City" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Алматы</span>
           </div>
-          <div class="map-city" style="left:43%;top:24%" data-city="Костанай" data-info="Dostyq QST, Chingiskhan" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
+          <div class="map-city" style="left:43%;top:24%" data-city="Костанай" data-info="Dostyq QST, Chingiskhan" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Костанай</span>
           </div>
-          <div class="map-city" style="left:28%;top:45%" data-city="Актобе" data-info="KazGeoTech" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
+          <div class="map-city" style="left:28%;top:45%" data-city="Актобе" data-info="KazGeoTech" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Актобе</span>
           </div>
-          <div class="map-city" style="left:14%;top:39%" data-city="Уральск" data-info="KazGeoTech" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
+          <div class="map-city" style="left:14%;top:39%" data-city="Уральск" data-info="KazGeoTech" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Уральск</span>
           </div>
-          <div class="map-city" style="left:55%;top:14%" data-city="Петропавловск" data-info="Клиенты" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
+          <div class="map-city" style="left:55%;top:14%" data-city="Петропавловск" data-info="Клиенты" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label text-xxs">Петропавловск</span>
           </div>
@@ -1451,12 +1449,12 @@
             <h4>Что хотите автоматизировать?</h4>
             <p>Можно выбрать несколько</p>
             <div class="quiz-options" data-multi="true">
-              <label class="quiz-option"><span class="qcheck"></span>Продажи и обработку заявок</label>
-              <label class="quiz-option"><span class="qcheck"></span>Запись клиентов на услуги</label>
-              <label class="quiz-option"><span class="qcheck"></span>HR и подбор персонала</label>
-              <label class="quiz-option"><span class="qcheck"></span>Отчёты и аналитику</label>
-              <label class="quiz-option"><span class="qcheck"></span>Поддержку клиентов / FAQ</label>
-              <label class="quiz-option"><span class="qcheck"></span>Другое</label>
+              <label class="quiz-option"><input type="checkbox" name="q1" value="Продажи и обработку заявок" class="sr-only"><span class="qcheck"></span>Продажи и обработку заявок</label>
+              <label class="quiz-option"><input type="checkbox" name="q1" value="Запись клиентов на услуги" class="sr-only"><span class="qcheck"></span>Запись клиентов на услуги</label>
+              <label class="quiz-option"><input type="checkbox" name="q1" value="HR и подбор персонала" class="sr-only"><span class="qcheck"></span>HR и подбор персонала</label>
+              <label class="quiz-option"><input type="checkbox" name="q1" value="Отчёты и аналитику" class="sr-only"><span class="qcheck"></span>Отчёты и аналитику</label>
+              <label class="quiz-option"><input type="checkbox" name="q1" value="Поддержку клиентов / FAQ" class="sr-only"><span class="qcheck"></span>Поддержку клиентов / FAQ</label>
+              <label class="quiz-option"><input type="checkbox" name="q1" value="Другое" class="sr-only"><span class="qcheck"></span>Другое</label>
             </div>
           </div>
 
@@ -1465,10 +1463,10 @@
             <h4>Какой мессенджер используете для общения с клиентами?</h4>
             <p>Можно выбрать несколько</p>
             <div class="quiz-options" data-multi="true">
-              <label class="quiz-option"><span class="qcheck"></span>WhatsApp</label>
-              <label class="quiz-option"><span class="qcheck"></span>Telegram</label>
-              <label class="quiz-option"><span class="qcheck"></span>Instagram Direct</label>
-              <label class="quiz-option"><span class="qcheck"></span>Другое / Несколько</label>
+              <label class="quiz-option"><input type="checkbox" name="q2" value="WhatsApp" class="sr-only"><span class="qcheck"></span>WhatsApp</label>
+              <label class="quiz-option"><input type="checkbox" name="q2" value="Telegram" class="sr-only"><span class="qcheck"></span>Telegram</label>
+              <label class="quiz-option"><input type="checkbox" name="q2" value="Instagram Direct" class="sr-only"><span class="qcheck"></span>Instagram Direct</label>
+              <label class="quiz-option"><input type="checkbox" name="q2" value="Другое / Несколько" class="sr-only"><span class="qcheck"></span>Другое / Несколько</label>
             </div>
           </div>
 
@@ -1477,10 +1475,10 @@
             <h4>Сколько заявок в месяц получаете?</h4>
             <p>Это поможет подобрать масштаб решения</p>
             <div class="quiz-options" data-multi="false">
-              <label class="quiz-option"><span class="qmark"></span>До 50</label>
-              <label class="quiz-option"><span class="qmark"></span>50 - 200</label>
-              <label class="quiz-option"><span class="qmark"></span>200+</label>
-              <label class="quiz-option"><span class="qmark"></span>Пока не знаю точно</label>
+              <label class="quiz-option"><input type="radio" name="q3" value="До 50" class="sr-only"><span class="qmark"></span>До 50</label>
+              <label class="quiz-option"><input type="radio" name="q3" value="50 - 200" class="sr-only"><span class="qmark"></span>50 - 200</label>
+              <label class="quiz-option"><input type="radio" name="q3" value="200+" class="sr-only"><span class="qmark"></span>200+</label>
+              <label class="quiz-option"><input type="radio" name="q3" value="Пока не знаю точно" class="sr-only"><span class="qmark"></span>Пока не знаю точно</label>
             </div>
           </div>
 
@@ -1488,9 +1486,9 @@
           <div class="quiz-step" data-step="3">
             <h4>Когда хотите запустить?</h4>
             <div class="quiz-options" data-multi="false">
-              <label class="quiz-option"><span class="qmark"></span>Как можно скорее</label>
-              <label class="quiz-option"><span class="qmark"></span>В течение месяца</label>
-              <label class="quiz-option"><span class="qmark"></span>Присматриваюсь к решениям</label>
+              <label class="quiz-option"><input type="radio" name="q4" value="Как можно скорее" class="sr-only"><span class="qmark"></span>Как можно скорее</label>
+              <label class="quiz-option"><input type="radio" name="q4" value="В течение месяца" class="sr-only"><span class="qmark"></span>В течение месяца</label>
+              <label class="quiz-option"><input type="radio" name="q4" value="Присматриваюсь к решениям" class="sr-only"><span class="qmark"></span>Присматриваюсь к решениям</label>
             </div>
           </div>
 
@@ -1502,12 +1500,13 @@
               <div class="form-group"><label for="qName">Имя</label><input type="text" id="qName" placeholder="Как вас зовут?" required autocomplete="name" aria-required="true" aria-describedby="errName"><span class="input-check" id="nameCheck" aria-hidden="true">✓</span><span class="field-error" id="errName" role="alert"></span></div>
               <div class="form-group"><label for="qPhone">Телефон / WhatsApp</label><input type="tel" id="qPhone" placeholder="+7 (___) ___-__-__" required autocomplete="tel" aria-required="true" aria-describedby="errPhone"><span class="input-check" id="phoneCheck" aria-hidden="true">✓</span><span class="field-error" id="errPhone" role="alert"></span></div>
               <div class="form-group"><label for="qNiche">Ниша / Сфера бизнеса</label><input type="text" id="qNiche" placeholder="Например: стоматология, образование..." autocomplete="organization"></div>
+              <div class="form-group" style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true"><label for="qWebsite">Website</label><input type="text" id="qWebsite" name="website" tabindex="-1" autocomplete="off"></div>
             </div>
           </div>
 
           <div class="quiz-nav">
-            <button class="btn-back" id="quizBack" style="display:none" onclick="quizGo(-1)" aria-label="Предыдущий шаг">&#8592; Назад</button>
-            <button class="btn-next" id="quizNext" onclick="quizGo(1)" aria-label="Следующий шаг">Далее &#8594;</button>
+            <button class="btn-back" id="quizBack" style="display:none" data-quiz-go="-1" aria-label="Предыдущий шаг">&#8592; Назад</button>
+            <button class="btn-next" id="quizNext" data-quiz-go="1" aria-label="Следующий шаг">Далее &#8594;</button>
           </div>
           <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:12px">Нажимая «Далее», вы соглашаетесь на <a href="privacy.html" style="color:var(--accent);text-decoration:underline" target="_blank">обработку персональных данных</a></p>
         </div>
@@ -1516,6 +1515,8 @@
   </div>
 </section>
 
+
+</main>
 
 <!-- FOOTER -->
 <footer role="contentinfo">
@@ -1562,7 +1563,7 @@
   <span class="demo-badge">demo</span>
   <span class="demo-tooltip" id="demoTooltip">Попробуйте ИИ-бота</span>
 </button>
-<div class="demo-window" id="demoWindow" role="dialog" aria-modal="false" aria-label="Демо чат с ИИ-ботом">
+<div class="demo-window" id="demoWindow" role="dialog" aria-modal="true" aria-label="Демо чат с ИИ-ботом">
   <div class="demo-header">
     <div class="demo-header-left">
       <div class="demo-avatar">D</div>
@@ -1578,27 +1579,27 @@
     <div class="demo-typing" id="demoTyping"><span></span><span></span><span></span></div>
   </div>
   <div class="demo-quick-btns">
-    <button class="demo-quick" onclick="demoSend('Сколько стоит?')">Сколько стоит?</button>
-    <button class="demo-quick" onclick="demoSend('Как это работает?')">Как это работает?</button>
-    <button class="demo-quick" onclick="demoSend('Хочу консультацию')">Хочу консультацию</button>
+    <button class="demo-quick" data-demo-msg="Сколько стоит?">Сколько стоит?</button>
+    <button class="demo-quick" data-demo-msg="Как это работает?">Как это работает?</button>
+    <button class="demo-quick" data-demo-msg="Хочу консультацию">Хочу консультацию</button>
   </div>
   <div class="demo-input-wrap">
     <input type="text" class="demo-input" id="demoInput" placeholder="Напишите сообщение..." maxlength="200" aria-label="Сообщение боту">
-    <button class="demo-send" onclick="demoSendInput()" aria-label="Отправить">&#8594;</button>
+    <button class="demo-send" id="demoSendBtn" aria-label="Отправить">&#8594;</button>
   </div>
 </div>
 
 <!-- EXIT-INTENT POPUP -->
 <div class="exit-overlay" id="exitPopup" role="dialog" aria-modal="true" aria-labelledby="exitPopupTitle">
   <div class="exit-popup">
-    <button class="exit-close" onclick="closeExit()" aria-label="Закрыть">&times;</button>
+    <button class="exit-close" id="exitCloseBtn" aria-label="Закрыть">&times;</button>
     <span class="exit-icon">&#129302;</span>
     <h3 id="exitPopupTitle">Подождите! У вас есть вопрос?</h3>
     <p style="font-size:17px;font-weight:600;line-height:1.5;margin-bottom:12px">Бесплатная консультация — разберём вашу задачу за 15 минут</p>
     <p style="font-size:14px;color:var(--text-muted)">Расскажите о бизнесе — подберём решение. Без обязательств.</p>
     <div class="exit-btns">
-      <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E" target="_blank" rel="noopener noreferrer" class="btn-primary" onclick="closeExit()">Получить консультацию &#8594;</a>
-      <button class="btn-ghost" onclick="closeExit()">Нет, спасибо</button>
+      <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E" target="_blank" rel="noopener noreferrer" class="btn-primary exit-close-action">Получить консультацию &#8594;</a>
+      <button class="btn-ghost exit-close-action">Нет, спасибо</button>
     </div>
   </div>
 </div>
@@ -1617,18 +1618,14 @@
 </div>
 
 <!-- Back to top -->
-<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">
+<button class="btt" id="btt" aria-label="Наверх">
   <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
 
 <!-- Phone mask -->
-<script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/imask@7.6.1/dist/imask.min.js" defer crossorigin="anonymous"></script>
 
-<!-- Dynamic urgency month -->
-<script>
-(function(){var m=document.getElementById('urgencyMonth');if(m){var months=['В январе','В феврале','В марте','В апреле','В мае','В июне','В июле','В августе','В сентябре','В октябре','В ноябре','В декабре'];m.textContent=months[new Date().getMonth()]}})();
-</script>
 
 
 
@@ -1640,6 +1637,12 @@
 
 <!-- Service Worker registration -->
 
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY5HDB819X"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-PY5HDB819X');</script>
+<!-- Yandex.Metrika -->
+<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=107703278','ym');ym(107703278,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/107703278" style="position:absolute;left:-9999px" alt=""></div></noscript>
 <script src="main.js?v=6" defer></script>
 </body>
 </html>

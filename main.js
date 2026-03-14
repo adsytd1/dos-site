@@ -9,7 +9,7 @@ document.querySelectorAll('a[href*="wa.me"]').forEach(a=>a.addEventListener('cli
 const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target)}})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.reveal,.reveal-children').forEach(e=>ro.observe(e));
 // Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();var href=l.getAttribute('href');if(!href||href==='#')return;var t;try{t=document.querySelector(href)}catch(err){return}if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.setAttribute('tabindex','-1');t.focus({preventScroll:true});history.pushState(null,null,href);var nav=document.querySelector('.navbar');if(nav){nav.classList.remove('nav-open');var toggle=nav.querySelector('.mobile-toggle');if(toggle)toggle.setAttribute('aria-expanded','false')}}})});
+document.querySelectorAll('a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();var href=l.getAttribute('href');if(!href||href==='#')return;var t;try{t=document.querySelector(href)}catch(err){return}if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.setAttribute('tabindex','-1');t.focus({preventScroll:true});t.addEventListener('blur',function(){t.removeAttribute('tabindex')},{once:true});history.pushState(null,null,href);var nav=document.querySelector('.navbar');if(nav){nav.classList.remove('nav-open');var toggle=nav.querySelector('.mobile-toggle');if(toggle)toggle.setAttribute('aria-expanded','false')}}})});
 // Close mobile menu on outside click
 document.addEventListener('click',function(e){var nav=document.querySelector('.navbar');if(!nav)return;if(nav.classList.contains('nav-open')&&!e.target.closest('.navbar')){nav.classList.remove('nav-open')}});
 // Stat counter
@@ -25,8 +25,8 @@ onScroll(function(){var s=window.scrollY>300;if(fw)fw.classList.toggle('visible'
 const track=document.getElementById('reviewsTrack'),dotsC=document.getElementById('carouselDots');
 if(!track)return;
 // On mobile split 4-card pages into 2-card pages
-var _lastWidth=window.innerWidth;
-window.addEventListener('resize',function(){var nowWidth=window.innerWidth;if((_lastWidth<=768&&nowWidth>768)||(_lastWidth>768&&nowWidth<=768)){goTo(0);bD()}_lastWidth=nowWidth});
+var _lastWidth=window.innerWidth,_resizeTimer;
+window.addEventListener('resize',function(){clearTimeout(_resizeTimer);_resizeTimer=setTimeout(function(){var nowWidth=window.innerWidth;if((_lastWidth<=768&&nowWidth>768)||(_lastWidth>768&&nowWidth<=768)){goTo(0);bD()}_lastWidth=nowWidth},150)});
 if(window.innerWidth<=768){
   var origPages=Array.from(track.querySelectorAll('.review-page'));
   origPages.forEach(function(pg){
@@ -72,7 +72,7 @@ track.addEventListener('touchstart',function(e){sx=e.touches[0].pageX;sy=e.touch
 track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].pageX-sx;var dy=e.changedTouches[0].pageY-sy;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){userInteract();goTo(dx>0?current-1:current+1)}},{passive:true});
 // Mouse drag
 let md=false,mx=0;
-track.addEventListener('mousedown',e=>{e.preventDefault();md=true;mx=e.pageX;track.style.transition='none';track.style.userSelect='none';track.style.webkitUserSelect='none'});
+track.addEventListener('mousedown',e=>{md=true;mx=e.pageX;track.style.transition='none';track.style.userSelect='none';track.style.webkitUserSelect='none'});
 window.addEventListener('mouseup',()=>{if(md){md=false;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';track.style.userSelect='';track.style.webkitUserSelect=''}});
 track.addEventListener('mousemove',e=>{if(!md)return;const dx=e.pageX-mx;if(Math.abs(dx)>60){md=false;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';userInteract();goTo(dx>0?current-1:current+1)}});
 // Keyboard navigation for carousel
@@ -173,7 +173,7 @@ var stepText=document.getElementById('quizStepText');if(stepText){var remaining=
 const toggle=document.getElementById('demoToggle'),win=document.getElementById('demoWindow'),closeBtn=document.getElementById('demoClose'),msgs=document.getElementById('demoMessages'),input=document.getElementById('demoInput'),typing=document.getElementById('demoTyping');
 if(!toggle||!win||!closeBtn||!msgs||!input||!typing)return;
 const CHAT_URL='https://adsytd.space/webhook/dos-chat';
-const sessionId='site-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
+var sessionId=sessionStorage.getItem('dosSessionId')||'site-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);sessionStorage.setItem('dosSessionId',sessionId);
 let sending=false;
 var dtt=document.getElementById('demoTooltip');
 setTimeout(function(){if(dtt)dtt.style.display='none'},8000);
@@ -633,7 +633,7 @@ el.parentNode.replaceChild(iframe,el);
     }
   }
   var s=document.createElement('script');
-  s.src='https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js';
+  s.src='https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js';s.crossOrigin='anonymous';
   s.onload=function(){
     try{
       webVitals.onCLS(sendToGA);
@@ -687,10 +687,10 @@ document.querySelectorAll('.quiz-option').forEach(function(opt){
   opt.addEventListener('click',function(){qSelect(this)});
 });
 
-// Stagger hero channels
+// Stagger hero channels — add class for CSS-driven initial state
 document.querySelectorAll('.hero-channel').forEach(function(ch,i){
-  ch.style.opacity='0';ch.style.transform='translateY(12px)';
-  setTimeout(function(){ch.style.transition='all .5s cubic-bezier(.4,0,.2,1)';ch.style.opacity='1';ch.style.transform='translateY(0)'},600+i*100);
+  ch.classList.add('hero-channel--hidden');
+  setTimeout(function(){ch.classList.remove('hero-channel--hidden');ch.classList.add('hero-channel--visible')},600+i*100);
 });
 
 // Trust stats count-up
@@ -808,3 +808,56 @@ window.sendInlineDemo=function(){
   if(typeof _origSendInlineDemo==='function')_origSendInlineDemo();
   setTimeout(function(){_inlineDemoDebounce=false},500);
 };
+
+// FIX: Event listeners for inline onclick handlers removed from HTML
+// Quiz navigation buttons
+document.querySelectorAll('[data-quiz-go]').forEach(function(btn){
+  btn.addEventListener('click',function(){quizGo(+this.dataset.quizGo)});
+});
+// Demo quick message buttons
+document.querySelectorAll('[data-demo-msg]').forEach(function(btn){
+  btn.addEventListener('click',function(){if(typeof demoSend==='function')demoSend(this.dataset.demoMsg)});
+});
+// Demo chat send button
+var demoSendBtn=document.getElementById('demoSendBtn');
+if(demoSendBtn)demoSendBtn.addEventListener('click',function(){if(typeof demoSendInput==='function')demoSendInput()});
+// Inline demo send button
+var inlineDemoSendBtn=document.getElementById('inlineDemoSendBtn');
+if(inlineDemoSendBtn)inlineDemoSendBtn.addEventListener('click',function(){if(typeof sendInlineDemo==='function')sendInlineDemo()});
+// Exit popup close buttons
+var exitCloseBtn=document.getElementById('exitCloseBtn');
+if(exitCloseBtn)exitCloseBtn.addEventListener('click',function(){if(typeof closeExit==='function')closeExit()});
+document.querySelectorAll('.exit-close-action').forEach(function(el){
+  el.addEventListener('click',function(){if(typeof closeExit==='function')closeExit()});
+});
+// Map city tooltips (moved from inline onmouseenter/onmouseleave/onfocus/onblur)
+document.querySelectorAll('.map-city').forEach(function(el){
+  el.addEventListener('mouseenter',function(){if(typeof showMapTipDiv==='function')showMapTipDiv(el)});
+  el.addEventListener('mouseleave',function(){if(typeof hideMapTip==='function')hideMapTip()});
+  el.addEventListener('focus',function(){if(typeof showMapTipDiv==='function')showMapTipDiv(el)});
+  el.addEventListener('blur',function(){if(typeof hideMapTip==='function')hideMapTip()});
+});
+// Side nav tabindex toggle — make items focusable when visible
+(function(){
+  var sideNav=document.getElementById('sideNav');
+  if(!sideNav)return;
+  var items=sideNav.querySelectorAll('.side-nav-item');
+  function updateTabindex(){
+    var visible=sideNav.classList.contains('visible');
+    items.forEach(function(item){item.setAttribute('tabindex',visible?'0':'-1')});
+  }
+  var mo=new MutationObserver(updateTabindex);
+  mo.observe(sideNav,{attributes:true,attributeFilter:['class']});
+  updateTabindex();
+})();
+// Honeypot spam check for quiz
+(function(){
+  var origQuizGo=window.quizGo;
+  if(!origQuizGo)return;
+  var _quizGoWrapped=function(dir){
+    var hp=document.getElementById('qWebsite');
+    if(hp&&hp.value){return;}
+    origQuizGo(dir);
+  };
+  window.quizGo=_quizGoWrapped;
+})();

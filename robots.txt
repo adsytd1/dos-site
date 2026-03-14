@@ -4,7 +4,3 @@ Sitemap: https://yernardos.space/sitemap.xml
 
 Disallow: /thank-you.html
 Disallow: /reviews/
-Disallow: /n8n-workflow-dos-chat.json
-Disallow: /n8n-workflow-dos-quiz.json
-Disallow: /prompt-dos-site-chat.txt
-Disallow: /goals-todo.txt

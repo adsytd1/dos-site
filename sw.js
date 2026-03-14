@@ -7,9 +7,6 @@ var SHELL = [
   '/',
   '/index.html',
   '/styles.min.css',
-  '/og-image.png',
-  '/avatar.jpg',
-  '/avatar.webp',
   '/kz-outline.svg',
   '/case-styles.css',
   '/main.js'
