@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="author" content="Yernar Dosmagambetov">
 <link rel="alternate" hreflang="ru" href="https://yernardos.space/">
 <title>AI-автоматизация для бизнеса в Казахстане | Чат-боты, CRM, лиды — DOS</title>
@@ -20,6 +20,7 @@
 <meta name="theme-color" content="#0a0a0a">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300e676'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%23000'>DOS</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='30' fill='%2300e676'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='60' fill='%23000'>DOS</text></svg>">
 <script type="application/ld+json">{
 "@context":"https://schema.org",
 "@type":"ProfessionalService",
@@ -89,7 +90,7 @@
 <!-- NAVBAR -->
 <nav class="navbar" aria-label="Основная навигация">
   <div class="navbar-logo">DOS_</div>
-  <ul class="navbar-links">
+  <ul class="navbar-links" id="navbar-links" role="navigation">
     <li><a href="#services">Услуги</a></li>
     <li><a href="#projects">Проекты</a></li>
     <li><a href="#process">Процесс</a></li>
@@ -99,7 +100,7 @@
     <li><a href="#contact-form">Консультация</a></li>
   </ul>
   <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" class="navbar-cta" target="_blank" rel="noopener noreferrer">Написать</a>
-  <button class="mobile-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="mobile-toggle" aria-label="Открыть меню навигации" aria-expanded="false" aria-controls="navbar-links"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- SIDE NAV -->
@@ -182,7 +183,7 @@
     <a href="case-personal-lawyer.html" class="trust-logo"><picture><source srcset="logos/Personal%20LAwyer%20logo%20new.webp" type="image/webp"><img src="logos/Personal%20LAwyer%20logo%20new.jpg" alt="Personal Lawyer" width="28" height="28" loading="lazy" class="logo-thumb"></picture>Personal Lawyer</a>
     <a href="case-rams.html" class="trust-logo"><picture><source srcset="logos/logo%20rams%20city.webp" type="image/webp"><img src="logos/logo%20rams%20city.jpeg" alt="RAMS" width="28" height="28" loading="lazy" class="logo-thumb"></picture>RAMS Kazakhstan</a>
     <a href="case-kazgeotech.html" class="trust-logo"><picture><source srcset="logos/kazgeotech%20logo%20new.webp" type="image/webp"><img src="logos/kazgeotech%20logo%20new.png" alt="KazGeoTech" width="28" height="28" loading="lazy" class="logo-thumb"></picture>KazGeoTech</a>
-    <a href="case-fortebank.html" class="trust-logo"><img src="logos/forte%20bank%20logo.svg" alt="Forte Bank" width="28" height="28" loading="lazy" class="logo-thumb">Forte Bank</a>
+    <span class="trust-logo" style="cursor:default"><img src="logos/forte%20bank%20logo.svg" alt="NDA Client" width="28" height="28" loading="lazy" class="logo-thumb">NDA проект</span>
     <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" class="trust-logo" target="_blank" rel="noopener noreferrer"><picture><source srcset="logos/ADAL%20LAWYERS%20LOGO.webp" type="image/webp"><img src="logos/ADAL%20LAWYERS%20LOGO.jpg" alt="ADAL LAWYERS" width="28" height="28" loading="lazy" class="logo-thumb"></picture>ADAL LAWYERS</a>
     <a href="case-dostyq.html" class="trust-logo"><picture><source srcset="logos/DOSTYQ%20LOGO.webp" type="image/webp"><img src="logos/DOSTYQ%20LOGO.jpg" alt="Dostyq" width="28" height="28" loading="lazy" class="logo-thumb"></picture>Dostyq Education</a>
   </div>
@@ -484,7 +485,7 @@
             <label for="calcBoost">Ожидаемый рост продаж с ИИ: <span class="calc-val" id="calcBoostVal">30%</span></label>
             <input type="range" id="calcBoost" min="10" max="40" value="30" step="5">
           </div>
-          <input type="hidden" id="calcTime" value="2">
+          <input type="hidden" id="calcTime" value="2" aria-hidden="true">
         </div>
         <div class="calc-results">
           <div class="calc-result-row">
@@ -636,19 +637,13 @@
         <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" target="_blank" rel="noopener noreferrer" class="case-link">Хочу так же &#8594;</a>
       </div>
 
-      <!-- FORTE BANK -->
-      <div class="project-card">
+      <!-- NDA PROJECT -->
+      <div class="project-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;text-align:center">
         <div class="project-header"><span class="project-industry project-industry--finance">Финансы</span></div>
-        <div class="project-name"><img src="logos/forte%20bank%20logo.svg" alt="ForteBank" width="28" height="28" loading="lazy" class="project-logo">Forte Bank</div>
-        <div class="project-meta">Банк топ-5 Казахстана</div>
-        <p class="project-desc">Один из крупнейших банков Казахстана. Проблема — задачи от руководства до сотрудников доходили хаотично. Здесь не ИИ-ассистент, а Telegram-бот для автоматизации внутренних процессов — постановка задач, контроль дедлайнов, автоуведомления между отделами.</p>
-        <ul class="project-features">
-          <li>Постановка и контроль задач</li>
-          <li>Отслеживание статуса выполнения</li>
-          <li>Внутренние коммуникации</li>
-        </ul>
-        <div class="project-result">&#127970; Telegram-бот для постановки задач, контроля дедлайнов и автоуведомлений между отделами</div>
-        <a href="case-fortebank.html" class="case-link">Смотреть кейс &#8594;</a>
+        <div style="font-size:48px;margin-bottom:16px">🔒</div>
+        <div class="project-name" style="justify-content:center">Банк топ-5 Казахстана</div>
+        <p class="project-desc" style="text-align:center;color:var(--text-muted)">Детали проекта под NDA. Автоматизация внутренних процессов для одного из крупнейших банков Казахстана.</p>
+        <div class="project-result" style="justify-content:center">🔒 Проект под NDA</div>
       </div>
 
       <!-- DOSTYQ -->
@@ -731,14 +726,14 @@
       <span class="roi-item"><b>Все проекты</b> — от +10 до +40% к конверсии</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>KazGeoTech</b> — 85% заявок на автопилоте</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>RAMS</b> — 3 000+ обращений, 0 потерянных</span><span class="roi-sep">&#9679;</span>
-      <span class="roi-item"><b>Forte Bank</b> — автоматизация задач между отделами</span><span class="roi-sep">&#9679;</span>
+      <span class="roi-item"><b>Банк топ-5</b> — проект под NDA</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>ADAL LAWYERS</b> — запись + оплата через Kaspi</span><span class="roi-sep">&#9679;</span>
       <!-- duplicate -->
       <span class="roi-item"><b>Amadey</b> — 150+ продаж без менеджера</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>Все проекты</b> — от +10 до +40% к конверсии</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>KazGeoTech</b> — 85% заявок на автопилоте</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>RAMS</b> — 3 000+ обращений, 0 потерянных</span><span class="roi-sep">&#9679;</span>
-      <span class="roi-item"><b>Forte Bank</b> — автоматизация задач между отделами</span><span class="roi-sep">&#9679;</span>
+      <span class="roi-item"><b>Банк топ-5</b> — проект под NDA</span><span class="roi-sep">&#9679;</span>
       <span class="roi-item"><b>ADAL LAWYERS</b> — запись + оплата через Kaspi</span><span class="roi-sep">&#9679;</span>
     </div>
   </div>
@@ -802,7 +797,7 @@
       </blockquote>
       <div class="pullquote-author">Нурасыл, владелец Amadey Music</div>
     </div>
-    <div class="reviews-carousel reveal">
+    <div class="reviews-carousel reveal" role="region" aria-label="Карусель отзывов" aria-roledescription="carousel">
       <div class="reviews-track" id="reviewsTrack">
 
         <!-- PAGE 1: Нурасыл, Талгат + видео-отзывы -->
@@ -932,7 +927,7 @@
         </button>
         <div class="objection-detail">
           <p>Мы это слышим от каждого второго клиента. &laquo;У нас юридическая специфика&raquo;, &laquo;у нас медицина&raquo;, &laquo;у нас геология — вы даже слов таких не знаете&raquo;.</p>
-          <p>А потом мы показываем, что уже сделали бота для юридической фирмы (ADAL Lawyers), управляющей компании ЖК (RAMS), музыкальной школы (Amadey), геологической компании (КазГеоТех), банка (ForteBank), образования (Dostyq). Каждый раз клиент говорил то же самое.</p>
+          <p>А потом мы показываем, что уже сделали бота для юридической фирмы (ADAL Lawyers), управляющей компании ЖК (RAMS), музыкальной школы (Amadey), геологической компании (КазГеоТех), банка (NDA), образования (Dostyq). Каждый раз клиент говорил то же самое.</p>
           <p>Секрет прост: ИИ-ассистент обучается на <strong>ваших</strong> реальных диалогах, прайсах, FAQ, скриптах продаж. Мы загружаем 10-15 примеров ваших реальных диалогов &mdash; и бот говорит на языке вашей ниши. Не &laquo;общий бот&raquo;, а <strong>ваш сотрудник</strong>, который знает каждый продукт.</p>
           <div class="objection-proof">10+ отраслей. Каждый проект — кастомная настройка под нишу, а не шаблон.</div>
         </div>
@@ -1241,7 +1236,7 @@
       <div class="benefit-card"><div class="benefit-icon">&#128176;</div><h3>Экономия на персонале</h3><p>Один ИИ-ассистент берёт на себя рутину 2-3 менеджеров. Не берёт больничные, не опаздывает, не забывает ответить.</p><button class="benefit-more" aria-expanded="false">Пример <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="benefit-detail"><div class="benefit-detail-inner"><strong>Amadey Music:</strong> один бот обрабатывает заявки на пробные уроки в 2 городах. Раньше это делали 2 менеджера. Конверсия выросла x2, а расходы на зарплаты упали.</div></div></div>
       <div class="benefit-card"><div class="benefit-icon">&#127919;</div><h3>Квалификация лидов</h3><p>Бот собирает имя, нишу, боль, объём — и передаёт вам готовое саммари. Вы общаетесь только с горячими клиентами.</p><button class="benefit-more" aria-expanded="false">Пример <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="benefit-detail"><div class="benefit-detail-inner"><strong>Personal Lawyer:</strong> бот выясняет тип юридической проблемы, срочность, бюджет — юрист получает готовое саммари. Конверсия в квалифицированного клиента отслеживается в реальном времени и стабильно растёт.</div></div></div>
       <div class="benefit-card"><div class="benefit-icon">&#128202;</div><h3>Прозрачная аналитика</h3><p>Каждый диалог, каждая конверсия, каждый потраченный тенге — в вашем дашборде. Полный контроль.</p><button class="benefit-more" aria-expanded="false">Пример <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="benefit-detail"><div class="benefit-detail-inner"><strong>RAMS Kazakhstan:</strong> дашборд в реальном времени показывает количество обращений жильцов, категории проблем, время решения. Управляющая компания видит всю картину без звонков и чатов.</div></div></div>
-      <div class="benefit-card"><div class="benefit-icon">&#128274;</div><h3>Без доступа к вашим данным</h3><p>ИИ работает только в рамках заданного сценария. Не может менять настройки, удалять данные или видеть конфиденциальную информацию.</p><button class="benefit-more" aria-expanded="false">Пример <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="benefit-detail"><div class="benefit-detail-inner"><strong>ForteBank:</strong> бот работает строго по утверждённому банком сценарию. Нет доступа к данным клиентов, счетам или транзакциям — только информирование и маршрутизация обращений.</div></div></div>
+      <div class="benefit-card"><div class="benefit-icon">&#128274;</div><h3>Без доступа к вашим данным</h3><p>ИИ работает только в рамках заданного сценария. Не может менять настройки, удалять данные или видеть конфиденциальную информацию.</p><button class="benefit-more" aria-expanded="false">Пример <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="benefit-detail"><div class="benefit-detail-inner"><strong>Банк топ-5 КЗ (NDA):</strong> бот работает строго по утверждённому банком сценарию. Нет доступа к данным клиентов — только информирование и маршрутизация обращений.</div></div></div>
       <div class="benefit-card"><div class="benefit-icon">&#127760;</div><h3>Мультиязычность</h3><p>Казахский, русский, английский — бот определяет язык автоматически и отвечает на нём.</p><button class="benefit-more" aria-expanded="false">Пример <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="benefit-detail"><div class="benefit-detail-inner"><strong>KazGeoTech:</strong> HR-бот определяет язык сотрудника и отвечает на казахском или русском. Процесс онбординга и ответы на вопросы работают на двух языках без переключения.</div></div></div>
       <div class="benefit-card"><div class="benefit-icon">&#128268;</div><h3>Интеграции</h3><p>WhatsApp, Telegram, Instagram, CRM, Google Sheets, Kaspi Pay, AlfaCRM — всё связано в единую систему.</p><button class="benefit-more" aria-expanded="false">Пример <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="benefit-detail"><div class="benefit-detail-inner"><strong>Amadey Music:</strong> WhatsApp + Google Sheets + n8n — заявка из мессенджера автоматически попадает в таблицу, менеджер получает уведомление, а клиент — подтверждение записи. Всё без единого клика.</div></div></div>
     </div>
@@ -1304,33 +1299,33 @@
       <div>
         <div class="about-bottom-label">География клиентов</div>
         <div class="kz-map-wrap" id="kzMap" style="position:relative">
-          <img src="kz-outline.svg" alt="Казахстан" style="width:100%;height:auto;display:block" loading="lazy">
+          <img src="kz-outline.svg" alt="Карта Казахстана с городами клиентов" style="width:100%;height:auto;display:block" loading="lazy" width="600" height="300">
           <!-- City dots overlay -->
-          <div class="map-city" style="left:62%;top:39%" data-city="Астана" data-info="Amadey, Dostyq, Adal Lawyers, Chingiskhan, Ulan, Forte, BigDent" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()">
+          <div class="map-city" style="left:62%;top:39%" data-city="Астана" data-info="Amadey, Dostyq, Adal Lawyers, Chingiskhan, Ulan, BigDent" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button" aria-label="Астана - Amadey, Dostyq, Adal Lawyers, Chingiskhan, Ulan, BigDent">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Астана</span>
           </div>
-          <div class="map-city" style="left:89%;top:48%" data-city="Усть-Каменогорск" data-info="Amadey" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()">
+          <div class="map-city" style="left:89%;top:48%" data-city="Усть-Каменогорск" data-info="Amadey" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label text-xxs">У-Каменогорск</span>
           </div>
-          <div class="map-city" style="left:75%;top:92%" data-city="Алматы" data-info="Personal Lawyer, Rams City" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()">
+          <div class="map-city" style="left:75%;top:92%" data-city="Алматы" data-info="Personal Lawyer, Rams City" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Алматы</span>
           </div>
-          <div class="map-city" style="left:43%;top:24%" data-city="Костанай" data-info="Dostyq QST, Chingiskhan" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()">
+          <div class="map-city" style="left:43%;top:24%" data-city="Костанай" data-info="Dostyq QST, Chingiskhan" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Костанай</span>
           </div>
-          <div class="map-city" style="left:28%;top:45%" data-city="Актобе" data-info="KazGeoTech" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()">
+          <div class="map-city" style="left:28%;top:45%" data-city="Актобе" data-info="KazGeoTech" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Актобе</span>
           </div>
-          <div class="map-city" style="left:14%;top:39%" data-city="Уральск" data-info="KazGeoTech" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()">
+          <div class="map-city" style="left:14%;top:39%" data-city="Уральск" data-info="KazGeoTech" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label">Уральск</span>
           </div>
-          <div class="map-city" style="left:55%;top:14%" data-city="Петропавловск" data-info="Клиенты" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()">
+          <div class="map-city" style="left:55%;top:14%" data-city="Петропавловск" data-info="Клиенты" onmouseenter="showMapTipDiv(this)" onmouseleave="hideMapTip()" onfocus="showMapTipDiv(this)" onblur="hideMapTip()" tabindex="0" role="button">
             <span class="map-city-pulse"></span>
             <span class="map-city-label text-xxs">Петропавловск</span>
           </div>
@@ -1435,14 +1430,14 @@
       <div class="form-section">
         <h3>Пройдите короткий квиз — я подберу решение</h3>
         <div class="quiz-wrap" id="quizWrap">
-          <div class="quiz-progress" id="quizProgress">
+          <div class="quiz-progress" id="quizProgress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5" aria-label="Прогресс квиза">
             <div class="quiz-progress-bar active"></div>
             <div class="quiz-progress-bar"></div>
             <div class="quiz-progress-bar"></div>
             <div class="quiz-progress-bar"></div>
             <div class="quiz-progress-bar"></div>
           </div>
-          <div id="quizStepText" style="text-align:center;font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-bottom:16px">Шаг 1 из 5 — осталось 4</div>
+          <div id="quizStepText" style="text-align:center;font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-bottom:16px" aria-live="polite" role="status">Шаг 1 из 5 — осталось 4</div>
 
           <!-- Step 1 -->
           <div class="quiz-step active" data-step="0">
@@ -1497,15 +1492,15 @@
             <h4>Отлично! Куда отправить персональное предложение?</h4>
             <p id="quizContactNote">Я свяжусь с вами в рабочее время</p>
             <div style="display:flex;flex-direction:column;gap:14px">
-              <div class="form-group"><label for="qName">Имя</label><input type="text" id="qName" placeholder="Как вас зовут?" required><span class="input-check" id="nameCheck">✓</span><span class="field-error" id="errName"></span></div>
-              <div class="form-group"><label for="qPhone">Телефон / WhatsApp</label><input type="tel" id="qPhone" placeholder="+7 (___) ___-__-__" required><span class="input-check" id="phoneCheck">✓</span><span class="field-error" id="errPhone"></span></div>
-              <div class="form-group"><label for="qNiche">Ниша / Сфера бизнеса</label><input type="text" id="qNiche" placeholder="Например: стоматология, образование..."></div>
+              <div class="form-group"><label for="qName">Имя</label><input type="text" id="qName" placeholder="Как вас зовут?" required autocomplete="name" aria-required="true" aria-describedby="errName"><span class="input-check" id="nameCheck" aria-hidden="true">✓</span><span class="field-error" id="errName" role="alert"></span></div>
+              <div class="form-group"><label for="qPhone">Телефон / WhatsApp</label><input type="tel" id="qPhone" placeholder="+7 (___) ___-__-__" required autocomplete="tel" aria-required="true" aria-describedby="errPhone"><span class="input-check" id="phoneCheck" aria-hidden="true">✓</span><span class="field-error" id="errPhone" role="alert"></span></div>
+              <div class="form-group"><label for="qNiche">Ниша / Сфера бизнеса</label><input type="text" id="qNiche" placeholder="Например: стоматология, образование..." autocomplete="organization"></div>
             </div>
           </div>
 
           <div class="quiz-nav">
-            <button class="btn-back" id="quizBack" class="hidden" onclick="quizGo(-1)">&#8592; Назад</button>
-            <button class="btn-next" id="quizNext" onclick="quizGo(1)">Далее &#8594;</button>
+            <button class="btn-back" id="quizBack" style="display:none" onclick="quizGo(-1)" aria-label="Предыдущий шаг">&#8592; Назад</button>
+            <button class="btn-next" id="quizNext" onclick="quizGo(1)" aria-label="Следующий шаг">Далее &#8594;</button>
           </div>
           <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:12px">Нажимая «Далее», вы соглашаетесь на <a href="privacy.html" style="color:var(--accent);text-decoration:underline" target="_blank">обработку персональных данных</a></p>
         </div>
@@ -1516,9 +1511,9 @@
 
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="container">
-    <p style="font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:8px">DOS_</p>
+    <p style="font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:8px" aria-hidden="true">DOS_</p>
     <p>Yernar Dosmagambetov &mdash; AI Automation Engineer</p>
     <div class="footer-links">
       <a href="https://wa.me/77052051992?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" class="footer-link" target="_blank" rel="noopener noreferrer">WhatsApp</a>
@@ -1539,7 +1534,7 @@
 </footer>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox"><button class="lightbox-close" aria-label="Закрыть">&times;</button><img src="data:," alt=""></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения"><button class="lightbox-close" aria-label="Закрыть просмотр">&times;</button><img src="data:," alt="Увеличенное изображение"></div>
 
 <!-- TRUST PROGRESS BAR -->
 <div class="trust-progress" id="trustProgress">
@@ -1555,12 +1550,12 @@
 <!-- floating call removed -->
 
 <!-- DEMO CHAT -->
-<button class="demo-toggle" id="demoToggle" aria-label="Попробовать ИИ-бота">
+<button class="demo-toggle" id="demoToggle" aria-label="Попробовать ИИ-бота" aria-expanded="false" aria-controls="demoWindow">
   &#129302;
   <span class="demo-badge">demo</span>
   <span class="demo-tooltip" id="demoTooltip">Попробуйте ИИ-бота</span>
 </button>
-<div class="demo-window" id="demoWindow">
+<div class="demo-window" id="demoWindow" role="dialog" aria-modal="false" aria-label="Демо чат с ИИ-ботом">
   <div class="demo-header">
     <div class="demo-header-left">
       <div class="demo-avatar">D</div>
@@ -1587,11 +1582,11 @@
 </div>
 
 <!-- EXIT-INTENT POPUP -->
-<div class="exit-overlay" id="exitPopup">
+<div class="exit-overlay" id="exitPopup" role="dialog" aria-modal="true" aria-labelledby="exitPopupTitle">
   <div class="exit-popup">
-    <button class="exit-close" onclick="closeExit()">&times;</button>
+    <button class="exit-close" onclick="closeExit()" aria-label="Закрыть">&times;</button>
     <span class="exit-icon">&#129302;</span>
-    <h3>Подождите! У вас есть вопрос?</h3>
+    <h3 id="exitPopupTitle">Подождите! У вас есть вопрос?</h3>
     <p style="font-size:17px;font-weight:600;line-height:1.5;margin-bottom:12px">Бесплатная консультация — разберём вашу задачу за 15 минут</p>
     <p style="font-size:14px;color:var(--text-muted)">Расскажите о бизнесе — подберём решение. Без обязательств.</p>
     <div class="exit-btns">

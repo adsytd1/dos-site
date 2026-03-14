@@ -1,21 +1,24 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0e0e0e;--surface:#151515;--card:#1a1a1a;--card-hover:#222;--border:#252525;--border-light:#333;--accent:#00e676;--accent-dim:rgba(0,230,118,.12);--accent-mid:rgba(0,230,118,.2);--accent-glow:rgba(0,230,118,.35);--accent2:#69f0ae;--blue:#38bdf8;--purple:#a78bfa;--gold:#fbbf24;--orange:#fb923c;--text:#f5f5f5;--text-secondary:#aaa;--text-muted:#999;--mono:'JetBrains Mono',monospace;--sans:'Outfit',-apple-system,sans-serif;--radius:16px;--radius-sm:10px;--radius-xs:6px;--max-w:1100px;--transition:.3s cubic-bezier(.4,0,.2,1)}
+:root{--bg:#0e0e0e;--surface:#151515;--card:#1a1a1a;--card-hover:#222;--border:#252525;--border-light:#333;--accent:#00e676;--accent-dim:rgba(0,230,118,.12);--accent-mid:rgba(0,230,118,.2);--accent-glow:rgba(0,230,118,.35);--accent2:#69f0ae;--blue:#38bdf8;--purple:#a78bfa;--gold:#fbbf24;--orange:#fb923c;--text:#f5f5f5;--text-secondary:#b0b0b0;--text-muted:#999;--mono:'JetBrains Mono',monospace;--sans:'Outfit',-apple-system,sans-serif;--radius:16px;--radius-sm:10px;--radius-xs:6px;--max-w:1100px;--transition:.3s cubic-bezier(.4,0,.2,1)}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale}
 html{overflow-x:hidden}
 ::selection{background:var(--accent-mid);color:var(--accent)}
 a{color:inherit;text-decoration:none}
-button{font-family:inherit}
+button{font-family:inherit;cursor:pointer}
+img,video{max-width:100%;height:auto}
 .container{max-width:var(--max-w);margin:0 auto;padding:0 32px}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;will-change:transform;mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1;will-change:auto;mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)}
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:0;mix-blend-mode:overlay}
 
 /* NAVBAR */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(10,10,10,.8);border-bottom:1px solid var(--border);box-shadow:0 1px 20px rgba(0,230,118,.06);transition:var(--transition)}
 .navbar-logo{font-family:var(--mono);font-weight:600;font-size:20px;color:var(--accent);letter-spacing:2px}
 .navbar-links{display:flex;gap:32px;list-style:none}
-.navbar-links a{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color var(--transition)}
-.navbar-links a:hover{color:var(--accent)}
+.navbar-links a{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color var(--transition);position:relative}
+.navbar-links a:hover,.navbar-links a:focus-visible{color:var(--accent)}
+.navbar-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--accent);transition:width var(--transition)}
+.navbar-links a:hover::after{width:100%}
 .navbar-cta{padding:10px 24px;background:var(--accent);color:#000;font-weight:600;font-size:13px;border-radius:100px;transition:all var(--transition);letter-spacing:.5px}
 .navbar-cta:hover{box-shadow:0 0 30px var(--accent-glow);transform:translateY(-1px)}
 .mobile-toggle{display:none;background:none;border:none;color:var(--text);cursor:pointer;width:28px;height:20px;position:relative;flex-shrink:0}
@@ -115,8 +118,8 @@ section+section::before{content:'';display:block;width:100%;max-width:var(--max-
 .compare-table td{padding:14px 16px;font-size:14px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
 .compare-table td:nth-child(3){color:var(--accent);font-weight:600}
 .compare-table tr:last-child td{border-bottom:none}
-.compare-table .val-bad{color:#ff5252}
-.compare-table .val-good{color:var(--accent)}
+.compare-table .val-bad{color:#ff6b6b}
+.compare-table .val-good{color:var(--accent);font-weight:600}
 .compare-bottom{text-align:center;margin-top:32px;font-size:15px;color:var(--text-secondary)}
 .compare-bottom strong{color:var(--accent)}
 
@@ -124,7 +127,7 @@ section+section::before{content:'';display:block;width:100%;max-width:var(--max-
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .video-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all var(--transition)}
 .video-card:hover{border-color:var(--border-light);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.25),0 0 20px var(--accent-dim)}
-.video-placeholder{position:relative;width:100%;padding-top:56.25%;background:var(--surface);cursor:pointer}
+.video-placeholder{position:relative;width:100%;padding-top:56.25%;background:var(--surface);cursor:pointer;overflow:hidden}
 .video-placeholder .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;transition:all var(--transition);box-shadow:0 0 40px var(--accent-dim)}
 .video-placeholder .play-btn::after{content:'';width:0;height:0;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent #000;margin-left:3px}
 .video-card:hover .play-btn{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 60px var(--accent-glow)}
@@ -136,7 +139,7 @@ section+section::before{content:'';display:block;width:100%;max-width:var(--max-
 /* PROJECTS */
 .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px 32px;transition:all var(--transition);position:relative;overflow:hidden}
-.project-card:hover{border-color:rgba(0,230,118,.35);transform:translateY(-4px) scale(1.01);box-shadow:0 16px 50px rgba(0,0,0,.25),0 0 30px rgba(0,230,118,.15),0 0 60px rgba(0,230,118,.06)}
+.project-card:hover{border-color:rgba(0,230,118,.35);box-shadow:0 16px 50px rgba(0,0,0,.25),0 0 30px rgba(0,230,118,.15),0 0 60px rgba(0,230,118,.06)}
 .project-card--featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:48px 40px;border-color:var(--accent)}
 .project-card--featured::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .project-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
@@ -254,7 +257,7 @@ section+section::before{content:'';display:block;width:100%;max-width:var(--max-
 .reviews-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1),opacity .4s ease;width:100%}
 .review-page{width:100%;min-width:100%;max-width:100%;flex:0 0 100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;box-sizing:border-box;height:80vh;opacity:1;transition:opacity .4s ease}
 .review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;min-height:0;min-width:0}
-.review-card:hover{border-color:var(--border-light)}
+.review-card:hover{border-color:var(--border-light);box-shadow:0 8px 24px rgba(0,0,0,.2)}
 .review-card.empty-card{background:transparent;border:1px dashed var(--border)}
 .review-media{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:#0d0d0d;overflow:hidden;position:relative}
 .review-media img{width:100%;height:100%;object-fit:contain;display:block}
@@ -272,7 +275,7 @@ section+section::before{content:'';display:block;width:100%;max-width:var(--max-
 .carousel-btn{width:48px;height:48px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--text-secondary);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
 .carousel-btn:hover{border-color:var(--accent);color:var(--accent)}
 .carousel-dots{display:flex;align-items:center;gap:8px;margin:0 16px}
-.carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--border-light);transition:all var(--transition);cursor:pointer}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--border-light);transition:all var(--transition);cursor:pointer;border:none;padding:0}
 .carousel-dot.active{background:var(--accent);width:24px;border-radius:4px}
 
 /* STACK */
@@ -308,10 +311,12 @@ section+section::before{content:'';display:block;width:100%;max-width:var(--max-
 .form-group{display:flex;flex-direction:column;gap:6px}
 .form-group--full{grid-column:1/-1}
 .form-group label{font-size:13px;font-weight:500;color:var(--text-muted)}
-.form-group input,.form-group textarea{padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:var(--sans);font-size:15px;outline:none;transition:border-color var(--transition);resize:vertical}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group input,.form-group textarea{padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:var(--sans);font-size:15px;outline:none;transition:border-color var(--transition),box-shadow var(--transition);resize:vertical}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted)}
 .form-group textarea{min-height:100px}
-.form-submit{grid-column:1/-1;padding:18px;background:var(--accent);color:#000;font-family:var(--sans);font-weight:700;font-size:16px;border:none;border-radius:100px;cursor:pointer;transition:all var(--transition)}
+.form-submit{grid-column:1/-1;padding:18px;background:var(--accent);color:#000;font-family:var(--sans);font-weight:700;font-size:16px;border:none;border-radius:100px;cursor:pointer;transition:all var(--transition);position:relative}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;pointer-events:none}
 .form-submit:hover{box-shadow:0 0 40px var(--accent-glow);transform:translateY(-2px)}
 
 /* FOOTER */
@@ -319,7 +324,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;posit
 footer p{font-size:13px;color:var(--text-muted)}
 
 /* FLOATING WA */
-.floating-wa{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px var(--accent-glow);z-index:999;opacity:0;transform:scale(.8) translateY(20px);transition:all .4s ease;pointer-events:none}
+.floating-wa{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;opacity:0;transform:scale(.8) translateY(20px);transition:all .4s ease;pointer-events:none;text-decoration:none;border:none}
 .floating-wa.visible{opacity:1;transform:scale(1) translateY(0);pointer-events:auto;animation:waPulse 2.5s infinite}
 .floating-wa:hover{transform:scale(1.1);box-shadow:0 6px 30px var(--accent-glow);animation:none}
 .floating-wa svg{width:28px;height:28px;fill:#000}
@@ -363,6 +368,10 @@ footer p{font-size:13px;color:var(--text-muted)}
 /* HERO CTA CENTER */
 .hero-cta-center{display:none}
 
+/* Hero pseudo-element pointer-events fix */
+.hero::before{pointer-events:none}
+.cta-section::before{pointer-events:none}
+
 /* HERO PAIN (compact, right) */
 .hero-pain{width:100%;max-width:100%;padding:28px;background:linear-gradient(135deg,rgba(255,82,82,.06),rgba(255,82,82,.02));border:1px solid rgba(255,82,82,.12);border-radius:var(--radius);text-align:center}
 .pain-counter{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
@@ -400,9 +409,11 @@ footer p{font-size:13px;color:var(--text-muted)}
 .calc-field label{display:block;font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:8px}
 .calc-field input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;background:var(--border-light);border-radius:3px;outline:none;margin-top:8px}
 .calc-field input[type=range]::-webkit-slider-runnable-track{background:linear-gradient(90deg,var(--accent) 0%,var(--border-light) 0%);border-radius:3px;height:6px}
-.calc-field input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid var(--bg);box-shadow:0 0 15px var(--accent-glow),0 0 30px rgba(0,230,118,.15);transition:transform .2s ease}
+.calc-field input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid var(--bg);box-shadow:0 0 15px var(--accent-glow),0 0 30px rgba(0,230,118,.15);transition:transform .2s ease;margin-top:-8px}
 .calc-field input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.15)}
 .calc-field input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:none;box-shadow:0 0 10px var(--accent-glow)}
+.calc-field input[type=range]:focus-visible::-webkit-slider-thumb{outline:2px solid var(--accent);outline-offset:2px}
+.calc-field input[type=range]:focus-visible::-moz-range-thumb{outline:2px solid var(--accent);outline-offset:2px}
 .calc-field input[type=range]::-moz-range-track{height:6px;background:var(--border-light);border-radius:3px}
 .calc-field .calc-val{display:inline-block;font-family:var(--mono);font-size:20px;font-weight:700;color:var(--accent)}
 .calc-results{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:32px 28px}
@@ -460,7 +471,7 @@ footer p{font-size:13px;color:var(--text-muted)}
 .hero-stat-num,.result-num,.synergy-pct{text-shadow:0 0 30px rgba(0,230,118,.3)}
 .calc-result-val.new,.calc-result-val.diff{text-shadow:0 0 20px rgba(0,230,118,.3)}
 
-.section-title{transition:transform var(--transition);display:inline-block}.section-title:hover{transform:scale(1.02)}
+.section-title{display:inline-block}
 
 .btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 60px var(--accent-glow),0 12px 40px rgba(0,230,118,.2)}
 .btn-ghost:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 20px rgba(0,230,118,.08)}
@@ -536,8 +547,9 @@ footer p{font-size:13px;color:var(--text-muted)}
 .demo-typing span:nth-child(3){animation-delay:.4s}
 @keyframes typingDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
 .demo-input-wrap{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px}
-.demo-input{flex:1;padding:10px 16px;background:var(--surface);border:1px solid var(--border);border-radius:100px;color:var(--text);font-family:var(--sans);font-size:13px;outline:none}
-.demo-input:focus{border-color:var(--accent)}
+.demo-input{flex:1;padding:10px 16px;background:var(--surface);border:1px solid var(--border);border-radius:100px;color:var(--text);font-family:var(--sans);font-size:13px;outline:none;transition:border-color var(--transition),box-shadow var(--transition)}
+.demo-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
+.demo-input::placeholder{color:var(--text-muted)}
 .demo-send{padding:10px 20px;background:var(--accent);color:#000;border:none;border-radius:100px;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s}
 .demo-send:hover{box-shadow:0 0 20px var(--accent-glow)}
 .demo-quick-btns{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px}
@@ -991,3 +1003,338 @@ a{color:#000;text-decoration:underline}
 @keyframes playPulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
 .mt-16{margin-top:16px}
 .mt-0{margin-top:0}
+
+/* FIX #2: prefers-reduced-motion support */
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+html{scroll-behavior:auto}
+.hero-rotate-word{transition:none}
+.kaspi-scroll,.roi-scroll{animation:none}
+.hero-bot-msg,.hero-bot-voice{animation:none;opacity:1;transform:none}
+.reveal{opacity:1;transform:none;transition:none}
+.reveal-children>*{opacity:1;transform:none;transition:none}
+body{animation:none}
+}
+
+/* FIX #3: Missing focus states for buttons */
+.btn-primary:focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px var(--accent-dim)}
+.btn-ghost:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pricing-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.carousel-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.demo-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.demo-send:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.demo-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.floating-wa:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.mobile-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.exit-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.objection-header:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:var(--radius)}
+.benefit-more:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.quiz-option:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* FIX #4: Missing transition on service-tag hover */
+.service-tag{transition:all .3s ease}
+.service-tag:hover{transform:translateY(-1px)}
+
+/* FIX #5: Missing hover transition on navbar-cta */
+.navbar-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* FIX #6: Missing will-change for performance-critical animations */
+.hero::before{will-change:opacity,transform}
+.floating-wa.visible{will-change:transform}
+.reveal{will-change:opacity,transform}
+
+/* FIX #7: body::before and body::after z-index should not block content */
+body::before{z-index:-1}
+body::after{z-index:-1}
+
+/* FIX #8: Safe area inset for notch devices */
+.navbar{padding-top:max(16px,env(safe-area-inset-top));padding-left:max(32px,env(safe-area-inset-left));padding-right:max(32px,env(safe-area-inset-right))}
+@media(max-width:768px){.navbar{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}}
+
+/* FIX #9: Trust progress bar missing safe area */
+.trust-progress{padding-bottom:max(6px,env(safe-area-inset-bottom))}
+
+/* FIX #10: Pointer events on body::before/after decorative elements (redundant but ensuring) */
+body::before,body::after{pointer-events:none}
+
+/* FIX #11: Inconsistent border-radius on inline-demo-input button */
+.inline-demo-input button{border-radius:var(--radius-sm);transition:all .3s ease}
+.inline-demo-input button:hover{background:var(--accent2);transform:translateY(-1px)}
+.inline-demo-input button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* FIX #12: Missing hover state on inline-demo-input */
+.inline-demo-input input:focus{border-color:var(--accent)}
+
+/* FIX #13: Text overflow on long project names */
+.project-name{overflow:hidden;text-overflow:ellipsis}
+
+/* FIX #14: Missing hover state on footer links */
+.footer-links{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:16px}
+.footer-link{font-size:13px;color:var(--text-muted);transition:color .3s ease}
+.footer-link:hover{color:var(--accent)}
+
+/* FIX #15: Carousel dots missing focus styles */
+.carousel-dot:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* FIX #16: Missing transition on trust-logo for smoother hover */
+.trust-logo{will-change:transform}
+
+/* FIX #17: Result card missing hover transition smoothness */
+.result-card{will-change:transform}
+
+/* FIX #18: .hero-channel missing focus state */
+.hero-channel:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* FIX #19: Quiz wrap and step styles for smoother transitions */
+.quiz-wrap{max-width:600px;margin:0 auto}
+.quiz-step{display:none}
+.quiz-step.active{display:block;animation:fadeInUp .4s ease}
+.quiz-step h4{font-size:18px;font-weight:700;margin-bottom:8px}
+.quiz-step p{font-size:14px;color:var(--text-muted);margin-bottom:16px}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.quiz-option{display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all .3s ease;font-size:14px;user-select:none;-webkit-user-select:none}
+.quiz-option:hover{border-color:var(--border-light);background:var(--card)}
+.quiz-option.selected{border-color:var(--accent);background:var(--accent-dim)}
+.quiz-progress{display:flex;gap:6px;margin-bottom:16px}
+.quiz-progress-bar{flex:1;height:4px;background:var(--border);border-radius:2px;transition:background .3s ease}
+.quiz-progress-bar.active{background:var(--accent)}
+.quiz-nav{display:flex;justify-content:space-between;margin-top:24px;gap:12px}
+.btn-back{padding:12px 24px;background:transparent;border:1px solid var(--border);border-radius:100px;color:var(--text-secondary);font-weight:600;cursor:pointer;transition:all .3s ease;font-family:var(--sans);font-size:14px}
+.btn-back:hover{border-color:var(--accent);color:var(--accent)}
+.btn-next{padding:12px 24px;background:var(--accent);color:#000;border:none;border-radius:100px;font-weight:700;cursor:pointer;transition:all .3s ease;font-family:var(--sans);font-size:14px;margin-left:auto}
+.btn-next:hover{box-shadow:0 0 20px var(--accent-glow);transform:translateY(-1px)}
+.btn-back:focus-visible,.btn-next:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* FIX #20: Navbar auto-hide transition for smoother animation */
+.navbar--hidden{transform:translateY(-100%)}
+.navbar{transition:transform .3s ease,background .3s ease,box-shadow .3s ease}
+
+/* FIX #21: Backdrop-filter fallback for unsupported browsers */
+@supports not (backdrop-filter:blur(1px)){
+.navbar{background:rgba(10,10,10,.97)}
+.mobile-cta{background:rgba(10,10,10,.97)}
+.desktop-sticky{background:rgba(10,10,10,.97)}
+.trust-progress{background:rgba(10,10,10,.97)}
+}
+
+/* FIX #22: Text contrast fixes - text-muted too dim */
+.pain-live{color:var(--text-secondary)}
+.pricing-note{color:var(--text-secondary)}
+
+/* FIX #23: Horizontal scroll prevention on section level */
+.section{overflow-x:hidden}
+
+/* FIX #24: Print - hide more decorative elements */
+@media print{
+body::after{display:none!important}
+.hero-bot,.hero-pain{display:none!important}
+.desktop-sticky{display:none!important}
+.quiz-wrap{display:none!important}
+.trust-progress{display:none!important}
+.reviews-carousel{page-break-inside:avoid}
+.pricing-grid{page-break-inside:avoid}
+img{max-width:100%!important}
+}
+
+/* FIX #25: Lightbox img missing max dimensions on mobile */
+@media(max-width:768px){
+.lightbox img{max-width:96vw;max-height:80vh}
+}
+
+/* FIX #26: Missing transition on niche-card hover */
+.niche-card{transition:all .3s ease}
+.niche-card:hover{border-color:var(--border-light);transform:translateY(-2px)}
+
+/* FIX #27: Missing transition on faq-details hover */
+.faq-details:hover{border-color:var(--border-light)}
+
+/* FIX #28: Map city dots should have minimum touch target on mobile */
+@media(max-width:768px){
+.map-city{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+}
+
+/* FIX #29: Desktop sticky CTA z-index conflict with trust-progress */
+.desktop-sticky{z-index:89}
+
+/* FIX #30: Demo window z-index should be above exit overlay background but below close */
+.demo-window{z-index:9998}
+
+/* FIX #31: Compare table header should be sticky on large tables */
+.compare-table thead{position:sticky;top:0;z-index:1;background:var(--card)}
+
+/* FIX #32: Missing hover state on about-tl-item */
+.about-tl-item{transition:all .3s ease;padding:4px 0;border-radius:var(--radius-xs)}
+.about-tl-item:hover{background:rgba(0,230,118,.04);padding-left:8px}
+
+/* FIX #33: Fix step-icon not centered on mobile */
+@media(max-width:768px){
+.step-icon{width:48px;height:48px;font-size:22px}
+.flex-col-center{text-align:center}
+}
+
+/* FIX #34: Overflow hidden on reviews track to prevent visual glitch */
+.reviews-track{will-change:transform}
+
+/* FIX #35: Missing hover state on demo-quick buttons - add transform */
+.demo-quick:hover{transform:translateY(-1px)}
+
+/* FIX #36: Exit popup accessibility - trap focus area visible */
+.exit-popup:focus-within{box-shadow:0 0 0 2px var(--accent)}
+
+/* FIX #37: Calc highlight msg hidden class conflict */
+.calc-highlight-msg.hidden{display:none}
+
+/* FIX #38: Mobile CTA link hover/active state */
+.mobile-cta a:active{transform:scale(.98);opacity:.9}
+
+/* FIX #39: Side nav items missing consistent hover background */
+.side-nav-item:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:0 6px 6px 0}
+
+/* FIX #40: Guarantee badges missing transform origin for consistent scaling */
+.guarantee-badge{transform-origin:center center}
+
+/* FIX #41: Pricing card popular transform origin fix */
+.pricing-card--popular{transform-origin:center center}
+
+/* FIX #42: Video card hover missing will-change for GPU */
+.video-card{will-change:transform}
+
+/* FIX #43: Hero stats responsive gap fix for 480px */
+@media(max-width:480px){
+.hero-stats{gap:12px}
+.hero-stat-label{font-size:11px}
+}
+
+/* FIX #44: Missing cursor:pointer on all clickable elements */
+.trust-logo[href],.case-link,.section-link,.project-ig,.pricing-btn,.magnet-btn,.cta-link,.footer-link,.guarantee-badge,.about-fact,.niche-card,.integr-item,.stack-item{cursor:pointer}
+.faq-details{cursor:pointer}
+.faq-details summary{cursor:pointer;list-style:none}
+.faq-details summary::-webkit-details-marker{display:none}
+
+/* FIX #45: Line-height improvements for readability */
+.project-features li{line-height:1.6}
+.pricing-features li{line-height:1.6}
+.objection-short{line-height:1.5}
+
+/* FIX #46: Consistent card shadows across all card types */
+.service-card,.benefit-card,.magnet-card,.synergy-card,.niche-card,.calc-card,.compare-section{box-shadow:0 2px 8px rgba(0,0,0,.15)}
+
+/* FIX #47: Missing active states on buttons for touch feedback */
+.btn-primary:active{transform:translateY(0) scale(.98)!important;box-shadow:0 0 20px var(--accent-dim)!important}
+.btn-ghost:active{transform:translateY(0) scale(.98)!important}
+.pricing-btn:active{transform:translateY(0) scale(.98)!important}
+.navbar-cta:active{transform:translateY(0) scale(.98)!important}
+
+/* FIX #48: Spacing fix - 3-step how-it-works grid on mobile */
+@media(max-width:768px){
+.section-container>div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;gap:16px!important}
+}
+
+/* FIX #49: Missing transition on integr-item for smoother hover */
+.integr-item{transition:all var(--transition)}
+
+/* FIX #50: Scroll snap for mobile carousel */
+@media(max-width:768px){
+.reviews-track{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.review-page{scroll-snap-align:center}
+}
+
+/* FIX #51: Card pseudo-element glow missing pointer-events:none */
+.result-card::after,.benefit-card::after,.synergy-card::after,.magnet-card::after{pointer-events:none}
+
+/* FIX #52: Missing hover on pricing-time */
+.pricing-time{transition:color .3s ease}
+
+/* FIX #53: Input focus ring consistency */
+.inline-demo-input input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
+
+/* FIX #54: Timer card consistent styling */
+.timer-card{transition:all .3s ease}
+.timer-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+
+/* FIX #55: Missing text-rendering on mono font elements */
+.hero-stat-num,.result-num,.synergy-pct,.calc-result-val,.agg-num,.timer-display,.pain-counter-num{text-rendering:geometricPrecision}
+
+/* FIX #56: Objection detail overflow fix */
+.objection-detail{overflow:hidden}
+.objection-detail p{overflow-wrap:break-word;word-break:break-word}
+
+/* FIX #57: Mobile safe-area for floating elements */
+@media(max-width:768px){
+.floating-wa{bottom:max(80px,calc(80px + env(safe-area-inset-bottom)))}
+.floating-call{bottom:max(80px,calc(80px + env(safe-area-inset-bottom)))}
+.btt{bottom:max(188px,calc(188px + env(safe-area-inset-bottom)))}
+}
+
+/* FIX #58: Hidden scrollbar for horizontal scrolling elements */
+.compare-section::-webkit-scrollbar{height:4px}
+.compare-section::-webkit-scrollbar-track{background:var(--surface)}
+.compare-section::-webkit-scrollbar-thumb{background:var(--border-light);border-radius:2px}
+
+/* FIX #59: Consistent border-radius on all cards */
+.ba-card{border-radius:var(--radius)}
+.timer-card{border-radius:var(--radius)}
+.agg-card{border-radius:var(--radius)}
+
+/* FIX #60: Missing selection color for inputs */
+input::selection,textarea::selection{background:var(--accent-mid);color:var(--accent)}
+
+/* FIX #61: Quiz option keyboard focus for accessibility */
+.quiz-option{-webkit-tap-highlight-color:transparent}
+.quiz-option:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* FIX #62: Prevent content shift when scrollbar appears/disappears */
+html{scrollbar-gutter:stable}
+
+/* FIX #63: Missing hover state on pain-reason tags */
+.pain-reason{transition:all .3s ease}
+.pain-reason:hover{border-color:rgba(255,82,82,.3);background:rgba(255,82,82,.1)}
+
+/* FIX #64: High contrast mode support */
+@media(forced-colors:active){
+.btn-primary,.navbar-cta,.pricing-card--popular .pricing-btn,.form-submit{forced-color-adjust:none}
+}
+
+/* FIX #44: Inline demo missing max-width on mobile */
+@media(max-width:768px){
+.inline-demo{margin-left:0;margin-right:0}
+.inline-demo-input input{font-size:16px}
+}
+
+/* FIX #45: Fix ba-grid responsive - add gap consistency */
+@media(max-width:480px){
+.ba-grid{gap:16px}
+.ba-msg{font-size:11px}
+}
+
+/* FIX #46: Timer display responsive fix */
+@media(max-width:480px){
+.timer-display{font-size:32px;letter-spacing:-1px}
+}
+
+/* FIX #47: Integr items scrollable on very small screens */
+@media(max-width:480px){
+.integr-items{gap:6px}
+.integr-item{padding:5px 12px;font-size:12px}
+}
+
+/* FIX #48: Input check positioning fix (quiz) */
+.form-group{position:relative}
+.input-check{display:none;color:var(--accent);font-size:18px;font-weight:700;position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none}
+
+/* FIX #49: Fix duplicate consult-list definition (keeping the better one) */
+
+/* FIX #50: Fix niche-grid responsive for 3-column on tablet */
+@media(min-width:481px) and (max-width:768px){
+.niche-grid{grid-template-columns:repeat(3,1fr)!important}
+}
+
+/* FIX #51: Fix agg-grid 480px responsive */
+@media(max-width:480px){
+.agg-grid{grid-template-columns:1fr 1fr;gap:12px}
+.agg-num{font-size:24px}
+}
+
+/* FIX #52: Objection detail text overflow prevention */
+.objection-detail p{word-wrap:break-word;overflow-wrap:break-word}

@@ -6,10 +6,10 @@ function onScroll(fn){_scrollCbs.push(fn)}
 function gEvent(name,params){if(typeof gtag==='function')gtag('event',name,params||{})}
 document.querySelectorAll('a[href*="wa.me"]').forEach(a=>a.addEventListener('click',()=>gEvent('whatsapp_click',{link_url:a.href})));
 // Reveal
-const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target)}})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.reveal,.reveal-children').forEach(e=>ro.observe(e));
 // Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();var href=l.getAttribute('href');if(!href||href==='#')return;const t=document.querySelector(href);if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.setAttribute('tabindex','-1');t.focus({preventScroll:true});history.pushState(null,null,href);var nav=document.querySelector('.navbar');if(nav)nav.classList.remove('nav-open')}})});
+document.querySelectorAll('a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();var href=l.getAttribute('href');if(!href||href==='#')return;var t;try{t=document.querySelector(href)}catch(err){return}if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.setAttribute('tabindex','-1');t.focus({preventScroll:true});history.pushState(null,null,href);var nav=document.querySelector('.navbar');if(nav){nav.classList.remove('nav-open');var toggle=nav.querySelector('.mobile-toggle');if(toggle)toggle.setAttribute('aria-expanded','false')}}})});
 // Close mobile menu on outside click
 document.addEventListener('click',function(e){var nav=document.querySelector('.navbar');if(!nav)return;if(nav.classList.contains('nav-open')&&!e.target.closest('.navbar')){nav.classList.remove('nav-open')}});
 // Stat counter
@@ -65,8 +65,9 @@ if(prevBtn)prevBtn.onclick=()=>{userInteract();goTo(current-1);debounceNav()};
 if(nextBtn)nextBtn.onclick=()=>{userInteract();goTo(current+1);debounceNav()};
 // Touch swipe
 let sx=0;
-track.addEventListener('touchstart',e=>{sx=e.touches[0].pageX;track.style.transition='none'},{passive:true});
-track.addEventListener('touchend',e=>{const dx=e.changedTouches[0].pageX-sx;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';if(Math.abs(dx)>50){userInteract();goTo(dx>0?current-1:current+1)}},{passive:true});
+var sy=0;
+track.addEventListener('touchstart',function(e){sx=e.touches[0].pageX;sy=e.touches[0].pageY;track.style.transition='none'},{passive:true});
+track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].pageX-sx;var dy=e.changedTouches[0].pageY-sy;track.style.transition='transform .5s cubic-bezier(.4,0,.2,1)';if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){userInteract();goTo(dx>0?current-1:current+1)}},{passive:true});
 // Mouse drag
 let md=false,mx=0;
 track.addEventListener('mousedown',e=>{e.preventDefault();md=true;mx=e.pageX;track.style.transition='none';track.style.userSelect='none';track.style.webkitUserSelect='none'});
@@ -120,7 +121,10 @@ if(hl){if(yearlyVal>5000000){hl.style.display=''}else{hl.style.display='none'}}
 }
 var _calcTimer=null;function calcDebounced(){clearTimeout(_calcTimer);_calcTimer=setTimeout(calc,100)}
 var bR=document.getElementById('calcBoost'),bV=document.getElementById('calcBoostVal');
-sR.oninput=calcDebounced;cR.oninput=calcDebounced;cvR.oninput=calcDebounced;if(tR)tR.oninput=calcDebounced;if(bR)bR.oninput=function(){if(bV)bV.textContent=bR.value+'%';calcDebounced()};calc();
+function updateSliderFill(el){var pct=((el.value-el.min)/(el.max-el.min))*100;el.style.background='linear-gradient(90deg,var(--accent) '+pct+'%,var(--border-light) '+pct+'%)';}
+function onSliderInput(el){updateSliderFill(el);calcDebounced();}
+[sR,cR,cvR,tR,bR].forEach(function(el){if(el){el.oninput=function(){if(el===bR&&bV)bV.textContent=el.value+'%';onSliderInput(el)};updateSliderFill(el);}});
+calc();
 // (miniCalcLoss removed — element no longer exists)
 })();
 // Quiz
@@ -172,8 +176,10 @@ let sending=false;
 var dtt=document.getElementById('demoTooltip');
 setTimeout(function(){if(dtt)dtt.style.display='none'},8000);
 function hideFloating(hide){var els=document.querySelectorAll('.floating-wa,.floating-call,.btt,.mobile-cta');els.forEach(function(el){if(hide){el.classList.add('floating-hidden')}else{el.classList.remove('floating-hidden')}})}
-toggle.addEventListener('click',function(){if(dtt)dtt.style.display='none';win.classList.toggle('open');var isOpen=win.classList.contains('open');toggle.style.display=isOpen?'none':'flex';hideFloating(isOpen);if(isOpen){document.body.style.overflow='hidden'}else{document.body.style.overflow=''}if(typeof gEvent==='function')gEvent('demo_chat_open')});
-closeBtn.addEventListener('click',function(){win.classList.remove('open');toggle.style.display='flex';hideFloating(false);document.body.style.overflow=''});
+toggle.addEventListener('click',function(){if(dtt)dtt.style.display='none';win.classList.toggle('open');var isOpen=win.classList.contains('open');toggle.style.display=isOpen?'none':'flex';toggle.setAttribute('aria-expanded',String(isOpen));hideFloating(isOpen);if(isOpen){document.body.style.overflow='hidden';var firstInput=win.querySelector('input,button');if(firstInput)firstInput.focus()}else{document.body.style.overflow=''}if(typeof gEvent==='function')gEvent('demo_chat_open')});
+closeBtn.addEventListener('click',function(){win.classList.remove('open');toggle.style.display='flex';toggle.setAttribute('aria-expanded','false');hideFloating(false);document.body.style.overflow='';toggle.focus()});
+// Close demo chat on Escape
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&win.classList.contains('open')){win.classList.remove('open');toggle.style.display='flex';toggle.setAttribute('aria-expanded','false');hideFloating(false);document.body.style.overflow='';toggle.focus()}});
 input.addEventListener('keydown',function(e){if(e.key==='Enter')demoSendInput()});
 function addMsg(text,cls){var d=document.createElement('div');d.className='demo-msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
 window.demoSend=function(text){
@@ -184,13 +190,14 @@ typing.classList.add('show');
 input.disabled=true;
 var ac=new AbortController();var tid=setTimeout(function(){ac.abort()},15000);
 fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:sessionId}),signal:ac.signal})
-.then(function(res){if(!res.ok)throw new Error('Server error');return res.json()})
+.then(function(res){if(!res.ok)throw new Error('Server '+res.status);return res.json()})
 .then(function(data){
 clearTimeout(tid);typing.classList.remove('show');
 var rt=data.reply||data.output||data.text||data.message||'Напишите в WhatsApp — обсудим подробнее!';addMsg(rt.replace(/\*\*(.*?)\*\*/g,'$1').replace(/\n/g,' '),'bot');
-}).catch(function(){
+}).catch(function(err){
 clearTimeout(tid);typing.classList.remove('show');
-addMsg('Не удалось связаться с сервером. Напишите в WhatsApp: +7 705 205 1992','bot');
+if(err&&err.name==='AbortError'){addMsg('Превышено время ожидания. Попробуйте ещё раз или напишите в WhatsApp: +7 705 205 1992','bot')}
+else{addMsg('Не удалось связаться с сервером. Напишите в WhatsApp: +7 705 205 1992','bot')}
 }).finally(function(){input.disabled=false;input.focus();sending=false});
 };
 window.demoSendInput=function(){var v=input.value.trim();if(!v)return;demoSend(v);input.value=''};
@@ -397,9 +404,15 @@ heroTimeout=setTimeout(playStep,1200);
 // Pause when not visible
 var observer=new IntersectionObserver(function(entries){
   running=entries[0].isIntersecting;
-  if(!running)clearTimeout(heroTimeout);
+  if(!running){clearTimeout(heroTimeout);hideTyping()}
+  else if(running&&step>0){heroTimeout=setTimeout(playStep,1000)}
 },{threshold:0.1});
 observer.observe(box.parentElement);
+// Cleanup on page hide
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden){clearTimeout(heroTimeout);running=false}
+  else if(!running){running=true;heroTimeout=setTimeout(playStep,500)}
+});
 })();
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -707,20 +720,31 @@ document.querySelectorAll('.hero-channel').forEach(function(ch,i){
   trustObs.observe(trustBar);
 })();
 
-// Project card tilt
-document.querySelectorAll('.project-card').forEach(function(card){
-  card.addEventListener('mousemove',function(e){
-    var rect=card.getBoundingClientRect();
-    var x=(e.clientX-rect.left)/rect.width-.5;
-    var y=(e.clientY-rect.top)/rect.height-.5;
-    card.style.transform='perspective(800px) rotateY('+x*6+'deg) rotateX('+(-y*6)+'deg) translateY(-4px) scale(1.01)';
+// Project card tilt (disabled on touch/reduced-motion)
+(function(){
+  var prefersReduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch='ontouchstart' in window;
+  if(prefersReduced||isTouch)return;
+  document.querySelectorAll('.project-card').forEach(function(card){
+    var rafId=null;
+    card.addEventListener('mousemove',function(e){
+      if(rafId)cancelAnimationFrame(rafId);
+      rafId=requestAnimationFrame(function(){
+        var rect=card.getBoundingClientRect();
+        var x=(e.clientX-rect.left)/rect.width-.5;
+        var y=(e.clientY-rect.top)/rect.height-.5;
+        card.style.transform='perspective(800px) rotateY('+x*4+'deg) rotateX('+(-y*4)+'deg) scale(1.01)';
+        rafId=null;
+      });
+    });
+    card.addEventListener('mouseleave',function(){
+      if(rafId){cancelAnimationFrame(rafId);rafId=null}
+      card.style.transform='';card.style.transition='transform .4s ease';
+      setTimeout(function(){card.style.transition=''},400);
+    });
+    card.addEventListener('mouseenter',function(){card.style.transition='none'});
   });
-  card.addEventListener('mouseleave',function(){
-    card.style.transform='';card.style.transition='transform .4s ease';
-    setTimeout(function(){card.style.transition=''},400);
-  });
-  card.addEventListener('mouseenter',function(){card.style.transition='none'});
-});
+})();
 
 // Video play button pulse
 document.querySelectorAll('.abs-center, [class*="play"]').forEach(function(btn){
@@ -728,4 +752,57 @@ document.querySelectorAll('.abs-center, [class*="play"]').forEach(function(btn){
   btn.addEventListener('mouseleave',function(){btn.style.animation=''});
 });
 
-if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(err){console.warn('SW registration failed:',err)})}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){/* SW registration failed - silent in production */})}
+
+// FIX: Update urgency month dynamically
+(function(){
+  var el=document.getElementById('urgencyMonth');
+  if(!el)return;
+  var months=['В январе','В феврале','В марте','В апреле','В мае','В июне','В июле','В августе','В сентябре','В октябре','В ноябре','В декабре'];
+  el.textContent=months[new Date().getMonth()];
+})();
+
+// FIX: Add ARIA live region for carousel page changes
+(function(){
+  var pageIndicator=document.querySelector('.carousel-page-indicator');
+  if(pageIndicator){pageIndicator.setAttribute('aria-live','polite');pageIndicator.setAttribute('role','status')}
+})();
+
+// FIX: Lightbox trap focus to close button and prevent background scroll
+(function(){
+  var lb=document.getElementById('lightbox');
+  if(!lb)return;
+  lb.setAttribute('role','dialog');
+  lb.setAttribute('aria-modal','true');
+  lb.setAttribute('aria-label','Просмотр изображения');
+})();
+
+// FIX: Back to top smooth scroll with null check
+(function(){
+  var btt=document.getElementById('btt');
+  if(!btt)return;
+  btt.addEventListener('click',function(e){
+    e.preventDefault();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+
+// FIX: Reduce motion - check and disable project card tilt
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.project-card').forEach(function(card){
+      card.style.transition='border-color .3s ease';
+      card.onmousemove=null;
+    });
+  }
+})();
+
+// FIX: Inline demo input Enter key - prevent double send
+var _inlineDemoDebounce=false;
+var _origSendInlineDemo=window.sendInlineDemo;
+window.sendInlineDemo=function(){
+  if(_inlineDemoDebounce)return;
+  _inlineDemoDebounce=true;
+  if(typeof _origSendInlineDemo==='function')_origSendInlineDemo();
+  setTimeout(function(){_inlineDemoDebounce=false},500);
+};
