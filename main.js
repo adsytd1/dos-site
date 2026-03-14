@@ -46,7 +46,7 @@ let current=0,total=pages.length;
 function bD(){if(!dotsC)return;dotsC.innerHTML='';for(let i=0;i<total;i++){const d=document.createElement('div');d.className='carousel-dot'+(i===current?' active':'');d.onclick=()=>{userInteract();goTo(i)};dotsC.appendChild(d)}updatePageIndicator()}
 var pageIndicator=document.createElement('div');pageIndicator.className='carousel-page-indicator';if(dotsC&&dotsC.parentNode)dotsC.parentNode.insertBefore(pageIndicator,dotsC.nextSibling);
 function updatePageIndicator(){pageIndicator.textContent=(current+1)+'/'+total}
-function goTo(i){track.querySelectorAll('video').forEach(v=>v.pause());current=Math.max(0,Math.min(i,total-1));track.style.transform='translateX(-'+(current*100)+'%)';document.querySelectorAll('.carousel-dot').forEach((d,idx)=>d.className='carousel-dot'+(idx===current?' active':''));updatePageIndicator()}
+function goTo(i){track.querySelectorAll('video').forEach(v=>v.pause());current=Math.max(0,Math.min(i,total-1));track.style.transition='transform .6s cubic-bezier(.4,0,.2,1), opacity .4s ease';track.style.opacity='0.5';track.style.transform='translateX(-'+(current*100)+'%)';setTimeout(function(){track.style.opacity='1'},400);document.querySelectorAll('.carousel-dot').forEach((d,idx)=>d.className='carousel-dot'+(idx===current?' active':''));updatePageIndicator()}
 // --- Autoplay ---
 let autoplayTimer=null,userStopped=false;
 function autoAdv(){if(userStopped)return;goTo(current<total-1?current+1:0);clearTimeout(autoplayTimer);autoplayTimer=setTimeout(autoAdv,10000)}
@@ -670,6 +670,62 @@ document.querySelectorAll('.quiz-option').forEach(function(opt){
 document.querySelectorAll('.quiz-option').forEach(function(opt){
   if(!opt.querySelector('.qmark'))return;
   opt.addEventListener('click',function(){qSelect(this)});
+});
+
+// Stagger hero channels
+document.querySelectorAll('.hero-channel').forEach(function(ch,i){
+  ch.style.opacity='0';ch.style.transform='translateY(12px)';
+  setTimeout(function(){ch.style.transition='all .5s cubic-bezier(.4,0,.2,1)';ch.style.opacity='1';ch.style.transform='translateY(0)'},600+i*100);
+});
+
+// Trust stats count-up
+(function(){
+  var trustBar=document.querySelector('.trust-bar');
+  if(!trustBar)return;
+  var trustObs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){
+      trustBar.querySelectorAll('.trust-stat-num, [data-count]').forEach(function(el){
+        var text=el.textContent;
+        var match=text.match(/([\d\s]+)/);
+        if(!match)return;
+        var target=parseInt(match[1].replace(/\s/g,''),10);
+        var suffix=text.replace(match[1],'');
+        var start=0;var duration=1200;var startTime=null;
+        function step(ts){
+          if(!startTime)startTime=ts;
+          var p=Math.min((ts-startTime)/duration,1);
+          var eased=1-Math.pow(1-p,3);
+          var current=Math.round(eased*target);
+          el.textContent=current.toLocaleString('ru-RU').replace(/,/g,' ')+suffix;
+          if(p<1)requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+      trustObs.unobserve(trustBar);
+    }
+  },{threshold:.3});
+  trustObs.observe(trustBar);
+})();
+
+// Project card tilt
+document.querySelectorAll('.project-card').forEach(function(card){
+  card.addEventListener('mousemove',function(e){
+    var rect=card.getBoundingClientRect();
+    var x=(e.clientX-rect.left)/rect.width-.5;
+    var y=(e.clientY-rect.top)/rect.height-.5;
+    card.style.transform='perspective(800px) rotateY('+x*6+'deg) rotateX('+(-y*6)+'deg) translateY(-4px) scale(1.01)';
+  });
+  card.addEventListener('mouseleave',function(){
+    card.style.transform='';card.style.transition='transform .4s ease';
+    setTimeout(function(){card.style.transition=''},400);
+  });
+  card.addEventListener('mouseenter',function(){card.style.transition='none'});
+});
+
+// Video play button pulse
+document.querySelectorAll('.abs-center, [class*="play"]').forEach(function(btn){
+  btn.addEventListener('mouseenter',function(){btn.style.animation='playPulse 1s ease infinite'});
+  btn.addEventListener('mouseleave',function(){btn.style.animation=''});
 });
 
 if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(err){console.warn('SW registration failed:',err)})}
