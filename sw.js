@@ -1,7 +1,7 @@
 /*  yernardos.space — Service Worker v3
     Cache-first for static assets, network-first for HTML.          */
 
-var CACHE = 'dos-v5';
+var CACHE = 'dos-v6';
 
 var SHELL = [
   '/',
