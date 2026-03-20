@@ -589,7 +589,7 @@ iframe.title=el.getAttribute('title')||'';
 iframe.frameBorder='0';
 iframe.allow='accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture';
 iframe.allowFullscreen=true;
-iframe.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%';
+iframe.style.cssText='width:100%;height:100%;flex:1;border:none';
 el.parentNode.replaceChild(iframe,el);
 });
 });
