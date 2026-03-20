@@ -948,8 +948,9 @@ a{color:#000;text-decoration:underline}
 /* REVIEW MEDIA CLICKABLE HINT */
 .review-media{position:relative}
 .review-media img{cursor:zoom-in;transition:opacity .2s}
-.review-media::after{content:'🔍 Нажмите для увеличения';position:absolute;bottom:8px;right:8px;padding:4px 10px;background:rgba(0,0,0,.7);border-radius:100px;font-size:10px;color:var(--text-muted);font-family:var(--mono);opacity:0;transition:opacity .3s;pointer-events:none}
+.review-media::after{content:'🔍 Нажмите для увеличения';position:absolute;bottom:8px;left:50%;transform:translateX(-50%);padding:6px 14px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.15);border-radius:100px;font-size:11px;color:rgba(255,255,255,.8);font-family:var(--mono);opacity:.7;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 .review-media:hover::after{opacity:1}
+.review-media--yt::after,.review-media:has(video)::after{display:none}
 
 /* NICHE GRID MOBILE */
 @media(max-width:768px){.niche-grid{grid-template-columns:repeat(2,1fr)!important}}

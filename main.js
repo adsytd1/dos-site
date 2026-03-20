@@ -603,13 +603,23 @@ el.parentNode.replaceChild(iframe,el);
   var lbImg=lb.querySelector('img');
   var lbClose=lb.querySelector('.lightbox-close');
   var scrollPos=0;
-  document.querySelectorAll('.review-media img').forEach(function(img){
-    img.addEventListener('click',function(){
+  // Клик на весь контейнер .review-media (не только img) — для удобства
+  document.querySelectorAll('.review-media').forEach(function(media){
+    // Пропускаем видео и YouTube карточки — для них лайтбокс не нужен
+    if(media.classList.contains('review-media--yt'))return;
+    if(media.querySelector('video'))return;
+    var img=media.querySelector('img');
+    if(!img)return;
+    media.style.cursor='zoom-in';
+    media.addEventListener('click',function(e){
+      // Не открывать если клик был на video controls
+      if(e.target.tagName==='VIDEO')return;
       var src=img.currentSrc||img.src;
+      if(!src||src==='data:,')return;
       lbImg.src=src;
-      lbImg.alt=img.alt;
+      lbImg.alt=img.alt||'Отзыв';
       lb.classList.add('active');
-      // iOS scroll lock: фиксируем body чтобы тач не скроллил фон
+      // Scroll lock для всех платформ (включая iOS)
       scrollPos=window.scrollY;
       document.body.style.position='fixed';
       document.body.style.top='-'+scrollPos+'px';
