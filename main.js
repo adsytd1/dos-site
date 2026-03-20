@@ -328,7 +328,7 @@ var script=[
   {type:'user',text:'В WhatsApp работает?',delay:5000},
   {type:'bot',html:'Да! &#128242; Подключаем:<br><br>&#8226; <b>WhatsApp</b><br>&#8226; <b>Telegram</b><br>&#8226; <b>Instagram</b><br>&#8226; CRM и Google Sheets<br><br>Все каналы <b>одновременно</b>.',delay:3500},
   {type:'user',text:'Какие результаты у других?',delay:5000},
-  {type:'bot',html:'&#128200; <b>Amadey Music</b> — 1 500+ сделок, 150+ продаж ИИ без менеджера<br><b>Personal Lawyer</b> — 3 807 лидов, конверсия 49.6%<br><b>KazGeoTech</b> — 500+ заявок, 85% без менеджера',delay:3500},
+  {type:'bot',html:'&#128200; <b>Amadey Music</b> — 1 500+ сделок, 150+ продаж ИИ без менеджера<br><b>Personal Lawyer</b> — 3 807 лидов, конверсия 49.6%<br><b>KazGeoTech</b> — сотни заявок кандидатов, 85% без HR',delay:3500},
   {type:'bot',html:'Это реальные цифры наших клиентов &#128170;',delay:1800},
   {type:'user',text:'Как начать?',delay:5000},
   {type:'bot',html:'Напишите в <b>WhatsApp</b> — обсудим задачу за 15 минут и подберём решение.<br><br>&#128073; wa.me/77052051992',delay:3500},
