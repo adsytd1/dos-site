@@ -619,24 +619,16 @@ el.parentNode.replaceChild(iframe,el);
       lbImg.src=src;
       lbImg.alt=img.alt||'Отзыв';
       lb.classList.add('active');
-      // Scroll lock для всех платформ (включая iOS)
-      scrollPos=window.scrollY;
-      document.body.style.position='fixed';
-      document.body.style.top='-'+scrollPos+'px';
-      document.body.style.left='0';
-      document.body.style.right='0';
+      // Scroll lock: overflow hidden на html+body (не position:fixed — ломает дочерние fixed)
+      document.documentElement.style.overflow='hidden';
       document.body.style.overflow='hidden';
       lbClose.focus();
     });
   });
   function close(){
     lb.classList.remove('active');
-    document.body.style.position='';
-    document.body.style.top='';
-    document.body.style.left='';
-    document.body.style.right='';
+    document.documentElement.style.overflow='';
     document.body.style.overflow='';
-    window.scrollTo(0,scrollPos);
   }
   lbClose.addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
