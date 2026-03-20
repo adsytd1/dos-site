@@ -223,7 +223,7 @@ document.addEventListener('mouseout',function(e){
 });
 var exitPopupEl=document.getElementById('exitPopup');
 if(exitPopupEl){exitPopupEl.addEventListener('click',function(e){
-  if(e.target===this)closeExit();
+  if(e.target===this||e.target.closest('.exit-close')||e.target.closest('.exit-close-action'))closeExit();
 });}
 var scrollDepth=0;
 onScroll(function(){
