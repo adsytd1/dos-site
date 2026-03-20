@@ -222,9 +222,12 @@ document.addEventListener('mouseout',function(e){
   if(!e.relatedTarget&&e.clientY<0)showExit();
 });
 var exitPopupEl=document.getElementById('exitPopup');
-if(exitPopupEl){exitPopupEl.addEventListener('click',function(e){
-  if(e.target===this||e.target.closest('.exit-close')||e.target.closest('.exit-close-action'))closeExit();
-});}
+if(exitPopupEl){
+  exitPopupEl.addEventListener('click',function(e){
+    if(e.target===this||e.target.closest('.exit-close')||e.target.closest('.exit-close-action'))closeExit();
+  });
+  exitPopupEl.addEventListener('touchmove',function(e){e.preventDefault()},{passive:false});
+}
 var scrollDepth=0;
 onScroll(function(){
   var denom=document.body.scrollHeight-window.innerHeight;var pct=denom>0?window.scrollY/denom*100:0;
@@ -599,21 +602,36 @@ el.parentNode.replaceChild(iframe,el);
   if(!lb)return;
   var lbImg=lb.querySelector('img');
   var lbClose=lb.querySelector('.lightbox-close');
-  var origOverflow='';
+  var scrollPos=0;
   document.querySelectorAll('.review-media img').forEach(function(img){
     img.addEventListener('click',function(){
       var src=img.currentSrc||img.src;
       lbImg.src=src;
       lbImg.alt=img.alt;
       lb.classList.add('active');
-      origOverflow=document.body.style.overflow;
+      // iOS scroll lock: фиксируем body чтобы тач не скроллил фон
+      scrollPos=window.scrollY;
+      document.body.style.position='fixed';
+      document.body.style.top='-'+scrollPos+'px';
+      document.body.style.left='0';
+      document.body.style.right='0';
       document.body.style.overflow='hidden';
       lbClose.focus();
     });
   });
-  function close(){lb.classList.remove('active');document.body.style.overflow=origOverflow}
+  function close(){
+    lb.classList.remove('active');
+    document.body.style.position='';
+    document.body.style.top='';
+    document.body.style.left='';
+    document.body.style.right='';
+    document.body.style.overflow='';
+    window.scrollTo(0,scrollPos);
+  }
   lbClose.addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  // Блокируем touchmove на лайтбоксе (iOS Safari)
+  lb.addEventListener('touchmove',function(e){e.preventDefault()},{passive:false});
   document.addEventListener('keydown',function(e){
     if(!lb.classList.contains('active'))return;
     if(e.key==='Escape'){close();return}
