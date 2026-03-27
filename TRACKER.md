@@ -5,7 +5,7 @@
 ---
 
 ## Бэклог из аудита
-- [ ] Рефакторинг: удалить 53 неиспользуемых CSS-класса из styles.css (phone-mockup, stack-grid, magnets-grid, video-placeholder, floating-call, desktop-sticky, hero-cta-center, contact-form, cost-card, compare-card-mobile и др.)
+- ✅ Рефакторинг: удалены 47 неиспользуемых CSS-классов из styles.css (phone-mockup, stack-grid, magnets-grid, video-placeholder, floating-phone, desktop-sticky, hero-cta-center, cost-card, compare-card-mobile и др.) + styles.min.css пересобран
 
 ---
 
@@ -58,7 +58,7 @@
 - ✅ **#2-30** [улучшение] `@keyframes mapPulse` анимирует width/height — layout thrashing на каждом кадре. Переписан на transform:scale()
 - ✅ **#2-31** [улучшение] 3 элемента без `-webkit-backdrop-filter` (trust-progress, navbar mobile, swipe-hint) — blur не работал в старом Safari. Добавлен вендорный префикс
 - ✅ **#2-32** [улучшение] Font-weight 900 не загружается (index.html hero) — добавлен в Google Fonts URL, styles.min.css пересобран
-- ⚠️ **Не исправлено** [код-качество] 53 неиспользуемых CSS-класса в styles.css — рефакторинг требует отдельной сессии, не влияет на пользователей → вынесено в бэклог
+- ✅ **#2-33** [код-качество] 47 неиспользуемых CSS-классов удалены из styles.css — styles.min.css пересобран
 
 </details>
 
