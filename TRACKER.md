@@ -4,7 +4,14 @@
 
 ---
 
-## Аудит #2 — 2026-03-27
+## Бэклог из аудита
+- [ ] Рефакторинг: удалить 53 неиспользуемых CSS-класса из styles.css (phone-mockup, stack-grid, magnets-grid, video-placeholder, floating-call, desktop-sticky, hero-cta-center, contact-form, cost-card, compare-card-mobile и др.)
+
+---
+
+## Архив
+
+<details><summary>Аудит #2 — 2026-03-27 (завершён)</summary>
 
 **Статистика:** Критичных: 5 | Важных: 13 | Улучшений: 13 | Всего: 31
 **Исправлено:** 31 из 31 | **Осталось:** 0
@@ -51,11 +58,9 @@
 - ✅ **#2-30** [улучшение] `@keyframes mapPulse` анимирует width/height — layout thrashing на каждом кадре. Переписан на transform:scale()
 - ✅ **#2-31** [улучшение] 3 элемента без `-webkit-backdrop-filter` (trust-progress, navbar mobile, swipe-hint) — blur не работал в старом Safari. Добавлен вендорный префикс
 - ✅ **#2-32** [улучшение] Font-weight 900 не загружается (index.html hero) — добавлен в Google Fonts URL, styles.min.css пересобран
-- ⚠️ **Не исправлено** [код-качество] 53 неиспользуемых CSS-класса в styles.css — рефакторинг требует отдельной сессии, не влияет на пользователей
+- ⚠️ **Не исправлено** [код-качество] 53 неиспользуемых CSS-класса в styles.css — рефакторинг требует отдельной сессии, не влияет на пользователей → вынесено в бэклог
 
----
-
-## Архив
+</details>
 
 <details><summary>Аудит #1 — 2026-03-27 (завершён)</summary>
 
