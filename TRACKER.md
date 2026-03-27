@@ -4,6 +4,40 @@
 
 ---
 
+## Аудит #2 — 2026-03-27
+
+**Статистика:** Критичных: 3 | Важных: 9 | Улучшений: 8 | Всего: 20
+**Исправлено:** 20 из 20 | **Осталось:** 0
+**Файлов изменено:** 16
+
+### Критичное
+- ✅ **#2-01** [критичное] lite-yt CSS отсутствует в case-styles.css — YouTube embed в кейсах не рендерился. Скопированы правила .lite-yt-cover, .review-media--yt, .abs-center из styles.min.css
+- ✅ **#2-02** [критичное] Сломанный счётчик в case-kazgeotech.html — `data-target="Сотни"` не анимируется (regex парсит только цифры). Заменено на `data-target="500+"`
+- ✅ **#2-03** [критичное] Сломанный счётчик в case-kazgeotech.html — `data-target="WhatsApp"` застревает на 0. Убран data-target, текст "WhatsApp" установлен напрямую
+
+### Важное
+- ✅ **#2-04** [важное] 3 отсутствующих .webp файла (404 при загрузке) — aida-personal-lawyer.webp, forte-review.webp, dostyq-review.webp сконвертированы из .jpg через cwebp
+- ✅ **#2-05** [важное] 2 несуществующих .mov fallback source — удалены ссылки на nurasyl.mov (case-amadey.html) и personal-lawyer-reel.mov (case-personal-lawyer.html), обновлены download-ссылки на .mp4
+- ✅ **#2-06** [важное] Некорректные цвета категорий в case-dostyq.html — Amadey карточка cat-yellow→cat-purple, Personal Lawyer карточка cat-sky→cat-green
+- ✅ **#2-07** [важное] Некорректный цвет категории в case-adal.html — Personal Lawyer карточка cat-purple→cat-green
+- ✅ **#2-08** [важное] Непоследовательный tooltip-скрипт в case-dostyq.html — inline style подход заменён на CSS class .show (как на остальных кейс-страницах)
+- ✅ **#2-09** [важное] Footer не синхронизированы на 4 страницах — blog.html, dialogs.html, privacy.html, thank-you.html: добавлены role=contentinfo, Telegram Channel, вторая строка ссылок, ИП YERNARMARKETING, target/rel атрибуты
+- ✅ **#2-10** [важное] Несоответствие конверсии 48.6%→49.6% — исправлено в index.html и blog.html
+- ✅ **#2-11** [важное] dialogs.html — stylesheet без cache-busting (styles.min.css без ?v=). Добавлен ?v=5
+- ✅ **#2-12** [важное] 404.html — отсутствует footer. Добавлен минимальный footer с copyright
+
+### Улучшения
+- ✅ **#2-13** [улучшение] Видео-обёртка слишком широкая (case-personal-lawyer.html) — добавлен CSS-класс .review-video-wrap (max-width:400px, центрирован, скруглён)
+- ✅ **#2-14** [улучшение] aria-label отсутствует на mobile CTA на 11 страницах — добавлен aria-label="Написать в WhatsApp" на все мобильные CTA
+- ✅ **#2-15** [улучшение] 404.html — отсутствуют OG meta-теги — добавлены og:type, og:title, og:url, og:locale, canonical
+- ✅ **#2-16** [улучшение] Footer ссылки на blog.html без target="_blank" на внешних ссылках — добавлены target/rel атрибуты
+- ✅ **#2-17** [улучшение] Footer ссылки на dialogs.html без target="_blank" на внешних ссылках — добавлены target/rel атрибуты
+- ✅ **#2-18** [улучшение] privacy.html — минимальный footer без навигации — расширен до полного footer с контактами и ссылками
+- ✅ **#2-19** [улучшение] thank-you.html — footer без Telegram Channel — добавлен
+- ✅ **#2-20** [улучшение] blog.html — footer без второй строки ссылок и ИП — добавлены
+
+---
+
 ## Архив
 
 <details><summary>Аудит #1 — 2026-03-27 (завершён)</summary>

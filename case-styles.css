@@ -149,6 +149,12 @@ footer{padding-bottom:72px}
 .review-embed-name{font-weight:600;font-size:14px}
 .review-embed-quote{font-size:13px;color:var(--text-muted)}
 
+/* Lite YouTube embed (used in case-kazgeotech) */
+.lite-yt-cover{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;background:#000 center/cover no-repeat}
+.review-media--yt iframe,.review-media--yt lite-yt{width:100%;height:100%;flex:1;border:0;position:relative}
+.review-media--yt .lite-yt-cover{background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center}
+.abs-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+
 body{animation:pageIn .6s ease both}
 @keyframes pageIn{from{opacity:0}to{opacity:1}}
 .skip-link{position:absolute;top:-100px;left:16px;z-index:9999;padding:12px 24px;background:#00e676;color:#000;font-weight:700;font-size:14px;border-radius:100px;text-decoration:none;transition:top .2s}

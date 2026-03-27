@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap&subset=cyrillic,latin" rel="stylesheet">
-<link rel="stylesheet" href="styles.min.css">
+<link rel="stylesheet" href="styles.min.css?v=5">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Примеры диалогов ИИ-ассистента vs Менеджера","description":"15 реальных сценариев: как ИИ-ассистент обрабатывает заявки быстрее и лучше менеджера","url":"https://yernardos.space/dialogs.html","inLanguage":"ru","author":{"@type":"Person","name":"Yernar Dosmagambetov"},"publisher":{"@type":"Organization","name":"DOS","url":"https://yernardos.space"}}
 </script>
@@ -464,16 +464,24 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="container">
-    <p style="font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:8px"><a href="index.html" style="text-decoration:none;color:inherit">DOS_</a></p>
+    <p style="font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:8px" aria-hidden="true"><a href="index.html" style="text-decoration:none;color:inherit">DOS_</a></p>
     <p>Yernar Dosmagambetov &mdash; AI Automation Engineer</p>
     <div class="footer-links">
-      <a href="https://wa.me/77052051992" class="footer-link">WhatsApp</a>
-      <a href="https://t.me/yernardoss" class="footer-link">Telegram</a>
-      <a href="https://www.instagram.com/yernar.dos/" class="footer-link">Instagram</a>
+      <a href="https://wa.me/77052051992" class="footer-link" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="https://t.me/yernardoss" class="footer-link" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.instagram.com/yernar.dos/" class="footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://t.me/+y3P9blPWhoFjNGUy" class="footer-link" target="_blank" rel="noopener noreferrer">Telegram Channel</a>
+      <a href="tel:+77052051992" class="footer-link">+7 705 205 1992</a>
     </div>
-    <p style="margin-top:16px">&copy; 2026 &middot; &#127472;&#127487; Kazakhstan</p>
+    <div class="footer-links mt-16">
+      <a href="blog.html" class="footer-link">Блог</a>
+      <a href="faq.html" class="footer-link">FAQ</a>
+      <a href="privacy.html" class="footer-link">Конфиденциальность</a>
+    </div>
+    <p class="mt-16">&copy; 2026 &middot; &#127472;&#127487; Kazakhstan</p>
+    <p style="margin-top:8px;font-size:11px;color:var(--text-muted);font-family:var(--mono)">ИП YERNARMARKETING &middot; Астана, Казахстан</p>
   </div>
 </footer>
 
