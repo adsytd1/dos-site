@@ -108,6 +108,43 @@ footer{padding-bottom:72px}
 @media(max-width:768px){.mobile-cta{display:block}.wa-float{bottom:80px;right:16px;width:48px;height:48px}.wa-float svg{width:24px;height:24px}.wa-tooltip{bottom:94px;right:72px}}
 @media(max-width:768px){.back-link{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 16px;background:rgba(10,10,10,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #1e1e1e}}
 
+/* Case logo in hero */
+.case-logo{display:block;margin-bottom:16px;border-radius:8px;object-fit:contain;background:rgba(255,255,255,.05);padding:4px}
+
+/* Centered section title (e.g. "Результаты в цифрах") */
+.case-section h2.text-center{text-align:center;width:100%;margin-bottom:8px}
+
+/* "Другие кейсы" grid */
+.case-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.case-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s ease;text-decoration:none;color:inherit}
+.case-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.case-card-cat{font-family:var(--mono);font-size:11px;margin-bottom:8px}
+.case-card-name{font-size:18px;font-weight:700;margin-bottom:6px}
+.case-card-desc{font-size:13px;color:var(--text-muted)}
+
+/* Category accent colors */
+.cat-green{color:#00e676}.cat-blue{color:#38bdf8}.cat-sky{color:#60a5fa}.cat-yellow{color:#fbbf24}.cat-pink{color:#f472b6}.cat-purple{color:#a78bfa}.cat-red{color:#ef4444}
+
+/* Footer brand & nav */
+.footer-brand{font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:8px}
+.footer-nav{text-align:center;padding:16px 0 0;position:relative;z-index:1}
+.footer-nav-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.footer-nav-link{font-size:14px;color:var(--text-muted);transition:color .3s}
+.footer-nav-link:hover{color:var(--accent)}
+
+/* Video fallback text */
+.video-fallback{padding:16px;color:var(--text-muted);font-size:14px}
+.video-fallback a{color:var(--accent)}
+
+/* Review embed (YouTube lite) */
+.review-embed{max-width:400px;margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--card)}
+.review-embed-ratio{position:relative;width:100%;padding-top:177%;background:#000}
+.review-embed-ratio>*{position:absolute;inset:0;width:100%;height:100%}
+.review-embed-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none}
+.review-embed-caption{padding:12px 16px;border-top:1px solid var(--border)}
+.review-embed-name{font-weight:600;font-size:14px}
+.review-embed-quote{font-size:13px;color:var(--text-muted)}
+
 body{animation:pageIn .6s ease both}
 @keyframes pageIn{from{opacity:0}to{opacity:1}}
 .skip-link{position:absolute;top:-100px;left:16px;z-index:9999;padding:12px 24px;background:#00e676;color:#000;font-weight:700;font-size:14px;border-radius:100px;text-decoration:none;transition:top .2s}

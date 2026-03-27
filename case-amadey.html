@@ -43,7 +43,7 @@
     <div class="case-badge">Музыка / Образование</div>
     <picture>
       <source srcset="logos/AMADEY%20LOGO.webp" type="image/webp">
-      <img src="logos/AMADEY%20LOGO.jpg" alt="Amadey Music Studio logo" width="40" height="40" style="display:block;margin-bottom:16px;border-radius:8px;object-fit:contain;background:rgba(255,255,255,.05);padding:4px">
+      <img src="logos/AMADEY%20LOGO.jpg" alt="Amadey Music Studio logo" width="40" height="40" class="case-logo">
     </picture>
     <h1 class="case-title">Amadey Music Studio<br><span class="accent">Полная автоматизация музыкальной студии</span></h1>
     <p class="case-subtitle">ИИ-менеджер Алтынай записывает на пробные уроки, ведёт дожимную воронку и закрывает сделки — как живой сотрудник, но 24/7</p>
@@ -148,7 +148,7 @@
         <video controls playsinline preload="metadata" aria-label="Видеоотзыв Нурасыла, владельца Amadey Music Studio" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
           <source src="reviews/nurasyl.mp4" type="video/mp4">
           <source src="reviews/nurasyl.mov" type="video/quicktime">
-          <p style="padding:16px;color:var(--text-muted);font-size:14px">Ваш браузер не поддерживает видео. <a href="reviews/nurasyl.mov" style="color:var(--accent)">Скачать видео</a></p>
+          <p class="video-fallback">Ваш браузер не поддерживает видео. <a href="reviews/nurasyl.mov">Скачать видео</a></p>
         </video>
         <div class="review-label">Нурасыл — владелец Amadey Music Studio</div>
       </div>
@@ -163,7 +163,7 @@
 
 <section class="case-section">
   <div class="container">
-    <h2 style="text-align:center;width:100%;margin-bottom:8px">Результаты в цифрах</h2>
+    <h2 class="text-center">Результаты в цифрах</h2>
     <div class="case-metrics">
       <div class="case-metric">
         <div class="case-metric-num" data-target="~10%">0</div>
@@ -189,26 +189,26 @@
 <section class="case-section">
   <div class="container">
     <h2>Другие кейсы</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
-      <a href="case-personal-lawyer.html" style="display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s ease;text-decoration:none;color:inherit">
-        <div style="font-family:var(--mono);font-size:11px;color:#00e676;margin-bottom:8px">ЮРИСПРУДЕНЦИЯ</div>
-        <div style="font-size:18px;font-weight:700;margin-bottom:6px">Personal Lawyer</div>
-        <div style="font-size:13px;color:var(--text-muted)">3 807 лидов, 49.6% конверсия</div>
+    <div class="case-cards-grid">
+      <a href="case-personal-lawyer.html" class="case-card">
+        <div class="case-card-cat cat-green">ЮРИСПРУДЕНЦИЯ</div>
+        <div class="case-card-name">Personal Lawyer</div>
+        <div class="case-card-desc">3 807 лидов, 49.6% конверсия</div>
       </a>
-      <a href="case-rams.html" style="display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s ease;text-decoration:none;color:inherit">
-        <div style="font-family:var(--mono);font-size:11px;color:#38bdf8;margin-bottom:8px">НЕДВИЖИМОСТЬ</div>
-        <div style="font-size:18px;font-weight:700;margin-bottom:6px">RAMS Kazakhstan</div>
-        <div style="font-size:13px;color:var(--text-muted)">1 000+ обращений, AI-мониторинг 24/7</div>
+      <a href="case-rams.html" class="case-card">
+        <div class="case-card-cat cat-blue">НЕДВИЖИМОСТЬ</div>
+        <div class="case-card-name">RAMS Kazakhstan</div>
+        <div class="case-card-desc">1 000+ обращений, AI-мониторинг 24/7</div>
       </a>
-      <a href="case-kazgeotech.html" style="display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s ease;text-decoration:none;color:inherit">
-        <div style="font-family:var(--mono);font-size:11px;color:#fbbf24;margin-bottom:8px">HR</div>
-        <div style="font-size:18px;font-weight:700;margin-bottom:6px">KazGeoTech HR Bot</div>
-        <div style="font-size:13px;color:var(--text-muted)">Сотни заявок кандидатов, 85% без HR</div>
+      <a href="case-kazgeotech.html" class="case-card">
+        <div class="case-card-cat cat-yellow">HR</div>
+        <div class="case-card-name">KazGeoTech HR Bot</div>
+        <div class="case-card-desc">Сотни заявок кандидатов, 85% без HR</div>
       </a>
-      <a href="case-fortebank.html" style="display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s ease;text-decoration:none;color:inherit">
-        <div style="font-family:var(--mono);font-size:11px;color:#f472b6;margin-bottom:8px">ФИНАНСЫ</div>
-        <div style="font-size:18px;font-weight:700;margin-bottom:6px">Forte Bank</div>
-        <div style="font-size:13px;color:var(--text-muted)">500+ задач, 95% выполнено в срок</div>
+      <a href="case-fortebank.html" class="case-card">
+        <div class="case-card-cat cat-pink">ФИНАНСЫ</div>
+        <div class="case-card-name">Forte Bank</div>
+        <div class="case-card-desc">500+ задач, 95% выполнено в срок</div>
       </a>
     </div>
   </div>
@@ -225,13 +225,13 @@
 
 <footer>
   <div class="container">
-    <p style="font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:8px">DOS_</p>
+    <p class="footer-brand">DOS_</p>
     <p>&copy; 2026 &middot; Yernar Dosmagambetov</p>
-    <div style="text-align:center;padding:16px 0 0;position:relative;z-index:1">
-      <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap">
-        <a href="index.html#pricing" style="font-size:14px;color:var(--text-muted);transition:color .3s">Стоимость услуг</a>
-        <a href="faq.html" style="font-size:14px;color:var(--text-muted);transition:color .3s">Частые вопросы</a>
-        <a href="index.html#projects" style="font-size:14px;color:var(--text-muted);transition:color .3s">Все проекты</a>
+    <div class="footer-nav">
+      <div class="footer-nav-links">
+        <a href="index.html#pricing" class="footer-nav-link">Стоимость услуг</a>
+        <a href="faq.html" class="footer-nav-link">Частые вопросы</a>
+        <a href="index.html#projects" class="footer-nav-link">Все проекты</a>
       </div>
     </div>
   </div>
