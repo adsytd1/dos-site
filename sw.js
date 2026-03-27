@@ -16,7 +16,12 @@ var SHELL = [
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      return cache.addAll(SHELL);
+      return cache.addAll(SHELL).catch(function () {
+        // Если один ресурс недоступен — кешируем остальные по одному
+        return Promise.all(SHELL.map(function (url) {
+          return cache.add(url).catch(function () { /* skip missing */ });
+        }));
+      });
     })
   );
   self.skipWaiting();
