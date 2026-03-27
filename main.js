@@ -698,16 +698,18 @@ document.querySelectorAll('.benefit-more').forEach(function(btn){
     this.setAttribute('aria-expanded',this.closest('.benefit-card').classList.contains('open'));
   });
 });
-// Quiz option toggle (multi-select)
+// Quiz option toggle — sync with checkbox/radio state to avoid label double-click bug
 document.querySelectorAll('.quiz-option').forEach(function(opt){
-  // Skip options that use qSelect (single-select with .qmark)
-  if(opt.querySelector('.qmark'))return;
-  opt.addEventListener('click',function(){this.classList.toggle('selected')});
-});
-// Quiz option single-select (qSelect)
-document.querySelectorAll('.quiz-option').forEach(function(opt){
-  if(!opt.querySelector('.qmark'))return;
-  opt.addEventListener('click',function(){qSelect(this)});
+  var input=opt.querySelector('input');
+  if(!input)return;
+  if(input.type==='checkbox'){
+    input.addEventListener('change',function(){opt.classList.toggle('selected',this.checked)});
+  }else{
+    input.addEventListener('change',function(){
+      opt.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(function(o){o.classList.remove('selected')});
+      opt.classList.add('selected');
+    });
+  }
 });
 
 // Stagger hero channels — add class for CSS-driven initial state
