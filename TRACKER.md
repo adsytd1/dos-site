@@ -6,9 +6,9 @@
 
 ## Аудит #2 — 2026-03-27
 
-**Статистика:** Критичных: 5 | Важных: 13 | Улучшений: 9 | Всего: 27
-**Исправлено:** 27 из 27 | **Осталось:** 0
-**Файлов изменено:** 20
+**Статистика:** Критичных: 5 | Важных: 13 | Улучшений: 13 | Всего: 31
+**Исправлено:** 31 из 31 | **Осталось:** 0
+**Файлов изменено:** 22
 
 ### Критичное
 - ✅ **#2-01** [критичное] lite-yt CSS отсутствует в case-styles.css — YouTube embed в кейсах не рендерился. Скопированы правила .lite-yt-cover, .review-media--yt, .abs-center из styles.min.css
@@ -46,6 +46,12 @@
 - ✅ **#2-27** [важное] main.js body.style.overflow='hidden' не восстанавливается при bfcache — pageshow listener добавлен для восстановления overflow
 - ✅ **#2-28** [улучшение] blog.html reading progress bar — null check для bar элемента + CSS '0'→'0%'
 - ✅ **#2-29** [улучшение] faq.html `const ro` потенциальный конфликт — обёрнут в IIFE превентивно (faq.html не грузит main.js, но может в будущем)
+
+### CSS-аудит (styles.css + case-styles.css)
+- ✅ **#2-30** [улучшение] `@keyframes mapPulse` анимирует width/height — layout thrashing на каждом кадре. Переписан на transform:scale()
+- ✅ **#2-31** [улучшение] 3 элемента без `-webkit-backdrop-filter` (trust-progress, navbar mobile, swipe-hint) — blur не работал в старом Safari. Добавлен вендорный префикс
+- ✅ **#2-32** [улучшение] Font-weight 900 не загружается (index.html hero) — добавлен в Google Fonts URL, styles.min.css пересобран
+- ⚠️ **Не исправлено** [код-качество] 53 неиспользуемых CSS-класса в styles.css — рефакторинг требует отдельной сессии, не влияет на пользователей
 
 ---
 
