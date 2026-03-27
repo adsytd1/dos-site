@@ -577,6 +577,8 @@ var inlineDemoInputEl=document.getElementById('inlineDemoInput');if(inlineDemoIn
         if(item.getAttribute('data-target')===current){item.classList.add('active')}
         else{item.classList.remove('active')}
       });
+      if(current){history.replaceState(null,null,'#'+current)}
+      else if(!current&&scrollY<100){history.replaceState(null,null,window.location.pathname)}
     }
   }
   onScroll(updateSideNav);
