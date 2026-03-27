@@ -486,9 +486,11 @@
 </footer>
 
 <script>
-// Reveal animation
-const ro=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.reveal').forEach(e=>ro.observe(e));
+// Reveal animation (wrapped in IIFE to avoid const ro collision with main.js)
+(function(){
+var ro=new IntersectionObserver(function(e){e.forEach(function(t){if(t.isIntersecting){t.target.classList.add('visible');ro.unobserve(t.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(function(e){ro.observe(e)});
+})();
 // Close mobile menu
 document.addEventListener('click',function(e){var nav=document.querySelector('.navbar');if(!nav)return;if(nav.classList.contains('nav-open')&&!e.target.closest('.navbar'))nav.classList.remove('nav-open')});
 </script>
@@ -497,5 +499,11 @@ document.addEventListener('click',function(e){var nav=document.querySelector('.n
 (function(){var btn=document.getElementById('mobileToggle');if(!btn)return;btn.addEventListener('click',function(){var nav=btn.closest('.navbar');nav.classList.toggle('nav-open');btn.setAttribute('aria-expanded',nav.classList.contains('nav-open'))})})();
 </script>
 <script src="main.js" defer></script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY5HDB819X"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-PY5HDB819X');</script>
+<!-- Yandex.Metrika -->
+<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=107703278','ym');ym(107703278,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/107703278" style="position:absolute;left:-9999px" alt=""></div></noscript>
 </body>
 </html>

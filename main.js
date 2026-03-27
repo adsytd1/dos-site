@@ -533,6 +533,7 @@ function sendInlineDemo(){
       },1500);
     }
   }).catch(function(){
+    clearTimeout(timeoutId);
     tp.remove();
     window._inlineSending=false;
     var em=document.createElement('div');
@@ -881,3 +882,6 @@ document.querySelectorAll('.map-city').forEach(function(el){
   };
   window.quizGo=_quizGoWrapped;
 })();
+
+// Restore body overflow after bfcache (e.g. user navigated away while chat/lightbox was open)
+window.addEventListener('pageshow',function(e){if(e.persisted)document.body.style.overflow=''});

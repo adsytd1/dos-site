@@ -6,9 +6,9 @@
 
 ## Аудит #2 — 2026-03-27
 
-**Статистика:** Критичных: 3 | Важных: 9 | Улучшений: 8 | Всего: 20
-**Исправлено:** 20 из 20 | **Осталось:** 0
-**Файлов изменено:** 16
+**Статистика:** Критичных: 5 | Важных: 13 | Улучшений: 9 | Всего: 27
+**Исправлено:** 27 из 27 | **Осталось:** 0
+**Файлов изменено:** 20
 
 ### Критичное
 - ✅ **#2-01** [критичное] lite-yt CSS отсутствует в case-styles.css — YouTube embed в кейсах не рендерился. Скопированы правила .lite-yt-cover, .review-media--yt, .abs-center из styles.min.css
@@ -35,6 +35,17 @@
 - ✅ **#2-18** [улучшение] privacy.html — минимальный footer без навигации — расширен до полного footer с контактами и ссылками
 - ✅ **#2-19** [улучшение] thank-you.html — footer без Telegram Channel — добавлен
 - ✅ **#2-20** [улучшение] blog.html — footer без второй строки ссылок и ИП — добавлены
+
+### JS-аудит (main.js + inline scripts)
+- ✅ **#2-21** [критичное] `const ro` redeclaration в dialogs.html — main.js тоже объявляет `const ro`, SyntaxError убивает ВСЮ логику main.js на этой странице. Обёрнут в IIFE
+- ✅ **#2-22** [критичное] GA4 и Яндекс.Метрика отсутствуют на 8 страницах — 7 кейсов + 404.html без аналитики, весь трафик невидим. Добавлены оба счётчика
+- ✅ **#2-23** [важное] faq.html scroll handler — `document.querySelector('.faq-nav').offsetHeight` без null check, crash на каждом scroll если элемент не найден. Добавлен null check
+- ✅ **#2-24** [важное] faq.html scroll handler не throttled — 60+ вызовов/сек на мобилке. Добавлен requestAnimationFrame throttle + passive:true
+- ✅ **#2-25** [важное] blog.html revealCards — querySelectorAll('.blog-card') на каждом scroll без фильтрации, накапливает сотни setTimeout. Переписан: :not(.revealed) + rAF throttle + passive:true
+- ✅ **#2-26** [важное] main.js inline demo chat — clearTimeout(timeoutId) не вызывается в .catch(), таймер висит после ошибки. Добавлен clearTimeout в catch
+- ✅ **#2-27** [важное] main.js body.style.overflow='hidden' не восстанавливается при bfcache — pageshow listener добавлен для восстановления overflow
+- ✅ **#2-28** [улучшение] blog.html reading progress bar — null check для bar элемента + CSS '0'→'0%'
+- ✅ **#2-29** [улучшение] faq.html `const ro` потенциальный конфликт — обёрнут в IIFE превентивно (faq.html не грузит main.js, но может в будущем)
 
 ---
 

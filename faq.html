@@ -884,19 +884,26 @@ document.querySelectorAll('.faq-nav-btn').forEach(btn=>{
 // Active nav on scroll
 const sections=document.querySelectorAll('.faq-section');
 const navBtns=document.querySelectorAll('.faq-nav-btn');
-window.addEventListener('scroll',()=>{
-  const navH=document.querySelector('.faq-nav').offsetHeight;
-  let current='';
-  sections.forEach(s=>{
-    const top=s.offsetTop-navH-100;
-    if(window.pageYOffset>=top)current=s.id;
-  });
-  if(current){
-    navBtns.forEach(b=>{
-      b.classList.toggle('active',b.dataset.target===current);
+var faqNavEl=document.querySelector('.faq-nav');
+var _faqScrollTicking=false;
+window.addEventListener('scroll',function(){
+  if(!faqNavEl||_faqScrollTicking)return;
+  _faqScrollTicking=true;
+  requestAnimationFrame(function(){
+    var navH=faqNavEl.offsetHeight;
+    var current='';
+    sections.forEach(function(s){
+      var top=s.offsetTop-navH-100;
+      if(window.pageYOffset>=top)current=s.id;
     });
-  }
-});
+    if(current){
+      navBtns.forEach(function(b){
+        b.classList.toggle('active',b.dataset.target===current);
+      });
+    }
+    _faqScrollTicking=false;
+  });
+},{passive:true});
 
 // Search
 const searchInput=document.getElementById('faqSearch');
@@ -933,12 +940,14 @@ searchInput.addEventListener('input',()=>{
 });
 
 // Reveal animation
-const ro=new IntersectionObserver(e=>{
-  e.forEach(t=>{
+(function(){
+var ro=new IntersectionObserver(function(e){
+  e.forEach(function(t){
     if(t.isIntersecting)t.target.classList.add('visible');
   });
 },{threshold:.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+})();
 </script>
 
 <!-- WA Tooltip -->
@@ -957,5 +966,17 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </div>
 <script>setTimeout(function(){var t=document.getElementById('waTooltip');if(t){t.classList.add('show');setTimeout(function(){t.classList.remove('show')},5000)}},5000);</script>
 
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY5HDB819X"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-PY5HDB819X');</script>
+<!-- Yandex.Metrika -->
+<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=107703278','ym');ym(107703278,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/107703278" style="position:absolute;left:-9999px" alt=""></div></noscript>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PY5HDB819X"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-PY5HDB819X');</script>
+<!-- Yandex.Metrika -->
+<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=107703278','ym');ym(107703278,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/107703278" style="position:absolute;left:-9999px" alt=""></div></noscript>
 </body>
 </html>
