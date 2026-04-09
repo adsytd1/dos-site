@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dostyq Education — ИИ-ассистент для всех филиалов | DOS AI</title>
+<meta name="description" content="ИИ-ассистент для сети образовательных центров Dostyq: централизованная обработка заявок, WhatsApp-боты для каждого города, маршрутизация лидов по филиалам">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23E04400'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%23fff'>DOS</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --accent:#E04400;--accent-hover:#C43B00;--accent-rgb:224,68,0;--on-accent:#FFFFFF;
+  --bg:#F4F5F7;--bg-rgb:244,245,247;--surface:#FFFFFF;--card-bg:#FFFFFF;
+  --fg:#1A1A2E;--muted:rgba(0,0,0,.55);--muted-more:rgba(0,0,0,.25);
+  --border:rgba(0,0,0,.1);
+  --green:#059669;--green-rgb:5,150,105;
+  --red:#DC2626;--red-rgb:220,38,38;
+  --yellow:#D97706;--yellow-rgb:217,119,6;
+  --blue:#2563EB;--blue-rgb:37,99,235;
+  --purple:#7C3AED;--purple-rgb:124,58,237;
+  --sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code',monospace;
+  --max-w:1200px;
+  color-scheme:light;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--fg);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:rgba(var(--accent-rgb),.2);color:var(--accent)}
+a{color:inherit;text-decoration:none;transition:color .15s ease}
+img{max-width:100%;height:auto}
+*{scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(var(--bg-rgb),.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s ease}
+.nav-logo{font-family:var(--mono);font-weight:900;font-size:18px;color:var(--fg);letter-spacing:-1px}
+.nav-logo span{color:var(--accent);font-weight:700}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-link{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);position:relative;padding:4px 0}
+.nav-link:hover{color:var(--accent)}
+.nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--accent);transition:width .25s ease}
+.nav-link:hover::after{width:100%}
+
+/* SECTION */
+.section{max-width:var(--max-w);margin:0 auto;padding:100px 48px}
+.section-border{border-bottom:1px solid var(--border)}
+.section-label{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.section-num{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent)}
+.section-line{width:40px;height:1px;background:var(--accent)}
+.section-name{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+.section-title{font-size:clamp(32px,5vw,48px);font-weight:900;text-transform:uppercase;line-height:1.1;letter-spacing:-2px;margin-bottom:16px}
+.section-title .accent{color:var(--accent)}
+.section-desc{font-size:14px;color:var(--muted);max-width:560px;line-height:1.7}
+.section-header{margin-bottom:48px}
+.section-header.center{text-align:center}
+.section-header.center .section-label{justify-content:center}
+.section-header.center .section-desc{margin:0 auto}
+
+/* HERO */
+.hero{max-width:var(--max-w);margin:0 auto;padding:120px 48px 80px;position:relative}
+.hero-mesh{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 600px 400px at 20% 40%,rgba(var(--accent-rgb),.08),transparent),radial-gradient(ellipse 500px 500px at 80% 60%,rgba(var(--blue-rgb),.05),transparent);filter:blur(80px)}
+.hero-inner{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--border);font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:32px}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);animation:glowPulse 2s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 4px rgba(var(--accent-rgb),.4)}50%{box-shadow:0 0 12px rgba(var(--accent-rgb),.8)}}
+.hero h1{font-size:clamp(48px,8vw,80px);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-3px;margin-bottom:24px}
+.hero-sub{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:48px;max-width:600px}
+
+/* STATS BAR */
+.stats-bar{display:flex;border:1px solid var(--border)}
+.stat-item{flex:1;padding:24px 20px;transition:all .2s ease;position:relative;overflow:hidden}
+.stat-item:not(:first-child){border-left:1px solid var(--border)}
+.stat-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .25s ease}
+.stat-item:hover::before{transform:scaleX(1)}
+.stat-item:hover{background:rgba(var(--accent-rgb),.03)}
+.stat-num{font-size:28px;font-weight:900;letter-spacing:-1px}
+.stat-label{font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-top:4px}
+
+/* GRID */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr)}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr)}
+
+/* CARD */
+.card{background:var(--card-bg);border:1px solid var(--border);padding:28px;transition:all .2s ease;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .25s ease}
+.card:hover::before{transform:scaleX(1)}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(var(--accent-rgb),.08);border-color:rgba(var(--accent-rgb),.25)}
+.card-num{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:12px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.card p{font-size:12px;color:var(--muted);line-height:1.7}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:4px 8px;border:1px solid var(--border);color:var(--muted)}
+
+/* PAIN */
+.pain-stat{font-family:var(--mono);font-size:20px;font-weight:900;margin-top:12px}
+
+/* CORNER ACCENT */
+.corner-accent{position:relative}
+.corner-accent::before,.corner-accent::after{content:'';position:absolute;width:8px;height:8px;border-color:var(--accent);border-style:solid;opacity:0;transition:opacity .3s ease}
+.corner-accent::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.corner-accent::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.corner-accent:hover::before,.corner-accent:hover::after{opacity:1}
+
+/* ARCH */
+.arch{display:flex;flex-direction:column;align-items:center;gap:0;max-width:800px;margin:0 auto}
+.arch-box{border:1px solid var(--border);padding:16px 24px;text-align:center;font-weight:700;font-size:13px;background:var(--card-bg);width:100%}
+.arch-central{background:var(--accent);color:var(--on-accent);border-color:var(--accent);max-width:500px}
+.arch-central small{display:block;font-weight:400;font-size:11px;opacity:.8;margin-top:4px}
+.arch-line{width:2px;height:28px;background:var(--border)}
+.arch-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--muted-more);padding:10px 0;font-weight:600}
+.arch-city{border:1px solid var(--border);padding:14px 16px;text-align:center;background:var(--card-bg);font-size:13px;font-weight:700}
+.arch-city small{display:block;font-family:var(--mono);font-size:10px;font-weight:400;color:var(--muted);margin-top:4px}
+.arch-city.active{border-color:rgba(var(--accent-rgb),.3);background:rgba(var(--accent-rgb),.04)}
+.arch-city.dashed{border-style:dashed;color:var(--muted)}
+.arch-branch{border:1px solid var(--border);padding:10px;text-align:center;font-size:11px;font-weight:500;color:var(--muted);background:rgba(255,255,255,.01)}
+.arch-func{flex:1;min-width:120px;border:1px solid var(--border);padding:10px 14px;text-align:center;font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--accent);background:var(--card-bg)}
+.arch-result{background:rgba(var(--green-rgb),.04);border:1px solid rgba(var(--green-rgb),.2);color:var(--green);max-width:600px;font-size:13px}
+.arch-result strong{color:var(--fg)}
+.arch-clabel{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--muted-more);padding:8px 0;text-align:center;width:100%}
+.arch-clabel.mt{margin-top:6px}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;max-width:700px;margin:0 auto}
+.step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.step:last-child{border-bottom:none}
+.step-num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent);min-width:32px;padding-top:2px;letter-spacing:1px}
+.step h3{font-size:14px;font-weight:700;margin-bottom:4px}
+.step p{font-size:13px;color:var(--muted);line-height:1.7}
+.step-tag{display:inline-flex;padding:2px 8px;border:1px solid var(--border);font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-top:6px}
+
+/* CASE */
+.case-card{background:var(--card-bg);border:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr}
+.case-left{padding:40px;border-right:1px solid var(--border)}
+.case-right{padding:40px}
+.case-badge{display:inline-flex;padding:3px 10px;border:1px solid rgba(var(--green-rgb),.3);font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);margin-bottom:12px}
+.case-card h3{font-size:20px;font-weight:900;margin-bottom:12px;letter-spacing:-1px;text-transform:uppercase}
+.case-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.case-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.case-stat-num{font-family:var(--mono);font-size:24px;font-weight:900;letter-spacing:-1px}
+.case-stat-label{font-size:11px;color:var(--muted);margin-top:2px}
+.case-feature{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);line-height:1.6}
+.case-feature:last-child{border-bottom:none}
+.case-check{color:var(--accent);font-weight:700;flex-shrink:0}
+
+/* DEMO */
+.demo-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.demo-phone{flex-shrink:0;width:260px;scroll-snap-align:start;border:1px solid var(--border);background:var(--card-bg);overflow:hidden;transition:all .2s ease}
+.demo-phone:hover{border-color:rgba(var(--accent-rgb),.3);box-shadow:0 4px 24px rgba(var(--accent-rgb),.08)}
+.demo-phone img{width:100%;display:block}
+.demo-phone-label{padding:10px;font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);border-top:1px solid var(--border);text-align:center}
+.demo-note{margin-top:20px;padding:16px;border:1px solid rgba(var(--accent-rgb),.2);background:rgba(var(--accent-rgb),.03);font-size:13px;color:var(--muted);line-height:1.7;text-align:center}
+.demo-note strong{color:var(--accent)}
+
+/* COMPARE */
+.compare{display:grid;grid-template-columns:1fr 1fr}
+.compare-col{background:var(--card-bg);border:1px solid var(--border);padding:32px}
+.compare-col:first-child{border-right:none}
+.compare-title{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.compare-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.compare-list li{font-size:13px;color:var(--muted);line-height:1.6;padding-left:16px;position:relative}
+.compare-list li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px}
+.col-red .compare-title{color:var(--red)}
+.col-red .compare-list li::before{background:var(--red)}
+.col-green .compare-title{color:var(--green)}
+.col-green .compare-list li::before{background:var(--green)}
+
+/* PLATFORM */
+.plat-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border)}
+.plat-card{padding:28px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:all .2s ease;position:relative;overflow:hidden}
+.plat-card:nth-child(3n){border-right:none}
+.plat-card:nth-child(n+4){border-bottom:none}
+.plat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .25s ease}
+.plat-card:hover::before{transform:scaleX(1)}
+.plat-card:hover{background:rgba(var(--accent-rgb),.03)}
+.plat-icon{font-size:20px;margin-bottom:12px}
+.plat-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.plat-card p{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* PRICING */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border)}
+.price-card{padding:32px;border-right:1px solid var(--border);text-align:center}
+.price-card:last-child{border-right:none}
+.price-card.featured{border:2px solid var(--accent);position:relative}
+.price-label{font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:8px}
+.price-val{font-family:var(--sans);font-size:48px;font-weight:900;letter-spacing:-2px;color:var(--fg)}
+.price-val span{font-size:16px;font-weight:500;color:var(--muted)}
+.price-desc{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.6}
+
+/* CALCULATOR */
+.calc-card{background:var(--card-bg);border:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr}
+.calc-inputs{padding:40px;border-right:1px solid var(--border)}
+.calc-results{padding:40px;display:flex;flex-direction:column;justify-content:center}
+.calc-field{margin-bottom:24px}
+.calc-field:last-child{margin-bottom:0}
+.calc-field label{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;margin-bottom:10px}
+.calc-val{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;background:var(--border);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--accent);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;background:var(--accent);border:none;cursor:pointer}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.calc-row:last-of-type{border-bottom:none}
+.calc-row-label{font-size:13px;color:var(--muted)}
+.calc-row-val{font-family:var(--mono);font-size:16px;font-weight:700}
+.calc-row-val.old{color:var(--muted)}
+.calc-row-val.new{color:var(--green)}
+.calc-row-val.diff{color:var(--accent)}
+.calc-big{margin-top:20px;padding:20px;border:1px solid rgba(var(--accent-rgb),.2);background:rgba(var(--accent-rgb),.03);text-align:center}
+.calc-big-num{font-family:var(--mono);font-size:28px;font-weight:900;color:var(--accent);letter-spacing:-1px}
+.calc-big-label{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* FOOTER */
+.footer{max-width:var(--max-w);margin:0 auto;padding:40px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-text{font-family:var(--mono);font-size:10px;color:var(--muted-more);text-transform:uppercase;letter-spacing:2px}
+.footer-text a{color:var(--accent)}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.anim{animation:fadeInUp .4s ease both}
+.anim-1{animation-delay:.05s}.anim-2{animation-delay:.1s}.anim-3{animation-delay:.15s}.anim-4{animation-delay:.2s}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav{padding:12px 24px}
+  .nav-links{display:none}
+  .hero,.section{padding-left:24px;padding-right:24px}
+  .hero{padding-top:100px;padding-bottom:60px}
+  .section{padding-top:64px;padding-bottom:64px}
+  .hero h1{letter-spacing:-2px}
+  .stats-bar{flex-wrap:wrap}
+  .stat-item{flex:1 1 50%}
+  .stat-item:nth-child(3){border-left:none;border-top:1px solid var(--border)}
+  .stat-item:nth-child(4){border-top:1px solid var(--border)}
+  .grid-3,.grid-4,.plat-grid,.price-grid,.sol-grid,.ben-grid{grid-template-columns:1fr}
+  .grid-2,.compare,.calc-card,.case-card{grid-template-columns:1fr}
+  .case-left{border-right:none;border-bottom:1px solid var(--border)}
+  .calc-inputs{border-right:none;border-bottom:1px solid var(--border)}
+  .plat-card{border-right:none;border-bottom:1px solid var(--border)}
+  .plat-card:last-child{border-bottom:none}
+  .price-card{border-right:none;border-bottom:1px solid var(--border)}
+  .price-card:last-child{border-bottom:none}
+  .compare-col:first-child{border-right:1px solid var(--border);border-bottom:none}
+  .arch .grid-3{grid-template-columns:1fr}
+  .arch-funcs{flex-direction:column}
+  .footer{flex-direction:column;gap:12px;text-align:center}
+}
+
+/* NOISE — disabled for light theme */
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">DOS<span>_</span>AI <span style="color:var(--muted);font-weight:500;font-size:11px;margin-left:8px;letter-spacing:1px">/ DOSTYQ</span></div>
+  <ul class="nav-links">
+    <li><a href="#problems" class="nav-link">Проблемы</a></li>
+    <li><a href="#solution" class="nav-link">Решение</a></li>
+    <li><a href="#architecture" class="nav-link">Архитектура</a></li>
+    <li><a href="#platform" class="nav-link">Платформа</a></li>
+    <li><a href="#demo" class="nav-link">Демо</a></li>
+    <li><a href="#calculator" class="nav-link">Калькулятор</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-inner">
+    <div class="hero-badge anim anim-1">Dostyq Education &times; DOS AI Platform</div>
+    <h1 class="anim anim-2">ИИ-ассистент<br>для <span class="accent">всех филиалов</span></h1>
+    <p class="hero-sub anim anim-3">Центральный номер маршрутизирует по городам. В каждом городе свой ИИ: узнаёт что интересно &mdash; школа или курсы &mdash; квалифицирует, консультирует, записывает на пробное. Лиды автоматически распределяются по филиалам.</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<div style="max-width:var(--max-w);margin:0 auto;padding:0 48px">
+  <div class="stats-bar anim anim-4">
+    <div class="stat-item"><div class="stat-num" style="color:var(--accent)">15+</div><div class="stat-label">городов</div></div>
+    <div class="stat-item"><div class="stat-num" style="color:var(--green)">24/7</div><div class="stat-label">без выходных</div></div>
+    <div class="stat-item"><div class="stat-num" style="color:var(--blue)">15 сек</div><div class="stat-label">время ответа</div></div>
+    <div class="stat-item"><div class="stat-num" style="color:var(--yellow)">90%</div><div class="stat-label">вопросов закрывает ИИ</div></div>
+  </div>
+</div>
+
+<!-- PROBLEMS -->
+<section class="section section-border" id="problems">
+  <div class="section-header">
+    <div class="section-label"><span class="section-num">01</span><div class="section-line"></div><span class="section-name">Проблемы</span></div>
+    <h2 class="section-title">Что теряет сеть<br>без <span class="accent">ИИ-ассистента</span></h2>
+    <p class="section-desc">15 городов &times; несколько филиалов = десятки менеджеров, которые не успевают. Каждый неотвеченный запрос &mdash; ученик у конкурента.</p>
+  </div>
+  <div class="grid-2">
+    <div class="card corner-accent reveal">
+      <div class="card-num">01</div>
+      <h3>Медленный ответ = потеря клиента</h3>
+      <p>Родители пишут вечером и в выходные. Ответ на следующий день &mdash; они уже записались в другой центр.</p>
+      <div class="pain-stat" style="color:var(--red)">73% уходят к тем, кто ответил первым</div>
+    </div>
+    <div class="card corner-accent reveal">
+      <div class="card-num">02</div>
+      <h3>Менеджеры тратят время на рутину</h3>
+      <p>80% вопросов одинаковые: цены, расписание, адрес, формат. Менеджер отвечает вместо работы с горячими клиентами.</p>
+      <div class="pain-stat" style="color:var(--red)">80% времени на типовые вопросы</div>
+    </div>
+    <div class="card corner-accent reveal">
+      <div class="card-num">03</div>
+      <h3>Нет единого стандарта по сети</h3>
+      <p>В каждом городе свой стиль общения. Кто-то отвечает хорошо, кто-то теряет заявки. Нет контроля.</p>
+      <div class="pain-stat" style="color:var(--yellow)">Разный сервис = разная конверсия</div>
+    </div>
+    <div class="card corner-accent reveal">
+      <div class="card-num">04</div>
+      <h3>Невозможно масштабировать</h3>
+      <p>Каждый новый город = найм + обучение + контроль менеджера. Расходы растут, качество падает.</p>
+      <div class="pain-stat" style="color:var(--yellow)">Расходы на менеджеров &times;15</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section section-border" id="solution">
+  <div class="section-header">
+    <div class="section-label"><span class="section-num">02</span><div class="section-line"></div><span class="section-name">Решение</span></div>
+    <h2 class="section-title">ИИ-менеджер <span class="accent">Айгерим</span><br>для всей сети</h2>
+    <p class="section-desc">Единый стандарт обслуживания во всех городах. Мгновенные ответы 24/7. Автоматическая запись на пробные занятия.</p>
+  </div>
+  <div class="grid-3">
+    <div class="card corner-accent reveal"><div class="card-num">01</div><h3>Мгновенный ответ</h3><p>15-40 секунд вместо часов. Работает ночью, в выходные, в праздники.</p><div class="card-tags"><span class="tag">24/7</span><span class="tag">15 сек</span></div></div>
+    <div class="card corner-accent reveal"><div class="card-num">02</div><h3>Школы + курсы на одном номере</h3><p>ИИ первым делом узнаёт что интересно &mdash; школа или курсы &mdash; потом ведёт продажнический диалог.</p><div class="card-tags"><span class="tag">квалификация</span></div></div>
+    <div class="card corner-accent reveal"><div class="card-num">03</div><h3>Запись на пробное</h3><p>Собирает данные и записывает на бесплатное пробное. Менеджеру остаётся только связаться.</p><div class="card-tags"><span class="tag">автосбор</span><span class="tag">telegram</span></div></div>
+    <div class="card corner-accent reveal"><div class="card-num">04</div><h3>Работа с возражениями</h3><p>&laquo;Дорого&raquo;, &laquo;подумаем&raquo;, &laquo;далеко&raquo; &mdash; продающие техники, не шаблоны.</p><div class="card-tags"><span class="tag">продажи</span></div></div>
+    <div class="card corner-accent reveal"><div class="card-num">05</div><h3>Аналитика по сети</h3><p>Заявки, конверсия, типичные вопросы &mdash; прозрачная картина по всем филиалам в реальном времени.</p><div class="card-tags"><span class="tag">dashboard</span></div></div>
+    <div class="card corner-accent reveal"><div class="card-num">06</div><h3>Дожимные рассылки</h3><p>Автоматические follow-up для тех, кто не дошёл. Серия касаний увеличивает конверсию в 2 раза.</p><div class="card-tags"><span class="tag">follow-up</span></div></div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section section-border" id="architecture">
+  <div class="section-header center">
+    <div class="section-label"><span class="section-num">03</span><div class="section-line"></div><span class="section-name">Архитектура</span></div>
+    <h2 class="section-title">Как это работает<br>на <span class="accent">15 городов</span></h2>
+  </div>
+  <div class="arch">
+    <div class="arch-box arch-central">Центральный номер &mdash; WhatsApp на весь Казахстан<small>Маршрутизирует по городам &middot; скидывает номер нужного города</small></div>
+    <div class="arch-line"></div>
+    <div class="arch-label">На каждом номере города &mdash; свой ИИ (школы + курсы)</div>
+    <div class="grid-3" style="width:100%">
+      <div class="arch-city active">Астана<small>+7 7XX XXX-XX-XX</small></div>
+      <div class="arch-city active">Костанай<small>+7 707 253-00-10</small></div>
+      <div class="arch-city dashed">+ ещё 13 городов<small>по 1 номеру на город</small></div>
+    </div>
+    <div class="arch-line"></div>
+    <div class="arch-label">ИИ узнаёт: школа или курсы? &rarr; подбирает ближайший филиал</div>
+    <div class="arch-clabel">Астана</div>
+    <div class="grid-3" style="width:100%">
+      <div class="arch-branch">Филиал 1</div><div class="arch-branch">Филиал 2</div><div class="arch-branch">Филиал 3</div>
+    </div>
+    <div class="arch-clabel mt">Костанай</div>
+    <div class="grid-3" style="width:100%">
+      <div class="arch-branch">Филиал 1</div><div class="arch-branch">Филиал 2</div><div class="arch-branch">Филиал 3</div>
+    </div>
+    <div class="arch-clabel mt">Атырау</div>
+    <div class="grid-3" style="width:100%">
+      <div class="arch-branch">Филиал 1</div><div class="arch-branch">Филиал 2</div><div class="arch-branch">Филиал 3</div>
+    </div>
+    <div class="arch-line"></div>
+    <div class="arch-label">Что делает ИИ в каждом городе</div>
+    <div style="display:flex;flex-wrap:wrap;width:100%;max-width:600px">
+      <div class="arch-func">Консультация</div><div class="arch-func">Запись на пробное</div><div class="arch-func">Возражения</div><div class="arch-func">Сбор данных</div>
+    </div>
+    <div class="arch-line"></div>
+    <div class="arch-box arch-result" style="max-width:600px">Уведомление в Telegram-группу филиала: менеджерам + директору<br><strong>Готовый лид &mdash; осталось только связаться</strong></div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="section section-border" id="platform">
+  <div class="section-header">
+    <div class="section-label"><span class="section-num">04</span><div class="section-line"></div><span class="section-name">Платформа</span></div>
+    <h2 class="section-title">DOS AI <span class="accent">Platform</span><br>для каждого директора</h2>
+    <p class="section-desc">Каждый город получает клиентский доступ к платформе yernardos.space. Директор и назначенные ответственные лица видят всё в одной системе &mdash; специально под них.</p>
+  </div>
+  <div class="plat-grid">
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#128202;</div>
+      <h3>Аналитика в реальном времени</h3>
+      <p>Сколько заявок сегодня, конверсия в пробное, по каким курсам пишут. Данные обновляются мгновенно.</p>
+    </div>
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#128101;</div>
+      <h3>Все лиды в одном месте</h3>
+      <p>Полная база: имя, класс, предметы, телефон, статус. Фильтры по филиалам, курсам, статусу. Экспорт.</p>
+    </div>
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#128172;</div>
+      <h3>Логи всех диалогов</h3>
+      <p>Читайте каждый диалог ИИ с клиентом. Контроль качества ответов. Видно где теряются лиды.</p>
+    </div>
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#128274;</div>
+      <h3>Доступ для команды</h3>
+      <p>Директор назначает ответственных лиц &mdash; менеджеров, завучей. Каждый видит данные своего филиала.</p>
+    </div>
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#128176;</div>
+      <h3>Управление балансом</h3>
+      <p>Каждый город пополняет баланс для своего ИИ. Прозрачные расходы &mdash; видно сколько тратится на каждый диалог.</p>
+    </div>
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#9881;</div>
+      <h3>Настройки ИИ</h3>
+      <p>Обновление информации о курсах, ценах, расписании. Включение/выключение ИИ. Настройка дожимных рассылок.</p>
+    </div>
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#128200;</div>
+      <h3>Конверсионная воронка</h3>
+      <p>Заявка &rarr; консультация &rarr; запись &rarr; пробное &rarr; оплата. Видно где и сколько теряется на каждом этапе.</p>
+    </div>
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#128276;</div>
+      <h3>Дожимные кампании</h3>
+      <p>Настройка серий follow-up сообщений. Контент, интервалы, статистика открытий и конверсии.</p>
+    </div>
+    <div class="plat-card reveal">
+      <div class="plat-icon">&#128241;</div>
+      <h3>Мобильная версия</h3>
+      <p>Платформа работает на телефоне. Директор проверяет аналитику из любого места &mdash; не нужен компьютер.</p>
+    </div>
+  </div>
+  <div style="margin-top:32px;padding:16px;border:1px solid rgba(var(--accent-rgb),.2);background:rgba(var(--accent-rgb),.03);text-align:center;font-size:13px;color:var(--muted)">
+    <strong style="color:var(--accent)">Пример как будет выглядеть для вас.</strong> Клиентский доступ к платформе yernardos.space &mdash; аналитика по всем городам, разбивка записей по филиалам, логи диалогов.
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+    <div style="border:1px solid var(--border);overflow:hidden"><img src="/dostyq-platform-1.png" alt="DOS AI Platform — обзор, статистика, воронка конверсии" loading="lazy" style="width:100%;display:block"></div>
+    <div style="border:1px solid var(--border);overflow:hidden"><img src="/dostyq-platform-2.png" alt="DOS AI Platform — таблица по городам с разбивкой по филиалам" loading="lazy" style="width:100%;display:block"></div>
+    <div style="border:1px solid var(--border);overflow:hidden"><img src="/dostyq-platform-3.png" alt="DOS AI Platform — лиды, диалоги, активность по часам" loading="lazy" style="width:100%;display:block"></div>
+  </div>
+  <div style="margin-top:12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--muted-more);text-align:center">Внутри каждого города &mdash; разбивка по филиалам: кто записался, в какой филиал, на какой курс</div>
+</section>
+
+<!-- SCENARIO -->
+<section class="section section-border" id="flow">
+  <div class="section-header">
+    <div class="section-label"><span class="section-num">05</span><div class="section-line"></div><span class="section-name">Сценарий</span></div>
+    <h2 class="section-title">Путь клиента<br>от сообщения до <span class="accent">записи</span></h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><div class="step-num">01</div><div><h3>Родитель пишет в WhatsApp</h3><p>&laquo;Здравствуйте, у вас есть подготовка к ЕНТ?&raquo; &mdash; в центральный номер или напрямую в город.</p><div class="step-tag">WhatsApp</div></div></div>
+    <div class="step reveal"><div class="step-num">02</div><div><h3>ИИ определяет: школа или курсы?</h3><p>Первый вопрос &mdash; что интересует. Дальше ведёт продажнический диалог по нужному направлению.</p><div class="step-tag">Квалификация</div></div></div>
+    <div class="step reveal"><div class="step-num">03</div><div><h3>Подбирает ближайший филиал</h3><p>Узнаёт адрес или район &mdash; предлагает ближайший филиал в городе.</p><div class="step-tag">Геолокация</div></div></div>
+    <div class="step reveal"><div class="step-num">04</div><div><h3>Консультация по курсам</h3><p>Цены, расписание, предметы, скидки &mdash; по конкретному городу и филиалу. Рус/каз/англ.</p><div class="step-tag">Мультиязычность</div></div></div>
+    <div class="step reveal"><div class="step-num">05</div><div><h3>Работа с возражениями</h3><p>&laquo;Дорого&raquo; &rarr; помесячная оплата + скидки. &laquo;Подумаем&raquo; &rarr; бесплатное пробное.</p><div class="step-tag">Продажи</div></div></div>
+    <div class="step reveal"><div class="step-num">06</div><div><h3>Запись на бесплатное пробное</h3><p>Собирает: имя родителя, имя ученика, класс, предметы, телефон. Подтверждает с адресом.</p><div class="step-tag">Автосбор</div></div></div>
+    <div class="step reveal"><div class="step-num">07</div><div><h3>Уведомление в группу филиала</h3><p>Telegram-группа: менеджерам + директору. Готовый лид с данными + запись в DOS AI Platform.</p><div class="step-tag">Telegram + Platform</div></div></div>
+  </div>
+</section>
+
+<!-- CASE -->
+<section class="section section-border" id="case">
+  <div class="section-header">
+    <div class="section-label"><span class="section-num">06</span><div class="section-line"></div><span class="section-name">Уже работает</span></div>
+    <h2 class="section-title">Кейс: <span class="accent">Астана + Костанай</span></h2>
+    <p class="section-desc">ИИ-ассистент Айгерим уже работает в 2 городах. Подключение остальных &mdash; каркас готов.</p>
+  </div>
+  <div class="case-card reveal">
+    <div class="case-left">
+      <div class="case-badge">Работает с 2025</div>
+      <h3>Dostyq Qostanay + Astana</h3>
+      <p class="case-desc">ИИ-менеджер Айгерим обрабатывает заявки от родителей через WhatsApp. Консультирует по всем курсам (ЕНТ, НИШ, БИЛ, 4-5 классы), записывает на пробные, работает с возражениями.</p>
+      <div class="case-stats">
+        <div><div class="case-stat-num" style="color:var(--green)">24/7</div><div class="case-stat-label">обработка заявок</div></div>
+        <div><div class="case-stat-num" style="color:var(--blue)">15 сек</div><div class="case-stat-label">время ответа</div></div>
+        <div><div class="case-stat-num" style="color:var(--yellow)">90%</div><div class="case-stat-label">вопросов закрывает ИИ</div></div>
+        <div><div class="case-stat-num" style="color:var(--accent)">3 яз</div><div class="case-stat-label">рус / каз / англ</div></div>
+      </div>
+    </div>
+    <div class="case-right">
+      <div class="case-feature"><span class="case-check">&rarr;</span>Полная консультация по 5 программам: ЕНТ, НИШ/БИЛ, 4-5 классы</div>
+      <div class="case-feature"><span class="case-check">&rarr;</span>Мультиязычность: русский, казахский, английский &mdash; автоопределение</div>
+      <div class="case-feature"><span class="case-check">&rarr;</span>WhatsApp через Wazzup API</div>
+      <div class="case-feature"><span class="case-check">&rarr;</span>Обработка голосовых и фото</div>
+      <div class="case-feature"><span class="case-check">&rarr;</span>Уведомления в Telegram-группу менеджеров</div>
+      <div class="case-feature"><span class="case-check">&rarr;</span>Запись на пробное + дожимные рассылки</div>
+      <div class="case-feature"><span class="case-check">&rarr;</span>Адаптация: родители, старшеклассники, сомневающиеся</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="section section-border" id="demo">
+  <div class="section-header">
+    <div class="section-label"><span class="section-num">07</span><div class="section-line"></div><span class="section-name">Живой пример</span></div>
+    <h2 class="section-title">Как выглядит<br><span class="accent">диалог с ИИ</span></h2>
+    <p class="section-desc">Реальная переписка Айгерим с клиентом &mdash; от приветствия до записи на пробное. Костанай.</p>
+  </div>
+  <div class="demo-scroll">
+    <div class="demo-phone reveal"><img src="/dostyq-chat-1.png" alt="Приветствие и квалификация" loading="lazy"><div class="demo-phone-label">Приветствие + квалификация</div></div>
+    <div class="demo-phone reveal"><img src="/dostyq-chat-2.png" alt="Консультация по курсам" loading="lazy"><div class="demo-phone-label">Консультация + пробное</div></div>
+    <div class="demo-phone reveal"><img src="/dostyq-chat-3.png" alt="Адрес и скидки" loading="lazy"><div class="demo-phone-label">Адрес + скидки + возражения</div></div>
+    <div class="demo-phone reveal"><img src="/dostyq-chat-4.png" alt="Запись на пробное" loading="lazy"><div class="demo-phone-label">Запись + подтверждение</div></div>
+  </div>
+  <div class="demo-note reveal"><strong>Это ранняя версия.</strong> С тех пор качество ответов и понимание контекста значительно выросло &mdash; новые филиалы получат ещё более точную и естественную коммуникацию.</div>
+</section>
+
+<!-- COMPARE -->
+<section class="section section-border" id="compare">
+  <div class="section-header center">
+    <div class="section-label"><span class="section-num">08</span><div class="section-line"></div><span class="section-name">Сравнение</span></div>
+    <h2 class="section-title">До и <span class="accent">после</span></h2>
+  </div>
+  <div class="compare reveal">
+    <div class="compare-col col-red">
+      <div class="compare-title">&#10005; Без ИИ</div>
+      <ul class="compare-list">
+        <li>Ответ на заявку: 2-24 часа</li>
+        <li>Менеджеры перегружены типовыми вопросами</li>
+        <li>Потеря лидов в нерабочее время</li>
+        <li>Разные стандарты в каждом городе</li>
+        <li>Ручная запись на пробные</li>
+        <li>Нет аналитики по заявкам</li>
+        <li>Новый город = найм менеджера</li>
+        <li>Нет follow-up для &laquo;подумаю&raquo;</li>
+      </ul>
+    </div>
+    <div class="compare-col col-green">
+      <div class="compare-title">&#10003; С ИИ Айгерим + DOS AI</div>
+      <ul class="compare-list">
+        <li>Мгновенный ответ: 15-40 секунд, 24/7</li>
+        <li>90% типовых вопросов закрывает ИИ</li>
+        <li>Заявки обрабатываются даже ночью</li>
+        <li>Единый стандарт во всех 15 городах</li>
+        <li>Автоматический сбор данных и запись</li>
+        <li>Полная аналитика на платформе DOS AI</li>
+        <li>Новый город = каркас готов, меняем инфу</li>
+        <li>Автоматические дожимные рассылки</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section section-border" id="benefits">
+  <div class="section-header">
+    <div class="section-label"><span class="section-num">09</span><div class="section-line"></div><span class="section-name">Выгоды</span></div>
+    <h2 class="section-title">Что это даёт<br><span class="accent">директорам</span></h2>
+  </div>
+  <div class="stats-bar" style="flex-wrap:wrap">
+    <div class="stat-item" style="flex:1 1 33%"><div class="stat-num" style="color:var(--green)">+20-50%</div><div class="stat-label">Рост конверсии в пробное</div></div>
+    <div class="stat-item" style="flex:1 1 33%"><div class="stat-num" style="color:var(--blue)">&minus;90%</div><div class="stat-label">Нагрузки на менеджеров</div></div>
+    <div class="stat-item" style="flex:1 1 33%"><div class="stat-num" style="color:var(--accent)">1 мес</div><div class="stat-label">Подключение всех филиалов</div></div>
+    <div class="stat-item" style="flex:1 1 33%"><div class="stat-num" style="color:var(--yellow)">24/7</div><div class="stat-label">Ни один лид не потерян</div></div>
+    <div class="stat-item" style="flex:1 1 33%"><div class="stat-num" style="color:var(--purple)">100%</div><div class="stat-label">Контроль качества</div></div>
+    <div class="stat-item" style="flex:1 1 33%"><div class="stat-num" style="color:var(--green)">ROI</div><div class="stat-label">Окупается за 1 месяц</div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section section-border" id="pricing">
+  <div class="section-header center">
+    <div class="section-label"><span class="section-num">10</span><div class="section-line"></div><span class="section-name">Стоимость</span></div>
+    <h2 class="section-title">Прозрачная <span class="accent">модель</span></h2>
+  </div>
+  <div class="price-grid reveal">
+    <div class="price-card">
+      <div class="price-label">Подключение города</div>
+      <div class="price-val">300K <span>&#8376;</span></div>
+      <div class="price-desc">Разовая настройка ИИ для города: промт, курсы, цены, расписание, интеграции, обучение команды. Каркас готов &mdash; просто меняем инфу от филиала к филиалу.</div>
+    </div>
+    <div class="price-card featured">
+      <div class="price-label">Подписка на платформу</div>
+      <div class="price-val">12 500 <span>&#8376;/мес</span></div>
+      <div class="price-desc">Доступ к DOS AI Platform для каждого города. Аналитика, лиды, логи диалогов, управление, дожимные кампании. Для директора и команды.</div>
+    </div>
+    <div class="price-card">
+      <div class="price-label">Баланс ИИ</div>
+      <div class="price-val" style="font-size:32px">Пополнение</div>
+      <div class="price-desc">Каждый город пополняет баланс для своего ИИ. Тратится на каждый диалог. Прозрачно &mdash; видно расход на платформе. Без скрытых комиссий.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="section section-border" id="calculator">
+  <div class="section-header center">
+    <div class="section-label"><span class="section-num">11</span><div class="section-line"></div><span class="section-name">Калькулятор</span></div>
+    <h2 class="section-title">Посчитайте рост<br><span class="accent">выручки</span> с ИИ</h2>
+    <p class="section-desc">Расчёт на 1 филиал. Введите ваши цифры &mdash; увидите разницу.</p>
+  </div>
+  <div class="calc-card reveal">
+    <div class="calc-inputs">
+      <div style="font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:24px">1 филиал</div>
+      <div class="calc-field"><label for="calcLeads">Лидов в месяц <span class="calc-val" id="calcLeadsVal">100</span></label><input type="range" id="calcLeads" min="10" max="1000" value="100" step="10"></div>
+      <div class="calc-field"><label for="calcConvTrial">Конверсия в пробник <span class="calc-val" id="calcConvTrialVal">30%</span></label><input type="range" id="calcConvTrial" min="5" max="80" value="30" step="5"></div>
+      <div class="calc-field"><label for="calcConvBuy">Конверсия в покупку <span class="calc-val" id="calcConvBuyVal">40%</span></label><input type="range" id="calcConvBuy" min="5" max="80" value="40" step="5"></div>
+      <div class="calc-field"><label for="calcCheck">Средний чек (&#8376;) <span class="calc-val" id="calcCheckVal">80 000</span></label><input type="range" id="calcCheck" min="10000" max="500000" value="80000" step="5000"></div>
+      <div class="calc-field"><label for="calcBoost">ИИ увеличит лиды &rarr; пробник на <span class="calc-val" id="calcBoostVal">30%</span></label><input type="range" id="calcBoost" min="10" max="100" value="30" step="5"></div>
+    </div>
+    <div class="calc-results" aria-live="polite">
+      <div class="calc-row"><span class="calc-row-label">Сейчас: пробников/мес</span><span class="calc-row-val old" id="calcTrialsOld"></span></div>
+      <div class="calc-row"><span class="calc-row-label">С ИИ: пробников/мес</span><span class="calc-row-val new" id="calcTrialsNew"></span></div>
+      <div class="calc-row"><span class="calc-row-label">Сейчас: покупок/мес</span><span class="calc-row-val old" id="calcBuysOld"></span></div>
+      <div class="calc-row"><span class="calc-row-label">С ИИ: покупок/мес</span><span class="calc-row-val new" id="calcBuysNew"></span></div>
+      <div style="height:1px;background:var(--border);margin:8px 0"></div>
+      <div class="calc-row"><span class="calc-row-label">Текущая выручка/мес</span><span class="calc-row-val old" id="calcOld"></span></div>
+      <div class="calc-row"><span class="calc-row-label">Выручка с ИИ</span><span class="calc-row-val new" id="calcNew"></span></div>
+      <div class="calc-row"><span class="calc-row-label">Дополнительная выручка</span><span class="calc-row-val diff" id="calcDiff"></span></div>
+      <div class="calc-big"><div class="calc-big-num" id="calcYear"></div><div class="calc-big-label">дополнительной выручки за год &middot; 1 филиал</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-text"><a href="https://yernardos.space">DOS AI Platform</a></div>
+  <div class="footer-text"><a href="https://yernardos.space">yernardos.space</a> &middot; 2026</div>
+</footer>
+
+<script>
+// Reveal
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+// Calculator — 1 branch
+function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+function calc(){
+  var leads=+document.getElementById('calcLeads').value;
+  var convTrial=+document.getElementById('calcConvTrial').value;
+  var convBuy=+document.getElementById('calcConvBuy').value;
+  var check=+document.getElementById('calcCheck').value;
+  var boost=+document.getElementById('calcBoost').value;
+  document.getElementById('calcLeadsVal').textContent=leads;
+  document.getElementById('calcConvTrialVal').textContent=convTrial+'%';
+  document.getElementById('calcConvBuyVal').textContent=convBuy+'%';
+  document.getElementById('calcCheckVal').textContent=fmt(check);
+  document.getElementById('calcBoostVal').textContent=boost+'%';
+  var trialsOld=Math.round(leads*(convTrial/100));
+  var trialsNew=Math.round(leads*((convTrial*(1+boost/100))/100));
+  var buysOld=Math.round(trialsOld*(convBuy/100));
+  var buysNew=Math.round(trialsNew*(convBuy/100));
+  var oldRev=buysOld*check;
+  var newRev=buysNew*check;
+  var diff=newRev-oldRev;
+  var t=' \u20B8';
+  document.getElementById('calcTrialsOld').textContent=trialsOld;
+  document.getElementById('calcTrialsNew').textContent=trialsNew;
+  document.getElementById('calcBuysOld').textContent=buysOld;
+  document.getElementById('calcBuysNew').textContent=buysNew;
+  document.getElementById('calcOld').textContent=fmt(oldRev)+t;
+  document.getElementById('calcNew').textContent=fmt(newRev)+t;
+  document.getElementById('calcDiff').textContent='+'+fmt(diff)+t;
+  document.getElementById('calcYear').textContent='+'+fmt(diff*12)+t+'/год';
+}
+document.querySelectorAll('.calc-inputs input').forEach(function(i){i.addEventListener('input',calc)});
+calc();
+</script>
+</body>
+</html>
