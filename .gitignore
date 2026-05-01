@@ -1,0 +1,17 @@
+# Credentials — никогда не коммитить
+credentials.md
+.env
+.env.local
+.env.production
+
+# Локальные скриншоты
+screenshots/
+.playwright-mcp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
